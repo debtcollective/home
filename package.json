@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "name": "dc-home",
+  "private": false,
+  "description": "Debt Collective Home Page",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -18,7 +18,8 @@
     "gatsby": "^2.24.47",
     "gatsby-plugin-typescript": "^2.4.18",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "tailwindcss": "^1.7.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.3",
@@ -38,18 +39,13 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "eslint-plugin-standard": "^4.0.1",
+    "gatsby-plugin-postcss": "^2.3.11",
+    "gatsby-plugin-purgecss": "^5.0.0",
     "husky": "^4.2.5",
     "jest": "^26.4.0",
     "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
     "typescript": "^3.9.7"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "husky": {
     "hooks": {
