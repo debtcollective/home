@@ -49,6 +49,10 @@
     "jest": "^26.4.0",
     "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
+    "stylefmt": "^6.0.3",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-prettier": "^1.1.2",
     "typescript": "^3.9.7"
   },
   "husky": {
@@ -83,8 +87,17 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js, ts, tsx}": [
       "eslint --fix"
+    ],
+    "*.{md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.scss": [
+      "stylefmt",
+      "stylelint --syntax scss",
+      "git add"
     ]
   }
 }
