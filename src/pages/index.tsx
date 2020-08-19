@@ -1,11 +1,15 @@
 import React from 'react';
 
 interface Props {
-  hello: string;
+  message: string;
 }
 
-const Home: React.FC<Props> = () => {
-  return <div>Hello world!</div>;
+const Message: React.FC<Props> = (props) => {
+  return <p>{props.message}</p>;
+};
+
+const Home = () => {
+  return <Message message="Hello world" />;
 };
 
 export default Home;

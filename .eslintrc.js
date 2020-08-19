@@ -32,7 +32,9 @@ module.exports = {
         trailingComma: 'none',
         singleQuote: true
       }
-    ]
+    ],
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off'
   },
   settings: {
     react: {
