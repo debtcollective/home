@@ -5,10 +5,12 @@ import instagramIcon from 'static/icons/instagram.svg';
 import twitterIcon from 'static/icons/twitter.svg';
 import envatoIcon from 'static/icons/envato.svg';
 import FooterMenuSection from 'components/Footer/FooterMenuSection';
+import NewsLetter from 'components/Footer/SubscribeNewsletter';
 
 const Footer = () => {
   return (
     <footer className="bg-gray p-12 lg:p-24">
+      <NewsLetter />
       <hr className="w-full border-gray-100 mb-16 lg:mb-20" />
       <section className="flex flex-col items-center mb-16 lg:flex-row lg:justify-between">
         <img src={dcLogo} alt="debt collective logo" />

@@ -11,7 +11,8 @@
     "noUnusedLocals": false,
     "baseUrl": "./",
     "paths": {
-      "components/*": ["src/components/*"]
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"]
     }
   },
   "include": ["src"],
