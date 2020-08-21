@@ -6936,6 +6936,11 @@ gatsby-plugin-purgecss@^5.0.0:
     loader-utils "^2.0.0"
     purgecss "^2.1.0"
 
+gatsby-plugin-root-import@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-root-import/-/gatsby-plugin-root-import-2.0.5.tgz#04e520dc661d67f49aa7950f11b7c780fd2fdbd3"
+  integrity sha512-/yA6rFjfjiFb8D6nCjfFrrGqYQMkOt4J3u2o6s7VYEF/zpA5dw2C9ENJ5fDKkJSCbbwLiEIGVMMee3vMEip2zA==
+
 gatsby-plugin-typescript@^2.4.18:
   version "2.4.18"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.4.18.tgz#9361ef69f149f68e55ebf2d3f773b9aafce75df8"
