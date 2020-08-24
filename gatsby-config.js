@@ -1,8 +1,14 @@
 const path = require('path');
 
 module.exports = {
+  siteMetadata: {
+    title: 'The Debt Collective',
+    description: '',
+    author: '@debtcollective'
+  },
   plugins: [
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-root-import',
       options: {

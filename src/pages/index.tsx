@@ -1,12 +1,8 @@
 import React from 'react';
-import Footer from 'components/Footer';
-
-interface Props {
-  message: string;
-}
+import Layout from 'components/Layout';
 
 const Home = () => {
-  return <Footer />;
+  return <Layout>Page content</Layout>;
 };
 
 export default Home;
