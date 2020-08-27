@@ -11,7 +11,20 @@ module.exports = {
       white: '#FFFFFF',
       'white-100': '#F7F7F7',
       black: '#000000',
-      'black-100': '#1C1C1C'
+      'black-100': '#1C1C1C',
+      yellow: '#FFED9C'
+    },
+    extend: {
+      lineHeight: {
+        '12': '2.75rem',
+        '13': '3rem',
+        '14': '3.25rem',
+        '15': '3.5rem'
+      },
+      spacing: {
+        'screen-spacing': '2.5rem',
+        'desktop-screen-spacing': '6rem'
+      }
     }
   },
   variants: {},

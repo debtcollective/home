@@ -12,10 +12,8 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
   return (
     <>
       <SEO title={title} description={description} />
-      <main>
-        {children}
-        <Footer />
-      </main>
+      <main>{children}</main>
+      <Footer />
     </>
   );
 };
