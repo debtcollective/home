@@ -43,7 +43,7 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
         type={InputType.text}
         value={name}
       />
-      <Button className="w-full lg:w-1/5 ">Sign Up</Button>
+      <Button className="w-full lg:w-1/5">Sign Up</Button>
     </form>
   );
 };

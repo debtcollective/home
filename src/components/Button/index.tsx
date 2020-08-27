@@ -2,7 +2,8 @@ import React, { ReactChild } from 'react';
 import classnames from 'classnames';
 import { Colors } from 'constants/colors';
 
-type ButtonType = 'submit' | 'reset' | 'button';
+type TButton = 'submit' | 'reset' | 'button';
+type TButtonVariant = 'primary' | 'secondary';
 
 interface Props {
   children: ReactChild;
@@ -10,28 +11,33 @@ interface Props {
   color?: Colors;
   id?: string;
   onClick?: () => void;
-  textColor?: Colors;
-  type?: ButtonType;
+  type?: TButton;
+  variant?: TButtonVariant;
 }
 
 const Button: React.FC<Props> = ({
   children,
   className,
-  color,
   id,
   onClick,
-  textColor,
-  type
+  type,
+  variant
 }) => {
+  const buttonVariant = variant || 'primary';
+
   return (
     <button
       id={id}
       onClick={onClick}
       className={classnames(
-        `bg-${color || Colors.primary}`,
-        `text-${textColor || Colors.white}`,
         'px-12 py-3 rounded-lg font-semibold text-base',
-        className
+        className,
+        {
+          [`bg-${Colors.primary}`]: buttonVariant === 'primary',
+          [`text-${Colors.white}`]: buttonVariant === 'primary',
+          [`bg-${Colors.white}`]: buttonVariant === 'secondary',
+          [`text-${Colors.gray}`]: buttonVariant === 'primary'
+        }
       )}
       type={type || 'button'}
     >
