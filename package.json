@@ -14,6 +14,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/youtube": "^0.0.39",
     "classnames": "^2.2.6",
     "gatsby": "^2.24.47",
     "gatsby-image": "^2.4.16",
@@ -28,6 +29,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-youtube": "^7.12.0",
     "tailwindcss": "^1.7.0"
   },
   "devDependencies": {

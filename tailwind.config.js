@@ -21,7 +21,9 @@ module.exports = {
         '12': '2.75rem',
         '13': '3rem',
         '14': '3.25rem',
-        '15': '3.5rem'
+        '15': '3.5rem',
+        '20': '5rem',
+        '40': '10rem'
       },
       spacing: {
         'screen-spacing': '2.5rem',
@@ -30,6 +32,9 @@ module.exports = {
       fontFamily: {
         'more-gothic': ['More Gothic'],
         sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
+      },
+      fontSize: {
+        '9xl': '7.5rem'
       }
     }
   },
