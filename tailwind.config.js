@@ -12,7 +12,9 @@ module.exports = {
       'white-100': '#F7F7F7',
       black: '#000000',
       'black-100': '#1C1C1C',
-      yellow: '#FFED9C'
+      yellow: '#FFED9C',
+      purple: '#DAC4F5',
+      green: '#D6FFB8'
     },
     extend: {
       lineHeight: {
@@ -24,6 +26,10 @@ module.exports = {
       spacing: {
         'screen-spacing': '2.5rem',
         'desktop-screen-spacing': '6rem'
+      },
+      fontFamily: {
+        'more-gothic': ['More Gothic'],
+        sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
       }
     }
   },

@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,600');
 
 @tailwind base;
+
+@font-face {
+  font-family: 'More Gothic';
+  src: url(../fonts/moregothic-bold.woff) format('woff');
+}
+
 @tailwind components;
 @tailwind utilities;
 
