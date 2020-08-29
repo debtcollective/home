@@ -72,7 +72,7 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
           content: metaDescription
         }
       ]}
-    />
+    ></Helmet>
   );
 };
 
