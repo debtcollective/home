@@ -72,6 +72,13 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
           content: metaDescription
         }
       ]}
+      script={[
+        {
+          src:
+            'https://unpkg.com/@debtcollective/dc-header-component@0.12.2/dist/web-header/web-header.js',
+          type: 'text/javascript'
+        }
+      ]}
     >
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
