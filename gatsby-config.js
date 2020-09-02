@@ -22,6 +22,7 @@ module.exports = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         components: path.join(__dirname, 'src/components'),
+        sections: path.join(__dirname, 'src/sections'),
         constants: path.join(__dirname, 'src/constants'),
         static: path.join(__dirname, 'static')
       }
@@ -31,10 +32,6 @@ module.exports = {
       options: {
         postCssPlugins: [require('tailwindcss')('./tailwind.config.js')]
       }
-    },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: { tailwind: true }
     }
   ]
 };

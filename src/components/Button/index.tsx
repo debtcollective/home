@@ -8,7 +8,6 @@ type TButtonVariant = 'primary' | 'secondary';
 interface Props {
   children: ReactChild;
   className?: string;
-  color?: Colors;
   id?: string;
   onClick?: () => void;
   type?: TButton;
