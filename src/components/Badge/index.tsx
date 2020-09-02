@@ -2,14 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 import { Colors } from 'constants/colors';
 
-type TBadgeSize = 'lg' | 'sm';
-
 interface Props {
   backgroundColor: Colors;
   className?: string;
   imageAlt: string;
   imageSrc: string;
-  size: TBadgeSize;
   text?: string;
   title: string;
 }
@@ -19,28 +16,16 @@ const Badge: React.FC<Props> = ({
   className,
   imageAlt,
   imageSrc,
-  size,
   text,
   title
 }) => {
   return (
-    <div
-      className={classnames(className, {
-        'max-w-xs': 'lg'
-        // @TODO: Add max-width for sm size
-      })}
-    >
+    <div className={classnames('max-w-xs', className)}>
       <img
         src={imageSrc}
         className={classnames(
-          'rounded-full object-scale-down m-auto',
-          `bg-${backgroundColor}`,
-          {
-            'w-64': size === 'lg',
-            'h-64': size === 'lg',
-            'w-32': size === 'sm',
-            'h-32': size === 'sm'
-          }
+          'rounded-full object-scale-down m-auto w-64 h-64',
+          `bg-${backgroundColor}`
         )}
         alt={imageAlt}
       />

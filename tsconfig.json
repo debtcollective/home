@@ -12,6 +12,7 @@
     "baseUrl": "./",
     "paths": {
       "components/*": ["src/components/*"],
+      "sections/*": ["src/sections/*"],
       "constants/*": ["src/constants/*"]
     }
   },
