@@ -5,6 +5,9 @@ import { graphql } from 'gatsby';
 import WhatIsADebtorsUnion from '@sections/WhatIsADebtorsUnion';
 import MembershipBenefits from '@sections/MembershipBenefits';
 import FAQ from '@sections/FAQ';
+import PowerInNumbers from '@sections/PowerInNumbers';
+import OweTheBank from '@sections/OweTheBank';
+import LineBreak from '@components/LineBreak';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,9 +28,8 @@ const DebtUnion: React.FC<Props> = ({ data }) => {
         }
         text={
           <>
-            Join a growing community of debtors organizing{' '}
-            <br className="hidden lg:inline" /> to cancel debts and build
-            financial and political power
+            Join a growing community of debtors organizing <LineBreak /> to
+            cancel debts and build financial and political power
           </>
         }
       >
@@ -38,6 +40,8 @@ const DebtUnion: React.FC<Props> = ({ data }) => {
       <WhatIsADebtorsUnion />
       <MembershipBenefits />
       <FAQ />
+      <PowerInNumbers />
+      <OweTheBank />
     </Layout>
   );
 };
