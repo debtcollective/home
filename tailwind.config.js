@@ -37,6 +37,7 @@ module.exports = {
         sans: ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
       },
       fontSize: {
+        '7xl': '6rem',
         '9xl': '7.5rem'
       },
       minWidth: {
