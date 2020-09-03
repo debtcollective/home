@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@types/lodash.chunk": "^4.2.6",
+    "@debtcollective/dc-popup-component": "^0.10.2",
     "@types/youtube": "^0.0.39",
     "classnames": "^2.2.6",
     "gatsby": "^2.24.47",
@@ -33,7 +34,8 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-youtube": "^7.12.0",
-    "tailwindcss": "^1.7.0"
+    "tailwindcss": "^1.7.0",
+    "xstate": "^4.13.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
