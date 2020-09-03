@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from 'components/Layout';
 import Hero from 'components/Hero';
 import { graphql } from 'gatsby';
+import WhatIsADebtorsUnion from 'sections/WhatIsADebtorsUnion';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,6 +33,7 @@ const DebtUnion: React.FC<Props> = ({ data }) => {
           // @TODO: include the donations widget
         }
       </Hero>
+      <WhatIsADebtorsUnion />
     </Layout>
   );
 };
