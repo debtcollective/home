@@ -29,7 +29,7 @@ const MobileSlider: React.FC<Props> = ({ items }) => {
         title={items[currentIndex].title}
         backgroundColor={items[currentIndex].backgroundColor}
         text={items[currentIndex].text}
-        className="mb-12 lg:mb-0 m-auto"
+        className="m-auto"
       />
       <ArrowButton
         id="next-item-mobile"
