@@ -26,7 +26,7 @@ module.exports = {
         '40': '10rem'
       },
       spacing: {
-        'screen-spacing': '2.5rem',
+        'screen-spacing': '2rem',
         'desktop-screen-spacing': '6rem'
       },
       fontFamily: {

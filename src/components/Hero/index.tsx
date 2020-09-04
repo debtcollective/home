@@ -33,7 +33,7 @@ const Hero: React.FC<Props> = ({
         backgroundImage: `url(${backgroundSrc})`
       }}
       className={classnames(
-        'min-h-screen bg-no-repeat bg-cover bg-center flex items-center justify-between flex-wrap p-screen-spacing lg:px-desktop-screen-spacing',
+        'min-h-screen bg-no-repeat bg-cover bg-center flex items-center justify-between flex-wrap p-screen-spacing lg:p-desktop-screen-spacing',
         className
       )}
     >
