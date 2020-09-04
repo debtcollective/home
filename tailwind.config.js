@@ -2,19 +2,21 @@ module.exports = {
   purge: [],
   theme: {
     colors: {
-      primary: '#FF4630',
-      gray: '#2B2B2B',
+      'black-100': '#1C1C1C',
       'gray-100': '#6A6A6A',
       'gray-200': '#4F4F4F',
       'gray-300': '#828282',
       'gray-400': '#585757',
-      white: '#FFFFFF',
       'white-100': '#F7F7F7',
       black: '#000000',
-      'black-100': '#1C1C1C',
-      yellow: '#FFED9C',
+      blue: '#DBF8FF',
+      gray: '#2B2B2B',
+      green: '#D6FFB8',
+      pink: '#FFADA4',
+      primary: '#FF4630',
       purple: '#DAC4F5',
-      green: '#D6FFB8'
+      white: '#FFFFFF',
+      yellow: '#FFED9C'
     },
     extend: {
       lineHeight: {

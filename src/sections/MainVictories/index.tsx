@@ -9,7 +9,7 @@ interface Props {
 const MainVictories: React.FC<Props> = ({ mainVictoriesImage }) => {
   return (
     <section
-      className="min-h-screen flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
+      className="lg:min-h-screen flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
       style={{
         backgroundImage: `url(${mainVictoriesImage})`
       }}

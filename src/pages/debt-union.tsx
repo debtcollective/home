@@ -3,6 +3,7 @@ import Layout from 'components/Layout';
 import Hero from 'components/Hero';
 import { graphql } from 'gatsby';
 import WhatIsADebtorsUnion from 'sections/WhatIsADebtorsUnion';
+import MembershipBenefits from 'sections/MembershipBenefits';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,6 +35,7 @@ const DebtUnion: React.FC<Props> = ({ data }) => {
         }
       </Hero>
       <WhatIsADebtorsUnion />
+      <MembershipBenefits />
     </Layout>
   );
 };
