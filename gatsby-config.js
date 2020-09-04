@@ -24,6 +24,7 @@ module.exports = {
         components: path.join(__dirname, 'src/components'),
         sections: path.join(__dirname, 'src/sections'),
         constants: path.join(__dirname, 'src/constants'),
+        utils: path.join(__dirname, 'src/utils'),
         static: path.join(__dirname, 'static')
       }
     },
