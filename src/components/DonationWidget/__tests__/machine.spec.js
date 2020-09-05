@@ -1,12 +1,6 @@
 import donationWizardMachine from '../machine';
 import faker from 'faker';
 
-jest.mock('../service', () => ({
-  sendDonation: () => {
-    console.log('call me maybe');
-  }
-}));
-
 // Convenient alias for better suite reading
 const machine = donationWizardMachine;
 
@@ -14,9 +8,45 @@ test('starts using one time donation with minimal amount', () => {
   expect(machine.initialState.context).toEqual(
     expect.objectContaining({
       donationType: 'once',
-      donationAmount: 5
+      donationOnceAmount: 5,
+      donationMonthlyAmount: 5
     })
   );
+});
+
+describe('when triggering "UPDATE.AMOUNT"', () => {
+  it('updates donation amount within "one time donation" amount form', () => {
+    const newAmount = faker.random.number(20);
+    let machineState = machine.initialState;
+    machineState = machine.transition(machineState, {
+      type: 'UPDATE.AMOUNT',
+      value: newAmount
+    });
+
+    expect(machineState.value).toEqual({ amountForm: 'donateOnce' });
+    expect(machineState.context).toEqual(
+      expect.objectContaining({
+        donationAmount: newAmount
+      })
+    );
+  });
+
+  it('updates donation amount within "monthly donation" amount form', () => {
+    const newAmount = faker.random.number(20);
+    let machineState = machine.initialState;
+    machineState = machine.transition(machineState, 'START.MONTHLY');
+    machineState = machine.transition(machineState, {
+      type: 'UPDATE.AMOUNT',
+      value: newAmount
+    });
+
+    expect(machineState.value).toEqual({ amountForm: 'donateMonthly' });
+    expect(machineState.context).toEqual(
+      expect.objectContaining({
+        donationAmount: newAmount
+      })
+    );
+  });
 });
 
 describe('when toggling donation type', () => {
@@ -27,7 +57,8 @@ describe('when toggling donation type', () => {
     expect(machineState.context).toEqual(
       expect.objectContaining({
         donationType: 'monthly',
-        donationAmount: 5
+        donationOnceAmount: 5,
+        donationMonthlyAmount: 5
       })
     );
   });
@@ -40,7 +71,8 @@ describe('when toggling donation type', () => {
     expect(machineState.context).toEqual(
       expect.objectContaining({
         donationType: 'once',
-        donationAmount: 5
+        donationOnceAmount: 5,
+        donationMonthlyAmount: 5
       })
     );
   });
@@ -79,7 +111,8 @@ test('goes into process donation after filling all information', () => {
 
   expect(machineState.context).toEqual({
     donationType: 'once',
-    donationAmount: 5,
+    donationOnceAmount: 5,
+    donationMonthlyAmount: 5,
     cardInformation,
     billingInformation
   });

@@ -12,7 +12,8 @@ const donationWizardMachine = Machine(
     id: 'donation',
     context: {
       donationType: 'once',
-      donationAmount: 5,
+      donationOnceAmount: 5,
+      donationMonthlyAmount: 5,
       cardInformation: {
         firstName: '',
         lastName: '',
@@ -29,14 +30,22 @@ const donationWizardMachine = Machine(
             entry: ['setOnceDonation'],
             on: {
               NEXT: '#donation.paymentForm',
-              'START.MONTHLY': 'donateMonthly'
+              'START.MONTHLY': 'donateMonthly',
+              'UPDATE.AMOUNT': {
+                target: 'donateOnce',
+                actions: ['updateDonationAmount']
+              }
             }
           },
           donateMonthly: {
             entry: ['setMonthlyDonation'],
             on: {
               NEXT: '#donation.paymentForm',
-              'START.ONCE': 'donateOnce'
+              'START.ONCE': 'donateOnce',
+              'UPDATE.AMOUNT': {
+                target: 'donateMonthly',
+                actions: ['updateDonationAmount']
+              }
             }
           },
           hist: {
@@ -81,7 +90,7 @@ const donationWizardMachine = Machine(
       processDonation: {
         invoke: {
           id: 'submitDonation',
-          src: (context, event) => sendDonation(context.userId),
+          src: (context) => sendDonation(context),
           onDone: {
             target: 'success',
             actions: assign({ donation: (context, event) => event.data })
@@ -114,6 +123,12 @@ const donationWizardMachine = Machine(
       }
     },
     actions: {
+      updateDonationAmount: assign({
+        donationAmount: (context, event) => {
+          const { value } = event;
+          return value;
+        }
+      }),
       updateBillingInformation: assign({
         billingInformation: (context, event) => {
           const { address, city, zipCode, country } = event;
@@ -127,12 +142,10 @@ const donationWizardMachine = Machine(
         }
       }),
       setMonthlyDonation: assign({
-        donationType: 'monthly',
-        donationAmount: 5
+        donationType: 'monthly'
       }),
       setOnceDonation: assign({
-        donationType: 'once',
-        donationAmount: 5
+        donationType: 'once'
       })
     }
   }
