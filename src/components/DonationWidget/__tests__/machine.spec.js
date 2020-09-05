@@ -1,4 +1,4 @@
-import donationWizardMachine from '../machine';
+import donationWizardMachine, { MINIMAL_DONATION } from '../machine';
 import faker from 'faker';
 
 // Convenient alias for better suite reading
@@ -8,8 +8,8 @@ test('starts using one time donation with minimal amount', () => {
   expect(machine.initialState.context).toEqual(
     expect.objectContaining({
       donationType: 'once',
-      donationOnceAmount: 5,
-      donationMonthlyAmount: 5
+      donationOnceAmount: MINIMAL_DONATION,
+      donationMonthlyAmount: MINIMAL_DONATION
     })
   );
 });
@@ -57,8 +57,8 @@ describe('when toggling donation type', () => {
     expect(machineState.context).toEqual(
       expect.objectContaining({
         donationType: 'monthly',
-        donationOnceAmount: 5,
-        donationMonthlyAmount: 5
+        donationOnceAmount: MINIMAL_DONATION,
+        donationMonthlyAmount: MINIMAL_DONATION
       })
     );
   });
@@ -71,8 +71,8 @@ describe('when toggling donation type', () => {
     expect(machineState.context).toEqual(
       expect.objectContaining({
         donationType: 'once',
-        donationOnceAmount: 5,
-        donationMonthlyAmount: 5
+        donationOnceAmount: MINIMAL_DONATION,
+        donationMonthlyAmount: MINIMAL_DONATION
       })
     );
   });
@@ -111,8 +111,8 @@ test('goes into process donation after filling all information', () => {
 
   expect(machineState.context).toEqual({
     donationType: 'once',
-    donationOnceAmount: 5,
-    donationMonthlyAmount: 5,
+    donationOnceAmount: MINIMAL_DONATION,
+    donationMonthlyAmount: MINIMAL_DONATION,
     cardInformation,
     billingInformation
   });

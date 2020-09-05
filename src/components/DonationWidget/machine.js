@@ -1,6 +1,8 @@
 import { Machine, assign } from 'xstate';
 import { sendDonation } from './service';
 
+export const MINIMAL_DONATION = 5;
+
 /**
  * A state machine to describe the transitions within the
  * donation workflow.
@@ -12,8 +14,8 @@ const donationWizardMachine = Machine(
     id: 'donation',
     context: {
       donationType: 'once',
-      donationOnceAmount: 5,
-      donationMonthlyAmount: 5,
+      donationOnceAmount: MINIMAL_DONATION,
+      donationMonthlyAmount: MINIMAL_DONATION,
       cardInformation: {
         firstName: '',
         lastName: '',
