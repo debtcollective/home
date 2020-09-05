@@ -7,27 +7,27 @@ test('starts using one time donation with minimal amount', () => {
   });
 });
 
-describe('toggling once or monthly donation', () => {
-  it('changes donation type context to monthly', () => {
-    const nextState = donationWizardMachine.transition(
+describe('when toggling donation type', () => {
+  it('updates context with "monthly" and minimal amount', () => {
+    const machineState = donationWizardMachine.transition(
       donationWizardMachine.initialState,
       'START.MONTHLY'
     );
 
-    expect(nextState.context).toEqual({
+    expect(machineState.context).toEqual({
       donationType: 'monthly',
       donationAmount: 5
     });
   });
 
-  it('changes donation type context to once', () => {
-    let nextState = donationWizardMachine.transition(
+  it('updates context with "once" and minimal amount', () => {
+    let machineState = donationWizardMachine.transition(
       donationWizardMachine.initialState,
       'START.MONTHLY'
     );
-    nextState = donationWizardMachine.transition(nextState, 'START.ONCE');
+    machineState = donationWizardMachine.transition(machineState, 'START.ONCE');
 
-    expect(nextState.context).toEqual({
+    expect(machineState.context).toEqual({
       donationType: 'once',
       donationAmount: 5
     });
