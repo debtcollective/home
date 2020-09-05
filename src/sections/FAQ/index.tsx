@@ -1,5 +1,5 @@
 import React from 'react';
-import Tabs from 'components/Tabs';
+import Tabs from '@components/Tabs';
 
 const FAQ = () => {
   const getTabItems = () => {
@@ -29,6 +29,7 @@ const FAQ = () => {
 
   return (
     <section
+      id="faq"
       className="lg:min-h-screen p-screen-spacing lg:p-desktop-screen-spacing"
       style={{
         background:

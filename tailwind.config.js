@@ -38,6 +38,10 @@ module.exports = {
       },
       fontSize: {
         '9xl': '7.5rem'
+      },
+      minWidth: {
+        '1/2': '50%',
+        '3/4': '75%'
       }
     }
   },

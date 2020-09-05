@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import Button from '@components/Button';
+import Link from '@components/Link';
 
 const WhatIsADebtorsUnion: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -54,9 +54,13 @@ const WhatIsADebtorsUnion: React.FC = () => {
           className="w-full lg:w-1/2 order-1 lg:order-2"
         />
       </div>
-      <Button className="w-full self-center lg:w-auto">
+      <Link
+        className="w-full self-center lg:w-auto"
+        href="#faq"
+        variant="button"
+      >
         Frequently Asked Questions
-      </Button>
+      </Link>
     </section>
   );
 };

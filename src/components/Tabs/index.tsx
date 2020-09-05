@@ -25,7 +25,7 @@ const Tabs: React.FC<Props> = ({ items }) => {
               key={item.title}
               onClick={() => setCurrentTabIndex(index)}
               className={classnames(
-                'cursor-pointer select-none border-l-4 px-5 border-gray-500',
+                'cursor-pointer select-none border-l-4 px-5 border-gray-500 min-w-3/4',
                 {
                   'border-primary': isActive
                 }
