@@ -1,6 +1,5 @@
 import { Machine, assign } from 'xstate';
-
-const sendDonation = async () => fetch('path/to/stripe');
+import { sendDonation } from './service';
 
 /**
  * A state machine to describe the transitions within the
@@ -13,7 +12,13 @@ const donationWizardMachine = Machine(
     id: 'donation',
     context: {
       donationType: 'once',
-      donationAmount: 5
+      donationAmount: 5,
+      cardInformation: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        cardNumber: ''
+      }
     },
     initial: 'amountForm',
     states: {
@@ -45,7 +50,13 @@ const donationWizardMachine = Machine(
         states: {
           cardForm: {
             on: {
-              NEXT: [{ target: 'addressForm', cond: 'paymentFormCompleted' }],
+              NEXT: [
+                {
+                  target: 'addressForm',
+                  cond: 'paymentFormCompleted',
+                  actions: ['updateCardInformation']
+                }
+              ],
               PREV: '#donation.amountForm.hist',
               'START.ONCE': '#donation.amountForm.donateOnce',
               'START.MONTHLY': '#donation.amountForm.donateMonthly'
@@ -56,7 +67,8 @@ const donationWizardMachine = Machine(
               NEXT: [
                 {
                   target: '#donation.processDonation',
-                  cond: 'addressFormCompleted'
+                  cond: 'addressFormCompleted',
+                  actions: ['updateBillingInformation']
                 }
               ],
               PREV: 'cardForm',
@@ -91,7 +103,29 @@ const donationWizardMachine = Machine(
     }
   },
   {
+    guards: {
+      paymentFormCompleted: (context, event) => {
+        const { firstName, lastName, email, cardNumber } = event;
+        return firstName && lastName && email && cardNumber;
+      },
+      addressFormCompleted: (context, event) => {
+        const { address, city, zipCode, country } = event;
+        return address && city && zipCode && country;
+      }
+    },
     actions: {
+      updateBillingInformation: assign({
+        billingInformation: (context, event) => {
+          const { address, city, zipCode, country } = event;
+          return { address, city, zipCode, country };
+        }
+      }),
+      updateCardInformation: assign({
+        cardInformation: (context, event) => {
+          const { firstName, lastName, email, cardNumber } = event;
+          return { firstName, lastName, email, cardNumber };
+        }
+      }),
       setMonthlyDonation: assign({
         donationType: 'monthly',
         donationAmount: 5
