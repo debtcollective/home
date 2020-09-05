@@ -8,11 +8,12 @@ const sendDonation = async () => fetch('path/to/stripe');
  *
  * https://xstate.js.org/viz/?gist=50ecf807d3b9c049fc58cda690f90594
  */
-export const donationWizardMachine = Machine(
+const donationWizardMachine = Machine(
   {
     id: 'donation',
     context: {
-      donationType: 'oneTime'
+      donationType: 'once',
+      donationAmount: 5
     },
     initial: 'amountForm',
     states: {
@@ -20,15 +21,15 @@ export const donationWizardMachine = Machine(
         initial: 'donateOnce',
         states: {
           donateOnce: {
+            entry: ['setOnceDonation'],
             on: {
-              entry: ['setMonthlyDonation'],
               NEXT: '#donation.paymentForm',
               'START.MONTHLY': 'donateMonthly'
             }
           },
           donateMonthly: {
+            entry: ['setMonthlyDonation'],
             on: {
-              entry: ['setOneTimeDonation'],
               NEXT: '#donation.paymentForm',
               'START.ONCE': 'donateOnce'
             }
@@ -91,12 +92,16 @@ export const donationWizardMachine = Machine(
   },
   {
     actions: {
-      setMonthlyDonation: () => {
-        assign({ donationType: 'monthly' });
-      },
-      setOneTimeDonation: () => {
-        assign({ donationType: 'oneTime' });
-      }
+      setMonthlyDonation: assign({
+        donationType: 'monthly',
+        donationAmount: 5
+      }),
+      setOnceDonation: assign({
+        donationType: 'once',
+        donationAmount: 5
+      })
     }
   }
 );
+
+export default donationWizardMachine;
