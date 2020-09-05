@@ -4,7 +4,7 @@ import Hero from '@components/Hero';
 import { graphql } from 'gatsby';
 import WhatIsADebtorsUnion from '@sections/WhatIsADebtorsUnion';
 import MembershipBenefits from '@sections/MembershipBenefits';
-import FAQ from 'sections/FAQ';
+import FAQ from '@sections/FAQ';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
