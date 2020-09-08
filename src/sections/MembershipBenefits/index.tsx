@@ -1,9 +1,9 @@
 import React from 'react';
-import BadgeSlider from 'components/BadgeSlider';
-import { Colors } from 'constants/colors';
-import aboutCampaignIcon from 'static/icons/about-campaign.svg';
-import joinStudentDebtIcon from 'static/icons/join-student-debt.svg';
-import thingsToDoIcon from 'static/icons/things-to-do.svg';
+import BadgeSlider from '@components/BadgeSlider';
+import { Colors } from '@constants/colors';
+import aboutCampaignIcon from '@static/icons/about-campaign.svg';
+import joinStudentDebtIcon from '@static/icons/join-student-debt.svg';
+import thingsToDoIcon from '@static/icons/things-to-do.svg';
 
 const MembershipBenefits = () => {
   return (

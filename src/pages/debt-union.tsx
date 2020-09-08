@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from 'components/Layout';
-import Hero from 'components/Hero';
+import Layout from '@components/Layout';
+import Hero from '@components/Hero';
 import { graphql } from 'gatsby';
-import WhatIsADebtorsUnion from 'sections/WhatIsADebtorsUnion';
-import MembershipBenefits from 'sections/MembershipBenefits';
+import WhatIsADebtorsUnion from '@sections/WhatIsADebtorsUnion';
+import MembershipBenefits from '@sections/MembershipBenefits';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

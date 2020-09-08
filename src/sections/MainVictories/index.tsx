@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-import Button from 'components/Button';
+import Button from '@components/Button';
 
 interface Props {
   mainVictoriesImage: string;

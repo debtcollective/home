@@ -14,6 +14,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/lodash.chunk": "^4.2.6",
     "@types/youtube": "^0.0.39",
     "classnames": "^2.2.6",
     "gatsby": "^2.24.47",
@@ -25,6 +26,8 @@
     "gatsby-plugin-typescript": "^2.4.18",
     "gatsby-source-filesystem": "^2.3.26",
     "gatsby-transformer-sharp": "^2.5.13",
+    "lodash.chunk": "^4.2.0",
+    "pure-react-carousel": "^1.27.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",

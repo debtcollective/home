@@ -1,7 +1,7 @@
 import React, { useState, SyntheticEvent } from 'react';
 import classnames from 'classnames';
-import Input, { InputType } from 'components/Input';
-import Button from 'components/Button';
+import Input, { InputType } from '@components/Input';
+import Button from '@components/Button';
 
 interface Props {
   className?: string;

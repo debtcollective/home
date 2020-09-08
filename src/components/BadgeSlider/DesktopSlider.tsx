@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import Badge from 'components/Badge';
-import rightArrowIcon from 'static/icons/right-arrow.svg';
-import leftArrowIcon from 'static/icons/left-arrow.svg';
+import React from 'react';
+import chunk from 'lodash.chunk';
+import Badge from '@components/Badge';
 import { IBadge } from '.';
-import ArrowButton from './ArrowButton';
-import { chunkArray } from 'utils/array';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import classnames from 'classnames';
 
 const ITEMS_PER_PAGE = 3;
 
@@ -13,45 +19,65 @@ interface Props {
 }
 
 const DesktopSlider: React.FC<Props> = ({ items }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [visibleItems, setVisibleItems] = useState<IBadge[]>([]);
   const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
-
-  useEffect(() => {
-    setVisibleItems(chunkArray(items, ITEMS_PER_PAGE)[currentPage - 1]);
-    items.length === 0 && setCurrentPage(0);
-  }, [items, currentPage]);
+  const slides = chunk(items, ITEMS_PER_PAGE);
 
   return (
-    <div className="hidden lg:flex justify-between items-stretch w-full">
-      <ArrowButton
-        id="previous-item-mobile"
-        alt="Previous item"
-        src={leftArrowIcon}
-        onClick={() => setCurrentPage((page) => page - 1)}
-        hidden={currentPage === 1 || items.length === 0}
-        className="flex-shrink-0"
-      />
-      {visibleItems?.map((item) => (
-        <Badge
-          key={item.title}
-          imageSrc={item.src}
-          imageAlt={item.alt}
-          title={item.title}
-          backgroundColor={item.backgroundColor}
-          text={item.text}
-          className="mb-12 lg:mb-0"
-        />
-      ))}
-      <ArrowButton
-        id="next-item-mobile"
-        alt="Next item"
-        src={rightArrowIcon}
-        onClick={() => setCurrentPage((page) => page + 1)}
-        hidden={currentPage === totalPages || items.length === 0}
-        className="flex-shrink-0"
-      />
-    </div>
+    <CarouselProvider
+      naturalSlideWidth={500}
+      naturalSlideHeight={200}
+      totalSlides={totalPages}
+      className="relative hidden lg:block"
+    >
+      <Slider>
+        {slides.map((slide, index) => (
+          <Slide
+            key={index}
+            index={index}
+            innerClassName="flex justify-evenly px-20 flex-wrap"
+          >
+            {slide.map((badge: IBadge) => (
+              <Badge
+                key={badge.title}
+                imageSrc={badge.src}
+                imageAlt={badge.alt}
+                title={badge.title}
+                backgroundColor={badge.backgroundColor}
+                text={badge.text}
+              />
+            ))}
+          </Slide>
+        ))}
+      </Slider>
+      <ButtonBack
+        className={classnames('absolute left-0 top-0 h-full', {
+          hidden: items.length === 0 || items.length === ITEMS_PER_PAGE
+        })}
+      >
+        <span
+          className="material-icons text-gray"
+          style={{
+            fontSize: '5rem'
+          }}
+        >
+          navigate_before
+        </span>
+      </ButtonBack>
+      <ButtonNext
+        className={classnames('absolute right-0 top-0 h-full', {
+          hidden: items.length === 0 || items.length === ITEMS_PER_PAGE
+        })}
+      >
+        <span
+          className="material-icons text-gray"
+          style={{
+            fontSize: '5rem'
+          }}
+        >
+          navigate_next
+        </span>
+      </ButtonNext>
+    </CarouselProvider>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Colors } from 'constants/colors';
+import { Colors } from '@constants/colors';
 
 interface Props {
   backgroundColor: Colors;
@@ -20,7 +20,7 @@ const Badge: React.FC<Props> = ({
   title
 }) => {
   return (
-    <div className={classnames('max-w-xs', className)}>
+    <div className={classnames('max-w-xs select-none', className)}>
       <img
         src={imageSrc}
         className={classnames(

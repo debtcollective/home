@@ -1,9 +1,9 @@
 import React from 'react';
 import { navigate, graphql } from 'gatsby';
-import Layout from 'components/Layout';
-import Hero from 'components/Hero';
-import MainVictories from 'sections/MainVictories';
-import MainSlider from 'sections/MainSlider';
+import Layout from '@components/Layout';
+import Hero from '@components/Hero';
+import MainVictories from '@sections/MainVictories';
+import MainSlider from '@sections/MainSlider';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
