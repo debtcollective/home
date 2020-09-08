@@ -4,6 +4,8 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import DonationWidget, { DonationWidgetProps } from '../';
 
+console.log('DonationWidget', DonationWidget);
+
 export default {
   title: 'Example/DonationWidget',
   component: DonationWidget
@@ -14,6 +16,7 @@ const Template: Story<DonationWidgetProps> = (args) => (
 );
 
 export const Primary = Template.bind({});
+
 Primary.args = {
   id: 'donation-widget'
 };
