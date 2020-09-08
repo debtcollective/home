@@ -80,15 +80,24 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         >
           <label>
             First name:
-            <input name="first-name" />
+            <input
+              defaultValue={machineCtx.cardInformation.firstName}
+              name="first-name"
+            />
           </label>
           <label>
             Last name:
-            <input name="last-name" />
+            <input
+              defaultValue={machineCtx.cardInformation.lastName}
+              name="last-name"
+            />
           </label>
           <label>
             Email:
-            <input name="email" />
+            <input
+              defaultValue={machineCtx.cardInformation.email}
+              name="email"
+            />
           </label>
           <label>
             Card:
@@ -104,19 +113,31 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         >
           <label>
             Billing address
-            <input name="address" />
+            <input
+              defaultValue={machineCtx.billingInformation.address}
+              name="address"
+            />
           </label>
           <label>
             City
-            <input name="city" />
+            <input
+              defaultValue={machineCtx.billingInformation.city}
+              name="city"
+            />
           </label>
           <label>
             Zip code:
-            <input name="zipCode" />
+            <input
+              defaultValue={machineCtx.billingInformation.zipCode}
+              name="zipCode"
+            />
           </label>
           <label>
             Country
-            <input name="country" />
+            <input
+              defaultValue={machineCtx.billingInformation.country}
+              name="country"
+            />
           </label>
           <button type="submit">Next</button>
         </form>
