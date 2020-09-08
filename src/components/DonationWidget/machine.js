@@ -108,7 +108,7 @@ const donationWizardMachine = Machine(
       },
       failure: {
         on: {
-          RETRY: { target: '#donation.paymentForm.addressForm' }
+          RETRY: { target: '#donation.paymentForm.cardForm' }
         }
       }
     }
