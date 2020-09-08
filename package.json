@@ -40,9 +40,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-youtube": "^7.12.0",
-    "styled-components": "^5.2.0",
     "tailwindcss": "^1.7.0",
-    "twin.macro": "^1.8.1",
     "xstate": "^4.13.0"
   },
   "devDependencies": {
