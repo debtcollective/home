@@ -53,64 +53,64 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
 
   console.log(state);
   return (
-    <div id={id}>
+    <div id={id} className="m-auto" style={{ width: '420px' }}>
       {state.value.amountForm && (
-        <form className="flex mb-4" onSubmit={handleSubmitAmountForm}>
-          <div className="w-full bg-gray-500 h-12">
-            <label>
-              Donation value:
-              <input
-                defaultValue={machineCtx.donationOnceAmount}
-                name="amount"
-              />
-            </label>
-          </div>
+        <form
+          className="grid grid-cols-1 gap-4"
+          onSubmit={handleSubmitAmountForm}
+        >
+          <label>
+            Donation value:
+            <input defaultValue={machineCtx.donationOnceAmount} name="amount" />
+          </label>
           <button type="submit">Next</button>
         </form>
       )}
       {state.value.paymentForm === 'cardForm' && (
-        <form className="flex mb-4" onSubmit={handleSubmitPaymentInfoForm}>
-          <div className="w-full bg-gray-500 h-12">
-            <label>
-              First name:
-              <input name="first-name" />
-            </label>
-            <label>
-              Last name:
-              <input name="last-name" />
-            </label>
-            <label>
-              Email:
-              <input name="email" />
-            </label>
-            <label>
-              Card:
-              <input name="card" />
-            </label>
-          </div>
+        <form
+          className="grid grid-cols-1 gap-4"
+          onSubmit={handleSubmitPaymentInfoForm}
+        >
+          <label>
+            First name:
+            <input name="first-name" />
+          </label>
+          <label>
+            Last name:
+            <input name="last-name" />
+          </label>
+          <label>
+            Email:
+            <input name="email" />
+          </label>
+          <label>
+            Card:
+            <input name="card" />
+          </label>
           <button type="submit">Next</button>
         </form>
       )}
       {state.value.paymentForm === 'addressForm' && (
-        <form className="flex mb-4" onSubmit={handleSubmitAddressForm}>
-          <div className="w-full bg-gray-500 h-12">
-            <label>
-              Billing address
-              <input name="address" />
-            </label>
-            <label>
-              City
-              <input name="city" />
-            </label>
-            <label>
-              Zip code:
-              <input name="zipCode" />
-            </label>
-            <label>
-              Country
-              <input name="country" />
-            </label>
-          </div>
+        <form
+          className="grid grid-cols-1 gap-4"
+          onSubmit={handleSubmitAddressForm}
+        >
+          <label>
+            Billing address
+            <input name="address" />
+          </label>
+          <label>
+            City
+            <input name="city" />
+          </label>
+          <label>
+            Zip code:
+            <input name="zipCode" />
+          </label>
+          <label>
+            Country
+            <input name="country" />
+          </label>
           <button type="submit">Next</button>
         </form>
       )}
