@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
 import donationWizardMachine from './machine';
 
@@ -14,6 +14,13 @@ export interface DonationWidgetProps {
 const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const [state, send] = useMachine(donationWizardMachine);
   const { context: machineCtx } = state;
+
+  useEffect(() => {
+    if (state.value === 'failure') {
+      alert(`Something went wrong ${JSON.stringify(machineCtx)}`);
+      send('RETRY');
+    }
+  });
 
   const handleSubmitAmountForm = (e) => {
     const data = new FormData(e.currentTarget);
