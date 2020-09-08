@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import Button from 'components/Button';
+import Button from '@components/Button';
 
 interface Props {
   backgroundSrc: string;

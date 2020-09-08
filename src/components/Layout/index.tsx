@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import Footer from 'components/Footer';
-import SEO from 'components/SEO';
+import Footer from '@components/Footer';
+import SEO from '@components/SEO';
 
 interface Props {
   children: ReactNode;

@@ -1,6 +1,6 @@
 import React, { ReactChild } from 'react';
 import classnames from 'classnames';
-import { Colors } from 'constants/colors';
+import { Colors } from '@constants/colors';
 
 type TButton = 'submit' | 'reset' | 'button';
 type TButtonVariant = 'primary' | 'secondary';

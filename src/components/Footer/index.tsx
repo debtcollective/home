@@ -1,11 +1,11 @@
 import React from 'react';
-import dcLogo from 'static/debt-collective-logo.svg';
-import facebookIcon from 'static/icons/facebook.svg';
-import instagramIcon from 'static/icons/instagram.svg';
-import twitterIcon from 'static/icons/twitter.svg';
-import envatoIcon from 'static/icons/envato.svg';
-import FooterMenuSection from 'components/Footer/FooterMenuSection';
-import NewsLetter from 'components/Footer/SubscribeNewsletter';
+import dcLogo from '@static/debt-collective-logo.svg';
+import facebookIcon from '@static/icons/facebook.svg';
+import instagramIcon from '@static/icons/instagram.svg';
+import twitterIcon from '@static/icons/twitter.svg';
+import envatoIcon from '@static/icons/envato.svg';
+import FooterMenuSection from '@components/Footer/FooterMenuSection';
+import NewsLetter from '@components/Footer/SubscribeNewsletter';
 
 const Footer = () => {
   return (

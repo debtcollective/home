@@ -1,45 +1,72 @@
-import React, { useState } from 'react';
-import Badge from 'components/Badge';
-import rightArrowIcon from 'static/icons/right-arrow.svg';
-import leftArrowIcon from 'static/icons/left-arrow.svg';
-import ArrowButton from './ArrowButton';
+import React from 'react';
+import Badge from '@components/Badge';
 import { IBadge } from '.';
-
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import classnames from 'classnames';
 interface Props {
   items: IBadge[];
 }
 
 const MobileSlider: React.FC<Props> = ({ items }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const totalItems = items.length;
 
   return (
-    <div className="flex relative lg:hidden">
-      <ArrowButton
-        id="previous-item-mobile"
-        alt="Previous item"
-        src={leftArrowIcon}
-        onClick={() => setCurrentIndex((current) => current - 1)}
-        hidden={currentIndex === 0}
-        className="flex-shrink-0 mr-6"
-      />
-      <Badge
-        imageSrc={items[currentIndex].src}
-        imageAlt={items[currentIndex].alt}
-        title={items[currentIndex].title}
-        backgroundColor={items[currentIndex].backgroundColor}
-        text={items[currentIndex].text}
-        className="m-auto"
-      />
-      <ArrowButton
-        id="next-item-mobile"
-        alt="Next item"
-        src={rightArrowIcon}
-        onClick={() => setCurrentIndex((current) => current + 1)}
-        hidden={currentIndex + 1 === totalItems}
-        className="flex-shrink-0 ml-6"
-      />
-    </div>
+    <CarouselProvider
+      naturalSlideWidth={200}
+      naturalSlideHeight={250}
+      totalSlides={totalItems}
+      className="relative lg:hidden"
+    >
+      <Slider>
+        {items.map((badge, index) => (
+          <Slide key={index} index={index} innerClassName="px-12">
+            <Badge
+              key={badge.title}
+              imageSrc={badge.src}
+              imageAlt={badge.alt}
+              title={badge.title}
+              backgroundColor={badge.backgroundColor}
+              text={badge.text}
+            />
+          </Slide>
+        ))}
+      </Slider>
+      <ButtonBack
+        className={classnames('absolute left-0 top-0 h-full', {
+          hidden: items.length === 0 || items.length === 1
+        })}
+      >
+        <span
+          className="material-icons text-gray"
+          style={{
+            fontSize: '3.5rem'
+          }}
+        >
+          navigate_before
+        </span>
+      </ButtonBack>
+      <ButtonNext
+        className={classnames('absolute right-0 top-0 h-full', {
+          hidden: items.length === 0 || items.length === 1
+        })}
+      >
+        <span
+          className="material-icons text-gray"
+          style={{
+            fontSize: '3.5rem'
+          }}
+        >
+          navigate_next
+        </span>
+      </ButtonNext>
+    </CarouselProvider>
   );
 };
 

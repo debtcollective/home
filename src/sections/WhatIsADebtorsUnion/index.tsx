@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import Button from 'components/Button';
+import Button from '@components/Button';
 
 const WhatIsADebtorsUnion: React.FC = () => {
   const data = useStaticQuery(graphql`

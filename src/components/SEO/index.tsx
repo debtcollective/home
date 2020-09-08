@@ -72,7 +72,12 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
           content: metaDescription
         }
       ]}
-    ></Helmet>
+    >
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      ></link>
+    </Helmet>
   );
 };
 
