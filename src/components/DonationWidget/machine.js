@@ -16,6 +16,12 @@ const donationWizardMachine = Machine(
       donationType: 'once',
       donationOnceAmount: MINIMAL_DONATION,
       donationMonthlyAmount: MINIMAL_DONATION,
+      billingInformation: {
+        address: '',
+        city: '',
+        zipCode: '',
+        country: ''
+      },
       cardInformation: {
         firstName: '',
         lastName: '',
