@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-postcss`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -29,10 +30,8 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-postcss',
-      options: {
-        postCssPlugins: [require('tailwindcss')('./tailwind.config.js')]
-      }
+      resolve: `gatsby-plugin-purgecss`,
+      options: { tailwind: true }
     }
   ]
 };
