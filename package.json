@@ -40,11 +40,13 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-youtube": "^7.12.0",
+    "remove": "^0.1.5",
     "tailwindcss": "^1.7.0",
     "xstate": "^4.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@storybook/addon-actions": "^6.0.21",
@@ -55,6 +57,7 @@
     "@testing-library/react": "^10.4.8",
     "@types/classnames": "^2.2.10",
     "@types/eslint": "^7.2.0",
+    "@types/faker": "^5.1.0",
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
@@ -88,6 +91,7 @@
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-prettier": "^1.1.2",
+    "ts-jest": "^26.3.0",
     "typescript": "^3.9.7"
   },
   "husky": {
