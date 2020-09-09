@@ -1,8 +1,12 @@
-// @ts-nocheck
-
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
 import donationWizardMachine from './machine';
+import {
+  DonationMachineContext,
+  DonationMachineStateValueMap
+} from './machine/types';
+// TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
+import { AnyEventObject } from 'xstate';
 
 export interface DonationWidgetProps {
   /**
@@ -12,48 +16,65 @@ export interface DonationWidgetProps {
 }
 
 const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
-  const [state, send] = useMachine(donationWizardMachine);
+  const [state, send] = useMachine<DonationMachineContext, AnyEventObject>(
+    donationWizardMachine
+  );
   const { context: machineCtx } = state;
+  const machineState: DonationMachineStateValueMap = state.value;
 
   useEffect(() => {
-    if (state.value === 'failure') {
+    if (machineState === 'failure') {
       alert(`Something went wrong ${JSON.stringify(machineCtx)}`);
       send('RETRY');
     }
   });
 
-  const handleSubmitAmountForm = (e) => {
+  const handleSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
+    const value = Number(data.get('amount'));
+
+    if (!value) return;
+
     send([
       {
         type: 'UPDATE.AMOUNT',
-        value: data.get('amount')
+        value
       },
       { type: 'NEXT' }
     ]);
     e.preventDefault();
   };
 
-  const handleSubmitPaymentInfoForm = (e) => {
+  const handleSubmitPaymentInfoForm = (
+    e: React.ChangeEvent<HTMLFormElement>
+  ) => {
     const data = new FormData(e.currentTarget);
-    send({
-      type: 'NEXT',
+    const paymentInformation = {
       firstName: data.get('first-name'),
       lastName: data.get('last-name'),
       email: data.get('email'),
       cardNumber: data.get('card')
+    };
+
+    send({
+      type: 'NEXT',
+      ...paymentInformation
     });
     e.preventDefault();
   };
 
-  const handleSubmitAddressForm = (e) => {
+  const handleSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
-    send({
-      type: 'NEXT',
+    const addressInformation = {
       address: data.get('address'),
       city: data.get('city'),
       zipCode: data.get('zipCode'),
       country: data.get('country')
+    };
+
+    send({
+      type: 'NEXT',
+      ...addressInformation
     });
     e.preventDefault();
   };
@@ -61,7 +82,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   console.log(state);
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
-      {state.value.amountForm && (
+      {machineState.amountForm && (
         <form
           className="grid grid-cols-1 gap-4"
           onSubmit={handleSubmitAmountForm}
@@ -73,7 +94,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
           <button type="submit">Next</button>
         </form>
       )}
-      {state.value.paymentForm === 'cardForm' && (
+      {machineState.paymentForm === 'cardForm' && (
         <form
           className="grid grid-cols-1 gap-4"
           onSubmit={handleSubmitPaymentInfoForm}
@@ -106,7 +127,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
           <button type="submit">Next</button>
         </form>
       )}
-      {state.value.paymentForm === 'addressForm' && (
+      {machineState.paymentForm === 'addressForm' && (
         <form
           className="grid grid-cols-1 gap-4"
           onSubmit={handleSubmitAddressForm}

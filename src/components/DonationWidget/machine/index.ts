@@ -1,7 +1,10 @@
-import { Machine, assign } from 'xstate';
-import { sendDonation } from './service';
+import { Machine, assign, AnyEventObject } from 'xstate';
+import { sendDonation } from '../service';
+import { DonationMachineSchema, DonationMachineContext } from './types';
 
 export const MINIMAL_DONATION = 5;
+
+// TODO: properly address Machine state declaration with Event support
 
 /**
  * A state machine to describe the transitions within the
@@ -9,13 +12,19 @@ export const MINIMAL_DONATION = 5;
  *
  * https://xstate.js.org/viz/?gist=50ecf807d3b9c049fc58cda690f90594
  */
-const donationWizardMachine = Machine(
+const donationWizardMachine = Machine<
+  DonationMachineContext,
+  DonationMachineSchema,
+  AnyEventObject
+>(
   {
     id: 'donation',
     context: {
+      donation: {},
       donationType: 'once',
       donationOnceAmount: MINIMAL_DONATION,
       donationMonthlyAmount: MINIMAL_DONATION,
+      error: null,
       billingInformation: {
         address: '',
         city: '',
@@ -41,7 +50,7 @@ const donationWizardMachine = Machine(
               'START.MONTHLY': 'donateMonthly',
               'UPDATE.AMOUNT': {
                 target: 'donateOnce',
-                actions: ['updateDonationAmount']
+                actions: ['updateDonationOnceAmount']
               }
             }
           },
@@ -52,7 +61,7 @@ const donationWizardMachine = Machine(
               'START.ONCE': 'donateOnce',
               'UPDATE.AMOUNT': {
                 target: 'donateMonthly',
-                actions: ['updateDonationAmount']
+                actions: ['updateDonationMonthlyAmount']
               }
             }
           },
@@ -98,7 +107,7 @@ const donationWizardMachine = Machine(
       processDonation: {
         invoke: {
           id: 'submitDonation',
-          src: (context) => sendDonation(context),
+          src: 'donationService',
           onDone: {
             target: 'success',
             actions: assign({ donation: (context, event) => event.data })
@@ -131,8 +140,14 @@ const donationWizardMachine = Machine(
       }
     },
     actions: {
-      updateDonationAmount: assign({
-        donationAmount: (context, event) => {
+      updateDonationOnceAmount: assign({
+        donationOnceAmount: (context, event) => {
+          const { value } = event;
+          return value;
+        }
+      }),
+      updateDonationMonthlyAmount: assign({
+        donationMonthlyAmount: (context, event) => {
           const { value } = event;
           return value;
         }
@@ -149,12 +164,15 @@ const donationWizardMachine = Machine(
           return { firstName, lastName, email, cardNumber };
         }
       }),
-      setMonthlyDonation: assign({
+      setMonthlyDonation: assign<DonationMachineContext>({
         donationType: 'monthly'
       }),
-      setOnceDonation: assign({
+      setOnceDonation: assign<DonationMachineContext>({
         donationType: 'once'
       })
+    },
+    services: {
+      donationService: (context) => sendDonation(context)
     }
   }
 );
