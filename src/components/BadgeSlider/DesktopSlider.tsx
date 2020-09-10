@@ -9,7 +9,6 @@ import {
   ButtonBack,
   ButtonNext
 } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import classnames from 'classnames';
 
 const ITEMS_PER_PAGE = 3;
@@ -26,15 +25,16 @@ const DesktopSlider: React.FC<Props> = ({ items }) => {
     <CarouselProvider
       naturalSlideWidth={500}
       naturalSlideHeight={200}
+      isIntrinsicHeight
       totalSlides={totalPages}
-      className="relative hidden lg:block"
+      className="relative hidden lg:block max-w-8xl mx-auto"
     >
       <Slider>
         {slides.map((slide, index) => (
           <Slide
             key={index}
             index={index}
-            innerClassName="flex justify-evenly px-20 flex-wrap"
+            innerClassName="grid grid-cols-3 gap-12 px-20 justify-items-center"
           >
             {slide.map((badge: IBadge) => (
               <Badge
