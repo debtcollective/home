@@ -1,8 +1,8 @@
-import donationWizardMachine, { MINIMAL_DONATION } from '../machine';
+import donationMachine, { MINIMAL_DONATION } from '../machine';
 import faker from 'faker';
 
 // Convenient alias for better suite reading
-const machine = donationWizardMachine;
+const machine = donationMachine;
 
 test('starts using one time donation with minimal amount', () => {
   expect(machine.initialState.context).toEqual(
