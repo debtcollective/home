@@ -5,8 +5,11 @@ import {
   DonationMachineContext,
   DonationMachineStateValueMap
 } from './machine/types';
+import { DonationOnceForm, DonationMonthlyForm } from './components';
 // TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
 import { AnyEventObject } from 'xstate';
+import DonationPaymentForm from './components/DonationPaymentForm';
+import DonationAddressForm from './components/DonationAddressForm';
 
 export interface DonationWidgetProps {
   /**
@@ -81,86 +84,38 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
 
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
-      {machineState.amountForm && (
-        <form
-          className="grid grid-cols-1 gap-4"
+      {machineState.amountForm === 'donateOnce' && (
+        <DonationOnceForm
+          defaultValues={{ amount: machineCtx.donationOnceAmount }}
           onSubmit={handleSubmitAmountForm}
-        >
-          <label>
-            Donation value:
-            <input defaultValue={machineCtx.donationOnceAmount} name="amount" />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+        />
+      )}
+      {machineState.amountForm === 'donateMonthly' && (
+        <DonationMonthlyForm
+          defaultValues={{ amount: machineCtx.donationMonthlyAmount }}
+          onSubmit={handleSubmitAmountForm}
+        />
       )}
       {machineState.paymentForm === 'cardForm' && (
-        <form
-          className="grid grid-cols-1 gap-4"
+        <DonationPaymentForm
+          defaultValues={{
+            email: machineCtx.cardInformation.email,
+            firstName: machineCtx.cardInformation.firstName,
+            lastName: machineCtx.cardInformation.lastName
+          }}
           onSubmit={handleSubmitPaymentInfoForm}
-        >
-          <label>
-            First name:
-            <input
-              defaultValue={machineCtx.cardInformation.firstName}
-              name="first-name"
-            />
-          </label>
-          <label>
-            Last name:
-            <input
-              defaultValue={machineCtx.cardInformation.lastName}
-              name="last-name"
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              defaultValue={machineCtx.cardInformation.email}
-              name="email"
-            />
-          </label>
-          <label>
-            Card:
-            <input name="card" />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+        />
       )}
       {machineState.paymentForm === 'addressForm' && (
-        <form
-          className="grid grid-cols-1 gap-4"
+        <DonationAddressForm
+          defaultValues={{
+            address: machineCtx.billingInformation.address,
+            city: machineCtx.billingInformation.city,
+            zipCode: machineCtx.billingInformation.zipCode,
+            country: machineCtx.billingInformation.country
+          }}
           onSubmit={handleSubmitAddressForm}
-        >
-          <label>
-            Billing address
-            <input
-              defaultValue={machineCtx.billingInformation.address}
-              name="address"
-            />
-          </label>
-          <label>
-            City
-            <input
-              defaultValue={machineCtx.billingInformation.city}
-              name="city"
-            />
-          </label>
-          <label>
-            Zip code:
-            <input
-              defaultValue={machineCtx.billingInformation.zipCode}
-              name="zipCode"
-            />
-          </label>
-          <label>
-            Country
-            <input
-              defaultValue={machineCtx.billingInformation.country}
-              name="country"
-            />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+        />
       )}
     </div>
   );
