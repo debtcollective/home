@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Link from '@components/Link';
-import LineBreak from '@components/LineBreak';
 import BackgroundImage from 'gatsby-background-image';
 
 const WhatIsADebtorsUnion: React.FC = () => {
@@ -35,8 +34,8 @@ const WhatIsADebtorsUnion: React.FC = () => {
     >
       <div className="max-w-8xl mx-auto flex flex-col justify-between mb-12 lg:mb-24 lg:flex-row">
         <div className="w-full order-2 lg:order-1 lg:w-1/2">
-          <h2 className="text-4xl leading-10 mt-8 text-black-100 font-black lg:leading-15 lg:text-5xl lg:mt-0">
-            What is a <LineBreak /> Debtor’s Union?
+          <h2 className="text-4xl leading-10 mt-8 text-black-100 font-black lg:leading-15 lg:text-5xl lg:mt-0 lg:w-3/5">
+            What is a Debtor’s Union?
           </h2>
           <p className="text-gray font-bold text-xl leading-6 mt-4">
             In a workplace, workers come together to defend and fight for their
