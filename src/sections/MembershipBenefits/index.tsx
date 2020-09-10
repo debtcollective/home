@@ -8,11 +8,12 @@ import thingsToDoIcon from '@static/icons/things-to-do.svg';
 const MembershipBenefits = () => {
   return (
     <section
-      className="lg:min-h-screen p-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing"
+      className="min-h-section-size p-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing"
       style={{
         background:
           'linear-gradient(180deg, #DBF8FF 0.85%, #F6FAF8 61.2%, #FCFBF7 80.89%)'
       }}
+      id="membership-benefits"
     >
       <h2 className="text-center mb-4 text-4xl leading-9 font-black text-gray lg:text-5xl lg:leading-11">
         Membership Benefits

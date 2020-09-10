@@ -40,9 +40,15 @@ module.exports = {
         '7xl': '6rem',
         '9xl': '7.5rem'
       },
+      minHeight: {
+        'section-size': '50rem'
+      },
       minWidth: {
-        '1/2': '50%',
+        auto: 'auto',
         '3/4': '75%'
+      },
+      maxWidth: {
+        '8xl': '90rem'
       }
     }
   },

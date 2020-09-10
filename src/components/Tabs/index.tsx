@@ -16,7 +16,7 @@ const Tabs: React.FC<Props> = ({ items }) => {
 
   return (
     <>
-      <ul className="flex my-20 overflow-x-scroll border-b-2 border-gray-500 items-stretch lg:px-32">
+      <ul className="flex my-20 overflow-x-scroll border-b-2 border-gray-500 items-stretch lg:px-32 max-w-8xl mx-auto">
         {items.map((item, index) => {
           const isActive = index === currentTabIndex;
 
@@ -25,7 +25,7 @@ const Tabs: React.FC<Props> = ({ items }) => {
               key={item.title}
               onClick={() => setCurrentTabIndex(index)}
               className={classnames(
-                'cursor-pointer select-none border-l-4 px-5 border-gray-500 min-w-3/4',
+                'cursor-pointer select-none border-l-4 px-5 border-gray-500 min-w-3/4 lg:min-w-auto',
                 {
                   'border-primary': isActive
                 }
@@ -57,7 +57,9 @@ const Tabs: React.FC<Props> = ({ items }) => {
           );
         })}
       </ul>
-      {items[currentTabIndex].component}
+      <div className="max-w-8xl mx-auto">
+        {items[currentTabIndex].component}
+      </div>
     </>
   );
 };
