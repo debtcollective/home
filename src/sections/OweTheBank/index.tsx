@@ -1,26 +1,15 @@
 import React from 'react';
-import BackgroundImage from 'gatsby-background-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import oweTheBankImage from '@static/owe-the-bank.svg';
 
 const OweTheBank = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      coverImage: file(relativePath: { eq: "owe-the-bank.png" }) {
-        childImageSharp {
-          fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `);
-  const coverImage = data?.coverImage?.childImageSharp?.fluid || {};
-
   const renderContent = () => {
     return (
-      <div className="order-2 w-full lg:w-1/4">
+      <div className="order-2 w-full max-w-8xl mx-auto">
+        <p className=" text-gray lg:text-white text-xl font-bold text-right lg:text-2xl">
+          With over 33K members,
+        </p>
         <p className=" text-gray lg:text-white text-xl font-bold text-right mb-5 lg:text-2xl">
-          With over 33K members, together, we own the bank!
+          together, we own the bank!
         </p>
         <h2 className=" text-gray lg:text-white font-black leading-20 text-right text-6xl mb-4 mt-5 lg:text-7xl">
           33,021
@@ -31,12 +20,14 @@ const OweTheBank = () => {
 
   return (
     <>
-      <BackgroundImage
-        fluid={coverImage}
-        className="p-desktop-screen-spacing bg-left hidden lg:flex justify-end"
+      <section
+        className="p-desktop-screen-spacing hidden bg-no-repeat bg-cover bg-center lg:flex justify-end"
+        style={{
+          backgroundImage: `url(${oweTheBankImage})`
+        }}
       >
         {renderContent()}
-      </BackgroundImage>
+      </section>
       <section
         className="lg:hidden p-screen-spacing"
         style={{
