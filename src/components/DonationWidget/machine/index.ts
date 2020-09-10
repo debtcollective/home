@@ -48,7 +48,7 @@ const donationMachine = Machine<
             on: {
               NEXT: '#donation.paymentForm',
               'START.MONTHLY': 'donateMonthly',
-              'UPDATE.AMOUNT': {
+              'UPDATE.AMOUNT.ONCE': {
                 target: 'donateOnce',
                 actions: ['updateDonationOnceAmount']
               }
@@ -59,7 +59,7 @@ const donationMachine = Machine<
             on: {
               NEXT: '#donation.paymentForm',
               'START.ONCE': 'donateOnce',
-              'UPDATE.AMOUNT': {
+              'UPDATE.AMOUNT.MONTHLY': {
                 target: 'donateMonthly',
                 actions: ['updateDonationMonthlyAmount']
               }

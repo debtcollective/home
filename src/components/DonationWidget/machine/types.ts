@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { StateValueMap } from 'xstate';
-
 export type BillingInfoEvent = {
   type: 'NEXT';
   address: string;
@@ -19,7 +17,7 @@ export type PaymentInfoEvent = {
 };
 
 export type AmountEvent = {
-  type: 'UPDATE.AMOUNT';
+  type: 'UPDATE.AMOUNT.ONCE' | 'UPDATE.AMOUNT.MONTHLY';
   value: number;
 };
 
