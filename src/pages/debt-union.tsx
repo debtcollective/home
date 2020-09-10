@@ -1,42 +1,17 @@
 import React from 'react';
 import Layout from '@components/Layout';
-import Hero from '@components/Hero';
 import { graphql } from 'gatsby';
 import WhatIsADebtorsUnion from '@sections/WhatIsADebtorsUnion';
 import MembershipBenefits from '@sections/MembershipBenefits';
 import FAQ from '@sections/FAQ';
 import PowerInNumbers from '@sections/PowerInNumbers';
 import OweTheBank from '@sections/OweTheBank';
-import LineBreak from '@components/LineBreak';
+import YouAreNotALoan from '@sections/YouAreNotALoan';
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
-}
-
-const DebtUnion: React.FC<Props> = ({ data }) => {
-  const heroImage = data?.heroImage?.childImageSharp?.fluid?.src || '';
-
+const DebtUnion: React.FC = () => {
   return (
     <Layout>
-      <Hero
-        backgroundSrc={heroImage}
-        title={
-          <>
-            You are not <span className="text-yellow">A Loan!</span>
-          </>
-        }
-        text={
-          <>
-            Join a growing community of debtors organizing <LineBreak /> to
-            cancel debts and build financial and political power
-          </>
-        }
-      >
-        {
-          // @TODO: include the donations widget
-        }
-      </Hero>
+      <YouAreNotALoan />
       <WhatIsADebtorsUnion />
       <MembershipBenefits />
       <FAQ />
