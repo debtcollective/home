@@ -33,6 +33,7 @@ const Link: React.FC<Props> = ({
     <GatsbyLink
       to={href}
       activeClassName={classnames(
+        'text-center',
         baseClassName,
         buttonVariantClassname,
         className
@@ -43,7 +44,12 @@ const Link: React.FC<Props> = ({
   ) : (
     <a
       href={href}
-      className={classnames(baseClassName, buttonVariantClassname, className)}
+      className={classnames(
+        'text-center',
+        baseClassName,
+        buttonVariantClassname,
+        className
+      )}
     >
       {children}
     </a>
