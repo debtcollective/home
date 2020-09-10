@@ -30,7 +30,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="lg:min-h-screen p-screen-spacing lg:p-desktop-screen-spacing"
+      className="min-h-section-size p-screen-spacing lg:p-desktop-screen-spacing"
       style={{
         background:
           'linear-gradient(180deg, #DBF8FF 0.85%, #F6FAF8 61.2%, #FCFBF7 80.89%)'
