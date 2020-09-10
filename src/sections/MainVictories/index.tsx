@@ -1,20 +1,29 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 import Button from '@components/Button';
+import { useStaticQuery, graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
 
-interface Props {
-  mainVictoriesImage: string;
-}
+const MainVictories: React.FC = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      coverImage: file(relativePath: { eq: "main-victories-image.png" }) {
+        childImageSharp {
+          fluid(fit: COVER) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+  const coverImage = data?.coverImage?.childImageSharp?.fluid || {};
 
-const MainVictories: React.FC<Props> = ({ mainVictoriesImage }) => {
   return (
-    <section
-      className="lg:min-h-screen flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
-      style={{
-        backgroundImage: `url(${mainVictoriesImage})`
-      }}
+    <BackgroundImage
+      fluid={coverImage}
+      className="min-h-section-size flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
     >
-      <div className="lg:grid lg:grid-cols-2 lg:gap-16">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
         <YouTube videoId="lDX6a9pCOw8" className="w-full mb-16 lg:mb-0" />
         <div>
           <h3 className="text-3xl leading-9 font-bold lg:leading-13 lg:text-5xl">
@@ -34,7 +43,7 @@ const MainVictories: React.FC<Props> = ({ mainVictoriesImage }) => {
       <Button className="mx-auto mt-12 block lg:mt-20">
         Learn More About Our Victories
       </Button>
-    </section>
+    </BackgroundImage>
   );
 };
 

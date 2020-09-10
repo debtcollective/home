@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Link from '@components/Link';
 import LineBreak from '@components/LineBreak';
+import BackgroundImage from 'gatsby-background-image';
 
 const WhatIsADebtorsUnion: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -25,16 +26,14 @@ const WhatIsADebtorsUnion: React.FC = () => {
     }
   `);
 
-  const coverImage = data?.coverImage?.childImageSharp?.fluid?.src || '';
+  const coverImage = data?.coverImage?.childImageSharp?.fluid;
 
   return (
-    <section
-      className="lg:min-h-screen flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
-      style={{
-        backgroundImage: `url(${coverImage})`
-      }}
+    <BackgroundImage
+      fluid={coverImage}
+      className="min-h-section-size flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
     >
-      <div className="flex flex-col justify-between mb-12 lg:mb-24 lg:flex-row">
+      <div className="max-w-8xl mx-auto flex flex-col justify-between mb-12 lg:mb-24 lg:flex-row">
         <div className="w-full order-2 lg:order-1 lg:w-1/2">
           <h2 className="text-4xl leading-10 mt-8 text-black-100 font-black lg:leading-15 lg:text-5xl lg:mt-0">
             What is a <LineBreak /> Debtor’s Union?
@@ -62,7 +61,7 @@ const WhatIsADebtorsUnion: React.FC = () => {
       >
         Frequently Asked Questions
       </Link>
-    </section>
+    </BackgroundImage>
   );
 };
 
