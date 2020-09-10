@@ -21,6 +21,7 @@ const MobileSlider: React.FC<Props> = ({ items }) => {
     <CarouselProvider
       naturalSlideWidth={200}
       naturalSlideHeight={250}
+      isIntrinsicHeight
       totalSlides={totalItems}
       className="relative lg:hidden"
     >
