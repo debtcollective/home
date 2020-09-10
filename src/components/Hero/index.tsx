@@ -53,13 +53,13 @@ const Hero: React.FC<Props> = ({
         </p>
         <div className="flex flex-col md:block">
           <Button
-            className="w-full mb-6 md:w-1/3 lg:w-1/5 md:mr-6 lg:mb-0"
+            className="w-full mb-6 md:w-1/3 lg:w-1/4 md:mr-6 lg:mb-0"
             onClick={primaryAction}
           >
             {primaryActionLabel}
           </Button>
           <Button
-            className="w-full md:w-1/3 lg:w-1/5"
+            className="w-full md:w-1/3 lg:w-1/4"
             onClick={secondaryAction}
             variant="secondary"
           >

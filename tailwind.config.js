@@ -16,6 +16,7 @@ module.exports = {
       'gray-500': '#DBDBDB',
       primary: '#FF4630',
       purple: '#DAC4F5',
+      'purple-100': '#BB6BD9',
       white: '#FFFFFF',
       yellow: '#FFED9C'
     },
