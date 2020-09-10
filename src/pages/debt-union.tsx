@@ -14,9 +14,9 @@ const DebtUnion: React.FC = () => {
       <YouAreNotALoan />
       <WhatIsADebtorsUnion />
       <MembershipBenefits />
-      <FAQ />
       <PowerInNumbers />
       <OweTheBank />
+      <FAQ />
     </Layout>
   );
 };
