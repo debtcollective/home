@@ -79,7 +79,6 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     e.preventDefault();
   };
 
-  console.log(state);
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
       {machineState.amountForm && (
