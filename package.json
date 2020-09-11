@@ -16,7 +16,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@debtcollective/dc-popup-component": "^0.10.2",
     "@types/lodash.chunk": "^4.2.6",
     "@types/youtube": "^0.0.39",
     "@xstate/react": "^0.8.1",
