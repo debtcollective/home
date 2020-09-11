@@ -79,7 +79,7 @@ const donationWizardMachine = Machine<
               NEXT: [
                 {
                   target: 'addressForm',
-                  cond: 'paymentFormCompleted',
+                  cond: 'isPaymentFormCompleted',
                   actions: ['updateCardInformation']
                 }
               ],
@@ -93,7 +93,7 @@ const donationWizardMachine = Machine<
               NEXT: [
                 {
                   target: '#donation.processDonation',
-                  cond: 'addressFormCompleted',
+                  cond: 'isAddressFormCompleted',
                   actions: ['updateBillingInformation']
                 }
               ],
@@ -130,13 +130,13 @@ const donationWizardMachine = Machine<
   },
   {
     guards: {
-      paymentFormCompleted: (context, event) => {
+      isPaymentFormCompleted: (context, event) => {
         const { firstName, lastName, email, cardNumber } = event;
-        return firstName && lastName && email && cardNumber;
+        return [firstName, lastName, email, cardNumber].every(Boolean);
       },
-      addressFormCompleted: (context, event) => {
+      isAddressFormCompleted: (context, event) => {
         const { address, city, zipCode, country } = event;
-        return address && city && zipCode && country;
+        return [address, city, zipCode, country].every(Boolean);
       }
     },
     actions: {
