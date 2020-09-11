@@ -1,5 +1,9 @@
 import React from 'react';
 import Tabs from '@components/Tabs';
+import Dues from './Dues';
+import Progress from './Progress';
+import Resources from './Resources';
+import Collective from './Collective';
 
 const FAQ = () => {
   const getTabItems = () => {
@@ -7,22 +11,22 @@ const FAQ = () => {
       {
         title: 'Dues',
         subtitle: 'What does the money go towards?',
-        component: <p>Dues tab content</p>
+        component: <Dues />
       },
       {
         title: 'Progress',
         subtitle: 'What has been accomplished so far?',
-        component: <p>Progress tab content</p>
+        component: <Progress />
       },
       {
         title: 'Resources',
         subtitle: 'What do I get from becoming a member?',
-        component: <p>Resources tab content</p>
+        component: <Resources />
       },
       {
         title: 'Collective',
         subtitle: 'How does joining help other debtors? ',
-        component: <p>Collective tab content</p>
+        component: <Collective />
       }
     ];
   };

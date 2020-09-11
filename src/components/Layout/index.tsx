@@ -26,7 +26,7 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
         links='[{"href":"http://debtcollective.org/","text":"About us"}, {"href":"https://community.debtcollective.org/","text":"Community"}, {"href":"https://teespring.com/stores/debt-collective","text":"Store"}]'
       ></dc-header>
       <SEO title={title} description={description} />
-      <main>{children}</main>
+      <main className="mt-16">{children}</main>
       <Footer />
     </>
   );

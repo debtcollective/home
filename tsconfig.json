@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    // @TODO: Replace target for Node12 https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
     "target": "esnext",
     "jsx": "react",
     "lib": ["dom", "esnext"],

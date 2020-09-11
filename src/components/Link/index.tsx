@@ -19,7 +19,7 @@ const Link: React.FC<Props> = ({
   children,
   variant
 }) => {
-  const baseClassName = 'text-base font-semibold';
+  const baseClassName = 'font-semibold';
 
   const buttonVariantClassname = {
     'rounded-lg': variant === 'button',
