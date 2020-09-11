@@ -75,7 +75,7 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
       script={[
         {
           src:
-            'https://unpkg.com/@debtcollective/dc-header-component@0.12.2/dist/web-header/web-header.js',
+            'https://unpkg.com/@debtcollective/dc-header-component@latest/dist/header/header.js',
           type: 'text/javascript'
         }
       ]}
