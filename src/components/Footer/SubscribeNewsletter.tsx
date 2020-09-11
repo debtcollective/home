@@ -2,10 +2,13 @@ import React, { useState, SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import Input, { InputType } from '@components/Input';
 import Button from '@components/Button';
+import axios from 'axios';
 
 interface Props {
   className?: string;
 }
+
+const NEWSLETTER_API = process.env.NEWSLETTER_API;
 
 const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
   const [email, setEmail] = useState('');
@@ -13,7 +16,8 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    // @TODO: add feature to subscribe to newsletter
+
+    if (NEWSLETTER_API) axios.post(NEWSLETTER_API, { email, name });
   };
 
   return (
