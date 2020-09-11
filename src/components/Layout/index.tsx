@@ -21,7 +21,11 @@ declare global {
 const Layout: React.FC<Props> = ({ children, title, description }) => {
   return (
     <>
-      <dc-header links='[{"href":"http://debtcollective.org/","text":"About us"}, {"href":"https://community.debtcollective.org/","text":"Community"}, {"href":"https://teespring.com/stores/debt-collective","text":"Store"}]'></dc-header>
+      <dc-header
+        host="http://lvh.me:8000"
+        community="http://lvh.me:3000"
+        links='[{"href":"http://debtcollective.org/","text":"About us"}, {"href":"https://community.debtcollective.org/","text":"Community"}, {"href":"https://teespring.com/stores/debt-collective","text":"Store"}]'
+      ></dc-header>
       <SEO title={title} description={description} />
       <main>{children}</main>
       <Footer />
