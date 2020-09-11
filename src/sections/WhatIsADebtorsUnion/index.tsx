@@ -16,7 +16,7 @@ const WhatIsADebtorsUnion: React.FC = () => {
       }
       debtorsUnionImage: file(relativePath: { eq: "debtors-union.png" }) {
         childImageSharp {
-          fluid(fit: COVER) {
+          fluid {
             ...GatsbyImageSharpFluid
             ...GatsbyImageSharpFluidLimitPresentationSize
           }
