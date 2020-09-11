@@ -28,10 +28,6 @@ module.exports = {
         '@utils': path.join(__dirname, 'src/utils'),
         '@static': path.join(__dirname, 'static')
       }
-    },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: { tailwind: true }
     }
   ]
 };
