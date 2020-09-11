@@ -1,8 +1,8 @@
-import donationWizardMachine, { MINIMAL_DONATION } from '../machine';
+import donationMachine, { MINIMAL_DONATION } from '../machine';
 import faker from 'faker';
 
 // Convenient alias for better suite reading
-const machine = donationWizardMachine;
+const machine = donationMachine;
 
 test('starts using one time donation with minimal amount', () => {
   expect(machine.initialState.context).toEqual(
@@ -14,19 +14,19 @@ test('starts using one time donation with minimal amount', () => {
   );
 });
 
-describe('when triggering "UPDATE.AMOUNT"', () => {
+describe('when triggering "UPDATE.AMOUNT.*"', () => {
   it('updates donation amount within "one time donation" amount form', () => {
     const newAmount = faker.random.number(20);
     let machineState = machine.initialState;
     machineState = machine.transition(machineState, {
-      type: 'UPDATE.AMOUNT',
+      type: 'UPDATE.AMOUNT.ONCE',
       value: newAmount
     });
 
     expect(machineState.value).toEqual({ amountForm: 'donateOnce' });
     expect(machineState.context).toEqual(
       expect.objectContaining({
-        donationAmount: newAmount
+        donationOnceAmount: newAmount
       })
     );
   });
@@ -36,14 +36,14 @@ describe('when triggering "UPDATE.AMOUNT"', () => {
     let machineState = machine.initialState;
     machineState = machine.transition(machineState, 'START.MONTHLY');
     machineState = machine.transition(machineState, {
-      type: 'UPDATE.AMOUNT',
+      type: 'UPDATE.AMOUNT.MONTHLY',
       value: newAmount
     });
 
     expect(machineState.value).toEqual({ amountForm: 'donateMonthly' });
     expect(machineState.context).toEqual(
       expect.objectContaining({
-        donationAmount: newAmount
+        donationMonthlyAmount: newAmount
       })
     );
   });
@@ -110,10 +110,12 @@ test('goes into process donation after filling all information', () => {
   expect(machineState.value).toEqual('processDonation');
 
   expect(machineState.context).toEqual({
+    billingInformation,
+    cardInformation,
+    donation: {},
     donationType: 'once',
     donationOnceAmount: MINIMAL_DONATION,
     donationMonthlyAmount: MINIMAL_DONATION,
-    cardInformation,
-    billingInformation
+    error: null
   });
 });

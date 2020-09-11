@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
+// TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
+import { AnyEventObject } from 'xstate';
 import { useMachine } from '@xstate/react';
-import donationWizardMachine from './machine';
+import donationMachine from './machine';
 import {
   DonationMachineContext,
   DonationMachineStateValueMap
 } from './machine/types';
-// TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
-import { AnyEventObject } from 'xstate';
+import {
+  DonationOnceForm,
+  DonationMonthlyForm,
+  DonationPaymentForm,
+  DonationAddressForm
+} from './components';
 
 export interface DonationWidgetProps {
   /**
@@ -17,150 +23,89 @@ export interface DonationWidgetProps {
 
 const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const [state, send] = useMachine<DonationMachineContext, AnyEventObject>(
-    donationWizardMachine
+    donationMachine
   );
-  const { context: machineCtx } = state;
+  const { context: machineContext } = state;
+  const { billingInformation, cardInformation } = machineContext;
   const machineState: DonationMachineStateValueMap = state.value;
 
   useEffect(() => {
     if (machineState === 'failure') {
-      alert(`Something went wrong ${JSON.stringify(machineCtx)}`);
+      alert(`Something went wrong ${JSON.stringify(machineContext)}`);
       send('RETRY');
     }
   });
 
-  const handleSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const onSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
     const value = Number(data.get('amount'));
 
     if (!value) return;
 
-    send([
-      {
-        type: 'UPDATE.AMOUNT',
-        value
-      },
-      { type: 'NEXT' }
-    ]);
+    send([{ type: 'UPDATE.AMOUNT', value }, { type: 'NEXT' }]);
     e.preventDefault();
   };
 
-  const handleSubmitPaymentInfoForm = (
-    e: React.ChangeEvent<HTMLFormElement>
-  ) => {
+  const onSubmitPaymentInfoForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
-    const paymentInformation = {
+
+    send({
+      type: 'NEXT',
       firstName: data.get('first-name'),
       lastName: data.get('last-name'),
       email: data.get('email'),
       cardNumber: data.get('card')
-    };
-
-    send({
-      type: 'NEXT',
-      ...paymentInformation
     });
     e.preventDefault();
   };
 
-  const handleSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const onSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
-    const addressInformation = {
+
+    send({
+      type: 'NEXT',
       address: data.get('address'),
       city: data.get('city'),
       zipCode: data.get('zipCode'),
       country: data.get('country')
-    };
-
-    send({
-      type: 'NEXT',
-      ...addressInformation
     });
     e.preventDefault();
   };
 
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
-      {machineState.amountForm && (
-        <form
-          className="grid grid-cols-1 gap-4"
-          onSubmit={handleSubmitAmountForm}
-        >
-          <label>
-            Donation value:
-            <input defaultValue={machineCtx.donationOnceAmount} name="amount" />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+      {machineState.amountForm === 'donateOnce' && (
+        <DonationOnceForm
+          defaultValues={{ amount: machineContext.donationOnceAmount }}
+          onSubmit={onSubmitAmountForm}
+        />
+      )}
+      {machineState.amountForm === 'donateMonthly' && (
+        <DonationMonthlyForm
+          defaultValues={{ amount: machineContext.donationMonthlyAmount }}
+          onSubmit={onSubmitAmountForm}
+        />
       )}
       {machineState.paymentForm === 'cardForm' && (
-        <form
-          className="grid grid-cols-1 gap-4"
-          onSubmit={handleSubmitPaymentInfoForm}
-        >
-          <label>
-            First name:
-            <input
-              defaultValue={machineCtx.cardInformation.firstName}
-              name="first-name"
-            />
-          </label>
-          <label>
-            Last name:
-            <input
-              defaultValue={machineCtx.cardInformation.lastName}
-              name="last-name"
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              defaultValue={machineCtx.cardInformation.email}
-              name="email"
-            />
-          </label>
-          <label>
-            Card:
-            <input name="card" />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+        <DonationPaymentForm
+          defaultValues={{
+            email: cardInformation.email,
+            firstName: cardInformation.firstName,
+            lastName: cardInformation.lastName
+          }}
+          onSubmit={onSubmitPaymentInfoForm}
+        />
       )}
       {machineState.paymentForm === 'addressForm' && (
-        <form
-          className="grid grid-cols-1 gap-4"
-          onSubmit={handleSubmitAddressForm}
-        >
-          <label>
-            Billing address
-            <input
-              defaultValue={machineCtx.billingInformation.address}
-              name="address"
-            />
-          </label>
-          <label>
-            City
-            <input
-              defaultValue={machineCtx.billingInformation.city}
-              name="city"
-            />
-          </label>
-          <label>
-            Zip code:
-            <input
-              defaultValue={machineCtx.billingInformation.zipCode}
-              name="zipCode"
-            />
-          </label>
-          <label>
-            Country
-            <input
-              defaultValue={machineCtx.billingInformation.country}
-              name="country"
-            />
-          </label>
-          <button type="submit">Next</button>
-        </form>
+        <DonationAddressForm
+          defaultValues={{
+            address: billingInformation.address,
+            city: billingInformation.city,
+            zipCode: billingInformation.zipCode,
+            country: billingInformation.country
+          }}
+          onSubmit={onSubmitAddressForm}
+        />
       )}
     </div>
   );

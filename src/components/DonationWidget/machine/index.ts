@@ -12,7 +12,7 @@ export const MINIMAL_DONATION = 5;
  *
  * https://xstate.js.org/viz/?gist=50ecf807d3b9c049fc58cda690f90594
  */
-const donationWizardMachine = Machine<
+const donationMachine = Machine<
   DonationMachineContext,
   DonationMachineSchema,
   AnyEventObject
@@ -48,7 +48,7 @@ const donationWizardMachine = Machine<
             on: {
               NEXT: '#donation.paymentForm',
               'START.MONTHLY': 'donateMonthly',
-              'UPDATE.AMOUNT': {
+              'UPDATE.AMOUNT.ONCE': {
                 target: 'donateOnce',
                 actions: ['updateDonationOnceAmount']
               }
@@ -59,7 +59,7 @@ const donationWizardMachine = Machine<
             on: {
               NEXT: '#donation.paymentForm',
               'START.ONCE': 'donateOnce',
-              'UPDATE.AMOUNT': {
+              'UPDATE.AMOUNT.MONTHLY': {
                 target: 'donateMonthly',
                 actions: ['updateDonationMonthlyAmount']
               }
@@ -177,4 +177,4 @@ const donationWizardMachine = Machine<
   }
 );
 
-export default donationWizardMachine;
+export default donationMachine;
