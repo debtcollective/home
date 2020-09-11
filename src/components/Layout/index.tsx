@@ -22,8 +22,7 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
   return (
     <>
       <dc-header
-        host="http://lvh.me:8000"
-        community="http://lvh.me:3000"
+        host="http://debtcollective.org"
         links='[{"href":"http://debtcollective.org/","text":"About us"}, {"href":"https://community.debtcollective.org/","text":"Community"}, {"href":"https://teespring.com/stores/debt-collective","text":"Store"}]'
       ></dc-header>
       <SEO title={title} description={description} />
