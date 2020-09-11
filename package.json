@@ -20,6 +20,7 @@
     "@types/youtube": "^0.0.39",
     "@xstate/react": "^0.8.1",
     "babel-preset-react-app": "^9.1.2",
+    "axios": "^0.20.0",
     "classnames": "^2.2.6",
     "gatsby": "^2.24.47",
     "gatsby-background-image": "^1.1.2",
