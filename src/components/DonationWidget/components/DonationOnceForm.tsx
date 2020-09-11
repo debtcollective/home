@@ -1,12 +1,11 @@
 import React from 'react';
 
-const DonationOnceForm = ({
-  defaultValues,
-  onSubmit
-}: {
+interface Props {
   defaultValues: { amount: number };
   onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
-}) => {
+}
+
+const DonationOnceForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
     <form className="grid grid-cols-1 gap-4" onSubmit={onSubmit}>
       <label>

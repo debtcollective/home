@@ -1,9 +1,6 @@
 import React from 'react';
 
-const DonationAddressForm = ({
-  defaultValues,
-  onSubmit
-}: {
+interface Props {
   defaultValues: {
     address: string;
     city: string;
@@ -11,7 +8,9 @@ const DonationAddressForm = ({
     country: string;
   };
   onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
-}) => {
+}
+
+const DonationAddressForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
     <form className="grid grid-cols-1 gap-4" onSubmit={onSubmit}>
       <label>
