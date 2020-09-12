@@ -20,7 +20,7 @@ const YouAreNotALoan: React.FC = () => {
   return (
     <BackgroundImage
       fluid={coverImage}
-      className="min-h-section-size bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
+      className="min-h-section-size bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="max-w-8xl mx-auto flex flex-col items-end">
         <h1 className="text-5xl leading-13 lg:text-right font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">

@@ -26,7 +26,7 @@ const PowerInNumbers = () => {
       >
         {renderContent()}
       </section>
-      <section className="lg:hidden bg-gray p-screen-spacing">
+      <section className="lg:hidden bg-gray px-x-screen-spacing py-y-screen-spacing">
         {renderContent()}
       </section>
     </>

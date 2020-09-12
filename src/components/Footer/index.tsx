@@ -9,7 +9,7 @@ import NewsLetter from '@components/Footer/SubscribeNewsletter';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray p-screen-spacing lg:p-desktop-screen-spacing">
+    <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing">
       <div className="max-w-8xl mx-auto">
         <NewsLetter />
         <hr className="w-full border-gray-100 mb-16 lg:mb-20" />

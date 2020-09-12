@@ -29,7 +29,7 @@ const OweTheBank = () => {
         {renderContent()}
       </section>
       <section
-        className="lg:hidden p-screen-spacing"
+        className="lg:hidden px-x-screen-spacing py-y-screen-spacing"
         style={{
           background:
             'linear-gradient(270deg, #95d5c7 0.70%, #c7e8e1 55%, #FCFBF7 80.89%)'

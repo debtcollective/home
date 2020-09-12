@@ -8,7 +8,7 @@ import thingsToDoIcon from '@static/icons/things-to-do.svg';
 const MainSlider = () => {
   return (
     <section
-      className="p-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing"
+      className="px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing"
       style={{
         background:
           'linear-gradient(180deg, #DBF8FF 0.85%, #F6FAF8 61.2%, #FCFBF7 80.89%)'

@@ -21,7 +21,7 @@ const MainVictories: React.FC = () => {
   return (
     <BackgroundImage
       fluid={coverImage}
-      className="min-h-section-size flex flex-col justify-center bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
+      className="min-h-section-size flex flex-col justify-center bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
         <YouTube videoId="lDX6a9pCOw8" className="w-full mb-16 lg:mb-0" />

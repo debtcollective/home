@@ -44,7 +44,7 @@ const Hero: React.FC<Props> = ({
         className
       )}
     >
-      <div className="max-w-8xl mx-auto mt-64 mb-24 lg:mb-56">
+      <div className="max-w-8xl mx-auto mt-56 mb-24 lg:mb-56">
         <h1 className="text-4xl leading-10 font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
           {title}
         </h1>
