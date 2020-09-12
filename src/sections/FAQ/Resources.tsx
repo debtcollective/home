@@ -11,23 +11,23 @@ const Resources = () => {
           className="w-full mb-10 lg:mb-0 h-48 lg:h-full"
         />
         <div>
-          <h3 className="text-xl leading-7 font-bold lg:leading-8 lg:text-3xl">
+          <h3 className="text-xl leading-7 font-semibold lg:leading-8 lg:text-3xl">
             Membership gets you access to{' '}
             <span className="text-primary">
               proven trainings that help you to fight and cancel debt
             </span>{' '}
             for yourself and others.
           </h3>
-          <p className="text-xl leading-7 font-bold mt-8">
+          <p className="text-xl leading-7 font-semibold mt-8">
             This includes our community forum, our debt dispute tools, debt
             clinics, a series of educational and training tools, involvement in
             local chapters, and a host of ways to become an active and engaged
             member of the union.
           </p>
-          <p className="text-xl leading-7 font-bold mt-8">
+          <p className="text-xl leading-7 font-semibold mt-8">
             Please see our{' '}
             <Link
-              className="text-primary text-xl leading-7 font-bold mt-8"
+              className="text-primary text-xl leading-7 font-semibold mt-8"
               href="#membership-benefits"
               variant="regular"
             >

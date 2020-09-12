@@ -25,6 +25,11 @@ module.exports = {
       white: '#FFFFFF',
       yellow: '#FFED9C'
     },
+    fontWeight: {
+      normal: 400,
+      semibold: 600,
+      bold: 800
+    },
     extend: {
       backgroundPosition: {
         75: '75%'

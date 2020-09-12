@@ -23,12 +23,12 @@ const Collective = () => {
           className="mb-10 lg:mb-0"
         />
         <div>
-          <h3 className="text-xl leading-7 font-bold lg:leading-8 lg:text-4xl">
+          <h3 className="text-xl leading-7 font-semibold lg:leading-8 lg:text-4xl">
             Your membership allow us to{' '}
             <span className="text-primary">build power</span> to cancel various
             forms of debt.
           </h3>
-          <p className="text-xl leading-7 font-bold mt-8">
+          <p className="text-xl leading-7 font-semibold mt-8">
             By joining our union, you are supporting the Debt Resistance
             Movement and helping us to push for policies{' '}
             <span className="text-primary">

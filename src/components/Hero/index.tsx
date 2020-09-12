@@ -45,10 +45,10 @@ const Hero: React.FC<Props> = ({
       )}
     >
       <div className="max-w-8xl mx-auto mt-56 mb-24 lg:mb-56">
-        <h1 className="text-4xl leading-10 font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
+        <h1 className="text-4xl leading-10 font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
           {title}
         </h1>
-        <p className="font-bold text-lg text-white leading-6 mb-12 lg:text-2xl lg:w-7/12">
+        <p className="font-semibold text-lg text-white leading-6 mb-12 lg:text-2xl lg:w-7/12">
           {text}
         </p>
         <div className="flex flex-col md:block">

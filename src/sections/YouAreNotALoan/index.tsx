@@ -30,11 +30,11 @@ const YouAreNotALoan: React.FC = () => {
   const renderContent = () => {
     return (
       <div className="max-w-8xl mx-auto flex flex-col items-end mt-64 mb-24 lg:mb-56">
-        <h1 className="w-full text-5xl leading-13 lg:text-right font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
+        <h1 className="w-full text-5xl leading-13 lg:text-right font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
           You are not <br className="lg:hidden" />{' '}
           <span className="text-yellow">A Loan!</span>
         </h1>
-        <p className="font-bold text-2xl text-white leading-6 mb-12 lg:w-1/2 lg:text-right">
+        <p className="font-semibold text-2xl text-white leading-6 mb-12 lg:w-1/2 lg:text-right">
           Join a growing community of debtors organizing to cancel debts and
           build financial and political power
         </p>

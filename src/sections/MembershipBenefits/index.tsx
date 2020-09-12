@@ -15,7 +15,7 @@ const MembershipBenefits = () => {
       className="min-h-section-size px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue via-white-200 to-blue lg:to-white-300"
       id="membership-benefits"
     >
-      <h2 className="text-center mb-4 text-4xl leading-9 font-black text-gray lg:text-5xl lg:leading-11">
+      <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-11">
         Membership Benefits
       </h2>
       <h3 className="text-center mb-16 font-semibold text-gray text-xl lg:text-2xl">

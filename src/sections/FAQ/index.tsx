@@ -36,7 +36,7 @@ const FAQ = () => {
       id="faq"
       className="min-h-section-size px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing bg-gradient-to-t lg:bg-gradient-to-b from-blue via-white-200 to-white-300"
     >
-      <h2 className="text-center mb-4 text-4xl leading-9 font-black text-gray lg:text-5xl lg:leading-14">
+      <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-14">
         Frequently Asked Questions
       </h2>
       <Tabs items={getTabItems()} />
