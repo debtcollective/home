@@ -13,21 +13,24 @@ const DonationPaymentForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
       <DonationWizard.Form onSubmit={onSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.firstName}
-          title="Card owner first name"
           name="first-name"
           placeholder="Jane"
+          required
+          title="Card owner first name"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.lastName}
-          title="Card owner last name"
           name="last-name"
           placeholder="Doe"
+          required
+          title="Card owner last name"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.email}
-          title="Contact email"
           name="email"
           placeholder="jane.doe@debtcollective.org"
+          required
+          title="Contact email"
         />
         <DonationWizard.Input
           title="Credit or debit card number"
