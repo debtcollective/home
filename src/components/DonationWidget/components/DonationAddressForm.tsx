@@ -18,21 +18,25 @@ const DonationAddressForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
       <DonationWizard.Form onSubmit={onSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.address}
-          name="adddress"
-          placeholder="Full street address"
+          title="Full street billing address"
+          name="address"
+          placeholder="Full street billing address"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.city}
+          title="City address"
           name="city"
           placeholder="Maturin"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.zipCode}
+          title="Zip code address"
           name="zipCode"
           placeholder="06002"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.country}
+          title="Country address"
           name="country"
           placeholder="Venezuela"
         />

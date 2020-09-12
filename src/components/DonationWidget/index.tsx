@@ -47,28 +47,28 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   };
 
   const onSubmitPaymentInfoForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const data = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('first-name'),
+      lastName: formData.get('last-name'),
+      email: formData.get('email'),
+      cardNumber: formData.get('card')
+    };
 
-    send({
-      type: 'NEXT',
-      firstName: data.get('first-name'),
-      lastName: data.get('last-name'),
-      email: data.get('email'),
-      cardNumber: data.get('card')
-    });
+    send({ type: 'NEXT', ...data });
     e.preventDefault();
   };
 
   const onSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const data = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      address: formData.get('address'),
+      city: formData.get('city'),
+      zipCode: formData.get('zipCode'),
+      country: formData.get('country')
+    };
 
-    send({
-      type: 'NEXT',
-      address: data.get('address'),
-      city: data.get('city'),
-      zipCode: data.get('zipCode'),
-      country: data.get('country')
-    });
+    send({ type: 'NEXT', ...data });
     e.preventDefault();
   };
 
