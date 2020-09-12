@@ -8,6 +8,10 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   ${tw`py-2 px-3 rounded-md border border-beige-500 focus:outline-none focus:border-blue w-full`}
+
+  & + & {
+    ${tw`mt-4`}
+  }
 `;
 
 export const Button = styled.button`
