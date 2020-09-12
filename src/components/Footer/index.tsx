@@ -75,10 +75,13 @@ const Footer = () => {
           />
         </section>
         <section className="flex flex-col lg:flex-row">
-          <p className="mr-12 text-gray-200 font-extrabold text-base mb-6 ">
+          <p className="text-gray-200 font-extrabold text-center text-base mb-6 lg:mr-12 lg:text-left">
             Copyright 2018
           </p>
-          <a className="text-white text-base font-light" href="">
+          <a
+            className="text-white text-center text-base font-light lg:text-left"
+            href=""
+          >
             Terms and Conditions
           </a>
         </section>
