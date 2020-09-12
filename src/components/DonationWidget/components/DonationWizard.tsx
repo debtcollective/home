@@ -6,12 +6,20 @@ export const Container = styled.div`
   width: 28rem;
 `;
 
-export const Form = styled.form`
-  ${tw`p-4`}
+export const Input = styled.input`
+  ${tw`py-2 px-3 rounded-md border border-beige-500 focus:outline-none focus:border-blue w-full`}
 `;
 
 export const Button = styled.button`
   ${tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
+`;
+
+export const Form = styled.form`
+  ${tw`p-4`}
+
+  button[type="submit"] {
+    ${tw`mt-4`}
+  }
 `;
 
 export const Title = styled.button`
