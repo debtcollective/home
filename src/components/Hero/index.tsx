@@ -40,15 +40,15 @@ const Hero: React.FC<Props> = ({
     <BackgroundImage
       fluid={coverImage}
       className={classnames(
-        'min-h-section-size bg-no-repeat bg-cover bg-center flex flex-col justify-center p-screen-spacing lg:px-desktop-screen-spacing',
+        'min-h-section-size bg-no-repeat bg-cover bg-75 px-x-screen-spacing py-y-screen-spacing lg:px-desktop-screen-spacing lg:bg-center',
         className
       )}
     >
-      <div className="max-w-8xl mx-auto">
-        <h1 className="text-5xl leading-13 font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
+      <div className="max-w-8xl mx-auto mt-64 mb-24 lg:mb-56">
+        <h1 className="text-4xl leading-10 font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
           {title}
         </h1>
-        <p className="font-bold text-2xl text-white leading-6 mb-12 lg:w-7/12">
+        <p className="font-bold text-lg text-white leading-6 mb-12 lg:text-2xl lg:w-7/12">
           {text}
         </p>
         <div className="flex flex-col md:block">

@@ -24,6 +24,9 @@ module.exports = {
       yellow: '#FFED9C'
     },
     extend: {
+      backgroundPosition: {
+        75: '75%'
+      },
       lineHeight: {
         '12': '2.75rem',
         '13': '3rem',
@@ -33,7 +36,8 @@ module.exports = {
         '40': '10rem'
       },
       spacing: {
-        'screen-spacing': '2rem',
+        'x-screen-spacing': '2rem',
+        'y-screen-spacing': '4rem',
         'desktop-screen-spacing': '6rem'
       },
       fontFamily: {
