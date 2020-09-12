@@ -42,7 +42,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
 
     if (!value) return;
 
-    send([{ type: 'UPDATE.AMOUNT', value }, { type: 'NEXT' }]);
+    send([{ type: 'UPDATE.AMOUNT.ONCE', value }, { type: 'NEXT' }]);
     e.preventDefault();
   };
 
@@ -88,6 +88,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm
+          amount={machineContext.donationOnceAmount}
           defaultValues={{
             email: cardInformation.email,
             firstName: cardInformation.firstName,
@@ -98,6 +99,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
       )}
       {machineState.paymentForm === 'addressForm' && (
         <DonationAddressForm
+          amount={machineContext.donationOnceAmount}
           defaultValues={{
             address: billingInformation.address,
             city: billingInformation.city,

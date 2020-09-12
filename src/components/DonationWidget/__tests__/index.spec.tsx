@@ -22,14 +22,20 @@ test('send a donation request with all provided information', () => {
     zipCode: faker.address.zipCode(),
     country: faker.address.country()
   };
+  const donationAmount = faker.random.number(100);
+  const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
 
   render(<DonationWidget />);
 
   // Give the amount to donate
-  userEvent.type(screen.getByRole('textbox', { name: /amount/ }), '10');
+  expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
+  const amountInput = screen.getByRole('textbox', { name: /amount/ });
+  userEvent.clear(amountInput);
+  userEvent.type(amountInput, `${donationAmount}`);
   userEvent.click(screen.getByRole('button'));
 
   // Give the payment details
+  expect(screen.getByText(regexAmount)).toBeInTheDocument();
   userEvent.type(
     screen.getByRole('textbox', { name: /first name/i }),
     cardInformation.firstName
@@ -49,6 +55,7 @@ test('send a donation request with all provided information', () => {
   userEvent.click(screen.getByRole('button'));
 
   // Give the billing address
+  expect(screen.getByText(regexAmount)).toBeInTheDocument();
   userEvent.type(
     screen.getByRole('textbox', { name: /billing address/i }),
     billingInformation.address
@@ -72,7 +79,7 @@ test('send a donation request with all provided information', () => {
     cardInformation,
     donation: {},
     donationType: 'once',
-    donationOnceAmount: MINIMAL_DONATION,
+    donationOnceAmount: donationAmount,
     donationMonthlyAmount: MINIMAL_DONATION,
     error: null
   });
