@@ -8,21 +8,22 @@ import { MINIMAL_DONATION } from '../machine';
 
 jest.mock('../service');
 
-test('send a donation request with all provided information', () => {
-  const cardInformation = {
-    firstName: faker.name.findName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email('bot', '', 'debtcollective.org'),
-    cardNumber: faker.finance.creditCardNumber()
-  };
+const cardInformation = {
+  firstName: faker.name.findName(),
+  lastName: faker.name.lastName(),
+  email: faker.internet.email('bot', '', 'debtcollective.org'),
+  cardNumber: faker.finance.creditCardNumber()
+};
 
-  const billingInformation = {
-    address: faker.address.streetAddress(),
-    city: faker.address.city(),
-    zipCode: faker.address.zipCode(),
-    country: faker.address.country()
-  };
-  const donationAmount = faker.random.number(100);
+const billingInformation = {
+  address: faker.address.streetAddress(),
+  city: faker.address.city(),
+  zipCode: faker.address.zipCode(),
+  country: faker.address.country()
+};
+const donationAmount = faker.random.number(100);
+
+test('send a donation request with all provided information', () => {
   const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
 
   render(<DonationWidget />);
@@ -32,7 +33,7 @@ test('send a donation request with all provided information', () => {
   const amountInput = screen.getByRole('textbox', { name: /amount/ });
   userEvent.clear(amountInput);
   userEvent.type(amountInput, `${donationAmount}`);
-  userEvent.click(screen.getByRole('button'));
+  userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
   // Give the payment details
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -52,7 +53,7 @@ test('send a donation request with all provided information', () => {
     screen.getByRole('textbox', { name: /card number/i }),
     cardInformation.cardNumber
   );
-  userEvent.click(screen.getByRole('button'));
+  userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give the billing address
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -72,7 +73,7 @@ test('send a donation request with all provided information', () => {
     screen.getByRole('textbox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button'));
+  userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
   expect(sendDonation).toHaveBeenCalledWith({
     billingInformation,
@@ -83,4 +84,21 @@ test('send a donation request with all provided information', () => {
     donationMonthlyAmount: MINIMAL_DONATION,
     error: null
   });
+});
+
+test('allows to go back to edit amount', () => {
+  render(<DonationWidget />);
+
+  const amountInput = screen.getByRole('textbox', { name: /amount/ });
+  userEvent.clear(amountInput);
+  userEvent.type(amountInput, `${donationAmount}`);
+  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+
+  const goBackBtn = screen.getByText(/edit amount/i);
+
+  expect(screen.queryByText(/choose an amount/i)).not.toBeInTheDocument();
+
+  userEvent.click(goBackBtn);
+
+  expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
 });

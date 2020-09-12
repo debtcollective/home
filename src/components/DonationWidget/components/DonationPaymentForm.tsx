@@ -4,17 +4,24 @@ import * as DonationWizard from './DonationWizard';
 interface Props {
   amount: number;
   defaultValues: { firstName: string; lastName: string; email: string };
+  onEditAmount: () => void;
   onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
 }
 
 const DonationPaymentForm: React.FC<Props> = ({
+  amount,
   defaultValues,
-  onSubmit,
-  amount
+  onEditAmount,
+  onSubmit
 }) => {
   return (
     <DonationWizard.Container>
-      <DonationWizard.Title>{`Giving ${amount}$`}</DonationWizard.Title>
+      <DonationWizard.Title>
+        {`Giving ${amount}$`}{' '}
+        <DonationWizard.Button variant="transparent" onClick={onEditAmount}>
+          (edit amount)
+        </DonationWizard.Button>
+      </DonationWizard.Title>
       <DonationWizard.Form onSubmit={onSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.firstName}

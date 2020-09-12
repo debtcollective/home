@@ -9,17 +9,24 @@ interface Props {
     zipCode: string;
     country: string;
   };
+  onEditAmount: () => void;
   onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
 }
 
 const DonationAddressForm: React.FC<Props> = ({
   amount,
   defaultValues,
+  onEditAmount,
   onSubmit
 }) => {
   return (
     <DonationWizard.Container>
-      <DonationWizard.Title>{`Giving ${amount}$`}</DonationWizard.Title>
+      <DonationWizard.Title>
+        {`Giving ${amount}$`}{' '}
+        <DonationWizard.Button variant="transparent" onClick={onEditAmount}>
+          (edit amount)
+        </DonationWizard.Button>
+      </DonationWizard.Title>
       <DonationWizard.Form onSubmit={onSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.address}

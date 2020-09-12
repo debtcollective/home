@@ -72,6 +72,10 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     e.preventDefault();
   };
 
+  const onEditAmount = () => {
+    send('START.ONCE');
+  };
+
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
       {machineState.amountForm === 'donateOnce' && (
@@ -94,6 +98,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
             firstName: cardInformation.firstName,
             lastName: cardInformation.lastName
           }}
+          onEditAmount={onEditAmount}
           onSubmit={onSubmitPaymentInfoForm}
         />
       )}
@@ -106,6 +111,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
             zipCode: billingInformation.zipCode,
             country: billingInformation.country
           }}
+          onEditAmount={onEditAmount}
           onSubmit={onSubmitAddressForm}
         />
       )}
