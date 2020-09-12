@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 
@@ -14,8 +15,19 @@ export const Input = styled.input`
   }
 `;
 
-export const Button = styled.button`
-  ${tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
+interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  variant?: 'transparent' | 'default';
+}
+
+export const Button = styled.button<ButtonProps>`
+  ${({ variant }) =>
+    variant === 'transparent'
+      ? tw`font-bold`
+      : tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
 `;
 
 export const Form = styled.form`
