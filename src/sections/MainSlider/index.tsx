@@ -7,13 +7,7 @@ import thingsToDoIcon from '@static/icons/things-to-do.svg';
 
 const MainSlider = () => {
   return (
-    <section
-      className="px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing"
-      style={{
-        background:
-          'linear-gradient(180deg, #DBF8FF 0.85%, #F6FAF8 61.2%, #FCFBF7 80.89%)'
-      }}
-    >
+    <section className="px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue via-white-200 to-blue lg:to-white-300">
       <h2 className="text-center mb-10 text-4xl leading-9 font-semibold text-gray lg:text-5xl lg:leading-14 lg:w-2/3 mx-auto">
         1 million new people default on their student loans every year!
       </h2>
