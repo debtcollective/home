@@ -22,6 +22,6 @@ export const Form = styled.form`
   }
 `;
 
-export const Title = styled.button`
-  ${tw`text-lg bg-white-100 py-3 px-4 border-0 border-beige-500 border-b`}
+export const Title = styled.div`
+  ${tw`text-lg text-center bg-white-100 py-3 px-4 border-0 border-beige-500 border-b`}
 `;
