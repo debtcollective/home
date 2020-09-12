@@ -6,7 +6,10 @@ const Progress = () => {
   return (
     <div className="flex flex-col justify-center">
       <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
-        <YouTube videoId="lDX6a9pCOw8" className="w-full mb-10 lg:mb-0" />
+        <YouTube
+          videoId="lDX6a9pCOw8"
+          className="w-full mb-10 lg:mb-0 h-48 lg:h-full"
+        />
         <div>
           <h3 className="text-3xl leading-9 font-bold lg:leading-13 lg:text-5xl">
             Our movement has <span className="text-primary">abolished</span>{' '}

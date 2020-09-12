@@ -5,7 +5,10 @@ const Dues = () => {
   return (
     <div className="flex flex-col justify-center">
       <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
-        <YouTube videoId="lDX6a9pCOw8" className="w-full mb-10 lg:mb-0" />
+        <YouTube
+          videoId="lDX6a9pCOw8"
+          className="w-full mb-10 lg:mb-0 h-48 lg:h-full"
+        />
         <div>
           <h3 className="text-xl leading-7 font-bold lg:text-2xl">
             Dues ensures that the Debt Collective is by and for its members -{' '}
