@@ -1,4 +1,5 @@
 import React from 'react';
+import * as DonationWizard from './DonationWizard';
 
 interface Props {
   defaultValues: { amount: number };
@@ -7,13 +8,22 @@ interface Props {
 
 const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
-    <form className="grid grid-cols-1 gap-4" onSubmit={onSubmit}>
-      <label>
-        Donation value:
-        <input defaultValue={defaultValues.amount} name="amount" />
-      </label>
-      <button type="submit">donate monthly</button>
-    </form>
+    <DonationWizard.Container>
+      <DonationWizard.Title>
+        Choose an amount to give per month
+      </DonationWizard.Title>
+      <DonationWizard.Form id="monthly" onSubmit={onSubmit}>
+        <DonationWizard.Input
+          defaultValue={defaultValues.amount}
+          name="amount"
+          required
+          title="amount to donate"
+        />
+        <DonationWizard.Button type="submit">
+          donate monthly
+        </DonationWizard.Button>
+      </DonationWizard.Form>
+    </DonationWizard.Container>
   );
 };
 
