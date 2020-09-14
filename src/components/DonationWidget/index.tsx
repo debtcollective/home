@@ -40,10 +40,15 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const onSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
     const value = Number(data.get('amount'));
+    const { id: formId } = e.currentTarget;
+    const updateAmountEvent = `UPDATE.AMOUNT.${formId.toUpperCase()}`;
 
-    if (!value) return;
+    if (!value || (formId !== 'once' && formId !== 'monthly')) {
+      console.error('error trying to update amount', value, formId);
+      return;
+    }
 
-    send([{ type: 'UPDATE.AMOUNT.ONCE', value }, { type: 'NEXT' }]);
+    send([{ type: updateAmountEvent, value }, { type: 'NEXT' }]);
     e.preventDefault();
   };
 
@@ -79,14 +84,14 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
 
   const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
-    const DONATION_TYPE = {
-      once: 'START.ONCE',
-      monthly: 'START.MONTHLY'
-    };
+    const updateDonationTypeEvent = `START.${value.toUpperCase()}`;
 
-    if (value !== 'once' && value !== 'monthly') return;
+    if (value !== 'once' && value !== 'monthly') {
+      console.error('error trying to change donation type', value);
+      return;
+    }
 
-    send(DONATION_TYPE[value]);
+    send(updateDonationTypeEvent);
   };
 
   return (

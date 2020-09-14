@@ -111,10 +111,10 @@ test('allows to switch between donation "once" and "monthly" to update donation 
 
   userEvent.click(screen.getByRole('radio', { name: /monthly/i }));
 
-  expect(screen.getByText(/donate monthly/i)).toBeInTheDocument();
+  expect(screen.getByText(/give per month/i)).toBeInTheDocument();
 
   userEvent.click(screen.getByRole('radio', { name: /once/i }));
 
-  expect(screen.queryByText(/donate monthly/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/give per month/i)).not.toBeInTheDocument();
   expect(screen.queryByText(/donate/i)).toBeInTheDocument();
 });
