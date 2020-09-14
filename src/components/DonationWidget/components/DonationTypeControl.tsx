@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToggleSelector, ToggleSelectorOption } from './DonationWizard';
 
 interface Props {
   defaultValues: {
@@ -9,8 +10,8 @@ interface Props {
 
 const DonationTypeControl: React.FC<Props> = ({ defaultValues, onChange }) => {
   return (
-    <div>
-      <div>
+    <ToggleSelector>
+      <ToggleSelectorOption>
         <input
           checked={defaultValues.activeType === 'once'}
           id="donationOnce"
@@ -20,8 +21,8 @@ const DonationTypeControl: React.FC<Props> = ({ defaultValues, onChange }) => {
           value="once"
         />
         <label htmlFor="donationOnce">Give once</label>
-      </div>
-      <div>
+      </ToggleSelectorOption>
+      <ToggleSelectorOption>
         <input
           checked={defaultValues.activeType === 'monthly'}
           id="donateMonthly"
@@ -31,8 +32,8 @@ const DonationTypeControl: React.FC<Props> = ({ defaultValues, onChange }) => {
           value="monthly"
         />
         <label htmlFor="donateMonthly">Monthly</label>
-      </div>
-    </div>
+      </ToggleSelectorOption>
+    </ToggleSelector>
   );
 };
 
