@@ -13,6 +13,7 @@ import {
   DonationPaymentForm,
   DonationAddressForm
 } from './components';
+import DonationTypeControl from './components/DonationTypeControl';
 
 export interface DonationWidgetProps {
   /**
@@ -76,8 +77,24 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     send('START.ONCE');
   };
 
+  const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+    const DONATION_TYPE = {
+      once: 'START.ONCE',
+      monthly: 'START.MONTHLY'
+    };
+
+    if (value !== 'once' && value !== 'monthly') return;
+
+    send(DONATION_TYPE[value]);
+  };
+
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
+      <DonationTypeControl
+        defaultValues={{ activeType: machineContext.donationType }}
+        onChange={onChangeType}
+      />
       {machineState.amountForm === 'donateOnce' && (
         <DonationOnceForm
           defaultValues={{ amount: machineContext.donationOnceAmount }}

@@ -102,3 +102,19 @@ test('allows to go back to edit amount', () => {
 
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
 });
+
+test('allows to switch between donation "once" and "monthly" to update donation type', () => {
+  render(<DonationWidget />);
+
+  expect(screen.getByText(/give once/i)).toBeInTheDocument();
+  expect(screen.getByText(/monthly/i)).toBeInTheDocument();
+
+  userEvent.click(screen.getByRole('radio', { name: /monthly/i }));
+
+  expect(screen.getByText(/donate monthly/i)).toBeInTheDocument();
+
+  userEvent.click(screen.getByRole('radio', { name: /once/i }));
+
+  expect(screen.queryByText(/donate monthly/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/donate/i)).toBeInTheDocument();
+});

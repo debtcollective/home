@@ -12,7 +12,7 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
         Donation value:
         <input defaultValue={defaultValues.amount} name="amount" />
       </label>
-      <button type="submit">Next</button>
+      <button type="submit">donate monthly</button>
     </form>
   );
 };
