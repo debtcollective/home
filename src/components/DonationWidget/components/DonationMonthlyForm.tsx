@@ -1,7 +1,7 @@
 import React from 'react';
 import * as DonationWizard from './DonationWizard';
 
-interface Props {
+export interface Props {
   defaultValues: { amount: number };
   onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToggleSelector, ToggleSelectorOption } from './DonationWizard';
 
-interface Props {
+export interface Props {
   defaultValues: {
     activeType: 'once' | 'monthly';
   };
