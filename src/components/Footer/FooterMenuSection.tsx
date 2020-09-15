@@ -14,8 +14,8 @@ interface Props {
 
 const FooterMenuSection: React.FC<Props> = ({ title, items, className }) => {
   return (
-    <div className={classnames('mr-24', className)}>
-      <p className="text-gray-300 uppercase font-extrabold text-base mb-6">
+    <div className={classnames('mr-16', className)}>
+      <p className="text-gray-300 uppercase font-semibold text-base mb-6">
         {title}
       </p>
       <ul>
@@ -28,13 +28,15 @@ const FooterMenuSection: React.FC<Props> = ({ title, items, className }) => {
               className={classnames(
                 'text-white',
                 'capitalize',
-                'font-extrabold',
+                'font-semibold',
                 {
                   'mb-6': !isLastItem
                 }
               )}
             >
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} target="_blank" rel="noreferrer">
+                {item.label}
+              </a>
             </li>
           );
         })}

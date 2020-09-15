@@ -33,7 +33,7 @@ const Tabs: React.FC<Props> = ({ items }) => {
             >
               <h5
                 className={classnames(
-                  'text-primary text-xs font-bold leading-3',
+                  'text-primary text-xs font-semibold leading-3',
                   {
                     'text-opacity-1': isActive,
                     'text-opacity-50': !isActive

@@ -7,7 +7,16 @@ const YouAreNotALoan: React.FC = () => {
     query {
       coverImage: file(relativePath: { eq: "you-are-not-a-loan.png" }) {
         childImageSharp {
-          fluid(quality: 100, fit: COVER) {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      coverImageMobile: file(
+        relativePath: { eq: "you-are-not-a-loan-mobile.png" }
+      ) {
+        childImageSharp {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
@@ -16,23 +25,39 @@ const YouAreNotALoan: React.FC = () => {
   `);
 
   const coverImage = data?.coverImage?.childImageSharp?.fluid;
+  const coverImageMobile = data?.coverImageMobile?.childImageSharp?.fluid;
 
-  return (
-    <BackgroundImage
-      fluid={coverImage}
-      className="min-h-section-size bg-no-repeat bg-cover bg-center p-screen-spacing lg:p-desktop-screen-spacing"
-    >
-      <div className="max-w-8xl mx-auto flex flex-col items-end">
-        <h1 className="text-5xl leading-13 lg:text-right font-black text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
-          You are not <span className="text-yellow">A Loan!</span>
+  const renderContent = () => {
+    return (
+      <div className="max-w-8xl mx-auto flex flex-col items-end mt-64 mb-24 lg:mb-56">
+        <h1 className="w-full text-5xl leading-13 lg:text-right font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
+          You are not <br className="lg:hidden" />{' '}
+          <span className="text-yellow">A Loan!</span>
         </h1>
-        <p className="font-bold text-2xl text-white leading-6 mb-12 lg:w-1/2 lg:text-right">
+        <p className="font-semibold text-2xl text-white leading-6 mb-12 lg:w-1/2 lg:text-right">
           Join a growing community of debtors organizing to cancel debts and
           build financial and political power
         </p>
         {/* @TODO: Include widget */}
       </div>
-    </BackgroundImage>
+    );
+  };
+
+  return (
+    <>
+      <BackgroundImage
+        fluid={coverImage}
+        className="min-h-section-size bg-no-repeat bg-cover bg-center p-desktop-screen-spacing hidden lg:block"
+      >
+        {renderContent()}
+      </BackgroundImage>
+      <BackgroundImage
+        fluid={coverImageMobile}
+        className="min-h-section-size bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:hidden"
+      >
+        {renderContent()}
+      </BackgroundImage>
+    </>
   );
 };
 

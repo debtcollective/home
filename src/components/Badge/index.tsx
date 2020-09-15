@@ -29,7 +29,7 @@ const Badge: React.FC<Props> = ({
         )}
         alt={imageAlt}
       />
-      <h6 className="text-3xl leading-8 font-bold text-center text-black uppercase font-more-gothic mt-4 mb-2">
+      <h6 className="text-3xl leading-8 font-semibold text-center text-black uppercase font-more-gothic mt-4 mb-2">
         {title}
       </h6>
       {text && (

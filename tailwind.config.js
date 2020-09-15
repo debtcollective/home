@@ -11,6 +11,8 @@ module.exports = {
       'gray-300': '#828282',
       'gray-400': '#585757',
       'white-100': '#F7F7F7',
+      'white-200': '#FCFBF7',
+      'white-300': '#F6FAF8',
       black: '#000000',
       blue: '#DBF8FF',
       gray: '#2B2B2B',
@@ -23,7 +25,15 @@ module.exports = {
       white: '#FFFFFF',
       yellow: '#FFED9C'
     },
+    fontWeight: {
+      normal: 400,
+      semibold: 600,
+      bold: 800
+    },
     extend: {
+      backgroundPosition: {
+        75: '75%'
+      },
       lineHeight: {
         '12': '2.75rem',
         '13': '3rem',
@@ -33,7 +43,8 @@ module.exports = {
         '40': '10rem'
       },
       spacing: {
-        'screen-spacing': '2rem',
+        'x-screen-spacing': '2rem',
+        'y-screen-spacing': '4rem',
         'desktop-screen-spacing': '6rem'
       },
       fontFamily: {
@@ -45,7 +56,8 @@ module.exports = {
         '9xl': '7.5rem'
       },
       minHeight: {
-        'section-size': '50rem'
+        'section-size': '52rem',
+        '80': '80rem'
       },
       minWidth: {
         auto: 'auto',
