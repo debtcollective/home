@@ -36,30 +36,16 @@ Composition.args = {
 };
 
 /**
- * Address form
+ * Donation type control component
  */
-const AddressFormTemplate: Story<DonationAddressFormProps> = (args) => (
-  <DonationAddressForm {...args} />
+const TypeControlTemplate: Story<DonationTypeControlProps> = (args) => (
+  <DonationTypeControl {...args} />
 );
 
-export const AddressForm = AddressFormTemplate.bind({});
+export const TypeControl = TypeControlTemplate.bind({});
 
-AddressForm.args = {
-  amount: faker.random.number(100),
-  defaultValues: { address: '', city: '', zipCode: '', country: '' }
-};
-
-/**
- * Donation monthly form
- */
-const MonthlyFormTemplate: Story<DonationMonthlyFormProps> = (args) => (
-  <DonationMonthlyForm {...args} />
-);
-
-export const MonthlyForm = MonthlyFormTemplate.bind({});
-
-MonthlyForm.args = {
-  defaultValues: { amount: faker.random.number(100) }
+TypeControl.args = {
+  defaultValues: { activeType: 'once' }
 };
 
 /**
@@ -76,6 +62,33 @@ OnceForm.args = {
 };
 
 /**
+ * Donation monthly form
+ */
+const MonthlyFormTemplate: Story<DonationMonthlyFormProps> = (args) => (
+  <DonationMonthlyForm {...args} />
+);
+
+export const MonthlyForm = MonthlyFormTemplate.bind({});
+
+MonthlyForm.args = {
+  defaultValues: { amount: faker.random.number(100) }
+};
+
+/**
+ * Address form
+ */
+const AddressFormTemplate: Story<DonationAddressFormProps> = (args) => (
+  <DonationAddressForm {...args} />
+);
+
+export const AddressForm = AddressFormTemplate.bind({});
+
+AddressForm.args = {
+  amount: faker.random.number(100),
+  defaultValues: { address: '', city: '', zipCode: '', country: '' }
+};
+
+/**
  * Payment form
  */
 const PaymentFormTemplate: Story<DonationPaymentFormProps> = (args) => (
@@ -87,17 +100,4 @@ export const PaymentForm = PaymentFormTemplate.bind({});
 PaymentForm.args = {
   amount: faker.random.number(100),
   defaultValues: { firstName: '', lastName: '', email: '' }
-};
-
-/**
- * Donation type control component
- */
-const TypeControlTemplate: Story<DonationTypeControlProps> = (args) => (
-  <DonationTypeControl {...args} />
-);
-
-export const TypeControl = TypeControlTemplate.bind({});
-
-TypeControl.args = {
-  defaultValues: { activeType: 'once' }
 };
