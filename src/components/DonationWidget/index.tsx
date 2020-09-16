@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
 import { AnyEventObject } from 'xstate';
 import { useMachine } from '@xstate/react';
+import { Stripe, StripeCardElement, loadStripe } from '@stripe/stripe-js';
+import { getStripeTokenOptions, STRIPE_API_KEY } from './stripe';
 import donationMachine from './machine';
 import {
   DonationMachineContext,
@@ -14,7 +16,6 @@ import {
   DonationAddressForm
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
-import { Token } from '@stripe/stripe-js';
 
 export interface DonationWidgetProps {
   /**
@@ -24,6 +25,7 @@ export interface DonationWidgetProps {
 }
 
 const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
+  const [stripe, setStripe] = useState<Stripe | null>(null);
   const [state, send] = useMachine<DonationMachineContext, AnyEventObject>(
     donationMachine
   );
@@ -31,6 +33,21 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const { billingInformation, cardInformation } = machineContext;
   const machineState: DonationMachineStateValueMap = state.value;
 
+  /**
+   * load stripe instance to be used within the card
+   * information input and token creation
+   */
+  useEffect(() => {
+    (async function loadingStripe() {
+      const stripeInstance = await loadStripe(STRIPE_API_KEY);
+      setStripe(stripeInstance);
+    })();
+  }, []);
+
+  /**
+   * whenever the machine enter into failure
+   * status trigger an effect to retry the process
+   */
   useEffect(() => {
     if (machineState === 'failure') {
       alert(`Something went wrong ${JSON.stringify(machineContext)}`);
@@ -53,16 +70,28 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     e.preventDefault();
   };
 
-  const onSubmitPaymentInfoForm = (
+  const onSubmitPaymentInfoForm = async (
     e: React.ChangeEvent<HTMLFormElement>,
-    paymentToken: Token
+    card: StripeCardElement
   ) => {
+    if (!stripe) return;
+
+    e.persist();
+
     const formData = new FormData(e.currentTarget);
+    const options = getStripeTokenOptions(machineContext);
+    const { token, error } = await stripe.createToken(card, options);
+
+    if (error) {
+      console.error('unable to process the given payment method', error);
+      return;
+    }
+
     const data = {
       firstName: formData.get('first-name'),
       lastName: formData.get('last-name'),
       email: formData.get('email'),
-      cardNumber: paymentToken.card?.id
+      cardNumber: token?.card?.id
     };
 
     send({ type: 'NEXT', ...data });

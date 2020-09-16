@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
-  loadStripe,
   Stripe,
   StripeCardElementChangeEvent,
   StripeCardElement,
-  Token
+  loadStripe
 } from '@stripe/stripe-js';
 import * as DonationWizard from './DonationWizard';
-import { STRIPE_API_KEY, stripeCardStyles } from '../stripe';
+import { stripeCardStyles, STRIPE_API_KEY } from '../stripe';
 
 export interface Props {
   amount: number;
@@ -15,7 +14,7 @@ export interface Props {
   onEditAmount: () => void;
   onSubmit: (
     e: React.ChangeEvent<HTMLFormElement>,
-    paymentToken: Token
+    card: StripeCardElement
   ) => void;
 }
 
@@ -35,17 +34,13 @@ const DonationPaymentForm: React.FC<Props> = ({
 
   const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    e.persist();
 
-    if (!stripe || !card) {
+    if (!card) {
       console.warn('handleOnSubmit without necessary data');
       return;
     }
 
-    const result = await stripe.createToken(card);
-    if (result.token) {
-      onSubmit(e, result.token);
-    }
+    onSubmit(e, card);
   };
 
   /**
@@ -64,7 +59,7 @@ const DonationPaymentForm: React.FC<Props> = ({
    * for further usage after mounting it within the form
    */
   useEffect(() => {
-    if (!stripe || card) return;
+    if (!stripe) return;
 
     const elements = stripe.elements();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -74,7 +69,7 @@ const DonationPaymentForm: React.FC<Props> = ({
 
     stripeCard.mount('#stripe-input-element');
     setCard(stripeCard);
-  }, [card, stripe]);
+  }, [stripe]);
 
   return (
     <DonationWizard.Container>
