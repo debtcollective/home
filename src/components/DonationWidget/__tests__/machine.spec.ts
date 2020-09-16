@@ -83,7 +83,7 @@ test('goes into process donation after filling all information', () => {
     firstName: faker.name.findName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email('bot', '', 'debtcollective.org'),
-    cardNumber: faker.finance.creditCardNumber()
+    card: { id: 'stripe-element-card' }
   };
 
   const billingInformation = {

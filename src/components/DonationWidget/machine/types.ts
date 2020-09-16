@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
+import { StripeCardElement, Stripe } from '@stripe/stripe-js';
+
 export type BillingInfoEvent = {
   type: 'NEXT';
   address: string;
@@ -13,7 +15,7 @@ export type PaymentInfoEvent = {
   firstName: string;
   lastName: string;
   email: string;
-  cardNumber: string;
+  card: StripeCardElement;
 };
 
 export type AmountEvent = {
@@ -106,6 +108,6 @@ export type DonationMachineContext = {
     firstName: string;
     lastName: string;
     email: string;
-    cardNumber: string;
+    card: StripeCardElement | null;
   };
 };

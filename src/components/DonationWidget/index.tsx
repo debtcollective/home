@@ -79,19 +79,12 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     e.persist();
 
     const formData = new FormData(e.currentTarget);
-    const options = getStripeTokenOptions(machineContext);
-    const { token, error } = await stripe.createToken(card, options);
-
-    if (error) {
-      console.error('unable to process the given payment method', error);
-      return;
-    }
 
     const data = {
       firstName: formData.get('first-name'),
       lastName: formData.get('last-name'),
       email: formData.get('email'),
-      cardNumber: token?.card?.id
+      card
     };
 
     send({ type: 'NEXT', ...data });
@@ -126,6 +119,15 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
 
     send(updateDonationTypeEvent);
   };
+
+  if (!stripe) {
+    // Do not render the widget until Stripe has been loaded successfully
+    return (
+      <div id="loading" style={{ opacity: 0 }}>
+        Stripe being loaded...
+      </div>
+    );
+  }
 
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>

@@ -1,18 +1,32 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../';
 import { sendDonation } from '../service';
 import { MINIMAL_DONATION } from '../machine';
+import * as StripeJS from '@stripe/stripe-js';
 
 jest.mock('../service');
+jest.mock('../components/StripeCardInput');
+
+// Fake representation of a Stripe interface
+const stripeCard = { id: 'stripe-element-card' };
+const stripeInstance = {
+  createToken: jest.fn().mockResolvedValue({ token: 'test-token' }),
+  elements: jest.fn().mockReturnValue({
+    create: jest.fn().mockReturnValue(stripeCard)
+  })
+};
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore No need to define all the stripe properties
+jest.spyOn(StripeJS, 'loadStripe').mockResolvedValue(stripeInstance);
 
 const cardInformation = {
   firstName: faker.name.findName(),
   lastName: faker.name.lastName(),
-  email: faker.internet.email('bot', '', 'debtcollective.org'),
-  cardNumber: faker.finance.creditCardNumber()
+  email: faker.internet.email('bot', '', 'debtcollective.org')
 };
 
 const billingInformation = {
@@ -23,10 +37,14 @@ const billingInformation = {
 };
 const donationAmount = faker.random.number(100);
 
-test('send a donation request with all provided information', () => {
+test('send a donation request with all provided information', async () => {
   const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
 
   render(<DonationWidget />);
+
+  await waitFor(() =>
+    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
+  );
 
   // Give the amount to donate
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
@@ -50,13 +68,14 @@ test('send a donation request with all provided information', () => {
     cardInformation.email
   );
   userEvent.type(
-    screen.getByRole('textbox', { name: /card number/i }),
-    cardInformation.cardNumber
+    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
+    faker.finance.creditCardNumber()
   );
   userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give the billing address
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
+
   userEvent.type(
     screen.getByRole('textbox', { name: /billing address/i }),
     billingInformation.address
@@ -77,7 +96,10 @@ test('send a donation request with all provided information', () => {
 
   expect(sendDonation).toHaveBeenCalledWith({
     billingInformation,
-    cardInformation,
+    cardInformation: {
+      ...cardInformation,
+      card: stripeCard
+    },
     donation: {},
     donationType: 'once',
     donationOnceAmount: donationAmount,
@@ -86,8 +108,12 @@ test('send a donation request with all provided information', () => {
   });
 });
 
-test('allows to go back to edit amount', () => {
+test('allows to go back to edit amount', async () => {
   render(<DonationWidget />);
+
+  await waitFor(() =>
+    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
+  );
 
   const amountInput = screen.getByRole('textbox', { name: /amount/ });
   userEvent.clear(amountInput);
@@ -103,8 +129,12 @@ test('allows to go back to edit amount', () => {
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
 });
 
-test('allows to switch between donation "once" and "monthly" to update donation type', () => {
+test('allows to switch between donation "once" and "monthly" to update donation type', async () => {
   render(<DonationWidget />);
+
+  await waitFor(() =>
+    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
+  );
 
   expect(screen.getByText(/give once/i)).toBeInTheDocument();
   expect(screen.getByText(/monthly/i)).toBeInTheDocument();

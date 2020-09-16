@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Stripe,
   StripeCardElementChangeEvent,
-  StripeCardElement,
-  loadStripe
+  StripeCardElement
 } from '@stripe/stripe-js';
 import * as DonationWizard from './DonationWizard';
-import { stripeCardStyles, STRIPE_API_KEY } from '../stripe';
+import StripeCardInput from './StripeCardInput';
 
 export interface Props {
   amount: number;
@@ -26,11 +25,11 @@ const DonationPaymentForm: React.FC<Props> = ({
   onSubmit,
   stripe
 }) => {
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
+  const [isSubmitEnabled, setIsSubmitEnabled] = useState<boolean>(false);
   const [card, setCard] = useState<StripeCardElement | null>(null);
 
   const handleOnChangeStripeCardInput = (e: StripeCardElementChangeEvent) => {
-    setIsSubmitDisabled(!e.error && e.complete);
+    setIsSubmitEnabled(!e.error && e.complete);
   };
 
   const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -43,23 +42,6 @@ const DonationPaymentForm: React.FC<Props> = ({
 
     onSubmit(e, card);
   };
-
-  /**
-   * create the StripeCardElement and hold it into the state
-   * for further usage after mounting it within the form
-   */
-  useEffect(() => {
-    if (!stripe) return;
-
-    const elements = stripe.elements();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore ts doesn't accept card as a valid param
-    const stripeCard = elements.create('card', { style: stripeCardStyles });
-    stripeCard.on('change', handleOnChangeStripeCardInput);
-
-    stripeCard.mount('#stripe-input-element');
-    setCard(stripeCard);
-  }, [stripe]);
 
   return (
     <DonationWizard.Container>
@@ -91,10 +73,12 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact email"
         />
-        <DonationWizard.Input as="div" id="stripe-input-element">
-          {/* An stripe element will be inserted here */}
-        </DonationWizard.Input>
-        <DonationWizard.Button type="submit" disabled={!isSubmitDisabled}>
+        <StripeCardInput
+          stripe={stripe}
+          onMount={setCard}
+          onChange={handleOnChangeStripeCardInput}
+        />
+        <DonationWizard.Button type="submit" disabled={!isSubmitEnabled}>
           next step
         </DonationWizard.Button>
       </DonationWizard.Form>

@@ -35,7 +35,7 @@ const donationMachine = Machine<
         firstName: '',
         lastName: '',
         email: '',
-        cardNumber: ''
+        card: null
       }
     },
     initial: 'amountForm',
@@ -80,7 +80,7 @@ const donationMachine = Machine<
                 {
                   target: 'addressForm',
                   cond: 'isPaymentFormCompleted',
-                  actions: ['updateCardInformation']
+                  actions: ['updatePayeeInformation']
                 }
               ],
               PREV: '#donation.amountForm.hist',
@@ -131,12 +131,24 @@ const donationMachine = Machine<
   {
     guards: {
       isPaymentFormCompleted: (context, event) => {
-        const { firstName, lastName, email, cardNumber } = event;
-        return [firstName, lastName, email, cardNumber].every(Boolean);
+        const { firstName, lastName, email } = event;
+        const isValid = [firstName, lastName, email].every(Boolean);
+
+        if (!isValid) {
+          console.error('invalid information', 'isPaymentFormCompleted');
+        }
+
+        return isValid;
       },
       isAddressFormCompleted: (context, event) => {
         const { address, city, zipCode, country } = event;
-        return [address, city, zipCode, country].every(Boolean);
+        const isValid = [address, city, zipCode, country].every(Boolean);
+
+        if (!isValid) {
+          console.error('invalid information', 'isAddressFormCompleted');
+        }
+
+        return isValid;
       }
     },
     actions: {
@@ -158,10 +170,10 @@ const donationMachine = Machine<
           return { address, city, zipCode, country };
         }
       }),
-      updateCardInformation: assign({
+      updatePayeeInformation: assign({
         cardInformation: (context, event) => {
-          const { firstName, lastName, email, cardNumber } = event;
-          return { firstName, lastName, email, cardNumber };
+          const { firstName, lastName, email, card } = event;
+          return { firstName, lastName, email, card };
         }
       }),
       setMonthlyDonation: assign<DonationMachineContext>({
