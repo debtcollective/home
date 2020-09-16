@@ -14,6 +14,7 @@ import {
   DonationAddressForm
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
+import { Token } from '@stripe/stripe-js';
 
 export interface DonationWidgetProps {
   /**
@@ -52,13 +53,16 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     e.preventDefault();
   };
 
-  const onSubmitPaymentInfoForm = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const onSubmitPaymentInfoForm = (
+    e: React.ChangeEvent<HTMLFormElement>,
+    paymentToken: Token
+  ) => {
     const formData = new FormData(e.currentTarget);
     const data = {
       firstName: formData.get('first-name'),
       lastName: formData.get('last-name'),
       email: formData.get('email'),
-      cardNumber: formData.get('card')
+      cardNumber: paymentToken.card?.id
     };
 
     send({ type: 'NEXT', ...data });

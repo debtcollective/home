@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+import {
+  loadStripe,
+  Stripe,
+  StripeCardElementChangeEvent,
+  StripeCardElement,
+  Token
+} from '@stripe/stripe-js';
 import * as DonationWizard from './DonationWizard';
 import { STRIPE_API_KEY, stripeCardStyles } from '../stripe';
 
@@ -7,7 +13,10 @@ export interface Props {
   amount: number;
   defaultValues: { firstName: string; lastName: string; email: string };
   onEditAmount: () => void;
-  onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
+  onSubmit: (
+    e: React.ChangeEvent<HTMLFormElement>,
+    paymentToken: Token
+  ) => void;
 }
 
 const DonationPaymentForm: React.FC<Props> = ({
@@ -17,7 +26,32 @@ const DonationPaymentForm: React.FC<Props> = ({
   onSubmit
 }) => {
   const [stripe, setStripe] = useState<Stripe | null>(null);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
+  const [card, setCard] = useState<StripeCardElement | null>(null);
 
+  const handleOnChangeStripeCardInput = (e: StripeCardElementChangeEvent) => {
+    setIsSubmitDisabled(!e.error && e.complete);
+  };
+
+  const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.persist();
+
+    if (!stripe || !card) {
+      console.warn('handleOnSubmit without necessary data');
+      return;
+    }
+
+    const result = await stripe.createToken(card);
+    if (result.token) {
+      onSubmit(e, result.token);
+    }
+  };
+
+  /**
+   * load stripe instance to be used within the card
+   * information input and token creation
+   */
   useEffect(() => {
     (async function loadingStripe() {
       const stripeInstance = await loadStripe(STRIPE_API_KEY);
@@ -25,16 +59,22 @@ const DonationPaymentForm: React.FC<Props> = ({
     })();
   }, []);
 
+  /**
+   * create the StripeCardElement and hold it into the state
+   * for further usage after mounting it within the form
+   */
   useEffect(() => {
-    if (!stripe) return;
+    if (!stripe || card) return;
 
     const elements = stripe.elements();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore ts doesn't accept card as a valid param
-    const card = elements.create('card', { style: stripeCardStyles });
+    const stripeCard = elements.create('card', { style: stripeCardStyles });
+    stripeCard.on('change', handleOnChangeStripeCardInput);
 
-    card.mount('#stripe-input-element');
-  }, [stripe]);
+    stripeCard.mount('#stripe-input-element');
+    setCard(stripeCard);
+  }, [card, stripe]);
 
   return (
     <DonationWizard.Container>
@@ -44,7 +84,7 @@ const DonationPaymentForm: React.FC<Props> = ({
           (edit amount)
         </DonationWizard.Button>
       </DonationWizard.Title>
-      <DonationWizard.Form onSubmit={onSubmit}>
+      <DonationWizard.Form onSubmit={handleOnSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.firstName}
           name="first-name"
@@ -69,7 +109,9 @@ const DonationPaymentForm: React.FC<Props> = ({
         <DonationWizard.Input as="div" id="stripe-input-element">
           {/* An stripe element will be inserted here */}
         </DonationWizard.Input>
-        <DonationWizard.Button type="submit">next step</DonationWizard.Button>
+        <DonationWizard.Button type="submit" disabled={!isSubmitDisabled}>
+          next step
+        </DonationWizard.Button>
       </DonationWizard.Form>
     </DonationWizard.Container>
   );
