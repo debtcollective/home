@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  ${tw`py-2 px-3 rounded-md border border-beige-500 focus:outline-none focus:border-blue w-full`}
+  ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full`}
 
   & + & {
     ${tw`mt-4`}
@@ -52,6 +52,10 @@ export const Button = styled.button<ButtonProps>`
     variant === 'transparent'
       ? tw`font-bold`
       : tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
+
+  &:disabled {
+    ${tw`opacity-50 cursor-not-allowed`}
+  }
 `;
 
 export const Form = styled.form`
