@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 import * as DonationWizard from './DonationWizard';
+import { STRIPE_API_KEY, stripeCardStyles } from '../stripe';
 
 export interface Props {
   amount: number;
@@ -14,6 +16,26 @@ const DonationPaymentForm: React.FC<Props> = ({
   onEditAmount,
   onSubmit
 }) => {
+  const [stripe, setStripe] = useState<Stripe | null>(null);
+
+  useEffect(() => {
+    (async function loadingStripe() {
+      const stripeInstance = await loadStripe(STRIPE_API_KEY);
+      setStripe(stripeInstance);
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (!stripe) return;
+
+    const elements = stripe.elements();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore ts doesn't accept card as a valid param
+    const card = elements.create('card', { style: stripeCardStyles });
+
+    card.mount('#stripe-input-element');
+  }, [stripe]);
+
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>
@@ -44,11 +66,9 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact email"
         />
-        <DonationWizard.Input
-          title="Credit or debit card number"
-          name="card"
-          placeholder="4035 5010 0000 0008"
-        />
+        <DonationWizard.Input as="div" id="stripe-input-element">
+          {/* An stripe element will be inserted here */}
+        </DonationWizard.Input>
         <DonationWizard.Button type="submit">next step</DonationWizard.Button>
       </DonationWizard.Form>
     </DonationWizard.Container>
