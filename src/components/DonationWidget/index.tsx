@@ -13,6 +13,7 @@ import {
   DonationPaymentForm,
   DonationAddressForm
 } from './components';
+import DonationTypeControl from './components/DonationTypeControl';
 
 export interface DonationWidgetProps {
   /**
@@ -39,10 +40,15 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const onSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
     const data = new FormData(e.currentTarget);
     const value = Number(data.get('amount'));
+    const { id: formId } = e.currentTarget;
+    const updateAmountEvent = `UPDATE.AMOUNT.${formId.toUpperCase()}`;
 
-    if (!value) return;
+    if (!value || (formId !== 'once' && formId !== 'monthly')) {
+      console.error('error trying to update amount', value, formId);
+      return;
+    }
 
-    send([{ type: 'UPDATE.AMOUNT.ONCE', value }, { type: 'NEXT' }]);
+    send([{ type: updateAmountEvent, value }, { type: 'NEXT' }]);
     e.preventDefault();
   };
 
@@ -76,8 +82,24 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     send('START.ONCE');
   };
 
+  const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+    const updateDonationTypeEvent = `START.${value.toUpperCase()}`;
+
+    if (value !== 'once' && value !== 'monthly') {
+      console.error('error trying to change donation type', value);
+      return;
+    }
+
+    send(updateDonationTypeEvent);
+  };
+
   return (
     <div id={id} className="m-auto" style={{ width: '420px' }}>
+      <DonationTypeControl
+        defaultValues={{ activeType: machineContext.donationType }}
+        onChange={onChangeType}
+      />
       {machineState.amountForm === 'donateOnce' && (
         <DonationOnceForm
           defaultValues={{ amount: machineContext.donationOnceAmount }}

@@ -10,7 +10,7 @@ const DonationOnceForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>Choose an amount to give</DonationWizard.Title>
-      <DonationWizard.Form onSubmit={onSubmit}>
+      <DonationWizard.Form id="once" onSubmit={onSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.amount}
           name="amount"

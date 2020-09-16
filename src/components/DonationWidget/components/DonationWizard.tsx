@@ -15,6 +15,30 @@ export const Input = styled.input`
   }
 `;
 
+export const ToggleSelector = styled.div`
+  ${tw`mb-4 flex justify-between bg-beige-100 border border-beige-500 rounded overflow-hidden`}
+`;
+
+export const ToggleSelectorOption = styled.div`
+  ${tw`flex flex-grow justify-center`}
+
+  input[type='radio'] {
+    ${tw`appearance-none`}
+  }
+
+  input[type='radio']:checked + label {
+    ${tw`bg-primary text-white`}
+  }
+
+  input[type='radio']:focus + label {
+    ${tw`underline`}
+  }
+
+  label {
+    ${tw`block uppercase text-sm py-2 w-full text-center cursor-pointer font-bold`}
+  }
+`;
+
 interface ButtonProps
   extends DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
