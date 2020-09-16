@@ -16,15 +16,16 @@ export interface Props {
     e: React.ChangeEvent<HTMLFormElement>,
     card: StripeCardElement
   ) => void;
+  stripe: Stripe | null;
 }
 
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
   defaultValues,
   onEditAmount,
-  onSubmit
+  onSubmit,
+  stripe
 }) => {
-  const [stripe, setStripe] = useState<Stripe | null>(null);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
   const [card, setCard] = useState<StripeCardElement | null>(null);
 
@@ -42,17 +43,6 @@ const DonationPaymentForm: React.FC<Props> = ({
 
     onSubmit(e, card);
   };
-
-  /**
-   * load stripe instance to be used within the card
-   * information input and token creation
-   */
-  useEffect(() => {
-    (async function loadingStripe() {
-      const stripeInstance = await loadStripe(STRIPE_API_KEY);
-      setStripe(stripeInstance);
-    })();
-  }, []);
 
   /**
    * create the StripeCardElement and hold it into the state

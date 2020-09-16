@@ -155,6 +155,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
           }}
           onEditAmount={onEditAmount}
           onSubmit={onSubmitPaymentInfoForm}
+          stripe={stripe}
         />
       )}
       {machineState.paymentForm === 'addressForm' && (
