@@ -51,7 +51,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
    */
   useEffect(() => {
     if (machineState === 'failure') {
-      alert(`Something went wrong ${JSON.stringify(machineContext)}`);
+      console.error('Machine falls on failure status', machineContext);
       send('RETRY');
     }
   });
