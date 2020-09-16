@@ -23,7 +23,20 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
     <>
       <dc-header
         host="http://debtcollective.org"
-        links='[{"href":"http://debtcollective.org/","text":"About us"}, {"href":"https://community.debtcollective.org/","text":"Community"}, {"href":"https://teespring.com/stores/debt-collective","text":"Store"}]'
+        links={JSON.stringify([
+          {
+            href: 'http://debtcollective.org/',
+            text: 'About us'
+          },
+          {
+            href: 'https://community.debtcollective.org/',
+            text: 'Community'
+          },
+          {
+            href: 'https://teespring.com/stores/debt-collective',
+            text: 'Store'
+          }
+        ])}
       ></dc-header>
       <SEO title={title} description={description} />
       <main className="mt-16">{children}</main>
