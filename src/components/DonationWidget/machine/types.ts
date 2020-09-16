@@ -110,4 +110,10 @@ export type DonationMachineContext = {
     email: string;
     card: StripeCardElement | null;
   };
+  /**
+   * Holds a set of services to perform payments
+   */
+  paymentServices: {
+    stripe: Stripe | null;
+  };
 };

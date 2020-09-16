@@ -41,8 +41,9 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     (async function loadingStripe() {
       const stripeInstance = await loadStripe(STRIPE_API_KEY);
       setStripe(stripeInstance);
+      send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: stripeInstance });
     })();
-  }, []);
+  }, [send]);
 
   /**
    * whenever the machine enter into failure

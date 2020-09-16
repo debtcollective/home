@@ -116,6 +116,9 @@ test('goes into process donation after filling all information', () => {
     donationType: 'once',
     donationOnceAmount: MINIMAL_DONATION,
     donationMonthlyAmount: MINIMAL_DONATION,
-    error: null
+    error: null,
+    paymentServices: {
+      stripe: null
+    }
   });
 });

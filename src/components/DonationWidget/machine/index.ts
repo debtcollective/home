@@ -36,6 +36,9 @@ const donationMachine = Machine<
         lastName: '',
         email: '',
         card: null
+      },
+      paymentServices: {
+        stripe: null
       }
     },
     initial: 'amountForm',
@@ -46,6 +49,7 @@ const donationMachine = Machine<
           donateOnce: {
             entry: ['setOnceDonation'],
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: '#donation.paymentForm',
               'START.MONTHLY': 'donateMonthly',
               'UPDATE.AMOUNT.ONCE': {
@@ -57,6 +61,7 @@ const donationMachine = Machine<
           donateMonthly: {
             entry: ['setMonthlyDonation'],
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: '#donation.paymentForm',
               'START.ONCE': 'donateOnce',
               'UPDATE.AMOUNT.MONTHLY': {
@@ -76,6 +81,7 @@ const donationMachine = Machine<
         states: {
           cardForm: {
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
                   target: 'addressForm',
@@ -90,6 +96,7 @@ const donationMachine = Machine<
           },
           addressForm: {
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
                   target: '#donation.processDonation',
@@ -174,6 +181,12 @@ const donationMachine = Machine<
         cardInformation: (context, event) => {
           const { firstName, lastName, email, card } = event;
           return { firstName, lastName, email, card };
+        }
+      }),
+      updatePaymentServices: assign({
+        paymentServices: (context, event) => {
+          const { stripe } = event;
+          return { ...context.paymentServices, stripe };
         }
       }),
       setMonthlyDonation: assign<DonationMachineContext>({

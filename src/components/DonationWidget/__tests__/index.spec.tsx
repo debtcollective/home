@@ -104,7 +104,10 @@ test('send a donation request with all provided information', async () => {
     donationType: 'once',
     donationOnceAmount: donationAmount,
     donationMonthlyAmount: MINIMAL_DONATION,
-    error: null
+    error: null,
+    paymentServices: {
+      stripe: stripeInstance
+    }
   });
 });
 
