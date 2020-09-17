@@ -88,9 +88,7 @@ const DonationPaymentForm: React.FC<Props> = ({
           options={CARD_ELEMENT_OPTIONS}
           onChange={onChangeInputCardElement}
         />
-        <div className="card-errors" role="alert">
-          {error}
-        </div>
+        <DonationWizard.HelpText role="alert">{error}</DonationWizard.HelpText>
         <DonationWizard.Button type="submit" disabled={isSubmitDisabled}>
           next step
         </DonationWizard.Button>

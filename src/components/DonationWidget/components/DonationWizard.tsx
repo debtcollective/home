@@ -16,6 +16,10 @@ export const Input = styled.input`
   }
 `;
 
+export const HelpText = styled.p`
+  ${tw`text-xs mt-1 text-gray-100`}
+`;
+
 export const ToggleSelector = styled.div`
   ${tw`mb-4 flex justify-between bg-beige-100 border border-beige-500 rounded overflow-hidden`}
 `;
