@@ -29,7 +29,8 @@ export const sendDonation = async (context: DonationMachineContext) => {
       phone_number: cardInformation.phoneNumber,
       email: cardInformation.email,
       name: `${cardInformation.firstName} ${cardInformation.lastName}`,
-      stripe_token: cardInformation.token.card?.id
+      stripe_token: cardInformation.token.id,
+      stripe_card_id: cardInformation.token.card?.id
     }
   };
 
