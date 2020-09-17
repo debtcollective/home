@@ -10,7 +10,7 @@ export interface Props {
     country: string;
   };
   onEditAmount: () => void;
-  onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
+  onSubmit: (data: { [string: string]: unknown }) => void;
 }
 
 const DonationAddressForm: React.FC<Props> = ({
@@ -19,6 +19,21 @@ const DonationAddressForm: React.FC<Props> = ({
   onEditAmount,
   onSubmit
 }) => {
+  const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.persist();
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      address: formData.get('address'),
+      city: formData.get('city'),
+      zipCode: formData.get('zipCode'),
+      country: formData.get('country')
+    };
+
+    onSubmit(data);
+  };
+
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>
@@ -27,7 +42,7 @@ const DonationAddressForm: React.FC<Props> = ({
           (edit amount)
         </DonationWizard.Button>
       </DonationWizard.Title>
-      <DonationWizard.Form onSubmit={onSubmit}>
+      <DonationWizard.Form onSubmit={handleOnSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.address}
           name="address"

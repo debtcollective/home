@@ -43,10 +43,11 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     }
   });
 
-  const onSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const data = new FormData(e.currentTarget);
-    const value = Number(data.get('amount'));
-    const { id: formId } = e.currentTarget;
+  const onSubmitAmountForm = (
+    data: { [string: string]: unknown },
+    formId: string
+  ) => {
+    const { value } = data;
     const updateAmountEvent = `UPDATE.AMOUNT.${formId.toUpperCase()}`;
 
     if (!value || (formId !== 'once' && formId !== 'monthly')) {
@@ -55,7 +56,6 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     }
 
     send([{ type: updateAmountEvent, value }, { type: 'NEXT' }]);
-    e.preventDefault();
   };
 
   const onSubmitPaymentInfoForm = async (
@@ -69,17 +69,8 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     send({ type: 'NEXT', ...data });
   };
 
-  const onSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      address: formData.get('address'),
-      city: formData.get('city'),
-      zipCode: formData.get('zipCode'),
-      country: formData.get('country')
-    };
-
+  const onSubmitAddressForm = (data: { [string: string]: unknown }) => {
     send({ type: 'NEXT', ...data });
-    e.preventDefault();
   };
 
   const onEditAmount = () => {
