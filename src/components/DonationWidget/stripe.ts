@@ -29,17 +29,19 @@ export const getStripeTokenOptions = (
  * CSS-in-JS styles for the card component
  * https://stripe.com/docs/js/appendix/style
  */
-export const stripeCardStyles = {
-  base: {
-    color: '#1C1C1C',
-    fontSize: '16px',
-    lineHeight: 1.5,
-    '::placeholder': {
-      color: '#A0AEC0'
+export const CARD_ELEMENT_OPTIONS = {
+  style: {
+    base: {
+      color: '#1C1C1C',
+      fontSize: '16px',
+      lineHeight: '1.5',
+      '::placeholder': {
+        color: '#A0AEC0'
+      }
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
     }
-  },
-  invalid: {
-    color: '#fa755a',
-    iconColor: '#fa755a'
   }
 };
