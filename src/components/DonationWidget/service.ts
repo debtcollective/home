@@ -1,5 +1,7 @@
 import { DonationMachineContext } from './machine/types';
 
+const DONATION_API_URL = 'http://membership.lvh.me:5000/donate.json';
+
 export const sendDonation = async (context: DonationMachineContext) => {
   const { cardInformation, paymentServices, billingInformation } = context;
 
@@ -28,7 +30,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
     stripe_token: cardInformation.token.card?.id
   };
 
-  return fetch('path/to/stripe', {
+  return fetch(DONATION_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
