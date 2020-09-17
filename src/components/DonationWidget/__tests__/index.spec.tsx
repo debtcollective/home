@@ -28,10 +28,6 @@ test('send a donation request with all provided information', async () => {
 
   render(<DonationWidget />);
 
-  await waitFor(() =>
-    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
-  );
-
   // Give the amount to donate
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
   const amountInput = screen.getByRole('textbox', { name: /amount/ });
@@ -105,12 +101,8 @@ test('send a donation request with all provided information', async () => {
   );
 });
 
-test('allows to go back to edit amount', async () => {
+test('allows to go back to edit amount', () => {
   render(<DonationWidget />);
-
-  await waitFor(() =>
-    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
-  );
 
   const amountInput = screen.getByRole('textbox', { name: /amount/ });
   userEvent.clear(amountInput);
@@ -126,12 +118,8 @@ test('allows to go back to edit amount', async () => {
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
 });
 
-test('allows to switch between donation "once" and "monthly" to update donation type', async () => {
+test('allows to switch between donation "once" and "monthly" to update donation type', () => {
   render(<DonationWidget />);
-
-  await waitFor(() =>
-    expect(screen.queryByText(/stripe being loaded/i)).not.toBeInTheDocument()
-  );
 
   expect(screen.getByText(/give once/i)).toBeInTheDocument();
   expect(screen.getByText(/monthly/i)).toBeInTheDocument();
