@@ -5,23 +5,9 @@ import faker from 'faker';
 import DonationWidget from '../';
 import { sendDonation } from '../service';
 import { MINIMAL_DONATION } from '../machine';
-import * as StripeJS from '@stripe/stripe-js';
 
 jest.mock('../service');
 jest.mock('../components/StripeCardInput');
-
-// Fake representation of a Stripe interface
-const stripeCard = { id: 'stripe-element-card' };
-const stripeInstance = {
-  createToken: jest.fn().mockResolvedValue({ token: 'test-token' }),
-  elements: jest.fn().mockReturnValue({
-    create: jest.fn().mockReturnValue(stripeCard)
-  })
-};
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore No need to define all the stripe properties
-jest.spyOn(StripeJS, 'loadStripe').mockResolvedValue(stripeInstance);
 
 const cardInformation = {
   firstName: faker.name.findName(),
@@ -53,26 +39,6 @@ test('send a donation request with all provided information', async () => {
   userEvent.type(amountInput, `${donationAmount}`);
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
-  // Give the payment details
-  expect(screen.getByText(regexAmount)).toBeInTheDocument();
-  userEvent.type(
-    screen.getByRole('textbox', { name: /first name/i }),
-    cardInformation.firstName
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /last name/i }),
-    cardInformation.lastName
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /email/i }),
-    cardInformation.email
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
-    faker.finance.creditCardNumber()
-  );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
-
   // Give the billing address
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
 
@@ -94,21 +60,49 @@ test('send a donation request with all provided information', async () => {
   );
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
-  expect(sendDonation).toHaveBeenCalledWith({
-    billingInformation,
-    cardInformation: {
-      ...cardInformation,
-      card: stripeCard
-    },
-    donation: {},
-    donationType: 'once',
-    donationOnceAmount: donationAmount,
-    donationMonthlyAmount: MINIMAL_DONATION,
-    error: null,
-    paymentServices: {
-      stripe: stripeInstance
-    }
-  });
+  // Give the payment details
+  expect(screen.getByText(regexAmount)).toBeInTheDocument();
+  userEvent.type(
+    screen.getByRole('textbox', { name: /first name/i }),
+    cardInformation.firstName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /last name/i }),
+    cardInformation.lastName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /email/i }),
+    cardInformation.email
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
+    faker.finance.creditCardNumber()
+  );
+
+  const submitBtn = screen.getByRole('button', { name: /next/i });
+
+  expect(submitBtn).not.toBeDisabled();
+  userEvent.click(submitBtn);
+
+  await waitFor(() =>
+    expect(sendDonation).toHaveBeenCalledWith({
+      billingInformation,
+      cardInformation: {
+        ...cardInformation,
+        token: {
+          id: 'test-token'
+        }
+      },
+      donation: {},
+      donationType: 'once',
+      donationOnceAmount: donationAmount,
+      donationMonthlyAmount: MINIMAL_DONATION,
+      error: null,
+      paymentServices: {
+        stripe: expect.any(Object)
+      }
+    })
+  );
 });
 
 test('allows to go back to edit amount', async () => {

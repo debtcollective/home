@@ -83,7 +83,7 @@ test('goes into process donation after filling all information', () => {
     firstName: faker.name.findName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email('bot', '', 'debtcollective.org'),
-    card: { id: 'stripe-element-card' }
+    token: { id: 'test-token' }
   };
 
   const billingInformation = {
@@ -96,15 +96,15 @@ test('goes into process donation after filling all information', () => {
   let machineState = machine.initialState;
   // Enter to the card information form
   machineState = machine.transition(machineState, 'NEXT');
-  // Enter to the billing information form with payment info
-  machineState = machine.transition(machineState, {
-    type: 'NEXT',
-    ...cardInformation
-  });
   // Request donation to happen after NEXT with billing info
   machineState = machine.transition(machineState, {
     type: 'NEXT',
     ...billingInformation
+  });
+  // Enter to the billing information form with payment info
+  machineState = machine.transition(machineState, {
+    type: 'NEXT',
+    ...cardInformation
   });
 
   expect(machineState.value).toEqual('processDonation');

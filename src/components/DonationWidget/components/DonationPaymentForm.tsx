@@ -39,7 +39,7 @@ const DonationPaymentForm: React.FC<Props> = ({
     const formData = new FormData(e.currentTarget);
 
     if (!paymentProvider || !paymentProvider.card) {
-      console.error('Error trying to submit payment form');
+      console.error('Error trying to submit payment form', paymentProvider);
       return;
     }
 
