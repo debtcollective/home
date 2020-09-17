@@ -12,7 +12,8 @@ jest.mock('../components/StripeCardInput');
 const cardInformation = {
   firstName: faker.name.findName(),
   lastName: faker.name.lastName(),
-  email: faker.internet.email('bot', '', 'debtcollective.org')
+  email: faker.internet.email('bot', '', 'debtcollective.org'),
+  phoneNumber: faker.phone.phoneNumber()
 };
 
 const billingInformation = {
@@ -69,6 +70,10 @@ test('send a donation request with all provided information', async () => {
   userEvent.type(
     screen.getByRole('textbox', { name: /email/i }),
     cardInformation.email
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /phone/i }),
+    cardInformation.phoneNumber
   );
   userEvent.type(
     screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),

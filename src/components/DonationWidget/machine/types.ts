@@ -14,6 +14,7 @@ export type PaymentInfoEvent = {
   type: 'NEXT';
   firstName: string;
   lastName: string;
+  phoneNumber: string;
   email: string;
   token: StripeCardElement;
 };
@@ -108,6 +109,7 @@ export type DonationMachineContext = {
     firstName: string;
     lastName: string;
     email: string;
+    phoneNumber: string;
     token: Token | null;
   };
   /**

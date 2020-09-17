@@ -113,7 +113,8 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
           defaultValues={{
             email: cardInformation.email,
             firstName: cardInformation.firstName,
-            lastName: cardInformation.lastName
+            lastName: cardInformation.lastName,
+            phoneNumber: cardInformation.phoneNumber
           }}
           onEditAmount={onEditAmount}
           onSubmit={onSubmitPaymentInfoForm}

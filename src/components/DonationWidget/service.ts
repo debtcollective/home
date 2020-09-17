@@ -20,14 +20,17 @@ export const sendDonation = async (context: DonationMachineContext) => {
       : context.donationOnceAmount;
 
   const data = {
-    address_city: billingInformation.city,
-    address_country_code: billingInformation.country,
-    address_line1: billingInformation.address,
-    address_zip: billingInformation.zipCode,
-    amount,
-    email: cardInformation.email,
-    name: `${cardInformation.firstName} ${cardInformation.lastName}`,
-    stripe_token: cardInformation.token.card?.id
+    charge: {
+      address_city: billingInformation.city,
+      address_country_code: billingInformation.country,
+      address_line1: billingInformation.address,
+      address_zip: billingInformation.zipCode,
+      amount,
+      phone_number: cardInformation.phoneNumber,
+      email: cardInformation.email,
+      name: `${cardInformation.firstName} ${cardInformation.lastName}`,
+      stripe_token: cardInformation.token.card?.id
+    }
   };
 
   return fetch(DONATION_API_URL, {

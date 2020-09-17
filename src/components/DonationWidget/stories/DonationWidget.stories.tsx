@@ -104,7 +104,7 @@ export const PaymentForm = PaymentFormTemplate.bind({});
 
 PaymentForm.args = {
   amount: faker.random.number(100),
-  defaultValues: { firstName: '', lastName: '', email: '' },
+  defaultValues: { firstName: '', lastName: '', email: '', phoneNumber: '' },
   onSubmit: (data) => {
     alert('Check your console to see submitted data');
     console.log('PaymentForm submit', data);

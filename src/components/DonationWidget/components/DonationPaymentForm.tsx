@@ -8,10 +8,11 @@ import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../stripe';
+import { PaymentInfoEvent } from '../machine/types';
 
 export interface Props {
   amount: number;
-  defaultValues: { firstName: string; lastName: string; email: string };
+  defaultValues: Omit<PaymentInfoEvent, 'type', 'token'>;
   onEditAmount: () => void;
   onSubmit: (
     data: { [string: string]: unknown },
@@ -52,6 +53,7 @@ const DonationPaymentForm: React.FC<Props> = ({
       firstName: formData.get('first-name'),
       lastName: formData.get('last-name'),
       email: formData.get('email'),
+      phoneNumber: formData.get('phone-number'),
       token
     };
 
@@ -97,6 +99,13 @@ const DonationPaymentForm: React.FC<Props> = ({
           placeholder="jane.doe@debtcollective.org"
           required
           title="Contact email"
+        />
+        <DonationWizard.Input
+          defaultValue={defaultValues.phoneNumber}
+          name="phone-number"
+          placeholder="(4124)"
+          required
+          title="Contact phone number"
         />
         <Elements stripe={loadStripe(STRIPE_API_KEY)}>
           <StripeCardInput onChange={onChangeInputCardElement} />

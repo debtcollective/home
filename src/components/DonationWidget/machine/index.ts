@@ -35,6 +35,7 @@ const donationMachine = Machine<
         firstName: '',
         lastName: '',
         email: '',
+        phoneNumber: '',
         token: null
       },
       paymentServices: {
@@ -138,8 +139,10 @@ const donationMachine = Machine<
   {
     guards: {
       isPaymentFormCompleted: (context, event) => {
-        const { firstName, lastName, email } = event;
-        const isValid = [firstName, lastName, email].every(Boolean);
+        const { firstName, lastName, email, phoneNumber } = event;
+        const isValid = [firstName, lastName, email, phoneNumber].every(
+          Boolean
+        );
 
         if (!isValid) {
           console.error('invalid information', 'isPaymentFormCompleted');
@@ -179,8 +182,8 @@ const donationMachine = Machine<
       }),
       updatePayeeInformation: assign({
         cardInformation: (context, event) => {
-          const { firstName, lastName, email, token } = event;
-          return { firstName, lastName, email, token };
+          const { firstName, lastName, email, token, phoneNumber } = event;
+          return { firstName, lastName, email, token, phoneNumber };
         }
       }),
       updatePaymentServices: assign({
