@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full`}
 
+  & + #stripe-card-element,
   & + & {
     ${tw`mt-4`}
   }
@@ -61,7 +62,11 @@ export const Button = styled.button<ButtonProps>`
 export const Form = styled.form`
   ${tw`p-4`}
 
-  button[type="submit"] {
+  #stripe-card-element {
+    ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full`}
+  }
+
+  button[type='submit'] {
     ${tw`mt-4`}
   }
 `;
