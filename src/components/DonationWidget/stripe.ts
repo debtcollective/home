@@ -3,7 +3,7 @@ import { DonationMachineContext } from './machine/types';
 /**
  * Publishable key that is used in order to load Stripe
  */
-export const STRIPE_API_KEY = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
+export const STRIPE_API_KEY = process.env.GATSBY_STRIPE_PUBLIC_TOKEN;
 
 /**
  * Add extra data to the create token process to take advantage

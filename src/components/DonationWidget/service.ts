@@ -1,6 +1,6 @@
 import { DonationMachineContext } from './machine/types';
 
-const DONATION_API_URL = 'http://membership.lvh.me:5000/donate.json';
+const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 
 export const sendDonation = async (context: DonationMachineContext) => {
   const { cardInformation, paymentServices, billingInformation } = context;
