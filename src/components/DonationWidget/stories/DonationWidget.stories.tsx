@@ -17,6 +17,9 @@ import { Props as DonationMonthlyFormProps } from '../components/DonationMonthly
 import { Props as DonationOnceFormProps } from '../components/DonationOnceForm';
 import { Props as DonationPaymentFormProps } from '../components/DonationPaymentForm';
 import { Props as DonationTypeControlProps } from '../components/DonationTypeControl';
+import { Elements } from '@stripe/react-stripe-js';
+import { STRIPE_API_KEY } from '../stripe';
+import { loadStripe } from '@stripe/stripe-js';
 
 export default {
   title: 'Example/DonationWidget'
@@ -92,7 +95,9 @@ AddressForm.args = {
  * Payment form
  */
 const PaymentFormTemplate: Story<DonationPaymentFormProps> = (args) => (
-  <DonationPaymentForm {...args} />
+  <Elements stripe={loadStripe(STRIPE_API_KEY)}>
+    <DonationPaymentForm {...args} />
+  </Elements>
 );
 
 export const PaymentForm = PaymentFormTemplate.bind({});
