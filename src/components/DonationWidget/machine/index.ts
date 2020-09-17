@@ -35,7 +35,7 @@ const donationMachine = Machine<
         firstName: '',
         lastName: '',
         email: '',
-        card: null
+        token: null
       },
       paymentServices: {
         stripe: null
@@ -77,14 +77,14 @@ const donationMachine = Machine<
         }
       },
       paymentForm: {
-        initial: 'cardForm',
+        initial: 'addressForm',
         states: {
           cardForm: {
             on: {
               'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
-                  target: 'addressForm',
+                  target: '#donation.processDonation',
                   cond: 'isPaymentFormCompleted',
                   actions: ['updatePayeeInformation']
                 }
@@ -99,7 +99,7 @@ const donationMachine = Machine<
               'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
-                  target: '#donation.processDonation',
+                  target: 'cardForm',
                   cond: 'isAddressFormCompleted',
                   actions: ['updateBillingInformation']
                 }
@@ -179,8 +179,8 @@ const donationMachine = Machine<
       }),
       updatePayeeInformation: assign({
         cardInformation: (context, event) => {
-          const { firstName, lastName, email, card } = event;
-          return { firstName, lastName, email, card };
+          const { firstName, lastName, email, token } = event;
+          return { firstName, lastName, email, token };
         }
       }),
       updatePaymentServices: assign({

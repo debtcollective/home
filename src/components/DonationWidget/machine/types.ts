@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { StripeCardElement, Stripe } from '@stripe/stripe-js';
+import { StripeCardElement, Stripe, Token } from '@stripe/stripe-js';
 
 export type BillingInfoEvent = {
   type: 'NEXT';
@@ -15,7 +15,7 @@ export type PaymentInfoEvent = {
   firstName: string;
   lastName: string;
   email: string;
-  card: StripeCardElement;
+  token: StripeCardElement;
 };
 
 export type AmountEvent = {
@@ -108,7 +108,7 @@ export type DonationMachineContext = {
     firstName: string;
     lastName: string;
     email: string;
-    card: StripeCardElement | null;
+    token: Token | null;
   };
   /**
    * Holds a set of services to perform payments
