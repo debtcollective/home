@@ -1,55 +1,70 @@
 import {
-  Stripe,
-  StripeCardElement,
+  CreateTokenCardData,
+  loadStripe,
   StripeCardElementChangeEvent
 } from '@stripe/stripe-js';
-import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
-import { CARD_ELEMENT_OPTIONS } from '../stripe';
+import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
+import { STRIPE_API_KEY } from '../stripe';
 
 export interface Props {
   amount: number;
   defaultValues: { firstName: string; lastName: string; email: string };
   onEditAmount: () => void;
   onSubmit: (
-    e: React.ChangeEvent<HTMLFormElement>,
-    paymentProvider: { stripe: Stripe; card: StripeCardElement }
+    data: { [string: string]: unknown },
+    paymentProvider: DonationPaymentProvider
   ) => void;
+  tokenData: CreateTokenCardData;
 }
 
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
   defaultValues,
   onEditAmount,
-  onSubmit
+  onSubmit,
+  tokenData
 }) => {
-  const [error, setError] = useState<string | null | undefined>(null);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const elements = useElements();
-  const stripe = useStripe();
+  const [paymentProvider, setPaymentProvider] = useState<
+    DonationPaymentProvider | undefined
+  >();
 
   const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.persist();
     e.preventDefault();
 
-    if (!elements || !stripe) {
-      console.warn('Submitting without necessary data');
+    const formData = new FormData(e.currentTarget);
+
+    if (!paymentProvider || !paymentProvider.card) {
+      console.error('Error trying to submit payment form');
       return;
     }
 
-    const card = elements.getElement(CardElement);
+    const { token } = await paymentProvider.stripe.createToken(
+      paymentProvider.card,
+      tokenData
+    );
 
-    if (!card) {
-      console.error('Error trying to get card element');
-      return;
-    }
+    const data = {
+      firstName: formData.get('first-name'),
+      lastName: formData.get('last-name'),
+      email: formData.get('email'),
+      token
+    };
 
-    onSubmit(e, { stripe, card });
+    onSubmit(data, paymentProvider);
   };
 
-  const onChangeInputCardElement = (e: StripeCardElementChangeEvent) => {
-    setError(e.error?.message);
+  const onChangeInputCardElement = (
+    e: StripeCardElementChangeEvent,
+    pProvider?: DonationPaymentProvider
+  ) => {
+    if (e.complete) {
+      setPaymentProvider(pProvider);
+    }
     setIsSubmitDisabled(!e.complete);
   };
 
@@ -83,12 +98,9 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact email"
         />
-        <CardElement
-          id="stripe-card-element"
-          options={CARD_ELEMENT_OPTIONS}
-          onChange={onChangeInputCardElement}
-        />
-        <DonationWizard.HelpText role="alert">{error}</DonationWizard.HelpText>
+        <Elements stripe={loadStripe(STRIPE_API_KEY)}>
+          <StripeCardInput onChange={onChangeInputCardElement} />
+        </Elements>
         <DonationWizard.Button type="submit" disabled={isSubmitDisabled}>
           next step
         </DonationWizard.Button>

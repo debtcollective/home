@@ -105,16 +105,13 @@ export const PaymentForm = PaymentFormTemplate.bind({});
 PaymentForm.args = {
   amount: faker.random.number(100),
   defaultValues: { firstName: '', lastName: '', email: '' },
-  onSubmit: (e, card) => {
-    const formData = new FormData(e.target);
-    const data = {
-      firstName: formData.get('first-name'),
-      lastName: formData.get('last-name'),
-      email: formData.get('email')
-    };
-
+  onSubmit: (data) => {
     alert('Check your console to see submitted data');
     console.log('PaymentForm submit', data);
-    console.log('event has access to Stripe card element', card);
+  },
+  tokenData: {
+    address_country: 'US',
+    address_zip: '32829',
+    name: 'Jane Doe'
   }
 };
