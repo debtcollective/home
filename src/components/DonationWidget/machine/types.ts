@@ -75,7 +75,10 @@ export type DonationMachineContext = {
   /**
    * A key to hold the response once the donation service respond
    */
-  donation: unknown;
+  donation: {
+    message: string;
+    status: string;
+  };
   /**
    * A key to hold the errors that may be faced while progressing into the widget
    */

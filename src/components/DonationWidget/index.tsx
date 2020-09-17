@@ -16,6 +16,7 @@ import {
 import DonationTypeControl from './components/DonationTypeControl';
 import { getStripeTokenOptions } from './stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
+import { Container } from './components/DonationWizard';
 
 export interface DonationWidgetProps {
   /**
@@ -95,6 +96,9 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
       />
+      {machineState === 'success' && (
+        <Container>{machineContext.donation.message}</Container>
+      )}
       {machineState.amountForm === 'donateOnce' && (
         <DonationOnceForm
           defaultValues={{ amount: machineContext.donationOnceAmount }}
