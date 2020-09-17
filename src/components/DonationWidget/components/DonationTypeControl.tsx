@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToggleSelector, ToggleSelectorOption } from './DonationWizard';
 
-interface Props {
+export interface Props {
   defaultValues: {
     activeType: 'once' | 'monthly';
   };
@@ -13,7 +13,7 @@ const DonationTypeControl: React.FC<Props> = ({ defaultValues, onChange }) => {
     <ToggleSelector>
       <ToggleSelectorOption>
         <input
-          checked={defaultValues.activeType === 'once'}
+          defaultChecked={defaultValues.activeType === 'once'}
           id="donationOnce"
           name="donationType"
           onChange={onChange}
@@ -24,7 +24,7 @@ const DonationTypeControl: React.FC<Props> = ({ defaultValues, onChange }) => {
       </ToggleSelectorOption>
       <ToggleSelectorOption>
         <input
-          checked={defaultValues.activeType === 'monthly'}
+          defaultChecked={defaultValues.activeType === 'monthly'}
           id="donateMonthly"
           name="donationType"
           onChange={onChange}

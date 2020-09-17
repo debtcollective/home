@@ -1,7 +1,7 @@
 import React from 'react';
 import * as DonationWizard from './DonationWizard';
 
-interface Props {
+export interface Props {
   amount: number;
   defaultValues: { firstName: string; lastName: string; email: string };
   onEditAmount: () => void;
