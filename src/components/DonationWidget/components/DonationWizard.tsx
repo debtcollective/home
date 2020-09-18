@@ -59,7 +59,7 @@ interface ButtonProps
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) =>
     variant === 'transparent'
-      ? tw`font-bold`
+      ? tw`font-bold text-primary`
       : tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
 
   &:disabled {
