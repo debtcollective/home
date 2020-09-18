@@ -96,6 +96,7 @@ const DonationPaymentForm: React.FC<Props> = ({
         <DonationWizard.Input
           defaultValue={defaultValues.email}
           name="email"
+          type="email"
           placeholder="jane.doe@debtcollective.org"
           required
           title="Contact email"
