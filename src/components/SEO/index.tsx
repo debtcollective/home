@@ -5,9 +5,11 @@ import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 interface Props {
   description?: string;
   lang?: string;
+  title?: string;
 }
 
-const SEO: React.FC<Props> = ({ description, lang }) => {
+const SEO: React.FC<Props> = (props) => {
+  const { description, lang } = props;
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,7 +28,7 @@ const SEO: React.FC<Props> = ({ description, lang }) => {
     `
   );
   const metaDescription = description || site.siteMetadata.description;
-  const title = site.siteMetadata.title;
+  const title = props.title || site.siteMetadata.title;
 
   return (
     <Helmet

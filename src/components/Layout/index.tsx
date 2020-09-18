@@ -26,7 +26,12 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
         logo={logoBlack}
         logosmall={logoSmall}
         host="http://debtcollective.org"
+        donateurl="/donate"
         links={JSON.stringify([
+          {
+            href: '/debt-union',
+            text: 'Join the Union'
+          },
           {
             href: 'http://debtcollective.org/',
             text: 'About us'

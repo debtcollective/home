@@ -6,7 +6,7 @@ const Dues = () => {
     <div className="flex flex-col justify-center">
       <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
         <YouTube
-          videoId="lDX6a9pCOw8"
+          videoId="lFQYBNQBA20"
           className="w-full mb-10 lg:mb-0 h-48 lg:h-full"
         />
         <div>
