@@ -76,5 +76,5 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.div`
-  ${tw`text-lg text-center bg-white-100 py-3 px-4 border-0 border-beige-500 border-b`}
+  ${tw`text-lg text-center bg-white-100 py-3 px-4 border-0 border-beige-500 border-b font-bold uppercase text-sm`}
 `;
