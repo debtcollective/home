@@ -1,19 +1,75 @@
-import React from 'react';
+import {
+  CreateTokenCardData,
+  loadStripe,
+  StripeCardElementChangeEvent
+} from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
+import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
+import { STRIPE_API_KEY } from '../stripe';
+import { PaymentInfoEvent } from '../machine/types';
 
 export interface Props {
   amount: number;
-  defaultValues: { firstName: string; lastName: string; email: string };
+  defaultValues: Omit<PaymentInfoEvent, 'type' | 'token'>;
   onEditAmount: () => void;
-  onSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
+  onSubmit: (
+    data: { [string: string]: unknown },
+    paymentProvider: DonationPaymentProvider
+  ) => void;
+  tokenData: CreateTokenCardData;
 }
 
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
   defaultValues,
   onEditAmount,
-  onSubmit
+  onSubmit,
+  tokenData
 }) => {
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+  const [paymentProvider, setPaymentProvider] = useState<
+    DonationPaymentProvider | undefined
+  >();
+
+  const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.persist();
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    if (!paymentProvider || !paymentProvider.card) {
+      console.error('Error trying to submit payment form', paymentProvider);
+      return;
+    }
+
+    const { token } = await paymentProvider.stripe.createToken(
+      paymentProvider.card,
+      tokenData
+    );
+
+    const data = {
+      firstName: formData.get('first-name'),
+      lastName: formData.get('last-name'),
+      email: formData.get('email'),
+      phoneNumber: formData.get('phone-number'),
+      token
+    };
+
+    onSubmit(data, paymentProvider);
+  };
+
+  const onChangeInputCardElement = (
+    e: StripeCardElementChangeEvent,
+    pProvider?: DonationPaymentProvider
+  ) => {
+    if (e.complete) {
+      setPaymentProvider(pProvider);
+    }
+    setIsSubmitDisabled(!e.complete);
+  };
+
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>
@@ -22,7 +78,7 @@ const DonationPaymentForm: React.FC<Props> = ({
           (edit amount)
         </DonationWizard.Button>
       </DonationWizard.Title>
-      <DonationWizard.Form onSubmit={onSubmit}>
+      <DonationWizard.Form onSubmit={handleOnSubmit}>
         <DonationWizard.Input
           defaultValue={defaultValues.firstName}
           name="first-name"
@@ -45,11 +101,18 @@ const DonationPaymentForm: React.FC<Props> = ({
           title="Contact email"
         />
         <DonationWizard.Input
-          title="Credit or debit card number"
-          name="card"
-          placeholder="4035 5010 0000 0008"
+          defaultValue={defaultValues.phoneNumber}
+          name="phone-number"
+          placeholder="(4124)"
+          required
+          title="Contact phone number"
         />
-        <DonationWizard.Button type="submit">next step</DonationWizard.Button>
+        <Elements stripe={loadStripe(STRIPE_API_KEY)}>
+          <StripeCardInput onChange={onChangeInputCardElement} />
+        </Elements>
+        <DonationWizard.Button type="submit" disabled={isSubmitDisabled}>
+          next step
+        </DonationWizard.Button>
       </DonationWizard.Form>
     </DonationWizard.Container>
   );

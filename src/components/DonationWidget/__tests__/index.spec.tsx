@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../';
@@ -7,12 +7,13 @@ import { sendDonation } from '../service';
 import { MINIMAL_DONATION } from '../machine';
 
 jest.mock('../service');
+jest.mock('../components/StripeCardInput');
 
 const cardInformation = {
   firstName: faker.name.findName(),
   lastName: faker.name.lastName(),
   email: faker.internet.email('bot', '', 'debtcollective.org'),
-  cardNumber: faker.finance.creditCardNumber()
+  phoneNumber: faker.phone.phoneNumber()
 };
 
 const billingInformation = {
@@ -23,7 +24,7 @@ const billingInformation = {
 };
 const donationAmount = faker.random.number(100);
 
-test('send a donation request with all provided information', () => {
+test('send a donation request with all provided information', async () => {
   const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
 
   render(<DonationWidget />);
@@ -35,28 +36,9 @@ test('send a donation request with all provided information', () => {
   userEvent.type(amountInput, `${donationAmount}`);
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
-  // Give the payment details
-  expect(screen.getByText(regexAmount)).toBeInTheDocument();
-  userEvent.type(
-    screen.getByRole('textbox', { name: /first name/i }),
-    cardInformation.firstName
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /last name/i }),
-    cardInformation.lastName
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /email/i }),
-    cardInformation.email
-  );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /card number/i }),
-    cardInformation.cardNumber
-  );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
-
   // Give the billing address
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
+
   userEvent.type(
     screen.getByRole('textbox', { name: /billing address/i }),
     billingInformation.address
@@ -75,15 +57,53 @@ test('send a donation request with all provided information', () => {
   );
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
-  expect(sendDonation).toHaveBeenCalledWith({
-    billingInformation,
-    cardInformation,
-    donation: {},
-    donationType: 'once',
-    donationOnceAmount: donationAmount,
-    donationMonthlyAmount: MINIMAL_DONATION,
-    error: null
-  });
+  // Give the payment details
+  expect(screen.getByText(regexAmount)).toBeInTheDocument();
+  userEvent.type(
+    screen.getByRole('textbox', { name: /first name/i }),
+    cardInformation.firstName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /last name/i }),
+    cardInformation.lastName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /email/i }),
+    cardInformation.email
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /phone/i }),
+    cardInformation.phoneNumber
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
+    faker.finance.creditCardNumber()
+  );
+
+  const submitBtn = screen.getByRole('button', { name: /next/i });
+
+  expect(submitBtn).not.toBeDisabled();
+  userEvent.click(submitBtn);
+
+  await waitFor(() =>
+    expect(sendDonation).toHaveBeenCalledWith({
+      billingInformation,
+      cardInformation: {
+        ...cardInformation,
+        token: {
+          id: 'test-token'
+        }
+      },
+      donation: {},
+      donationType: 'once',
+      donationOnceAmount: donationAmount,
+      donationMonthlyAmount: MINIMAL_DONATION,
+      error: null,
+      paymentServices: {
+        stripe: expect.any(Object)
+      }
+    })
+  );
 });
 
 test('allows to go back to edit amount', () => {

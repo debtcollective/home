@@ -14,6 +14,9 @@ import {
   DonationAddressForm
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
+import { getStripeTokenOptions } from './stripe';
+import { DonationPaymentProvider } from './components/StripeCardInput';
+import { Container } from './components/DonationWizard';
 
 export interface DonationWidgetProps {
   /**
@@ -30,17 +33,22 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   const { billingInformation, cardInformation } = machineContext;
   const machineState: DonationMachineStateValueMap = state.value;
 
+  /**
+   * whenever the machine enter into failure
+   * status trigger an effect to retry the process
+   */
   useEffect(() => {
     if (machineState === 'failure') {
-      alert(`Something went wrong ${JSON.stringify(machineContext)}`);
+      console.error('Machine falls on failure status', machineContext);
       send('RETRY');
     }
   });
 
-  const onSubmitAmountForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const data = new FormData(e.currentTarget);
-    const value = Number(data.get('amount'));
-    const { id: formId } = e.currentTarget;
+  const onSubmitAmountForm = (
+    data: { [string: string]: unknown },
+    formId: string
+  ) => {
+    const { value } = data;
     const updateAmountEvent = `UPDATE.AMOUNT.${formId.toUpperCase()}`;
 
     if (!value || (formId !== 'once' && formId !== 'monthly')) {
@@ -49,33 +57,21 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     }
 
     send([{ type: updateAmountEvent, value }, { type: 'NEXT' }]);
-    e.preventDefault();
   };
 
-  const onSubmitPaymentInfoForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get('first-name'),
-      lastName: formData.get('last-name'),
-      email: formData.get('email'),
-      cardNumber: formData.get('card')
-    };
-
+  const onSubmitPaymentInfoForm = async (
+    data: {
+      [string: string]: unknown;
+    },
+    paymentProvider: DonationPaymentProvider
+  ) => {
+    send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: paymentProvider.stripe });
+    // TODO: adapt all data and use the machine guard to provide feedback when necessary
     send({ type: 'NEXT', ...data });
-    e.preventDefault();
   };
 
-  const onSubmitAddressForm = (e: React.ChangeEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      address: formData.get('address'),
-      city: formData.get('city'),
-      zipCode: formData.get('zipCode'),
-      country: formData.get('country')
-    };
-
+  const onSubmitAddressForm = (data: { [string: string]: unknown }) => {
     send({ type: 'NEXT', ...data });
-    e.preventDefault();
   };
 
   const onEditAmount = () => {
@@ -100,6 +96,9 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
       />
+      {machineState === 'success' && (
+        <Container>{machineContext.donation.message}</Container>
+      )}
       {machineState.amountForm === 'donateOnce' && (
         <DonationOnceForm
           defaultValues={{ amount: machineContext.donationOnceAmount }}
@@ -118,10 +117,12 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
           defaultValues={{
             email: cardInformation.email,
             firstName: cardInformation.firstName,
-            lastName: cardInformation.lastName
+            lastName: cardInformation.lastName,
+            phoneNumber: cardInformation.phoneNumber
           }}
           onEditAmount={onEditAmount}
           onSubmit={onSubmitPaymentInfoForm}
+          tokenData={getStripeTokenOptions(machineContext)}
         />
       )}
       {machineState.paymentForm === 'addressForm' && (

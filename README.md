@@ -4,6 +4,12 @@ Website for our debt collective home page.
 
 ## DEVELOPMENT
 
+Define env variables
+
+```bash
+cp env.sample .env
+```
+
 To install dependencies
 
 ```bash

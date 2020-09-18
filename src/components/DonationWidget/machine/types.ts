@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
+import { StripeCardElement, Stripe, Token } from '@stripe/stripe-js';
+
 export type BillingInfoEvent = {
   type: 'NEXT';
   address: string;
@@ -12,8 +14,9 @@ export type PaymentInfoEvent = {
   type: 'NEXT';
   firstName: string;
   lastName: string;
+  phoneNumber: string;
   email: string;
-  cardNumber: string;
+  token: StripeCardElement;
 };
 
 export type AmountEvent = {
@@ -72,7 +75,10 @@ export type DonationMachineContext = {
   /**
    * A key to hold the response once the donation service respond
    */
-  donation: unknown;
+  donation: {
+    message: string;
+    status: string;
+  };
   /**
    * A key to hold the errors that may be faced while progressing into the widget
    */
@@ -106,6 +112,13 @@ export type DonationMachineContext = {
     firstName: string;
     lastName: string;
     email: string;
-    cardNumber: string;
+    phoneNumber: string;
+    token: Token | null;
+  };
+  /**
+   * Holds a set of services to perform payments
+   */
+  paymentServices: {
+    stripe: Stripe | null;
   };
 };

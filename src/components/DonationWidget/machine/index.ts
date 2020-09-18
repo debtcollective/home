@@ -35,7 +35,11 @@ const donationMachine = Machine<
         firstName: '',
         lastName: '',
         email: '',
-        cardNumber: ''
+        phoneNumber: '',
+        token: null
+      },
+      paymentServices: {
+        stripe: null
       }
     },
     initial: 'amountForm',
@@ -46,6 +50,7 @@ const donationMachine = Machine<
           donateOnce: {
             entry: ['setOnceDonation'],
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: '#donation.paymentForm',
               'START.MONTHLY': 'donateMonthly',
               'UPDATE.AMOUNT.ONCE': {
@@ -57,6 +62,7 @@ const donationMachine = Machine<
           donateMonthly: {
             entry: ['setMonthlyDonation'],
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: '#donation.paymentForm',
               'START.ONCE': 'donateOnce',
               'UPDATE.AMOUNT.MONTHLY': {
@@ -72,15 +78,16 @@ const donationMachine = Machine<
         }
       },
       paymentForm: {
-        initial: 'cardForm',
+        initial: 'addressForm',
         states: {
           cardForm: {
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
-                  target: 'addressForm',
+                  target: '#donation.processDonation',
                   cond: 'isPaymentFormCompleted',
-                  actions: ['updateCardInformation']
+                  actions: ['updatePayeeInformation']
                 }
               ],
               PREV: '#donation.amountForm.hist',
@@ -90,9 +97,10 @@ const donationMachine = Machine<
           },
           addressForm: {
             on: {
+              'UPDATE.PAYMENT.SERVICE': { actions: ['updatePaymentServices'] },
               NEXT: [
                 {
-                  target: '#donation.processDonation',
+                  target: 'cardForm',
                   cond: 'isAddressFormCompleted',
                   actions: ['updateBillingInformation']
                 }
@@ -131,12 +139,26 @@ const donationMachine = Machine<
   {
     guards: {
       isPaymentFormCompleted: (context, event) => {
-        const { firstName, lastName, email, cardNumber } = event;
-        return [firstName, lastName, email, cardNumber].every(Boolean);
+        const { firstName, lastName, email, phoneNumber } = event;
+        const isValid = [firstName, lastName, email, phoneNumber].every(
+          Boolean
+        );
+
+        if (!isValid) {
+          console.error('invalid information', 'isPaymentFormCompleted');
+        }
+
+        return isValid;
       },
       isAddressFormCompleted: (context, event) => {
         const { address, city, zipCode, country } = event;
-        return [address, city, zipCode, country].every(Boolean);
+        const isValid = [address, city, zipCode, country].every(Boolean);
+
+        if (!isValid) {
+          console.error('invalid information', 'isAddressFormCompleted');
+        }
+
+        return isValid;
       }
     },
     actions: {
@@ -158,10 +180,16 @@ const donationMachine = Machine<
           return { address, city, zipCode, country };
         }
       }),
-      updateCardInformation: assign({
+      updatePayeeInformation: assign({
         cardInformation: (context, event) => {
-          const { firstName, lastName, email, cardNumber } = event;
-          return { firstName, lastName, email, cardNumber };
+          const { firstName, lastName, email, token, phoneNumber } = event;
+          return { firstName, lastName, email, token, phoneNumber };
+        }
+      }),
+      updatePaymentServices: assign({
+        paymentServices: (context, event) => {
+          const { stripe } = event;
+          return { ...context.paymentServices, stripe };
         }
       }),
       setMonthlyDonation: assign<DonationMachineContext>({
