@@ -3,14 +3,10 @@ import { DonationMachineContext } from './machine/types';
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 
 export const sendDonation = async (context: DonationMachineContext) => {
-  const { cardInformation, paymentServices, billingInformation } = context;
+  const { cardInformation, billingInformation } = context;
 
-  if (!paymentServices.stripe || !cardInformation.token) {
-    console.error(
-      'Unable to perform donation',
-      paymentServices,
-      cardInformation
-    );
+  if (!cardInformation.token) {
+    console.error('Unable to perform donation', cardInformation);
     throw new Error("Service not found check: 'sendDonation'");
   }
 
