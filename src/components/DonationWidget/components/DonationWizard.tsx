@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  ${tw`h-64 p-4 flex justify-center items-center`}
+  ${tw`h-64 p-4 flex flex-col justify-center items-center`}
 `;
 
 export const Input = styled.input`

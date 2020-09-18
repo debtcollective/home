@@ -18,7 +18,7 @@ export const ThankYou = ThankYouTemplate.bind({});
 
 ThankYou.args = {
   children: (
-    <p className="text-center mb-4">
+    <p className="text-center mb-4 mt-4 w-9/12">
       Your $215.00 donation has been successfully processed
     </p>
   )
