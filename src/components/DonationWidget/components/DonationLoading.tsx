@@ -1,10 +1,7 @@
 import React from 'react';
 import * as DonationWizard from './DonationWizard';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Props {}
-
-const DonationThankYou: React.FC<Props> = () => {
+const DonationThankYou = () => {
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>Hold on a bit...</DonationWizard.Title>

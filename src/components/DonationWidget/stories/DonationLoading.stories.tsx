@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { DonationLoading } from '../components';
-import { Props as DonationThankYouProps } from '../components/DonationLoading';
 
 export default {
   title: 'Example/DonationWidget'
@@ -10,9 +9,7 @@ export default {
 /**
  * Donation once form
  */
-const LoadingTemplate: Story<DonationThankYouProps> = (args) => (
-  <DonationLoading {...args} />
-);
+const LoadingTemplate: Story = (args) => <DonationLoading {...args} />;
 
 export const Loading = LoadingTemplate.bind({});
 
