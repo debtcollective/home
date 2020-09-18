@@ -3,6 +3,14 @@ import '../src/tailwind.css';
 // TODO: define a convient theme
 document.querySelector('body').style['background-color'] = '#DBF8FF';
 
+const materialIcons = document.createElement('link');
+materialIcons.setAttribute(
+  'href',
+  'https://fonts.googleapis.com/icon?family=Material+Icons'
+);
+materialIcons.setAttribute('rel', 'stylesheet');
+document.head.appendChild(materialIcons);
+
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
 global.___loader = {
