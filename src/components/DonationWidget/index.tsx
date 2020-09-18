@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-// TODO: avoid to use AnyEventObject in favor of DonationMachineEvent
-import { AnyEventObject } from 'xstate';
 import { useMachine } from '@xstate/react';
 import donationMachine from './machine';
 import {
@@ -26,7 +24,7 @@ export interface DonationWidgetProps {
 }
 
 const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
-  const [state, send] = useMachine<DonationMachineContext, AnyEventObject>(
+  const [state, send] = useMachine<DonationMachineContext, any>(
     donationMachine
   );
   const { context: machineContext } = state;
