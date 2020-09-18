@@ -40,6 +40,7 @@ const StripeCardInput: React.FC<Props> = ({ onChange }) => {
     <>
       <CardElement
         id="stripe-card-element"
+        className="form-control"
         options={CARD_ELEMENT_OPTIONS}
         onChange={handleOnChange}
       />

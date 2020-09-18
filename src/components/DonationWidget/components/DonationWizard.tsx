@@ -13,12 +13,6 @@ export const Box = styled.div`
 
 export const Input = styled.input`
   ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full`}
-
-  & + #stripe-card-element,
-  & + .form-control,
-  & + & {
-    ${tw`mt-4`}
-  }
 `;
 
 export const HelpText = styled.p`
@@ -76,6 +70,13 @@ export const Form = styled.form`
   }
 
   button[type='submit'] {
+    ${tw`mt-4`}
+  }
+
+  input + .form-control,
+  .form-control + input,
+  .form-control + .form-control,
+  input + input {
     ${tw`mt-4`}
   }
 `;
