@@ -98,7 +98,9 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
       {machineState === 'processDonation' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
-          <p className="text-center mb-4">{machineContext.donation.message}</p>
+          <p className="text-center mb-4 mt-4 w-9/12">
+            {machineContext.donation.message}
+          </p>
         </DonationThankYou>
       )}
       {machineState.amountForm === 'donateOnce' && (
