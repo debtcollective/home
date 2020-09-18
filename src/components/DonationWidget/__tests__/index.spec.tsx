@@ -3,10 +3,9 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../';
-import { sendDonation } from '../service';
+import * as HTTPService from '../service';
 import { MINIMAL_DONATION } from '../machine';
 
-jest.mock('../service');
 jest.mock('../components/StripeCardInput');
 
 const cardInformation = {
@@ -23,6 +22,21 @@ const billingInformation = {
   country: faker.address.country()
 };
 const donationAmount = faker.random.number(100);
+const donationResponse = {
+  status: 'succeeded',
+  message: `Your ${donationAmount} donation has been successfully processed`
+};
+const sendDonationSpy = jest.spyOn(HTTPService, 'sendDonation');
+
+beforeAll(() => {
+  global.fetch = jest.fn().mockResolvedValue({
+    json: jest.fn().mockResolvedValue(donationResponse)
+  });
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 test('send a donation request with all provided information', async () => {
   const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
@@ -86,7 +100,7 @@ test('send a donation request with all provided information', async () => {
   userEvent.click(submitBtn);
 
   await waitFor(() =>
-    expect(sendDonation).toHaveBeenCalledWith({
+    expect(sendDonationSpy).toHaveBeenCalledWith({
       billingInformation,
       cardInformation: {
         ...cardInformation,
@@ -104,6 +118,8 @@ test('send a donation request with all provided information', async () => {
       }
     })
   );
+
+  expect(screen.getByText(donationResponse.message)).toBeInTheDocument();
 });
 
 test('allows to go back to edit amount', () => {
