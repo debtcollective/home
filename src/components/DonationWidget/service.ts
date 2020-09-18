@@ -2,15 +2,17 @@ import { DonationMachineContext } from './machine/types';
 
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 
-export const sendDonation = async (context: DonationMachineContext) => {
-  const { cardInformation, paymentServices, billingInformation } = context;
+interface DonationResponse {
+  status: 'failed' | 'succeeded';
+  errors?: Array<string>;
+  message?: string;
+}
 
-  if (!paymentServices.stripe || !cardInformation.token) {
-    console.error(
-      'Unable to perform donation',
-      paymentServices,
-      cardInformation
-    );
+export const sendDonation = async (context: DonationMachineContext) => {
+  const { cardInformation, billingInformation } = context;
+
+  if (!cardInformation.token) {
+    console.error('Unable to perform donation', cardInformation);
     throw new Error("Service not found check: 'sendDonation'");
   }
 
@@ -34,11 +36,19 @@ export const sendDonation = async (context: DonationMachineContext) => {
     }
   };
 
-  return fetch(DONATION_API_URL, {
+  const response: DonationResponse = await fetch(DONATION_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  }).then((response) => response.json());
+  }).then((res) => res.json());
+
+  if (response.status === 'failed') {
+    // TODO: update context to use errors object
+    console.error(response.errors);
+    throw new Error('server respond with donation failure');
+  }
+
+  return response;
 };

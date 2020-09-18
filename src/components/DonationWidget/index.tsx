@@ -9,12 +9,13 @@ import {
   DonationOnceForm,
   DonationMonthlyForm,
   DonationPaymentForm,
-  DonationAddressForm
+  DonationAddressForm,
+  DonationThankYou,
+  DonationLoading
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
 import { getStripeTokenOptions } from './stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
-import { Container } from './components/DonationWizard';
 
 export interface DonationWidgetProps {
   /**
@@ -94,8 +95,13 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
       />
+      {machineState === 'processDonation' && <DonationLoading />}
       {machineState === 'success' && (
-        <Container>{machineContext.donation.message}</Container>
+        <DonationThankYou>
+          <p className="text-center mb-4 mt-4 w-9/12">
+            {machineContext.donation.message}
+          </p>
+        </DonationThankYou>
       )}
       {machineState.amountForm === 'donateOnce' && (
         <DonationOnceForm
