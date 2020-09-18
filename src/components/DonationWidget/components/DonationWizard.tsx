@@ -85,9 +85,9 @@ export const Title = styled.div`
 
 export const Spinner = styled.div`
   .sk-cube-grid {
-    width: 40px;
-    height: 40px;
-    margin: 100px auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 6.25rem auto;
   }
 
   .sk-cube-grid .sk-cube {
