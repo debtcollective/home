@@ -12,7 +12,7 @@ import { PaymentInfoEvent } from '../machine/types';
 
 export interface Props {
   amount: number;
-  defaultValues: Omit<PaymentInfoEvent, 'type', 'token'>;
+  defaultValues: Omit<PaymentInfoEvent, 'type' | 'token'>;
   onEditAmount: () => void;
   onSubmit: (
     data: { [string: string]: unknown },
