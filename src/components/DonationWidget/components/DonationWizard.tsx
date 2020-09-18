@@ -15,6 +15,7 @@ export const Input = styled.input`
   ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full`}
 
   & + #stripe-card-element,
+  & + .form-control,
   & + & {
     ${tw`mt-4`}
   }

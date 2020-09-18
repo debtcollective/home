@@ -19,7 +19,7 @@ const billingInformation = {
   address: faker.address.streetAddress(),
   city: faker.address.city(),
   zipCode: faker.address.zipCode(),
-  country: faker.address.country()
+  country: faker.address.countryCode()
 };
 const donationAmount = faker.random.number(100);
 const donationResponse = {
@@ -65,8 +65,8 @@ test('send a donation request with all provided information', async () => {
     screen.getByRole('textbox', { name: /zip code/i }),
     billingInformation.zipCode
   );
-  userEvent.type(
-    screen.getByRole('textbox', { name: /country/i }),
+  userEvent.selectOptions(
+    screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
   userEvent.click(screen.getByRole('button', { name: /donate/i }));

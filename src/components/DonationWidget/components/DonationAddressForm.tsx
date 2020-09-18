@@ -1,4 +1,5 @@
 import React from 'react';
+import DonationCountryDropdown from './DonationCountryDropdown';
 import * as DonationWizard from './DonationWizard';
 
 export interface Props {
@@ -64,12 +65,11 @@ const DonationAddressForm: React.FC<Props> = ({
           required
           title="Zip code address"
         />
-        <DonationWizard.Input
+        <DonationCountryDropdown
           defaultValue={defaultValues.country}
           name="country"
-          placeholder="Venezuela"
           required
-          title="Country address"
+          title="Country"
         />
         <DonationWizard.Button type="submit">donate</DonationWizard.Button>
       </DonationWizard.Form>
