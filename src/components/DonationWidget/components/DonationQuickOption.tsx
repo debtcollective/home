@@ -22,6 +22,15 @@ const currencyFormat = (
     .replace(/\.00/g, '');
 };
 
+const getCurrencySymbol = ({ currency } = { currency: 'USD' }): string => {
+  return new Intl.NumberFormat('en', {
+    style: 'currency',
+    currency
+  })
+    .format(0)
+    .charAt(0);
+};
+
 const DonationQuickOption: React.FC<Props> = ({
   options,
   name,
@@ -76,7 +85,7 @@ const DonationQuickOption: React.FC<Props> = ({
                       style={{ paddingLeft: '1.5rem' }}
                     />
                     <span className="absolute left-0 top-0 py-2 px-3 text-gray-500">
-                      $
+                      {getCurrencySymbol()}
                     </span>
                   </div>
                 )}
