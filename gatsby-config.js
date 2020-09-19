@@ -46,6 +46,8 @@ module.exports = {
         '@sections': path.join(__dirname, 'src/sections'),
         '@constants': path.join(__dirname, 'src/constants'),
         '@utils': path.join(__dirname, 'src/utils'),
+        '@services': path.join(__dirname, 'src/services'),
+        '@hooks': path.join(__dirname, 'src/hooks'),
         '@static': path.join(__dirname, 'static')
       }
     }
