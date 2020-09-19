@@ -50,7 +50,7 @@ const Footer = () => {
             items={[
               {
                 label: 'Debt Collective Chapters',
-                href: 'https://community.debtcollective.org/'
+                href: 'http://chapters.debtcollective.org/'
               },
               {
                 label: 'Community Forum',
@@ -104,7 +104,7 @@ const Footer = () => {
               },
               {
                 label: 'Donate',
-                href: 'https://membership.debtcollective.org/'
+                href: '/donate'
               }
               // { label: 'Debt Collective and Open Source Technology', href: '' }
             ]}

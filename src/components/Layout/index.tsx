@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import Footer from '@components/Footer';
 import SEO from '@components/SEO';
-
+import logoBlack from '@static/logo-black.png';
+import logoSmall from '@static/logo-small.png';
 interface Props {
   children: ReactNode;
   description?: string;
@@ -22,8 +23,15 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
   return (
     <>
       <dc-header
+        logo={logoBlack}
+        logosmall={logoSmall}
         host="http://debtcollective.org"
+        donateurl="/donate"
         links={JSON.stringify([
+          {
+            href: '/debt-union',
+            text: 'Join the Union'
+          },
           {
             href: 'http://debtcollective.org/',
             text: 'About us'

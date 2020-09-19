@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
 interface Props {
   description?: string;
@@ -8,14 +8,9 @@ interface Props {
   title?: string;
 }
 
-interface ISiteMetadata {
-  title?: string;
-  description?: string;
-  author?: string;
-}
-
-const SEO: React.FC<Props> = ({ description, lang, title }) => {
-  const data = useStaticQuery(
+const SEO: React.FC<Props> = (props) => {
+  const { description, lang } = props;
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -23,21 +18,24 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
             title
             description
             author
+            twitterUsername
+            facebookPage
+            image
+            url
           }
         }
       }
     `
   );
-  const { siteMetadata }: { siteMetadata: ISiteMetadata } = data.site;
-  const metaDescription = description || siteMetadata.description;
+  const metaDescription = description || site.siteMetadata.description;
+  const title = props.title || site.siteMetadata.title;
 
   return (
     <Helmet
       htmlAttributes={{
         lang
       }}
-      title={title || siteMetadata.title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
+      title={title}
       meta={[
         {
           name: 'description',
@@ -56,12 +54,20 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
           content: 'website'
         },
         {
+          property: 'og:image',
+          content: site.siteMetadata.image
+        },
+        {
+          property: 'og:url',
+          content: site.siteMetadata.url
+        },
+        {
           name: 'twitter:card',
-          content: 'summary'
+          content: 'summary_large_image'
         },
         {
           name: 'twitter:creator',
-          content: siteMetadata.author
+          content: site.siteMetadata.twitterUsername
         },
         {
           name: 'twitter:title',
@@ -70,6 +76,10 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
         {
           name: 'twitter:description',
           content: metaDescription
+        },
+        {
+          name: 'twitter:image',
+          content: site.siteMetadata.image
         }
       ]}
     >
@@ -77,6 +87,34 @@ const SEO: React.FC<Props> = ({ description, lang, title }) => {
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       ></link>
+      <html lang="en" />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href={`${withPrefix('/')}favicon/apple-touch-icon.png`}
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        href={`${withPrefix('/')}favicon/favicon-32x32.png`}
+        sizes="32x32"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        href={`${withPrefix('/')}favicon/favicon-16x16.png`}
+        sizes="16x16"
+      />
+
+      <link
+        rel="mask-icon"
+        href={`${withPrefix('/')}img/safari-pinned-tab.svg`}
+        color="#ff4400"
+      />
+      <meta name="theme-color" content="#fff" />
     </Helmet>
   );
 };

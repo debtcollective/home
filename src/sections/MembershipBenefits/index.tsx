@@ -9,19 +9,22 @@ import pathToRealChangeIcon from '@static/icons/path-to-real-change.svg';
 import knowYourRightsIcon from '@static/icons/know-your-rights.svg';
 import getActiveIcon from '@static/icons/get-active.svg';
 
-const MembershipBenefits = () => {
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
   return (
     <section
       className="min-h-section-size px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue via-white-200 to-blue lg:to-white-300"
       id="membership-benefits"
     >
       <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-11">
-        Membership Benefits
+        {title}
       </h2>
       <h3 className="text-center mb-16 font-semibold text-gray text-xl lg:text-2xl">
-        In addition to becoming part of a community of debtors and helping to
-        build the <br className="hidden lg:block" /> union, members also receive
-        access to a host of benefits:
+        {description}
       </h3>
       <BadgeSlider
         items={[
