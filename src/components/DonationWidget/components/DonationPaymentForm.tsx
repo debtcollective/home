@@ -9,6 +9,7 @@ import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../stripe';
 import { PaymentInfoEvent } from '../machine/types';
+import { DonationPhoneInput } from './';
 
 export interface Props {
   amount: number;
@@ -101,10 +102,9 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact email"
         />
-        <DonationWizard.Input
+        <DonationPhoneInput
           defaultValue={defaultValues.phoneNumber}
           name="phone-number"
-          placeholder="(4124)"
           required
           title="Contact phone number"
         />
