@@ -7,6 +7,7 @@ export interface Props {
   name: string;
   options: Array<number | 'other'>;
   defaultChecked?: number;
+  suffix?: string;
 }
 
 const currencyFormat = (
@@ -24,7 +25,8 @@ const currencyFormat = (
 const DonationQuickOption: React.FC<Props> = ({
   options,
   name,
-  defaultChecked
+  defaultChecked,
+  suffix = 'USD'
 }) => {
   const groups = Math.ceil(options.length / 3);
   const rows = Array(groups)
@@ -64,7 +66,10 @@ const DonationQuickOption: React.FC<Props> = ({
                   />
                 )}
                 <label htmlFor={`option-${option}`}>
-                  {option === 'other' ? option : currencyFormat(option)}
+                  {option === 'other' ? option : currencyFormat(option)}{' '}
+                  <span className="text-tiny text-gray-300">
+                    {option === 'other' ? '' : suffix}
+                  </span>
                 </label>
               </QuickOption>
             );
