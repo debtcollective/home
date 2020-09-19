@@ -70,7 +70,7 @@ const DonationQuickOption: React.FC<Props> = ({
                 )}
                 <label className="text-sm" htmlFor={`option-${option}`}>
                   {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
-                  <span className="text-tiny text-gray-300 normal-case">
+                  <span className="text-xss text-gray-300 normal-case">
                     {option === 'other' ? '' : suffix}
                   </span>
                 </label>
