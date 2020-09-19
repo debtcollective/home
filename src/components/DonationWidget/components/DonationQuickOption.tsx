@@ -9,6 +9,18 @@ export interface Props {
   defaultChecked?: number;
 }
 
+const currencyFormat = (
+  number: number,
+  { currency } = { currency: 'USD' }
+): string => {
+  return new Intl.NumberFormat('en', {
+    style: 'currency',
+    currency
+  })
+    .format(number)
+    .replace(/\.00/g, '');
+};
+
 const DonationQuickOption: React.FC<Props> = ({
   options,
   name,
@@ -51,7 +63,9 @@ const DonationQuickOption: React.FC<Props> = ({
                     type="text"
                   />
                 )}
-                <label htmlFor={`option-${option}`}>{option}</label>
+                <label htmlFor={`option-${option}`}>
+                  {option === 'other' ? option : currencyFormat(option)}
+                </label>
               </QuickOption>
             );
           })}
