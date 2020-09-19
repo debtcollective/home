@@ -20,7 +20,10 @@ const donationMachine = Machine<
   {
     id: 'donation',
     context: {
-      donation: {},
+      donation: {
+        message: '',
+        status: ''
+      },
       donationType: 'once',
       donationOnceAmount: MINIMAL_DONATION,
       donationMonthlyAmount: MINIMAL_DONATION,
