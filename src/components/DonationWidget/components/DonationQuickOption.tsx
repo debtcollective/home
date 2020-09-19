@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { Input } from './DonationWizard';
+import { HelpText, Input } from './DonationWizard';
 
 export interface Props {
   name: string;
@@ -28,6 +28,7 @@ const DonationQuickOption: React.FC<Props> = ({
   defaultChecked,
   suffix = 'USD'
 }) => {
+  const [error, setError] = useState(false);
   const groups = Math.ceil(options.length / 3);
   const rows = Array(groups)
     .fill('')
@@ -38,6 +39,10 @@ const DonationQuickOption: React.FC<Props> = ({
     if (e.target.id.includes('other') && inputOther.current) {
       inputOther.current.focus();
     }
+  };
+
+  const onChangeOtherValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError(Number(e.target.value) > 50000);
   };
 
   return (
@@ -56,17 +61,24 @@ const DonationQuickOption: React.FC<Props> = ({
                   onChange={handleOnChange}
                 />
                 {option === 'other' && (
-                  <Input
-                    className="text-sm"
-                    id="option-other-input"
-                    min="5"
-                    name="other"
-                    placeholder="Other"
-                    ref={inputOther}
-                    step="5"
-                    title="Other"
-                    type="number"
-                  />
+                  <div id="option-other-input" className="relative w-full">
+                    <Input
+                      className="text-sm"
+                      min="5"
+                      max="50000"
+                      name="other"
+                      placeholder="Other"
+                      onChange={onChangeOtherValue}
+                      ref={inputOther}
+                      step="5"
+                      title="Other"
+                      type="number"
+                      style={{ paddingLeft: '1.5rem' }}
+                    />
+                    <span className="absolute left-0 top-0 py-2 px-3 text-gray-500">
+                      $
+                    </span>
+                  </div>
                 )}
                 <label className="text-sm" htmlFor={`option-${option}`}>
                   {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
@@ -79,6 +91,17 @@ const DonationQuickOption: React.FC<Props> = ({
           })}
         </QuickOptionRow>
       ))}
+      {error && (
+        <HelpText>
+          We are only able to process up to $50,000 online. Want to donate more?{' '}
+          <a
+            className="text-primary underline"
+            href="mailto:admin@debtcollective.org"
+          >
+            contact us
+          </a>
+        </HelpText>
+      )}
     </QuickOptionContainer>
   );
 };
