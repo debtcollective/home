@@ -22,22 +22,17 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   };
 
   return (
-    <DonationWizard.Container>
-      <DonationWizard.Title>
-        Choose an amount to give per month
-      </DonationWizard.Title>
-      <DonationWizard.Form id="monthly" onSubmit={handleOnSubmit}>
-        <DonationQuickOption
-          options={[5, 20, 40, 60, 'other']}
-          name="amount"
-          defaultChecked={defaultValues.amount || 20}
-          suffix="USD/mo"
-        />
-        <DonationWizard.Button type="submit">
-          donate monthly
-        </DonationWizard.Button>
-      </DonationWizard.Form>
-    </DonationWizard.Container>
+    <DonationWizard.Form id="monthly" onSubmit={handleOnSubmit}>
+      <DonationQuickOption
+        options={[5, 20, 40, 60, 'other']}
+        name="amount"
+        defaultChecked={defaultValues.amount || 20}
+        suffix="USD/mo"
+      />
+      <DonationWizard.Button type="submit">
+        donate monthly
+      </DonationWizard.Button>
+    </DonationWizard.Form>
   );
 };
 

@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import donationMachine from './machine';
+import donationMachine from './machine/donationMachine';
 import {
   DonationMachineContext,
   DonationMachineStateValueMap
-} from './machine/types';
+} from './machine/donationType';
 import {
   DonationOnceForm,
   DonationMonthlyForm,
   DonationPaymentForm,
   DonationAddressForm,
   DonationThankYou,
-  DonationLoading
+  DonationLoading,
+  DonationWizard
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
 import { getStripeTokenOptions } from './utils/stripe';
@@ -110,10 +111,15 @@ const DonationWidget: React.FC<Props> = ({ id }) => {
         />
       )}
       {machineState.amountForm === 'donateMonthly' && (
-        <DonationMonthlyForm
-          defaultValues={{ amount: machineContext.donationMonthlyAmount }}
-          onSubmit={onSubmitAmountForm}
-        />
+        <DonationWizard.Container>
+          <DonationWizard.Title>
+            Choose an amount to give per month
+          </DonationWizard.Title>
+          <DonationMonthlyForm
+            defaultValues={{ amount: machineContext.donationMonthlyAmount }}
+            onSubmit={onSubmitAmountForm}
+          />
+        </DonationWizard.Container>
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm

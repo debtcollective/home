@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import donationMachine from './machine';
+import donationMachine from './machine/donationMachine';
 import {
   DonationMachineContext,
   DonationMachineStateValueMap
-} from './machine/types';
+} from './machine/donationType';
 import {
-  DonationOnceForm,
   DonationMonthlyForm,
   DonationPaymentForm,
   DonationAddressForm,
   DonationThankYou,
-  DonationLoading
+  DonationLoading,
+  DonationWizard
 } from './components';
 import { getStripeTokenOptions } from './utils/stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
@@ -50,19 +50,20 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
     }
   }, [machineContext, machineState, send]);
 
-  const onSubmitAmountForm = (
-    data: { [string: string]: unknown },
-    formId: string
-  ) => {
-    const { value } = data;
-    const updateAmountEvent = `UPDATE.AMOUNT.${formId.toUpperCase()}`;
+  const onSubmitAmountForm = (data: { [string: string]: unknown }) => {
+    const { value, zeroMode } = data;
 
-    if (!value || (formId !== 'once' && formId !== 'monthly')) {
-      console.error('error trying to update amount', value, formId);
+    if (!value && !zeroMode) {
+      console.error('error trying to update amount', value, zeroMode);
       return;
     }
 
-    send([{ type: updateAmountEvent, value }, { type: 'NEXT' }]);
+    send([{ type: 'UPDATE.AMOUNT.MONTHLY', value }, { type: 'NEXT' }]);
+  };
+
+  const onZeroDollarClick = () => {
+    const data = { value: 0, zeroMode: true };
+    onSubmitAmountForm(data);
   };
 
   const onSubmitPaymentInfoForm = async (
@@ -81,7 +82,7 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
   };
 
   const onEditAmount = () => {
-    send('START.ONCE');
+    send('START.MONTHLY');
   };
 
   return (
@@ -94,17 +95,24 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
           </p>
         </DonationThankYou>
       )}
-      {machineState.amountForm === 'donateOnce' && (
-        <DonationOnceForm
-          defaultValues={{ amount: machineContext.donationOnceAmount }}
-          onSubmit={onSubmitAmountForm}
-        />
-      )}
       {machineState.amountForm === 'donateMonthly' && (
-        <DonationMonthlyForm
-          defaultValues={{ amount: machineContext.donationMonthlyAmount }}
-          onSubmit={onSubmitAmountForm}
-        />
+        <DonationWizard.Container>
+          <DonationWizard.Title>
+            Choose an amount to give per month
+          </DonationWizard.Title>
+          <DonationMonthlyForm
+            defaultValues={{ amount: machineContext.donationMonthlyAmount }}
+            onSubmit={onSubmitAmountForm}
+          />
+          <DonationWizard.BottomMessage>
+            We offer a{' '}
+            <DonationWizard.Button variant="text" onClick={onZeroDollarClick}>
+              zero-dollar
+            </DonationWizard.Button>{' '}
+            membership option for those who can&apos;t afford to contribute
+            right now.
+          </DonationWizard.BottomMessage>
+        </DonationWizard.Container>
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm

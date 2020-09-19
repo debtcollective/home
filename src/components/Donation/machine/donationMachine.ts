@@ -1,6 +1,6 @@
 import { Machine, assign, AnyEventObject } from 'xstate';
 import { sendDonation } from '../api/service';
-import { DonationMachineSchema, DonationMachineContext } from './types';
+import { DonationMachineSchema, DonationMachineContext } from './donationType';
 
 export const MINIMAL_DONATION = 5;
 
@@ -12,7 +12,7 @@ export const MINIMAL_DONATION = 5;
  *
  * https://xstate.js.org/viz/?gist=50ecf807d3b9c049fc58cda690f90594
  */
-const donationMachine = Machine<
+const donationWidgetMachine = Machine<
   DonationMachineContext,
   DonationMachineSchema,
   AnyEventObject
@@ -208,4 +208,4 @@ const donationMachine = Machine<
   }
 );
 
-export default donationMachine;
+export default donationWidgetMachine;

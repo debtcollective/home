@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../DonationWidget';
 import * as HTTPService from '../api/service';
-import { MINIMAL_DONATION } from '../machine';
+import { MINIMAL_DONATION } from '../machine/donationMachine';
 
 jest.mock('../components/StripeCardInput');
 
@@ -109,7 +109,10 @@ test('send a donation request with all provided information', async () => {
           id: 'test-token'
         }
       },
-      donation: {},
+      donation: {
+        message: '',
+        status: ''
+      },
       donationType: 'once',
       donationOnceAmount: donationAmount,
       donationMonthlyAmount: MINIMAL_DONATION,

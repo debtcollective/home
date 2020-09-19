@@ -1,3 +1,6 @@
+import * as DonationWizard from './DonationWizard';
+export { DonationWizard };
+
 export { default as DonationOnceForm } from './DonationOnceForm';
 export { default as DonationMonthlyForm } from './DonationMonthlyForm';
 export { default as DonationPaymentForm } from './DonationPaymentForm';
