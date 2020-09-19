@@ -69,7 +69,7 @@ const DonationQuickOption: React.FC<Props> = ({
                   />
                 )}
                 <label className="text-sm" htmlFor={`option-${option}`}>
-                  {option === 'other' ? option : currencyFormat(option)}{' '}
+                  {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
                   <span className="text-tiny text-gray-300 normal-case">
                     {option === 'other' ? '' : suffix}
                   </span>
@@ -98,7 +98,6 @@ const QuickOption = styled.div`
       block
       border
       border-beige-500
-      capitalize
       cursor-pointer
       focus:border-blue
       focus:outline-none
