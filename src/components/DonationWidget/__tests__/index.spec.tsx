@@ -21,7 +21,7 @@ const billingInformation = {
   zipCode: faker.address.zipCode(),
   country: faker.address.countryCode()
 };
-const donationAmount = faker.random.number(100);
+const donationAmount = 5;
 const donationResponse = {
   status: 'succeeded',
   message: `Your ${donationAmount} donation has been successfully processed`
@@ -45,9 +45,10 @@ test('send a donation request with all provided information', async () => {
 
   // Give the amount to donate
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
-  const amountInput = screen.getByRole('textbox', { name: /amount/ });
-  userEvent.clear(amountInput);
-  userEvent.type(amountInput, `${donationAmount}`);
+  const amountInput = screen.getByRole('radio', {
+    name: `$${donationAmount} USD`
+  });
+  userEvent.click(amountInput);
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
   // Give the billing address
@@ -125,9 +126,10 @@ test('send a donation request with all provided information', async () => {
 test('allows to go back to edit amount', () => {
   render(<DonationWidget />);
 
-  const amountInput = screen.getByRole('textbox', { name: /amount/ });
-  userEvent.clear(amountInput);
-  userEvent.type(amountInput, `${donationAmount}`);
+  const amountInput = screen.getByRole('radio', {
+    name: `$${donationAmount} USD`
+  });
+  userEvent.click(amountInput);
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
   const goBackBtn = screen.getByText(/edit amount/i);

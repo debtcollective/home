@@ -1,4 +1,5 @@
 import React from 'react';
+import DonationQuickOption from './DonationQuickOption';
 import * as DonationWizard from './DonationWizard';
 
 export interface Props {
@@ -14,7 +15,10 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
     const formData = new FormData(e.currentTarget);
     const value = Number(formData.get('amount'));
 
-    onSubmit({ value }, e.currentTarget.id);
+    onSubmit(
+      { value: isNaN(value) ? formData.get('other') : value },
+      e.currentTarget.id
+    );
   };
 
   return (
@@ -23,11 +27,11 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
         Choose an amount to give per month
       </DonationWizard.Title>
       <DonationWizard.Form id="monthly" onSubmit={handleOnSubmit}>
-        <DonationWizard.Input
-          defaultValue={defaultValues.amount}
+        <DonationQuickOption
+          options={[5, 20, 40, 60, 'other']}
           name="amount"
-          required
-          title="amount to donate"
+          defaultChecked={defaultValues.amount || 20}
+          suffix="USD/mo"
         />
         <DonationWizard.Button type="submit">
           donate monthly

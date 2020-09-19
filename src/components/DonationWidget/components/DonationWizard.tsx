@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-hidden`}
-  width: 28rem;
+  width: 24rem;
 `;
 
 export const Box = styled.div`
