@@ -13,7 +13,7 @@ const FormControl = styled.div`
     ${tw`border border-beige-500 rounded-md rounded-r-none`}
   }
 
-  .selected-flag {
+  .selected-flag.selected-flag {
     ${tw`pl-3`}
   }
 `;
