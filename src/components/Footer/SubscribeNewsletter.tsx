@@ -1,51 +1,54 @@
-import React, { useState, SyntheticEvent } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import Input, { InputType } from '@components/Input';
+import { InputType } from '@components/Input';
 import Button from '@components/Button';
-import axios from 'axios';
 
 interface Props {
   className?: string;
 }
 
 const NEWSLETTER_API = process.env.NEWSLETTER_API;
+const NEWSLETTER_USER_ID = process.env.NEWSLETTER_USER_ID;
+const NEWSLETTER_FORM_ID = process.env.NEWSLETTER_FORM_ID;
 
 const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-
-  const handleSubmit = (event: SyntheticEvent) => {
-    event.preventDefault();
-
-    if (NEWSLETTER_API) axios.post(NEWSLETTER_API, { email, name });
-  };
-
   return (
     <form
       className={classnames(
         'flex flex-col items-center justify-center mb-12 lg:mb-24 lg:flex-row',
         className
       )}
-      onSubmit={handleSubmit}
+      action={NEWSLETTER_API}
+      method="POST"
     >
+      <input type="hidden" name="u" value={NEWSLETTER_USER_ID} />
+      <input type="hidden" name="id" value={NEWSLETTER_FORM_ID} />
       <h3 className="w-full text-center lg:w-1/4 text-white m-0 mb-8 font-semibold text-2xl lg:mb-0">
         Stay in the Loop
       </h3>
-      <Input
-        className="w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
-        id="email"
-        onChange={setEmail}
-        placeholder="Email"
+      <input
+        name="MERGE0"
+        id="MERGE0"
         type={InputType.email}
-        value={email}
+        className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
+        placeholder="Email"
+        required
       />
-      <Input
-        className="w-full lg:w-1/4 mb-8 lg:mr-8 lg:mb-0"
-        id="name"
-        onChange={setName}
-        placeholder="Name"
+      <input
+        name="MERGE1"
+        id="MERGE1"
         type={InputType.text}
-        value={name}
+        className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
+        placeholder="First Name"
+        required
+      />
+      <input
+        name="MERGE2"
+        id="MERGE2"
+        type={InputType.text}
+        className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
+        placeholder="Last Name"
+        required
       />
       <Button className="w-full lg:w-1/5" type="submit">
         Sign Up
