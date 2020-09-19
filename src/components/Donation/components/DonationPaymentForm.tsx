@@ -7,9 +7,9 @@ import { Elements } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
-import { STRIPE_API_KEY } from '../stripe';
+import { STRIPE_API_KEY } from '../utils/stripe';
 import { PaymentInfoEvent } from '../machine/types';
-import { DonationPhoneInput } from './';
+import { DonationPhoneInput } from '.';
 
 export interface Props {
   amount: number;

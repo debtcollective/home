@@ -6,7 +6,7 @@ import {
   StripeCardElementChangeEvent
 } from '@stripe/stripe-js';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { CARD_ELEMENT_OPTIONS } from '../stripe';
+import { CARD_ELEMENT_OPTIONS } from '../utils/stripe';
 
 export interface DonationPaymentProvider {
   stripe: Stripe;

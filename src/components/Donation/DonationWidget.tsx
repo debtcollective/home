@@ -14,17 +14,17 @@ import {
   DonationLoading
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
-import { getStripeTokenOptions } from './stripe';
+import { getStripeTokenOptions } from './utils/stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
 
-export interface DonationWidgetProps {
+export interface Props {
   /**
    * Optional identifier for the widget
    */
   id?: string;
 }
 
-const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
+const DonationWidget: React.FC<Props> = ({ id }) => {
   const [state, send] = useMachine<DonationMachineContext, any>(
     donationMachine
   );

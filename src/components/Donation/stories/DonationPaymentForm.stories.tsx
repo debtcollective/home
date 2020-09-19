@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { DonationPaymentForm } from '../components';
 import { Props as DonationPaymentFormProps } from '../components/DonationPaymentForm';
 import { Elements } from '@stripe/react-stripe-js';
-import { STRIPE_API_KEY } from '../stripe';
+import { STRIPE_API_KEY } from '../utils/stripe';
 import { loadStripe } from '@stripe/stripe-js';
 
 export default {
