@@ -57,6 +57,7 @@ const DonationQuickOption: React.FC<Props> = ({
                 />
                 {option === 'other' && (
                   <Input
+                    className="text-sm"
                     id="option-other-input"
                     min="5"
                     name="other"
@@ -67,9 +68,9 @@ const DonationQuickOption: React.FC<Props> = ({
                     type="number"
                   />
                 )}
-                <label htmlFor={`option-${option}`}>
+                <label className="text-sm" htmlFor={`option-${option}`}>
                   {option === 'other' ? option : currencyFormat(option)}{' '}
-                  <span className="text-tiny text-gray-300">
+                  <span className="text-tiny text-gray-300 normal-case">
                     {option === 'other' ? '' : suffix}
                   </span>
                 </label>
