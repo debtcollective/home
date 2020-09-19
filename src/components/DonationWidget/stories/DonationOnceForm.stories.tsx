@@ -1,5 +1,4 @@
 import React from 'react';
-import faker from 'faker';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { DonationOnceForm } from '../components';
 import { Props as DonationOnceFormProps } from '../components/DonationOnceForm';
@@ -18,5 +17,6 @@ const OnceFormTemplate: Story<DonationOnceFormProps> = (args) => (
 export const OnceForm = OnceFormTemplate.bind({});
 
 OnceForm.args = {
-  defaultValues: { amount: faker.random.number(100) }
+  defaultValues: { amount: 5 },
+  onSubmit: (data) => alert(JSON.stringify(data))
 };
