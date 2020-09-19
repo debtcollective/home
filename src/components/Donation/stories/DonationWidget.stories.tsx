@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { DonationWidget, DonationWidgetProps } from '../';
+import { DonationWidget as Widget, DonationWidgetProps } from '../';
 
 export default {
   title: 'Example/DonationWidget'
@@ -10,12 +10,12 @@ export default {
 /**
  * Showcase the widget composition with all forms
  */
-const WidgetTemplate: Story<DonationWidgetProps> = (args) => (
-  <DonationWidget {...args} />
+const DonationWidgetTemplate: Story<DonationWidgetProps> = (args) => (
+  <Widget {...args} />
 );
 
-export const Widget = WidgetTemplate.bind({});
+export const DonationWidget = DonationWidgetTemplate.bind({});
 
-Widget.args = {
+DonationWidget.args = {
   id: 'donation-widget'
 };

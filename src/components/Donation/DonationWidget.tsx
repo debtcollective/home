@@ -90,7 +90,7 @@ const DonationWidget: React.FC<Props> = ({ id }) => {
   };
 
   return (
-    <div id={id} className="m-auto" style={{ width: '420px' }}>
+    <div id={id} className="m-auto w-full" style={{ maxWidth: '24rem' }}>
       <DonationTypeControl
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
