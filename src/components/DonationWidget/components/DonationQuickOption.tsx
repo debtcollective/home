@@ -57,12 +57,14 @@ const DonationQuickOption: React.FC<Props> = ({
                 />
                 {option === 'other' && (
                   <Input
-                    ref={inputOther}
                     id="option-other-input"
+                    min="5"
                     name="other"
                     placeholder="Other"
+                    ref={inputOther}
+                    step="5"
                     title="Other"
-                    type="text"
+                    type="number"
                   />
                 )}
                 <label htmlFor={`option-${option}`}>
