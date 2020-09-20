@@ -102,7 +102,7 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
   };
 
   const onEditAmount = () => {
-    send('START.MONTHLY');
+    send('EDIT.AMOUNT');
   };
 
   return (
