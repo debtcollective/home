@@ -22,7 +22,8 @@ export const unionMachineContext = {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    chapter: ''
   },
   paymentServices: {
     stripe: undefined,
