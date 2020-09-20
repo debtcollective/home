@@ -3,21 +3,29 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import UnionWidget from '../UnionWidget';
-import * as HTTPService from '../api/service';
+import * as HTTPService from '../api/union';
 import { MINIMAL_DONATION } from '../machines/donationMachine';
 
+jest.mock('../components/StripeCardInput');
+jest.mock('../components/DonationCountryDropdown');
+
+const personalInformation = {
+  firstName: faker.name.findName(),
+  lastName: faker.name.lastName(),
+  email: faker.internet.email('bot', '', 'debtcollective.org'),
+  phoneNumber: faker.phone.phoneNumber()
+};
 const billingInformation = {
   address: faker.address.streetAddress(),
   city: faker.address.city(),
   zipCode: faker.address.zipCode(),
-  country: faker.address.countryCode()
+  country: 'VE'
 };
-const donationAmount = 5;
 const donationResponse = {
   status: 'succeeded',
-  message: `Your ${donationAmount} donation has been successfully processed`
+  message: `Your donation has been successfully processed`
 };
-const sendDonationSpy = jest.spyOn(HTTPService, 'sendDonation');
+const sendDonationSpy = jest.spyOn(HTTPService, 'sendUnionDonation');
 
 beforeAll(() => {
   global.fetch = jest.fn().mockResolvedValue({
@@ -29,14 +37,15 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-test.skip('allows to skip the payment form and complete flow', async () => {
+test('allows to skip the payment form and complete flow using zero donation selection', async () => {
+  const donationAmount = 0;
   const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
   render(<UnionWidget />);
 
   const zeroOptionBtn = screen.getByRole('button', { name: /zero/i });
   userEvent.click(zeroOptionBtn);
 
-  // Give the billing address
+  // Give address information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
 
   userEvent.type(
@@ -56,6 +65,33 @@ test.skip('allows to skip the payment form and complete flow', async () => {
     billingInformation.country
   );
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
+
+  // Give address payment information
+  expect(screen.getByText(regexAmount)).toBeInTheDocument();
+  userEvent.type(
+    screen.getByRole('textbox', { name: /first name/i }),
+    personalInformation.firstName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /last name/i }),
+    personalInformation.lastName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /email/i }),
+    personalInformation.email
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /phone/i }),
+    personalInformation.phoneNumber
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
+    faker.finance.creditCardNumber()
+  );
+
+  const submitBtn = screen.getByRole('button', { name: /next/i });
+  expect(submitBtn).not.toBeDisabled();
+  userEvent.click(submitBtn);
 
   await waitFor(() =>
     expect(sendDonationSpy).toHaveBeenCalledWith({

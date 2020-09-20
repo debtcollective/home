@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import donationMachine from './machines/donationMachine';
-import {
-  DonationMachineContext,
-  DonationMachineStateValueMap
-} from './machines/donationType';
+import unionMachine from './machines/unionMachine';
+import { DonationMachineStateValueMap } from './machines/donationType';
 import {
   DonationMonthlyForm,
   DonationPaymentForm,
@@ -13,8 +10,21 @@ import {
   DonationLoading,
   DonationWizard
 } from './components';
-import { getStripeTokenOptions } from './utils/stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
+
+const getStripeTokenOptions = ({
+  personalInformation,
+  addressInformation
+}: any) => {
+  return {
+    name: `${personalInformation.firstName} ${personalInformation.lastName}`,
+    address_line1: addressInformation.address,
+    address_city: addressInformation.city,
+    address_zip: addressInformation.zipCode,
+    address_country: addressInformation.country,
+    currency: 'USD'
+  };
+};
 
 export interface Props {
   /**
@@ -24,11 +34,9 @@ export interface Props {
 }
 
 const UnionWidget: React.FC<Props> = ({ id }) => {
-  const [state, send] = useMachine<DonationMachineContext, any>(
-    donationMachine
-  );
+  const [state, send] = useMachine(unionMachine);
   const { context: machineContext } = state;
-  const { billingInformation, cardInformation } = machineContext;
+  const { addressInformation, personalInformation } = machineContext;
   const machineState: DonationMachineStateValueMap = state.value;
 
   useEffect(() => {
@@ -58,7 +66,7 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
       return;
     }
 
-    send([{ type: 'UPDATE.AMOUNT.MONTHLY', value }, { type: 'NEXT' }]);
+    send({ type: 'NEXT', data });
   };
 
   const onZeroDollarClick = () => {
@@ -66,19 +74,31 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
     onSubmitAmountForm(data);
   };
 
-  const onSubmitPaymentInfoForm = async (
-    data: {
+  const onSubmitPersonalInfoForm = async (
+    personalInformation: {
       [string: string]: unknown;
     },
     paymentProvider: DonationPaymentProvider
   ) => {
-    send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: paymentProvider.stripe });
-    // TODO: adapt all data and use the machine guard to provide feedback when necessary
-    send({ type: 'NEXT', ...data });
+    send([
+      {
+        type: 'NEXT',
+        data: {
+          ...personalInformation,
+          ...paymentProvider
+        }
+      }
+    ]);
   };
 
   const onSubmitAddressForm = (data: { [string: string]: unknown }) => {
-    send({ type: 'NEXT', ...data });
+    send({
+      type: 'NEXT',
+      data: {
+        ...data,
+        street: data.address
+      }
+    });
   };
 
   const onEditAmount = () => {
@@ -91,7 +111,7 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
       {machineState === 'success' && (
         <DonationThankYou>
           <p className="text-center mb-4 mt-4 w-9/12">
-            {machineContext.donation.message}
+            {machineContext.api.donation?.message}
           </p>
         </DonationThankYou>
       )}
@@ -114,28 +134,29 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
           </DonationWizard.BottomMessage>
         </DonationWizard.Container>
       )}
-      {machineState.paymentForm === 'cardForm' && (
+      {machineState.generalInformationForm === 'personalInformationForm' && (
         <DonationPaymentForm
-          amount={machineContext.donationOnceAmount}
+          amount={machineContext.donationMonthlyAmount}
           defaultValues={{
-            email: cardInformation.email,
-            firstName: cardInformation.firstName,
-            lastName: cardInformation.lastName,
-            phoneNumber: cardInformation.phoneNumber
+            email: personalInformation.email,
+            firstName: personalInformation.firstName,
+            lastName: personalInformation.lastName,
+            phoneNumber: personalInformation.phoneNumber
           }}
+          hasChapterSelection
           onEditAmount={onEditAmount}
-          onSubmit={onSubmitPaymentInfoForm}
+          onSubmit={onSubmitPersonalInfoForm}
           tokenData={getStripeTokenOptions(machineContext)}
         />
       )}
-      {machineState.paymentForm === 'addressForm' && (
+      {machineState.generalInformationForm === 'addressInformationForm' && (
         <DonationAddressForm
-          amount={machineContext.donationOnceAmount}
+          amount={machineContext.donationMonthlyAmount}
           defaultValues={{
-            address: billingInformation.address,
-            city: billingInformation.city,
-            zipCode: billingInformation.zipCode,
-            country: billingInformation.country
+            address: addressInformation.street,
+            city: addressInformation.city,
+            zipCode: addressInformation.zipCode,
+            country: addressInformation.country
           }}
           onEditAmount={onEditAmount}
           onSubmit={onSubmitAddressForm}

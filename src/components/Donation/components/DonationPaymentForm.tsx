@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../utils/stripe';
-import { DonationPhoneInput } from '.';
+import { DonationDropdown, DonationPhoneInput } from '.';
+import chapters from '../utils/chapters';
 
 export interface Props {
   amount: number;
@@ -18,6 +19,7 @@ export interface Props {
     phoneNumber: string;
     email: string;
   };
+  hasChapterSelection?: boolean;
   onEditAmount: () => void;
   onSubmit: (
     data: { [string: string]: unknown },
@@ -29,6 +31,7 @@ export interface Props {
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
   defaultValues,
+  hasChapterSelection,
   onEditAmount,
   onSubmit,
   tokenData
@@ -59,6 +62,7 @@ const DonationPaymentForm: React.FC<Props> = ({
       lastName: formData.get('last-name'),
       email: formData.get('email'),
       phoneNumber: formData.get('phone-number'),
+      chapter: formData.get('chapter'),
       token
     };
 
@@ -112,6 +116,20 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact phone number"
         />
+        {hasChapterSelection && (
+          <DonationDropdown
+            id="chapter-dropdown"
+            name="chapter"
+            title="Select your related chapter"
+            defaultValue="blank"
+          >
+            {chapters.map((chapter) => (
+              <option key={chapter.value} value={chapter.value}>
+                {chapter.label}
+              </option>
+            ))}
+          </DonationDropdown>
+        )}
         <Elements stripe={loadStripe(STRIPE_API_KEY)}>
           <StripeCardInput onChange={onChangeInputCardElement} />
         </Elements>

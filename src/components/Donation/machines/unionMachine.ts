@@ -32,8 +32,15 @@ export const unionMachineContext = {
 
 export type UnionMachineContext = Omit<
   typeof unionMachineContext,
-  'paymentServices' | 'paymentAuthorizations'
+  'paymentServices' | 'paymentAuthorizations' | 'api'
 > & {
+  api: {
+    donation?: {
+      status: 'failed' | 'succeeded';
+      message?: string;
+      errors?: Array<string>;
+    };
+  };
   paymentServices: { stripe?: Stripe; stripeToken?: Token };
 };
 
@@ -262,8 +269,7 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
             target: 'failure',
             actions: assign<UnionMachineContext, any>({
               api: (context, event) => ({
-                donation: undefined,
-                error: event.data
+                donation: event.data.errors
               })
             })
           }
