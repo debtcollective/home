@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../DonationWidget';
-import * as HTTPService from '../api/service';
+import * as HTTPService from '../api/donation';
 import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 jest.mock('../components/StripeCardInput');

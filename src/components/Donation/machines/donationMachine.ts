@@ -1,5 +1,5 @@
 import { Machine, assign, AnyEventObject } from 'xstate';
-import { sendDonation } from '../api/service';
+import { sendDonation } from '../api/donation';
 import { DonationMachineSchema, DonationMachineContext } from './donationType';
 
 export const MINIMAL_DONATION = 5;
