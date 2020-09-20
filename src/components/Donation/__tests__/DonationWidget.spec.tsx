@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import DonationWidget from '../DonationWidget';
 import * as HTTPService from '../api/service';
-import { MINIMAL_DONATION } from '../machine/donationMachine';
+import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 jest.mock('../components/StripeCardInput');
 

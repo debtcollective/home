@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../utils/stripe';
-import { PaymentInfoEvent } from '../machine/types';
+import { PaymentInfoEvent } from '../machines/types';
 import { DonationPhoneInput } from '.';
 
 export interface Props {

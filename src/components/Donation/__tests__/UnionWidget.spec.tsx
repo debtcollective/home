@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import UnionWidget from '../UnionWidget';
 import * as HTTPService from '../api/service';
-import { MINIMAL_DONATION } from '../machine/donationMachine';
+import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 const billingInformation = {
   address: faker.address.streetAddress(),

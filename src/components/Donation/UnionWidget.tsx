@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import donationMachine from './machine/donationMachine';
+import donationMachine from './machines/donationMachine';
 import {
   DonationMachineContext,
   DonationMachineStateValueMap
-} from './machine/donationType';
+} from './machines/donationType';
 import {
   DonationMonthlyForm,
   DonationPaymentForm,
