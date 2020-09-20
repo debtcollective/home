@@ -63,8 +63,13 @@ const DonationWidget: React.FC<Props> = ({ id }) => {
     data: {
       [string: string]: unknown;
     },
-    paymentProvider: DonationPaymentProvider
+    paymentProvider?: DonationPaymentProvider
   ) => {
+    if (!paymentProvider) {
+      console.error('no payment provider', 'onSubmitPaymentInfoForm');
+      return;
+    }
+
     send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: paymentProvider.stripe });
     // TODO: adapt all data and use the machine guard to provide feedback when necessary
     send({ type: 'NEXT', ...data });

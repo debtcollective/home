@@ -23,7 +23,7 @@ export interface Props {
   onEditAmount: () => void;
   onSubmit: (
     data: { [string: string]: unknown },
-    paymentProvider: DonationPaymentProvider
+    paymentProvider?: DonationPaymentProvider
   ) => void;
   tokenData: CreateTokenCardData;
 }
@@ -46,16 +46,20 @@ const DonationPaymentForm: React.FC<Props> = ({
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+    let token;
 
-    if (!paymentProvider || !paymentProvider.card) {
-      console.error('Error trying to submit payment form', paymentProvider);
-      return;
+    if (amount !== 0) {
+      if (!paymentProvider || !paymentProvider.card) {
+        console.error('Error trying to submit payment form', paymentProvider);
+        return;
+      }
+      const { token: stripeToken } = await paymentProvider.stripe.createToken(
+        paymentProvider.card,
+        tokenData
+      );
+
+      token = stripeToken;
     }
-
-    const { token } = await paymentProvider.stripe.createToken(
-      paymentProvider.card,
-      tokenData
-    );
 
     const data = {
       firstName: formData.get('first-name'),
@@ -130,10 +134,15 @@ const DonationPaymentForm: React.FC<Props> = ({
             ))}
           </DonationDropdown>
         )}
-        <Elements stripe={loadStripe(STRIPE_API_KEY)}>
-          <StripeCardInput onChange={onChangeInputCardElement} />
-        </Elements>
-        <DonationWizard.Button type="submit" disabled={isSubmitDisabled}>
+        {amount !== 0 ? (
+          <Elements stripe={loadStripe(STRIPE_API_KEY)}>
+            <StripeCardInput onChange={onChangeInputCardElement} />
+          </Elements>
+        ) : null}
+        <DonationWizard.Button
+          type="submit"
+          disabled={isSubmitDisabled && amount !== 0}
+        >
           next step
         </DonationWizard.Button>
       </DonationWizard.Form>

@@ -78,7 +78,7 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
     personalInformation: {
       [string: string]: unknown;
     },
-    paymentProvider: DonationPaymentProvider
+    paymentProvider?: DonationPaymentProvider
   ) => {
     send([
       {
