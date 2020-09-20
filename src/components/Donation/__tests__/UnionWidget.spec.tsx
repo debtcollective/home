@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
 import UnionWidget from '../UnionWidget';
 import * as HTTPService from '../api/union';
-import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 jest.mock('../components/StripeCardInput');
 jest.mock('../components/DonationCountryDropdown');
@@ -15,15 +14,15 @@ const personalInformation = {
   email: faker.internet.email('bot', '', 'debtcollective.org'),
   phoneNumber: faker.phone.phoneNumber()
 };
-const billingInformation = {
-  address: faker.address.streetAddress(),
+const addressInformation = {
+  street: faker.address.streetAddress(),
   city: faker.address.city(),
   zipCode: faker.address.zipCode(),
   country: 'VE'
 };
 const donationResponse = {
   status: 'succeeded',
-  message: `Your donation has been successfully processed`
+  message: 'Your donation has been successfully processed'
 };
 const sendDonationSpy = jest.spyOn(HTTPService, 'sendUnionDonation');
 
@@ -50,23 +49,23 @@ test('allows to skip the payment form and complete flow using zero donation sele
 
   userEvent.type(
     screen.getByRole('textbox', { name: /billing address/i }),
-    billingInformation.address
+    addressInformation.street
   );
   userEvent.type(
     screen.getByRole('textbox', { name: /city/i }),
-    billingInformation.city
+    addressInformation.city
   );
   userEvent.type(
     screen.getByRole('textbox', { name: /zip code/i }),
-    billingInformation.zipCode
+    addressInformation.zipCode
   );
   userEvent.selectOptions(
     screen.getByRole('combobox', { name: /country/i }),
-    billingInformation.country
+    addressInformation.country
   );
   userEvent.click(screen.getByRole('button', { name: /donate/i }));
 
-  // Give address payment information
+  // Give personal information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
   userEvent.type(
     screen.getByRole('textbox', { name: /first name/i }),
@@ -84,6 +83,10 @@ test('allows to skip the payment form and complete flow using zero donation sele
     screen.getByRole('textbox', { name: /phone/i }),
     personalInformation.phoneNumber
   );
+  userEvent.selectOptions(
+    screen.getByRole('combobox', { name: /chapter/i }),
+    'massachusetts'
+  );
   userEvent.type(
     screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
     faker.finance.creditCardNumber()
@@ -93,19 +96,24 @@ test('allows to skip the payment form and complete flow using zero donation sele
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
 
-  await waitFor(() =>
-    expect(sendDonationSpy).toHaveBeenCalledWith({
-      billingInformation,
-      donation: {},
-      donationType: 'once',
-      donationOnceAmount: MINIMAL_DONATION,
-      donationMonthlyAmount: donationAmount,
-      error: null,
-      paymentServices: {
-        stripe: null
-      }
-    })
-  );
+  expect(await screen.findByText(donationResponse.message)).toBeInTheDocument();
 
-  expect(screen.getByText(donationResponse.message)).toBeInTheDocument();
+  expect(sendDonationSpy).toHaveBeenCalledWith({
+    addressInformation,
+    personalInformation: {
+      ...personalInformation,
+      chapter: 'massachusetts'
+    },
+    api: {
+      // TODO: check on integration time seems to be something wrong
+      donation: undefined,
+      error: undefined
+    },
+    donationType: 'month',
+    donationMonthlyAmount: donationAmount,
+    paymentServices: {
+      stripe: expect.any(Object),
+      stripeToken: undefined
+    }
+  });
 });
