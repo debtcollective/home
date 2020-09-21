@@ -72,7 +72,7 @@ const DonationQuickOption: React.FC<Props> = ({
                 {option === 'other' && (
                   <div id="option-other-input" className="relative w-full">
                     <Input
-                      className="text-sm"
+                      className="text-sm h-full"
                       min="5"
                       max="50000"
                       name="other"
@@ -84,14 +84,17 @@ const DonationQuickOption: React.FC<Props> = ({
                       type="number"
                       style={{ paddingLeft: '1.5rem' }}
                     />
-                    <span className="absolute left-0 top-0 py-2 px-3 text-gray-500">
+                    <span className="absolute left-0 top-0 p-0 px-3 text-gray-500 flex h-full items-center">
                       {getCurrencySymbol()}
                     </span>
                   </div>
                 )}
-                <label className="text-sm" htmlFor={`option-${option}`}>
+                <label
+                  className={`text-sm label-${option}`}
+                  htmlFor={`option-${option}`}
+                >
                   {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
-                  <span className="text-xss text-gray-300 normal-case">
+                  <span className="text-xss text-gray-300 normal-case block sm:inline-block">
                     {option === 'other' ? '' : suffix}
                   </span>
                 </label>
@@ -118,11 +121,11 @@ const DonationQuickOption: React.FC<Props> = ({
 export default DonationQuickOption;
 
 const QuickOptionRow = styled.div`
-  ${tw`flex flex-wrap justify-between -ml-2 mt-2`}
+  ${tw`flex flex-wrap justify-between -ml-1 mt-1 sm:-ml-2 sm:mt-2`}
 `;
 
 const QuickOption = styled.div`
-  ${tw`flex w-1/3 last:flex-1 ml-2`}
+  ${tw`flex w-1/3 last:flex-1 ml-1 sm:ml-2`}
 
   label {
     ${tw`
@@ -138,6 +141,10 @@ const QuickOption = styled.div`
       text-center
       w-full
     `}
+  }
+
+  .label-other {
+    ${tw`flex items-center justify-center`}
   }
 
   input {
