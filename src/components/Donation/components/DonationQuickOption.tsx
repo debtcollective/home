@@ -62,6 +62,7 @@ const DonationQuickOption: React.FC<Props> = ({
             return (
               <QuickOption key={`key-${option}`}>
                 <input
+                  className="h-full w-full absolute"
                   defaultChecked={option === defaultChecked}
                   id={`option-${option}`}
                   name={name}
@@ -125,7 +126,7 @@ const QuickOptionRow = styled.div`
 `;
 
 const QuickOption = styled.div`
-  ${tw`flex w-1/3 last:flex-1 ml-1 sm:ml-2`}
+  ${tw`flex w-1/3 last:flex-1 ml-1 sm:ml-2 relative`}
 
   label {
     ${tw`
