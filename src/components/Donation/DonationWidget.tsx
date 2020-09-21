@@ -23,9 +23,13 @@ export interface Props {
    * Optional identifier for the widget
    */
   id?: string;
+  /**
+   * Optional set of classes
+   */
+  className?: string;
 }
 
-const DonationWidget: React.FC<Props> = ({ id }) => {
+const DonationWidget: React.FC<Props> = ({ id, className }) => {
   const [state, send] = useMachine<DonationMachineContext, any>(
     donationMachine
   );
@@ -96,7 +100,11 @@ const DonationWidget: React.FC<Props> = ({ id }) => {
   };
 
   return (
-    <div id={id} className="m-auto w-full" style={{ maxWidth: '24rem' }}>
+    <div
+      id={id}
+      className={`m-auto w-full ${className}`}
+      style={{ maxWidth: '24rem' }}
+    >
       <DonationTypeControl
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
