@@ -1,4 +1,4 @@
-import donationMachine, { MINIMAL_DONATION } from '../machine';
+import donationMachine, { MINIMAL_DONATION } from '../donationMachine';
 import faker from 'faker';
 
 // Convenient alias for better suite reading
@@ -113,7 +113,10 @@ test('goes into process donation after filling all information', () => {
   expect(machineState.context).toEqual({
     billingInformation,
     cardInformation,
-    donation: {},
+    donation: {
+      message: '',
+      status: ''
+    },
     donationType: 'once',
     donationOnceAmount: MINIMAL_DONATION,
     donationMonthlyAmount: MINIMAL_DONATION,

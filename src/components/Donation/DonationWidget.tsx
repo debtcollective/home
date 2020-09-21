@@ -1,30 +1,31 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import donationMachine from './machine';
+import donationMachine from './machines/donationMachine';
 import {
   DonationMachineContext,
   DonationMachineStateValueMap
-} from './machine/types';
+} from './machines/donationType';
 import {
   DonationOnceForm,
   DonationMonthlyForm,
   DonationPaymentForm,
   DonationAddressForm,
   DonationThankYou,
-  DonationLoading
+  DonationLoading,
+  DonationWizard
 } from './components';
 import DonationTypeControl from './components/DonationTypeControl';
-import { getStripeTokenOptions } from './stripe';
+import { getStripeTokenOptions } from './utils/stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
 
-export interface DonationWidgetProps {
+export interface Props {
   /**
    * Optional identifier for the widget
    */
   id?: string;
 }
 
-const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
+const DonationWidget: React.FC<Props> = ({ id }) => {
   const [state, send] = useMachine<DonationMachineContext, any>(
     donationMachine
   );
@@ -62,8 +63,13 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
     data: {
       [string: string]: unknown;
     },
-    paymentProvider: DonationPaymentProvider
+    paymentProvider?: DonationPaymentProvider
   ) => {
+    if (!paymentProvider) {
+      console.error('no payment provider', 'onSubmitPaymentInfoForm');
+      return;
+    }
+
     send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: paymentProvider.stripe });
     // TODO: adapt all data and use the machine guard to provide feedback when necessary
     send({ type: 'NEXT', ...data });
@@ -90,7 +96,7 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
   };
 
   return (
-    <div id={id} className="m-auto" style={{ width: '420px' }}>
+    <div id={id} className="m-auto w-full" style={{ maxWidth: '24rem' }}>
       <DonationTypeControl
         defaultValues={{ activeType: machineContext.donationType }}
         onChange={onChangeType}
@@ -110,10 +116,15 @@ const DonationWidget: React.FC<DonationWidgetProps> = ({ id }) => {
         />
       )}
       {machineState.amountForm === 'donateMonthly' && (
-        <DonationMonthlyForm
-          defaultValues={{ amount: machineContext.donationMonthlyAmount }}
-          onSubmit={onSubmitAmountForm}
-        />
+        <DonationWizard.Container>
+          <DonationWizard.Title>
+            Choose an amount to give per month
+          </DonationWizard.Title>
+          <DonationMonthlyForm
+            defaultValues={{ amount: machineContext.donationMonthlyAmount }}
+            onSubmit={onSubmitAmountForm}
+          />
+        </DonationWizard.Container>
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm

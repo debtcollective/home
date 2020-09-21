@@ -3,8 +3,11 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-hidden`}
-  width: 24rem;
+  ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-hidden w-full`}
+`;
+
+export const BottomMessage = styled.div`
+  ${tw`p-4 border-dashed border-0 border-t border-beige-500 text-xs text-center`}
 `;
 
 export const Box = styled.div`
@@ -48,14 +51,20 @@ interface ButtonProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  variant?: 'transparent' | 'default';
+  variant?: 'transparent' | 'default' | 'text';
 }
 
 export const Button = styled.button<ButtonProps>`
-  ${({ variant }) =>
-    variant === 'transparent'
-      ? tw`font-bold text-primary`
-      : tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`}
+  ${({ variant }) => {
+    switch (variant) {
+      case 'transparent':
+        return tw`font-bold text-primary`;
+      case 'text':
+        return tw`font-normal underline`;
+      default:
+        return tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`;
+    }
+  }}
 
   &:disabled {
     ${tw`opacity-50 cursor-not-allowed`}

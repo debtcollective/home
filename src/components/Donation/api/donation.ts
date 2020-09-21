@@ -1,4 +1,4 @@
-import { DonationMachineContext } from './machine/types';
+import { DonationMachineContext } from '../machines/donationType';
 
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 

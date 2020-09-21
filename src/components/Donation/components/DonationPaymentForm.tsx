@@ -7,17 +7,23 @@ import { Elements } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
-import { STRIPE_API_KEY } from '../stripe';
-import { PaymentInfoEvent } from '../machine/types';
-import { DonationPhoneInput } from './';
+import { STRIPE_API_KEY } from '../utils/stripe';
+import { DonationDropdown, DonationPhoneInput } from '.';
+import chapters from '../utils/chapters';
 
 export interface Props {
   amount: number;
-  defaultValues: Omit<PaymentInfoEvent, 'type' | 'token'>;
+  defaultValues: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    email: string;
+  };
+  hasChapterSelection?: boolean;
   onEditAmount: () => void;
   onSubmit: (
     data: { [string: string]: unknown },
-    paymentProvider: DonationPaymentProvider
+    paymentProvider?: DonationPaymentProvider
   ) => void;
   tokenData: CreateTokenCardData;
 }
@@ -25,6 +31,7 @@ export interface Props {
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
   defaultValues,
+  hasChapterSelection,
   onEditAmount,
   onSubmit,
   tokenData
@@ -39,22 +46,27 @@ const DonationPaymentForm: React.FC<Props> = ({
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+    let token;
 
-    if (!paymentProvider || !paymentProvider.card) {
-      console.error('Error trying to submit payment form', paymentProvider);
-      return;
+    if (amount !== 0) {
+      if (!paymentProvider || !paymentProvider.card) {
+        console.error('Error trying to submit payment form', paymentProvider);
+        return;
+      }
+      const { token: stripeToken } = await paymentProvider.stripe.createToken(
+        paymentProvider.card,
+        tokenData
+      );
+
+      token = stripeToken;
     }
-
-    const { token } = await paymentProvider.stripe.createToken(
-      paymentProvider.card,
-      tokenData
-    );
 
     const data = {
       firstName: formData.get('first-name'),
       lastName: formData.get('last-name'),
       email: formData.get('email'),
       phoneNumber: formData.get('phone-number'),
+      chapter: formData.get('chapter'),
       token
     };
 
@@ -108,10 +120,29 @@ const DonationPaymentForm: React.FC<Props> = ({
           required
           title="Contact phone number"
         />
-        <Elements stripe={loadStripe(STRIPE_API_KEY)}>
-          <StripeCardInput onChange={onChangeInputCardElement} />
-        </Elements>
-        <DonationWizard.Button type="submit" disabled={isSubmitDisabled}>
+        {hasChapterSelection && (
+          <DonationDropdown
+            id="chapter-dropdown"
+            name="chapter"
+            title="Select your related chapter"
+            defaultValue="blank"
+          >
+            {chapters.map((chapter) => (
+              <option key={chapter.value} value={chapter.value}>
+                {chapter.label}
+              </option>
+            ))}
+          </DonationDropdown>
+        )}
+        {amount !== 0 ? (
+          <Elements stripe={loadStripe(STRIPE_API_KEY)}>
+            <StripeCardInput onChange={onChangeInputCardElement} />
+          </Elements>
+        ) : null}
+        <DonationWizard.Button
+          type="submit"
+          disabled={isSubmitDisabled && amount !== 0}
+        >
           next step
         </DonationWizard.Button>
       </DonationWizard.Form>
