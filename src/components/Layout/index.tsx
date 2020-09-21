@@ -21,9 +21,8 @@ declare global {
   }
 }
 
-export const HOST_URL = process.env.HOST_URL || 'http://debtcollective.org';
-export const COMMUNITY_URL =
-  process.env.COMMUNITY_URL || 'https://community.debtcollective.org';
+export const HOST_URL = process.env.HOST_URL;
+export const COMMUNITY_URL = process.env.COMMUNITY_URL;
 
 const HEADER_LINKS = [
   {
