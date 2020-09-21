@@ -39,7 +39,7 @@ const YouAreNotALoan: React.FC = () => {
           Join a growing community of debtors organizing to cancel debts and
           build financial and political power
         </p>
-        <UnionWidget className="ml-auto mr-0" />
+        <UnionWidget className="ml-0 mr-auto lg:ml-auto lg:mr-0" />
       </div>
     );
   };
