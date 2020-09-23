@@ -6,7 +6,7 @@ import tw from 'twin.macro';
 
 const FormControl = styled.div`
   .phone-input-element.react-tel-input input {
-    ${tw`py-2 px-3 pl-12 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue w-full leading-6 text-base h-auto`}
+    ${tw`py-2 px-3 pl-12 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue-200 w-full leading-6 text-base h-auto`}
   }
 
   .flag-dropdown {

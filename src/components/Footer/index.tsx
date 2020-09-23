@@ -6,12 +6,20 @@ import twitterIcon from '@static/icons/twitter.svg';
 import FooterMenuSection from '@components/Footer/FooterMenuSection';
 import NewsLetter from '@components/Footer/SubscribeNewsletter';
 
-const Footer = () => {
+interface Props {
+  hideNewsletter?: boolean;
+}
+
+const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
     <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing">
       <div className="max-w-8xl mx-auto">
-        <NewsLetter />
-        <hr className="w-full border-gray-100 mb-16 lg:mb-20" />
+        {!hideNewsletter && (
+          <>
+            <NewsLetter />
+            <hr className="w-full border-gray-100 mb-16 lg:mb-20" />
+          </>
+        )}
         <section className="flex flex-col items-center mb-16 lg:flex-row lg:justify-between">
           <img src={dcLogo} alt="debt collective logo" />
           <ul className="flex mt-10 lg:mt-0">

@@ -8,6 +8,7 @@ interface Props {
   children: ReactNode;
   description?: string;
   title?: string;
+  hideNewsletter?: boolean;
 }
 
 declare global {
@@ -43,20 +44,26 @@ const HEADER_LINKS = [
   }
 ];
 
-const Layout: React.FC<Props> = ({ children, title, description }) => {
+const Layout: React.FC<Props> = ({
+  children,
+  title,
+  description,
+  hideNewsletter
+}) => {
   return (
     <>
       <dc-header
         logo={logoBlack}
         logosmall={logoSmall}
         host={HOST_URL}
+        memberhuburl={`${HOST_URL}/hub`}
         community={COMMUNITY_URL}
         donateurl="/donate"
         links={JSON.stringify(HEADER_LINKS)}
       ></dc-header>
       <SEO title={title} description={description} />
       <main className="mt-16">{children}</main>
-      <Footer />
+      <Footer hideNewsletter={hideNewsletter} />
     </>
   );
 };
