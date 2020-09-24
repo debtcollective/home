@@ -65,7 +65,7 @@ module.exports = {
         '9xl': '7.5rem'
       },
       minHeight: {
-        'section-size': '52rem',
+        'section-size': '90vh',
         '80': '80rem'
       },
       minWidth: {
