@@ -131,7 +131,7 @@ const QuickOption = styled.div`
       border
       border-beige-500
       cursor-pointer
-      focus:border-blue
+      focus:border-blue-200
       focus:outline-none
       py-2 px-3
       rounded-md
@@ -144,7 +144,7 @@ const QuickOption = styled.div`
     ${tw`appearance-none`}
 
     &:checked + label {
-      ${tw`bg-blue border-blue`}
+      ${tw`bg-blue-200 border-blue-200`}
     }
   }
 

@@ -17,7 +17,10 @@ module.exports = {
       black: '#000000',
       'beige-100': '#FBFBFB',
       'beige-500': '#EBE7DC',
-      blue: '#DBF8FF',
+      blue: {
+        100: '#03a9f4',
+        200: '#DBF8FF'
+      },
       gray: '#2B2B2B',
       green: '#D6FFB8',
       pink: '#FFADA4',
@@ -33,6 +36,9 @@ module.exports = {
       bold: 800
     },
     extend: {
+      borderWidth: {
+        1: '1px'
+      },
       backgroundPosition: {
         75: '75%'
       },
