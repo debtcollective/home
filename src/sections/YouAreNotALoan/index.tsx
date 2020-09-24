@@ -46,18 +46,18 @@ const YouAreNotALoan: React.FC = () => {
     <>
       <BackgroundImage
         fluid={backgroundArtDirectionStack}
-        className="min-h-screen bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 lg:p-24"
+        className="min-h-screen bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:p-24"
       >
-        <div className="">
-          <h1 className="font-bold text-5xl text-white lg:text-right leading-none mt-4">
-            Join the <br className="lg:hidden" />{' '}
+        <div className="mt-0 md:mt-16 max-w-2xl ml-auto">
+          <h1 className="font-bold text-5xl text-white md:text-6xl md:text-right leading-none mt-4">
+            Join the <br className="md:hidden" />{' '}
             <span className="text-yellow">Union!</span>
           </h1>
-          <p className="font-semibold text-xl text-white lg:text-right leading-tight mt-4 mb-8">
+          <p className="font-semibold text-xl text-white md:text-right md:text-2xl leading-tight mt-4 mb-8">
             Join a growing community of debtors organizing to cancel debts and
             build financial and political power
           </p>
-          <UnionWidget className="ml-0 mr-auto lg:ml-auto lg:mr-0" />
+          <UnionWidget className="ml-0 mr-auto md:ml-auto md:mr-0" />
         </div>
       </BackgroundImage>
     </>
