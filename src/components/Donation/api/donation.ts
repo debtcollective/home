@@ -1,6 +1,6 @@
 import { DonationMachineContext } from '../machines/donationType';
 
-const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
+const DONATION_API_URL = `${process.env.GATSBY_DONATE_API_URL}`;
 
 interface DonationResponse {
   status: 'failed' | 'succeeded';
@@ -39,6 +39,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
   const response: DonationResponse = await fetch(DONATION_API_URL, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
