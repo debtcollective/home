@@ -31,9 +31,13 @@ export interface Props {
    * Optional identifier for the widget
    */
   id?: string;
+  /**
+   * Optional set of classes
+   */
+  className?: string;
 }
 
-const UnionWidget: React.FC<Props> = ({ id }) => {
+const UnionWidget: React.FC<Props> = ({ id, className }) => {
   const [state, send] = useMachine(unionMachine);
   const { context: machineContext } = state;
   const { addressInformation, personalInformation } = machineContext;
@@ -106,7 +110,11 @@ const UnionWidget: React.FC<Props> = ({ id }) => {
   };
 
   return (
-    <div id={id} className="m-auto w-full" style={{ maxWidth: '24rem' }}>
+    <div
+      id={id}
+      className={`m-auto w-full ${className}`}
+      style={{ maxWidth: '24rem' }}
+    >
       {machineState === 'processDonation' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>

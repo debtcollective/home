@@ -4,10 +4,10 @@ Website for our debt collective home page.
 
 ## DEVELOPMENT
 
-Define env variables
+Define env variables. Client and server-side env variables. [Check Gatsby docs to know more](https://www.gatsbyjs.com/docs/environment-variables/)
 
 ```bash
-cp env.sample .env
+cp env.sample .env.development
 ```
 
 To install dependencies

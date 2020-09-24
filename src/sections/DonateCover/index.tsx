@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import { DonationWidget } from '@components/Donation';
 
 const DonateCover: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -31,7 +32,7 @@ const DonateCover: React.FC = () => {
           <p className="font-semibold text-2xl text-white leading-6 mb-12 lg:w-1/2">
             {/* @TODO: Include cover copy */}
           </p>
-          {/* @TODO: Include widget */}
+          <DonationWidget className="mr-auto ml-0" />
         </div>
       </BackgroundImage>
     </>
