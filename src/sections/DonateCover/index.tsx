@@ -46,7 +46,7 @@ const DonateCover: React.FC = () => {
     <>
       <BackgroundImage
         fluid={backgroundArtDirectionStack}
-        className="min-h-section-size bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:p-24"
+        className="min-h-section-size bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:p-24"
       >
         <div className="mt-0 md:mt-16 max-w-2xl ml-auto">
           <h1 className="font-bold text-5xl text-white md:text-6xl md:text-right leading-none mt-4">
