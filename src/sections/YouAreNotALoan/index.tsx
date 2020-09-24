@@ -6,21 +6,21 @@ import { UnionWidget } from '@components/Donation';
 const YouAreNotALoan: React.FC = () => {
   const { desktop, medium, small } = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "heros/join-union.jpg" }) {
+      desktop: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
           fluid(maxWidth: 4160, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      medium: file(relativePath: { eq: "heros/join-union.jpg" }) {
+      medium: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
           fluid(maxWidth: 1400, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      small: file(relativePath: { eq: "heros/join-union.jpg" }) {
+      small: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
           fluid(maxWidth: 490, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
