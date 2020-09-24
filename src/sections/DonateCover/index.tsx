@@ -26,11 +26,12 @@ const DonateCover: React.FC = () => {
       >
         <div className="max-w-8xl mx-auto flex flex-col items-start mt-64 mb-24 lg:mb-56">
           <h1 className="w-full text-5xl leading-13 font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
-            You are not <br className="lg:hidden" />{' '}
-            <span className="text-yellow">A Loan!</span>
+            Help us <br className="lg:hidden" />{' '}
+            <span className="text-yellow">build a Debtors&apos; movement!</span>
           </h1>
           <p className="font-semibold text-2xl text-white leading-6 mb-12 lg:w-1/2">
-            {/* @TODO: Include cover copy */}
+            Your contribution helps grow the union of debtors to fight back
+            against creditors and create the just economic system we deserve
           </p>
           <DonationWidget className="mr-auto ml-0" />
         </div>
