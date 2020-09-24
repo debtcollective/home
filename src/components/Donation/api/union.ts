@@ -14,7 +14,7 @@ export const sendUnionDonation = async (context: UnionMachineContext) => {
   const amount = context.donationMonthlyAmount;
 
   const data = {
-    charge: {
+    subscription: {
       address_city: addressInformation.city,
       address_country_code: addressInformation.country,
       address_line1: addressInformation.street,
@@ -32,6 +32,7 @@ export const sendUnionDonation = async (context: UnionMachineContext) => {
   const response: DonationResponse = await fetch(DONATION_API_URL, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)

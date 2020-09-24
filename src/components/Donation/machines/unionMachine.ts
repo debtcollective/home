@@ -112,7 +112,8 @@ const actions = {
   }),
   updatePaymentServices: assign<UnionMachineContext, PersonalNextEvent>({
     paymentServices: (context, event) => {
-      const { stripe, stripeToken } = event.data;
+      // TODO: change this to use token or stripeToken everywhere
+      const { stripe, token: stripeToken } = event.data;
       return { ...context.paymentServices, stripe, stripeToken };
     }
   })
@@ -147,11 +148,9 @@ const guards = {
     context: UnionMachineContext,
     event: PersonalNextEvent
   ) => {
-    const { firstName, lastName, email, phoneNumber, chapter } = event.data;
+    const { firstName, lastName, email, phoneNumber } = event.data;
 
-    const isValid = [firstName, lastName, email, phoneNumber, chapter].every(
-      Boolean
-    );
+    const isValid = [firstName, lastName, email, phoneNumber].every(Boolean);
 
     if (!isValid) {
       console.error(
