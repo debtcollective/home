@@ -57,7 +57,7 @@ const DonateCover: React.FC = () => {
             Your contribution helps grow the union of debtors to fight back
             against creditors and create the just economic system we deserve
           </p>
-          <DonationWidget className="mr-auto ml-0" />
+          <DonationWidget className="mr-auto ml-0 md:ml-auto md:mr-0" />
         </div>
       </BackgroundImage>
     </>
