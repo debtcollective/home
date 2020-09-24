@@ -25,21 +25,21 @@ const Hero: React.FC<Props> = ({
 }) => {
   const { desktop, medium, small } = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "heros/main.png" }) {
+      desktop: file(relativePath: { eq: "heros/main-horizontal.png" }) {
         childImageSharp {
           fluid(maxWidth: 4160, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      medium: file(relativePath: { eq: "heros/main.png" }) {
+      medium: file(relativePath: { eq: "heros/main-vertical.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1400, quality: 100) {
+          fluid(maxWidth: 1200, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      small: file(relativePath: { eq: "heros/main.png" }) {
+      small: file(relativePath: { eq: "heros/main-vertical.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 490, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
@@ -58,7 +58,7 @@ const Hero: React.FC<Props> = ({
     },
     {
       ...desktop.childImageSharp.fluid,
-      media: `(min-width: 1401px)`
+      media: `(min-width: 1201px)`
     }
   ];
 
