@@ -30,10 +30,6 @@ const HEADER_LINKS = [
     text: 'Join the Union'
   },
   {
-    href: 'http://debtcollective.org/',
-    text: 'About us'
-  },
-  {
     href: 'https://community.debtcollective.org/',
     text: 'Community'
   },
