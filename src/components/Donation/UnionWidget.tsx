@@ -137,8 +137,8 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
             <DonationWizard.Button variant="text" onClick={onZeroDollarClick}>
               zero-dollar
             </DonationWizard.Button>{' '}
-            membership option for those who can&apos;t afford to contribute
-            right now.
+            membership option for those who can&apos;t contribute dues right
+            now.
           </DonationWizard.BottomMessage>
         </DonationWizard.Container>
       )}
