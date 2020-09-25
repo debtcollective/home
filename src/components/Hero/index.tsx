@@ -66,7 +66,7 @@ const Hero: React.FC<Props> = ({
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
       className={classnames(
-        'h-section-size max-h-section-max-size bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24',
+        'min-h-screen-95 xxl:min-h-screen-45 bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24',
         className
       )}
     >

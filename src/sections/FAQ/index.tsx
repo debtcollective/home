@@ -34,7 +34,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="h-section-size max-h-section-max-size px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing bg-gradient-to-t lg:bg-gradient-to-b from-blue-200 via-white-200 to-white-300"
+      className="min-h-screen-95 xxl:min-h-screen-45 px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing bg-gradient-to-t lg:bg-gradient-to-b from-blue-200 via-white-200 to-white-300"
     >
       <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-14">
         Frequently Asked Questions

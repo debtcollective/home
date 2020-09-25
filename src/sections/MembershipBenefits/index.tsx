@@ -17,7 +17,7 @@ interface Props {
 const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
   return (
     <section
-      className="h-section-size max-h-section-max-size px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue-200 via-white-200 to-blue-200 lg:to-white-300"
+      className="min-h-screen-95 xxl:min-h-screen-45 px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue-200 via-white-200 to-blue-200 lg:to-white-300"
       id="membership-benefits"
     >
       <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-11">
