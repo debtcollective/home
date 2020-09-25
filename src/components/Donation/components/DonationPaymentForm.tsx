@@ -67,7 +67,7 @@ const DonationPaymentForm: React.FC<Props> = ({
       email: formData.get('email'),
       phoneNumber: formData.get('phone-number'),
       chapter: formData.get('chapter'),
-      token
+      stripeToken: token
     };
 
     onSubmit(data, paymentProvider);

@@ -112,8 +112,8 @@ const actions = {
   }),
   updatePaymentServices: assign<UnionMachineContext, PersonalNextEvent>({
     paymentServices: (context, event) => {
-      // TODO: change this to use token or stripeToken everywhere
-      const { stripe, token: stripeToken } = event.data;
+      const { stripe, stripeToken } = event.data;
+
       return { ...context.paymentServices, stripe, stripeToken };
     }
   })
