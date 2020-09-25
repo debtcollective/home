@@ -140,7 +140,7 @@ test('allows to go back to edit amount', () => {
   expect(screen.getByText(/choose an amount/i)).toBeInTheDocument();
 });
 
-test('allows to switch between donation "once" and "monthly" to update donation type', () => {
+test.skip('allows to switch between donation "once" and "monthly" to update donation type', () => {
   render(<DonationWidget />);
 
   expect(screen.getByText(/give once/i)).toBeInTheDocument();

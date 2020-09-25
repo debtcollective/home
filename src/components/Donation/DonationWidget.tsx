@@ -14,7 +14,6 @@ import {
   DonationLoading,
   DonationWizard
 } from './components';
-import DonationTypeControl from './components/DonationTypeControl';
 import { getStripeTokenOptions } from './utils/stripe';
 import { DonationPaymentProvider } from './components/StripeCardInput';
 
@@ -91,28 +90,12 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
     send('START.ONCE');
   };
 
-  const onChangeType = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.currentTarget;
-    const updateDonationTypeEvent = `START.${value.toUpperCase()}`;
-
-    if (value !== 'once' && value !== 'monthly') {
-      console.error('error trying to change donation type', value);
-      return;
-    }
-
-    send(updateDonationTypeEvent);
-  };
-
   return (
     <div
       id={id}
       className={`m-auto w-full ${className}`}
       style={{ maxWidth: '24rem' }}
     >
-      <DonationTypeControl
-        defaultValues={{ activeType: machineContext.donationType }}
-        onChange={onChangeType}
-      />
       {machineState === 'processDonation' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
