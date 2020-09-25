@@ -66,12 +66,12 @@ const Hero: React.FC<Props> = ({
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
       className={classnames(
-        'min-h-screen-95 xxl:min-h-screen-45 bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24 lg:flex lg:items-end xxl:items-center',
+        'min-h-screen-95 xxl:min-h-screen-45 bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24 lg:flex lg:items-center',
         className
       )}
     >
-      <div className="max-w-full w-8xl mx-auto lg:mr-auto lg:ml-0 xxl:mx-auto">
-        <div className="mt-0 md:mt-16 max-w-3xl mr-auto">
+      <div className="max-w-full w-8xl mx-auto xxl:mx-auto">
+        <div className="mt-0 max-w-3xl mr-auto">
           <div className="flex flex-col">
             <h1 className="font-bold text-5xl text-white md:text-6xl leading-none mt-4 md:mt-0">
               {title}

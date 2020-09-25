@@ -46,11 +46,11 @@ const DonateCover: React.FC = () => {
     <>
       <BackgroundImage
         fluid={backgroundArtDirectionStack}
-        className="min-h-screen-95 xxl:min-h-screen-45 flex lg:items-end bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:p-24"
+        className="min-h-screen-95 xxl:min-h-screen-45 flex lg:items-end bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24"
       >
-        <div className="max-w-full w-8xl mx-auto">
-          <div className="mt-0 md:mt-16 max-w-2xl ml-auto">
-            <h1 className="font-bold text-5xl text-white md:text-6xl md:text-right leading-none mt-4">
+        <div className="max-w-full w-8xl mx-auto mt-8 md:mt-0">
+          <div className="mt-0 max-w-3xl ml-auto">
+            <h1 className="font-bold text-5xl text-white md:text-6xl md:text-right leading-none max-w-2xl ml-auto">
               Help us <br className="md:hidden" />{' '}
               <span className="text-yellow">
                 build a Debtors&apos; movement!
