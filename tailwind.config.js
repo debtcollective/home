@@ -64,8 +64,14 @@ module.exports = {
         '7xl': '6rem',
         '9xl': '7.5rem'
       },
+      height: {
+        'section-size': '95vh'
+      },
+      maxHeight: {
+        // 1080p / 16 ~> 67.5rem
+        'section-max-size': '67.5rem'
+      },
       minHeight: {
-        'section-size': '95vh',
         '80': '80rem'
       },
       minWidth: {
