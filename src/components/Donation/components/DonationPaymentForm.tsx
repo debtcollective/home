@@ -9,7 +9,7 @@ import * as DonationWizard from './DonationWizard';
 import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../utils/stripe';
 import { DonationDropdown, DonationPhoneInput } from '.';
-import chapters from '../utils/chapters';
+import chapters from '../constants/chapters';
 
 export interface Props {
   amount: number;
@@ -67,7 +67,7 @@ const DonationPaymentForm: React.FC<Props> = ({
       email: formData.get('email'),
       phoneNumber: formData.get('phone-number'),
       chapter: formData.get('chapter'),
-      token
+      stripeToken: token
     };
 
     onSubmit(data, paymentProvider);

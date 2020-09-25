@@ -115,7 +115,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       className={`m-auto w-full ${className}`}
       style={{ maxWidth: '24rem' }}
     >
-      {machineState === 'processDonation' && <DonationLoading />}
+      {machineState === 'processUnion' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
           <p className="text-center mb-4 mt-4 w-9/12">
@@ -137,8 +137,8 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
             <DonationWizard.Button variant="text" onClick={onZeroDollarClick}>
               zero-dollar
             </DonationWizard.Button>{' '}
-            membership option for those who can&apos;t afford to contribute
-            right now.
+            membership option for those who can&apos;t contribute dues right
+            now.
           </DonationWizard.BottomMessage>
         </DonationWizard.Container>
       )}
@@ -170,6 +170,10 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
           onSubmit={onSubmitAddressForm}
         />
       )}
+      <p className="text-white text-xss text-center mt-2 px-4">
+        After processing your donation an account will be created for you
+        providing access to all Debt Collective Union Member benefits.
+      </p>
     </div>
   );
 };

@@ -38,11 +38,11 @@ const donationWidgetMachine = Machine<
         firstName: '',
         lastName: '',
         email: '',
-        phoneNumber: '',
-        token: null
+        phoneNumber: ''
       },
       paymentServices: {
-        stripe: null
+        stripe: null,
+        stripeToken: null
       }
     },
     initial: 'amountForm',
@@ -185,14 +185,14 @@ const donationWidgetMachine = Machine<
       }),
       updatePayeeInformation: assign({
         cardInformation: (context, event) => {
-          const { firstName, lastName, email, token, phoneNumber } = event;
-          return { firstName, lastName, email, token, phoneNumber };
+          const { firstName, lastName, email, phoneNumber } = event;
+          return { firstName, lastName, email, phoneNumber };
         }
       }),
       updatePaymentServices: assign({
         paymentServices: (context, event) => {
-          const { stripe } = event;
-          return { ...context.paymentServices, stripe };
+          const { stripe, stripeToken } = event;
+          return { ...context.paymentServices, stripe, stripeToken };
         }
       }),
       setMonthlyDonation: assign<DonationMachineContext>({

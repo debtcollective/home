@@ -113,12 +113,12 @@ export type DonationMachineContext = {
     lastName: string;
     email: string;
     phoneNumber: string;
-    token: Token | null;
   };
   /**
    * Holds a set of services to perform payments
    */
   paymentServices: {
     stripe: Stripe | null;
+    stripeToken: Token | null;
   };
 };

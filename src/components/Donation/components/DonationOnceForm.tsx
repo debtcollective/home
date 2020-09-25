@@ -1,4 +1,5 @@
 import React from 'react';
+import plans from '../constants/plans';
 import DonationQuickOption from './DonationQuickOption';
 import * as DonationWizard from './DonationWizard';
 
@@ -26,7 +27,7 @@ const DonationOnceForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
       <DonationWizard.Title>Choose an amount to give</DonationWizard.Title>
       <DonationWizard.Form id="once" onSubmit={handleOnSubmit}>
         <DonationQuickOption
-          options={[5, 20, 40, 60, 'other']}
+          options={[...plans, 'other']}
           name="amount"
           defaultChecked={defaultValues.amount || 20}
         />

@@ -194,7 +194,7 @@ test('allows to complete flow using an amount donation selection', async () => {
     donationMonthlyAmount: donationAmount,
     paymentServices: {
       stripe: expect.any(Object),
-      stripeToken: undefined
+      stripeToken: expect.any(Object)
     }
   });
 });
