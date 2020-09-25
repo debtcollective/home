@@ -44,7 +44,7 @@ const MainVictories: React.FC = () => {
         </div>
       </div>
       <Button className="mx-auto mt-12 block lg:mt-20">
-        Learn More About Our Victories
+        Learn About Our Victories
       </Button>
     </BackgroundImage>
   );
