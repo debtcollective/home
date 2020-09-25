@@ -1,4 +1,5 @@
 import React from 'react';
+import plans from '../constants/plans';
 import DonationQuickOption from './DonationQuickOption';
 import * as DonationWizard from './DonationWizard';
 
@@ -24,7 +25,7 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
     <DonationWizard.Form id="monthly" onSubmit={handleOnSubmit}>
       <DonationQuickOption
-        options={[5, 20, 40, 60, 'other']}
+        options={[...plans, 'other']}
         name="amount"
         defaultChecked={defaultValues.amount || 20}
         suffix="USD/mo"
