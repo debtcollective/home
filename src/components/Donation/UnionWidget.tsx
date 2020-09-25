@@ -115,7 +115,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       className={`m-auto w-full ${className}`}
       style={{ maxWidth: '24rem' }}
     >
-      {machineState === 'processDonation' && <DonationLoading />}
+      {machineState === 'processUnion' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
           <p className="text-center mb-4 mt-4 w-9/12">
