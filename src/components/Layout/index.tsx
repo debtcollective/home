@@ -30,10 +30,6 @@ const HEADER_LINKS = [
     text: 'Join the Union'
   },
   {
-    href: 'http://debtcollective.org/',
-    text: 'About us'
-  },
-  {
     href: 'https://community.debtcollective.org/',
     text: 'Community'
   },
@@ -61,7 +57,7 @@ const Layout: React.FC<Props> = ({
         links={JSON.stringify(HEADER_LINKS)}
       ></dc-header>
       <SEO title={title} description={description} />
-      <main className="mt-16">{children}</main>
+      <main className="mt-20">{children}</main>
       <Footer hideNewsletter={hideNewsletter} />
     </>
   );

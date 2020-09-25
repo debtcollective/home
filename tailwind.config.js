@@ -50,6 +50,9 @@ module.exports = {
         '20': '5rem',
         '40': '10rem'
       },
+      screens: {
+        xxl: '2048px'
+      },
       spacing: {
         'x-screen-spacing': '2rem',
         'y-screen-spacing': '4rem',
@@ -65,7 +68,8 @@ module.exports = {
         '9xl': '7.5rem'
       },
       minHeight: {
-        'section-size': '52rem',
+        'screen-45': '45vh',
+        'screen-95': '95vh',
         '80': '80rem'
       },
       minWidth: {
@@ -73,6 +77,9 @@ module.exports = {
         '3/4': '75%'
       },
       maxWidth: {
+        '8xl': '90rem'
+      },
+      width: {
         '8xl': '90rem'
       }
     }

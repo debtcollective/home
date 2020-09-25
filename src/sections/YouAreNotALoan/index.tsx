@@ -4,59 +4,63 @@ import BackgroundImage from 'gatsby-background-image';
 import { UnionWidget } from '@components/Donation';
 
 const YouAreNotALoan: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const { desktop, medium, small } = useStaticQuery(graphql`
     query {
-      coverImage: file(relativePath: { eq: "you-are-not-a-loan.png" }) {
+      desktop: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 4160, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      coverImageMobile: file(
-        relativePath: { eq: "you-are-not-a-loan-mobile.png" }
-      ) {
+      medium: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 1400, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      small: file(relativePath: { eq: "heros/join-union.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 490, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
   `);
-
-  const coverImage = data?.coverImage?.childImageSharp?.fluid;
-  const coverImageMobile = data?.coverImageMobile?.childImageSharp?.fluid;
-
-  const renderContent = () => {
-    return (
-      <div className="max-w-8xl mx-auto flex flex-col items-end mt-64 mb-24 lg:mb-56">
-        <h1 className="w-full text-5xl leading-13 lg:text-right font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
-          You are not <br className="lg:hidden" />{' '}
-          <span className="text-yellow">A Loan!</span>
-        </h1>
-        <p className="font-semibold text-2xl text-white leading-6 mb-12 lg:w-1/2 lg:text-right">
-          Join a growing community of debtors organizing to cancel debts and
-          build financial and political power
-        </p>
-        <UnionWidget className="ml-0 mr-auto lg:ml-auto lg:mr-0" />
-      </div>
-    );
-  };
+  // Art-Direction Array
+  const backgroundArtDirectionStack = [
+    small.childImageSharp.fluid,
+    {
+      ...medium.childImageSharp.fluid,
+      media: `(min-width: 491px)`
+    },
+    {
+      ...desktop.childImageSharp.fluid,
+      media: `(min-width: 1401px)`
+    }
+  ];
 
   return (
     <>
       <BackgroundImage
-        fluid={coverImage}
-        className="min-h-section-size bg-no-repeat bg-cover bg-center p-desktop-screen-spacing hidden lg:block"
+        fluid={backgroundArtDirectionStack}
+        className="min-h-screen-95 xxl:min-h-screen-45 flex lg:items-end bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24"
       >
-        {renderContent()}
-      </BackgroundImage>
-      <BackgroundImage
-        fluid={coverImageMobile}
-        className="min-h-section-size bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:hidden"
-      >
-        {renderContent()}
+        <div className="max-w-full w-8xl mx-auto mt-8 md:mt-0">
+          <div className="mt-0 md:mt-16 max-w-2xl ml-auto">
+            <h1 className="font-bold text-5xl text-white md:text-6xl md:text-right leading-none">
+              Join the <br className="md:hidden" />{' '}
+              <span className="text-yellow">Union!</span>
+            </h1>
+            <p className="font-semibold text-xl text-white md:text-right md:text-2xl leading-tight mt-4 mb-8">
+              Join a growing community of debtors organizing to cancel debts and
+              build financial and political power
+            </p>
+            <UnionWidget className="ml-0 mr-auto md:ml-auto md:mr-0" />
+          </div>
+        </div>
       </BackgroundImage>
     </>
   );

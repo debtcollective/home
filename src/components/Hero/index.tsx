@@ -23,48 +23,75 @@ const Hero: React.FC<Props> = ({
   text,
   title
 }) => {
-  const data = useStaticQuery(graphql`
+  const { desktop, medium, small } = useStaticQuery(graphql`
     query {
-      coverImage: file(relativePath: { eq: "main-hero.png" }) {
+      desktop: file(relativePath: { eq: "heros/main-horizontal.png" }) {
         childImageSharp {
-          fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 4160, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      medium: file(relativePath: { eq: "heros/main-vertical.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      small: file(relativePath: { eq: "heros/main-vertical.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 490, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
   `);
-  const coverImage = data?.coverImage?.childImageSharp?.fluid || {};
+
+  // Art-Direction Array
+  const backgroundArtDirectionStack = [
+    small.childImageSharp.fluid,
+    {
+      ...medium.childImageSharp.fluid,
+      media: `(min-width: 491px)`
+    },
+    {
+      ...desktop.childImageSharp.fluid,
+      media: `(min-width: 1201px)`
+    }
+  ];
 
   return (
     <BackgroundImage
-      fluid={coverImage}
+      fluid={backgroundArtDirectionStack}
       className={classnames(
-        'min-h-section-size bg-no-repeat bg-cover bg-75 px-x-screen-spacing py-y-screen-spacing lg:px-desktop-screen-spacing lg:bg-center',
+        'min-h-screen-95 xxl:min-h-screen-45 bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24 lg:flex lg:items-center',
         className
       )}
     >
-      <div className="max-w-8xl mx-auto mt-56 mb-24 lg:mb-56">
-        <h1 className="text-4xl leading-10 font-bold text-white mb-6 lg:leading-15 lg:text-6xl lg:w-7/12">
-          {title}
-        </h1>
-        <p className="font-semibold text-lg text-white leading-6 mb-12 lg:text-2xl lg:w-7/12">
-          {text}
-        </p>
-        <div className="flex flex-col md:block">
-          <Button
-            className="w-full mb-6 md:w-1/3 lg:w-1/4 md:mr-6 lg:mb-0"
-            onClick={primaryAction}
-          >
-            {primaryActionLabel}
-          </Button>
-          <Button
-            className="w-full md:w-1/3 lg:w-1/4"
-            onClick={secondaryAction}
-            variant="secondary"
-          >
-            {secondaryActionLabel}
-          </Button>
+      <div className="max-w-full w-8xl mx-auto xxl:mx-auto">
+        <div className="mt-0 max-w-3xl mr-auto">
+          <div className="flex flex-col">
+            <h1 className="font-bold text-5xl text-white md:text-6xl leading-none mt-4 md:mt-0">
+              {title}
+            </h1>
+            <p className="font-semibold text-xl text-white md:text-2xl leading-tight mt-4">
+              {text}
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row mt-12 md:max-w-xl">
+            <Button className="w-full md:w-1/2" onClick={primaryAction}>
+              {primaryActionLabel}
+            </Button>
+            <Button
+              className="w-full md:w-1/2 mt-4 md:mt-0 md:ml-4"
+              onClick={secondaryAction}
+              variant="secondary"
+            >
+              {secondaryActionLabel}
+            </Button>
+          </div>
         </div>
       </div>
     </BackgroundImage>
