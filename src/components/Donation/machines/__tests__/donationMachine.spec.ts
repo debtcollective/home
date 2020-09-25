@@ -83,8 +83,7 @@ test('goes into process donation after filling all information', () => {
     firstName: faker.name.findName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email('bot', '', 'debtcollective.org'),
-    phoneNumber: faker.phone.phoneNumber(),
-    token: { id: 'test-token' }
+    phoneNumber: faker.phone.phoneNumber()
   };
 
   const billingInformation = {
@@ -94,15 +93,31 @@ test('goes into process donation after filling all information', () => {
     country: faker.address.country()
   };
 
+  const paymentServices = {
+    stripe: { id: 'fake-stripe' },
+    stripeToken: { id: 'fake-stripe-token' }
+  };
+
+  const donationAmount = faker.random.number(100);
+
+  // TODO: gather events to happen on NEXT instead using diff event for each edition
   let machineState = machine.initialState;
-  // Enter to the card information form
+  // Edit amount and move next
+  machineState = machine.transition(machineState, {
+    type: 'UPDATE.AMOUNT.ONCE',
+    value: donationAmount
+  });
   machineState = machine.transition(machineState, 'NEXT');
-  // Request donation to happen after NEXT with billing info
+  // Edit address and move next
   machineState = machine.transition(machineState, {
     type: 'NEXT',
     ...billingInformation
   });
-  // Enter to the billing information form with payment info
+  // Edit payment information internals and move next
+  machineState = machine.transition(machineState, {
+    type: 'UPDATE.PAYMENT.SERVICE',
+    ...paymentServices
+  });
   machineState = machine.transition(machineState, {
     type: 'NEXT',
     ...cardInformation
@@ -118,11 +133,9 @@ test('goes into process donation after filling all information', () => {
       status: ''
     },
     donationType: 'once',
-    donationOnceAmount: MINIMAL_DONATION,
+    donationOnceAmount: donationAmount,
     donationMonthlyAmount: MINIMAL_DONATION,
     error: null,
-    paymentServices: {
-      stripe: null
-    }
+    paymentServices
   });
 });

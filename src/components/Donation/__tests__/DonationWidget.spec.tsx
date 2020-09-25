@@ -103,12 +103,7 @@ test('send a donation request with all provided information', async () => {
   await waitFor(() =>
     expect(sendDonationSpy).toHaveBeenCalledWith({
       billingInformation,
-      cardInformation: {
-        ...cardInformation,
-        token: {
-          id: 'test-token'
-        }
-      },
+      cardInformation,
       donation: {
         message: '',
         status: ''
@@ -118,12 +113,13 @@ test('send a donation request with all provided information', async () => {
       donationMonthlyAmount: MINIMAL_DONATION,
       error: null,
       paymentServices: {
-        stripe: expect.any(Object)
+        stripe: expect.any(Object),
+        stripeToken: expect.any(Object)
       }
     })
   );
 
-  expect(screen.getByText(donationResponse.message)).toBeInTheDocument();
+  expect(await screen.findByText(donationResponse.message)).toBeInTheDocument();
 });
 
 test('allows to go back to edit amount', () => {

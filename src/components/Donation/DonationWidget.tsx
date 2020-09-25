@@ -74,7 +74,11 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
       return;
     }
 
-    send({ type: 'UPDATE.PAYMENT.SERVICE', stripe: paymentProvider.stripe });
+    send({
+      type: 'UPDATE.PAYMENT.SERVICE',
+      stripe: paymentProvider.stripe,
+      stripeToken: data.stripeToken
+    });
     // TODO: adapt all data and use the machine guard to provide feedback when necessary
     send({ type: 'NEXT', ...data });
   };

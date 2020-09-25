@@ -9,10 +9,10 @@ interface DonationResponse {
 }
 
 export const sendDonation = async (context: DonationMachineContext) => {
-  const { cardInformation, billingInformation } = context;
+  const { cardInformation, billingInformation, paymentServices } = context;
 
-  if (!cardInformation.token) {
-    console.error('Unable to perform donation', cardInformation);
+  if (!paymentServices.stripeToken) {
+    console.error('Unable to perform donation', context);
     throw new Error("Service not found check: 'sendDonation'");
   }
 
@@ -31,8 +31,8 @@ export const sendDonation = async (context: DonationMachineContext) => {
       phone_number: cardInformation.phoneNumber,
       email: cardInformation.email,
       name: `${cardInformation.firstName} ${cardInformation.lastName}`,
-      stripe_token: cardInformation.token.id,
-      stripe_card_id: cardInformation.token.card?.id
+      stripe_token: paymentServices.stripeToken.id,
+      stripe_card_id: paymentServices.stripeToken.card?.id
     }
   };
 
