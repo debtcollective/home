@@ -148,6 +148,10 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
           onSubmit={onSubmitAddressForm}
         />
       )}
+      <p className="text-white text-xss text-center mt-2 px-4">
+        After processing your donation an account will be created for you
+        providing access to all Debt Collective Union Member benefits.
+      </p>
     </div>
   );
 };
