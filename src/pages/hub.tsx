@@ -63,8 +63,7 @@ const MemberHub = () => {
           <p className="text-sm">
             We have sent an email to{' '}
             <strong className="text-primary">{membership?.email}</strong>,
-            please verify your inbox to continue the process and become part of
-            our Union!
+            please verify your inbox to finish the registration process.
           </p>
         </div>
       )}
