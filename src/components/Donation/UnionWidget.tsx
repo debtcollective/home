@@ -119,11 +119,8 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       {machineState === 'processUnion' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
-          <p className="text-center mt-4 w-9/12 mb-0">
-            {machineContext.api.donation?.message}
-          </p>
-          <p className="mt-0">
-            Go to{' '}
+          <p className="text-center mt-4 mb-0 text-sm px-6">
+            {machineContext.api.donation?.message}. Go to{' '}
             <Link className="text-primary underline" to="/hub">
               your member hub
             </Link>{' '}
