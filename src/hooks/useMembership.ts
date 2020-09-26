@@ -4,13 +4,14 @@ export const MEMBERSHIP_URL = process.env.MEMBERSHIP_URL;
 
 type Membership = {
   status: 'pending' | 'active';
+  email: string;
 };
 
 type FetchingStatus = boolean;
 
 const useMembership = (): [Membership | null, FetchingStatus] => {
   const [membership, setMembership] = useState<Membership | null>(null);
-  const [fetching, setFetching] = useState(false);
+  const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
     setFetching(true);
