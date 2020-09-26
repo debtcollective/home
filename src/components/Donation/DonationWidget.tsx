@@ -123,6 +123,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm
+          errors={machineContext.errors}
           amount={machineContext.donationOnceAmount}
           defaultValues={{
             email: cardInformation.email,

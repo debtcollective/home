@@ -27,7 +27,7 @@ const donationWidgetMachine = Machine<
       donationType: 'once',
       donationOnceAmount: MINIMAL_DONATION,
       donationMonthlyAmount: MINIMAL_DONATION,
-      error: null,
+      errors: null,
       billingInformation: {
         address: '',
         city: '',
@@ -125,7 +125,7 @@ const donationWidgetMachine = Machine<
           },
           onError: {
             target: 'failure',
-            actions: assign({ error: (context, event) => event.data })
+            actions: assign({ errors: (context, event) => event.data })
           }
         }
       },

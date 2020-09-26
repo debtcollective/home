@@ -152,6 +152,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       )}
       {machineState.generalInformationForm === 'personalInformationForm' && (
         <DonationPaymentForm
+          errors={machineContext.api.donation?.errors || null}
           amount={machineContext.donationMonthlyAmount}
           defaultValues={{
             email: personalInformation.email,

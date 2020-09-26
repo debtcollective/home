@@ -39,7 +39,7 @@ export type UnionMachineContext = Omit<
     donation?: {
       status: 'failed' | 'succeeded';
       message?: string;
-      errors?: Array<string>;
+      errors?: { [fieldName: string]: [string] };
     };
   };
   paymentServices: { stripe?: Stripe; stripeToken?: Token };
