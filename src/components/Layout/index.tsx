@@ -57,7 +57,7 @@ const Layout: React.FC<Props> = ({
   const [membership, isFetching] = useMembership();
 
   useEffect(() => {
-    if (!isFetching && membership?.status) {
+    if (!isFetching && membership?.id) {
       setLinks(JSON.stringify([HUB_LINK, ...HEADER_LINKS]));
       return;
     }

@@ -54,7 +54,7 @@ const MemberHub = () => {
 
   return (
     <Layout hideNewsletter>
-      {membership?.status === 'pending' && (
+      {!membership?.confirmed && (
         <div
           className="bg-yellow border-t border-b border-blue-500 text-blue-700 px-4 py-3"
           role="alert"
