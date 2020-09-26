@@ -13,6 +13,7 @@ import chapters from '../constants/chapters';
 
 export interface Props {
   amount: number;
+  errors: { [key: string]: [string] } | null;
   defaultValues: {
     firstName: string;
     lastName: string;
@@ -30,6 +31,7 @@ export interface Props {
 
 const DonationPaymentForm: React.FC<Props> = ({
   amount,
+  errors = null,
   defaultValues,
   hasChapterSelection,
   onEditAmount,
@@ -138,6 +140,11 @@ const DonationPaymentForm: React.FC<Props> = ({
           <Elements stripe={loadStripe(STRIPE_API_KEY)}>
             <StripeCardInput onChange={onChangeInputCardElement} />
           </Elements>
+        ) : null}
+        {errors !== null ? (
+          <DonationWizard.HelpText role="alert">
+            Error processing your request. Please try again
+          </DonationWizard.HelpText>
         ) : null}
         <DonationWizard.Button
           type="submit"

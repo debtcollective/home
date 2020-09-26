@@ -11,6 +11,7 @@ import {
   DonationWizard
 } from './components';
 import { DonationPaymentProvider } from './components/StripeCardInput';
+import { Link } from 'gatsby';
 
 const getStripeTokenOptions = ({
   personalInformation,
@@ -118,8 +119,12 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       {machineState === 'processUnion' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
-          <p className="text-center mb-4 mt-4 w-9/12">
-            {machineContext.api.donation?.message}
+          <p className="text-center mt-4 mb-0 text-sm px-6">
+            {machineContext.api.donation?.message}. Go to{' '}
+            <Link className="text-primary underline" to="/hub">
+              your member hub
+            </Link>{' '}
+            to continue the process
           </p>
         </DonationThankYou>
       )}
@@ -144,6 +149,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       )}
       {machineState.generalInformationForm === 'personalInformationForm' && (
         <DonationPaymentForm
+          errors={machineContext.api.donation?.errors || null}
           amount={machineContext.donationMonthlyAmount}
           defaultValues={{
             email: personalInformation.email,

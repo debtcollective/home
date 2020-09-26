@@ -38,6 +38,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
 
   const response: DonationResponse = await fetch(DONATION_API_URL, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'

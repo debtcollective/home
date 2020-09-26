@@ -92,7 +92,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
 
-  expect(await screen.findByText(donationResponse.message)).toBeInTheDocument();
+  expect(await screen.findByText(/gotten your help/i)).toBeInTheDocument();
 
   expect(sendDonationSpy).toHaveBeenCalledWith({
     addressInformation,
@@ -177,7 +177,7 @@ test('allows to complete flow using an amount donation selection', async () => {
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
 
-  expect(await screen.findByText(donationResponse.message)).toBeInTheDocument();
+  expect(await screen.findByText(/gotten your help/i)).toBeInTheDocument();
 
   expect(sendDonationSpy).toHaveBeenCalledWith({
     addressInformation,

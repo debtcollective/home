@@ -82,7 +82,7 @@ export type DonationMachineContext = {
   /**
    * A key to hold the errors that may be faced while progressing into the widget
    */
-  error: unknown;
+  errors: { [key: string]: [string] } | null;
   /**
    * The type of donation the user is attempting to do
    */

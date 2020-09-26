@@ -155,3 +155,74 @@ test.skip('allows to switch between donation "once" and "monthly" to update dona
   expect(screen.queryByText(/give per month/i)).not.toBeInTheDocument();
   expect(screen.queryByText(/donate/i)).toBeInTheDocument();
 });
+
+test.only('shows payment error when donation request fails', async () => {
+  global.fetch = jest.fn().mockResolvedValue({
+    json: jest.fn().mockResolvedValue({
+      status: 'failed',
+      errors: { stripe: ['your card has been declined'] }
+    })
+  });
+
+  render(<DonationWidget />);
+
+  // Give the amount to donate
+  const amountInput = screen.getByRole('radio', {
+    name: `$${donationAmount} USD`
+  });
+  userEvent.click(amountInput);
+  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+
+  // Give the billing address
+  userEvent.type(
+    screen.getByRole('textbox', { name: /billing address/i }),
+    billingInformation.address
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /city/i }),
+    billingInformation.city
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /zip code/i }),
+    billingInformation.zipCode
+  );
+  userEvent.selectOptions(
+    screen.getByRole('combobox', { name: /country/i }),
+    billingInformation.country
+  );
+  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+
+  // Give the payment details
+  userEvent.type(
+    screen.getByRole('textbox', { name: /first name/i }),
+    cardInformation.firstName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /last name/i }),
+    cardInformation.lastName
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /email/i }),
+    cardInformation.email
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: /phone/i }),
+    cardInformation.phoneNumber
+  );
+  userEvent.type(
+    screen.getByRole('textbox', { name: 'stripe-mocked-input-element' }),
+    faker.finance.creditCardNumber()
+  );
+
+  const submitBtn = screen.getByRole('button', { name: /next/i });
+
+  userEvent.click(submitBtn);
+
+  // Avoid to display all console errors generated when error
+  jest.spyOn(console, 'error').mockImplementation(jest.fn());
+
+  await waitFor(() => expect(sendDonationSpy).toHaveBeenCalled());
+  expect(
+    await screen.findByText(/error processing your request/i)
+  ).toBeInTheDocument();
+});

@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { DonationThankYou } from '../components';
 import { Props as DonationThankYouProps } from '../components/DonationThankYou';
+import { Link } from 'gatsby';
 
 export default {
   title: 'Example/DonationWidget'
@@ -18,8 +19,17 @@ export const ThankYou = ThankYouTemplate.bind({});
 
 ThankYou.args = {
   children: (
-    <p className="text-center mb-4 mt-4 w-9/12">
-      Your $215.00 donation has been successfully processed
-    </p>
+    <>
+      <p className="text-center mt-4 w-9/12 mb-0">
+        Your $215.00 donation has been successfully processed!
+      </p>
+      <p className="mt-0">
+        Go to{' '}
+        <Link className="text-primary underline" to="/hub">
+          your member hub
+        </Link>{' '}
+        to continue the process
+      </p>
+    </>
   )
 };
