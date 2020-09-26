@@ -16,7 +16,7 @@ const useMembership = (): [Membership | null, FetchingStatus] => {
   useEffect(() => {
     setFetching(true);
     fetch(`${MEMBERSHIP_URL}/users/current.json`, {
-      // credentials: 'include',
+      credentials: 'include',
       method: 'GET',
       headers: {
         Accept: 'application/json',
