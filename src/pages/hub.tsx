@@ -49,6 +49,7 @@ const MemberHub = () => {
   useEffect(() => {
     if (!isFetching && membership === null) {
       console.warn('redirect home, no membership found');
+      navigate('/');
     }
   }, [membership, isFetching]);
 
