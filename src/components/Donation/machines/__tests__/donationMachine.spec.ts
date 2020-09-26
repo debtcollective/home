@@ -135,7 +135,7 @@ test('goes into process donation after filling all information', () => {
     donationType: 'once',
     donationOnceAmount: donationAmount,
     donationMonthlyAmount: MINIMAL_DONATION,
-    error: null,
+    errors: null,
     paymentServices
   });
 });
