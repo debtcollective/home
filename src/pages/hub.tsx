@@ -55,6 +55,20 @@ const MemberHub = () => {
 
   return (
     <Layout hideNewsletter>
+      {membership?.status === 'pending' && (
+        <div
+          className="bg-yellow border-t border-b border-blue-500 text-blue-700 px-4 py-3"
+          role="alert"
+        >
+          <p className="font-bold">Please verify your account</p>
+          <p className="text-sm">
+            We have sent an email to{' '}
+            <strong className="text-primary">{membership?.email}</strong>,
+            please verify your inbox to continue the process and become part of
+            our Union!
+          </p>
+        </div>
+      )}
       <section
         className="py-y-screen-spacing flex flex-col justify-center lg:px-desktop-screen-spacing"
         style={{
