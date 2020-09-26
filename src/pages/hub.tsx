@@ -1,5 +1,5 @@
 import Layout, { COMMUNITY_URL } from '@components/Layout';
-import useUser from '@hooks/useUser';
+import useMembership from '@hooks/useMembership';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import React, { useEffect } from 'react';
 
@@ -32,7 +32,7 @@ const LINKS = [
 ];
 
 const MemberHub = () => {
-  const { user, isLoading, hasError } = useUser();
+  const [membership, isFetching] = useMembership();
   const data = useStaticQuery(graphql`
     query {
       coverImage: file(relativePath: { eq: "covers/memberhub-cover.jpg" }) {
@@ -47,64 +47,64 @@ const MemberHub = () => {
   const coverImage = data?.coverImage?.childImageSharp?.fluid || {};
 
   useEffect(() => {
-    if (hasError) {
-      alert('Please login');
-      navigate('/');
+    if (!isFetching && membership === null) {
+      console.warn('redirect home, no membership found');
     }
-  }, [hasError]);
-
-  if (isLoading || hasError) return null;
+  }, [membership, isFetching]);
 
   return (
     <Layout hideNewsletter>
-      {user && (
-        <section className="py-y-screen-spacing flex flex-col justify-center lg:px-desktop-screen-spacing">
-          <div className="w-full max-w-8xl mx-auto border-1 border-gray-500 rounded-sm px-x-screen-spacing md:px-2 p-2">
-            <img
-              src={coverImage.src}
-              srcSet={coverImage.srcSet}
-              className="w-full hidden md:block"
-              alt="Welcome to the Debt Collective!"
-            />
-            <h1 className="text-4xl lg:text-5xl font-semibold text-center mt-8 mb-3">
-              Welcome to the Debt Collective!
-            </h1>
-            <hr className="border-primary mx-auto border-b-2 mb-12 w-3/4 md:w-1/2" />
-            <p className="font-semibold text-lg md:px-24">
-              We are excited to welcome you to the debtors union - a new and
-              exciting type of organization where debtors come together and
-              fight for debt cancellation and so much more. You are not a loan!{' '}
-              Our website is in development, and this page will soon be
-              transformed into a more extensive and user-friendly &ldquo;member
-              hub&ldquo; where you can access all of your personal information
-              and navigate through the Debt Collective platform in a
-              personalized way.
-            </p>
-            <p className="font-semibold text-lg md:px-24 mt-4 mb-12">
-              For now, we welcome you to begin your membership journey by
-              exploring the pages and documents below!
-            </p>
-            <ul className="md:w-1/2 mx-auto">
-              {LINKS.map((link, index) => {
-                return (
-                  <li key={link.linkText} className={'text-base mb-6'}>
-                    <span className="font-semibold">({index + 1})</span>{' '}
-                    <a
-                      href={link.href}
-                      className="text-blue-100 font-semibold"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {link.linkText}
-                    </a>
-                    <p>{link.text}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </section>
-      )}
+      <section
+        className="py-y-screen-spacing flex flex-col justify-center lg:px-desktop-screen-spacing"
+        style={{
+          opacity: isFetching ? 0.1 : 1,
+          pointerEvents: isFetching ? 'none' : 'all'
+        }}
+      >
+        <div className="w-full max-w-8xl mx-auto border-1 border-gray-500 rounded-sm px-x-screen-spacing md:px-2 p-2">
+          <img
+            src={coverImage.src}
+            srcSet={coverImage.srcSet}
+            className="w-full hidden md:block"
+            alt="Welcome to the Debt Collective!"
+          />
+          <h1 className="text-4xl lg:text-5xl font-semibold text-center mt-8 mb-3">
+            Welcome to the Debt Collective!
+          </h1>
+          <hr className="border-primary mx-auto border-b-2 mb-12 w-3/4 md:w-1/2" />
+          <p className="font-semibold text-lg md:px-24">
+            We are excited to welcome you to the debtors union - a new and
+            exciting type of organization where debtors come together and fight
+            for debt cancellation and so much more. You are not a loan! Our
+            website is in development, and this page will soon be transformed
+            into a more extensive and user-friendly &ldquo;member hub&ldquo;
+            where you can access all of your personal information and navigate
+            through the Debt Collective platform in a personalized way.
+          </p>
+          <p className="font-semibold text-lg md:px-24 mt-4 mb-12">
+            For now, we welcome you to begin your membership journey by
+            exploring the pages and documents below!
+          </p>
+          <ul className="md:w-1/2 mx-auto">
+            {LINKS.map((link, index) => {
+              return (
+                <li key={link.linkText} className={'text-base mb-6'}>
+                  <span className="font-semibold">({index + 1})</span>{' '}
+                  <a
+                    href={link.href}
+                    className="text-blue-100 font-semibold"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.linkText}
+                  </a>
+                  <p>{link.text}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
     </Layout>
   );
 };

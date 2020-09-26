@@ -3,6 +3,7 @@ import Footer from '@components/Footer';
 import SEO from '@components/SEO';
 import logoBlack from '@static/logo-black.png';
 import logoSmall from '@static/logo-small.png';
+import useMembership from '@hooks/useMembership';
 
 interface Props {
   children: ReactNode;
@@ -23,7 +24,6 @@ declare global {
 
 export const HOST_URL = process.env.HOST_URL;
 export const COMMUNITY_URL = process.env.COMMUNITY_URL;
-export const MEMBERSHIP_URL = `${process.env.MEMBERSHIP_URL}`;
 
 const HEADER_LINKS = [
   {
@@ -54,29 +54,15 @@ const Layout: React.FC<Props> = ({
   hideNewsletter
 }) => {
   const [links, setLinks] = useState(JSON.stringify(HEADER_LINKS));
+  const [membership, isFetching] = useMembership();
 
-  const onMembershipFetched = (response: { status: MembershipStatus }) => {
-    if (response.status !== null) {
+  useEffect(() => {
+    if (!isFetching && membership?.status) {
       setLinks(JSON.stringify([HUB_LINK, ...HEADER_LINKS]));
       return;
     }
-
     setLinks(JSON.stringify(HEADER_LINKS));
-  };
-
-  useEffect(() => {
-    fetch(`${MEMBERSHIP_URL}/users/current.json`, {
-      // credentials: 'include',
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(async (res) => {
-      const response = await res.json();
-      onMembershipFetched(response);
-    });
-  }, []);
+  }, [membership, isFetching]);
 
   return (
     <>
