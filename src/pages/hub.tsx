@@ -4,16 +4,15 @@ import { graphql, navigate, useStaticQuery } from 'gatsby';
 import React, { useEffect } from 'react';
 
 const LINKS = [
-  // @TODO: Add href for the missing link items
   {
     linkText: 'New Member Things to Do!',
-    href: '/',
+    href: 'http://bit.ly/new-member-to-do',
     text:
       'Here is a list of first steps to take to begin getting involved with the debtors union'
   },
   {
     linkText: 'Debt Collective DNA',
-    href: '/',
+    href: 'http://bit.ly/debt-collective-dna',
     text:
       'Please read through our principles and basic analysis. This document will introduce the basic outline of the beliefs, values and priorities of the organization'
   },
