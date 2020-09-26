@@ -1,10 +1,52 @@
 import React from 'react';
-import powerInNumbersImage from '@static/power-in-numbers.svg';
-import powerInNumbersMobileImage from '@static/power-in-numbers-mobile.svg';
+import BackgroundImage from 'gatsby-background-image';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const PowerInNumbers = () => {
-  const renderContent = () => {
-    return (
+  const { desktop, medium, small } = useStaticQuery(graphql`
+    query {
+      desktop: file(relativePath: { eq: "power-in-numbers.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 4160, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      medium: file(relativePath: { eq: "power-in-numbers.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      small: file(relativePath: { eq: "power-in-numbers.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 490, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `);
+
+  // Art-Direction Array
+  const backgroundArtDirectionStack = [
+    small.childImageSharp.fluid,
+    {
+      ...medium.childImageSharp.fluid,
+      media: `(min-width: 491px)`
+    },
+    {
+      ...desktop.childImageSharp.fluid,
+      media: `(min-width: 1201px)`
+    }
+  ];
+
+  return (
+    <BackgroundImage
+      fluid={backgroundArtDirectionStack}
+      className="p-desktop-screen-spacing"
+    >
       <div className="max-w-8xl mx-auto">
         <h2 className="text-white text-left text-4xl font-bold mb-4 mt-5 leading-9 lg:leading-20 lg:text-6xl w-full lg:w-1/2">
           Power in Numbers
@@ -15,28 +57,7 @@ const PowerInNumbers = () => {
           million, you own the bank.
         </p>
       </div>
-    );
-  };
-
-  return (
-    <>
-      <section
-        className="p-desktop-screen-spacing hidden bg-no-repeat bg-cover bg-center lg:block"
-        style={{
-          backgroundImage: `url(${powerInNumbersImage})`
-        }}
-      >
-        {renderContent()}
-      </section>
-      <section
-        className="min-h-80 px-x-screen-spacing py-y-screen-spacing bg-no-repeat bg-cover bg-center lg:hidden"
-        style={{
-          backgroundImage: `url(${powerInNumbersMobileImage})`
-        }}
-      >
-        {renderContent()}
-      </section>
-    </>
+    </BackgroundImage>
   );
 };
 
