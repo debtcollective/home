@@ -1,4 +1,4 @@
-import Layout, { COMMUNITY_URL } from '@components/Layout';
+import Layout, { GATSBY_COMMUNITY_URL } from '@components/Layout';
 import useMembership from '@hooks/useMembership';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import React, { useEffect } from 'react';
@@ -18,7 +18,7 @@ const LINKS = [
   },
   {
     linkText: 'Debt Collective Community Forum',
-    href: COMMUNITY_URL,
+    href: GATSBY_COMMUNITY_URL,
     text:
       'Log into the community forum - introduce yourself, read other debtors stories, find information and resources about various types of debt and get organized with fellow debtors!'
   },

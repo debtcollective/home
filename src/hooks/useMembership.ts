@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const MEMBERSHIP_URL = process.env.MEMBERSHIP_URL;
+export const GATSBY_MEMBERSHIP_URL = process.env.GATSBY_MEMBERSHIP_URL;
 
 type MembershipResponse = {
   id: number;
@@ -23,7 +23,7 @@ const useMembership = (): [MembershipResponse | null, FetchingStatus] => {
 
   useEffect(() => {
     setFetching(true);
-    fetch(`${MEMBERSHIP_URL}/users/current.json`, {
+    fetch(`${GATSBY_MEMBERSHIP_URL}/users/current.json`, {
       credentials: 'include',
       method: 'GET',
       headers: {

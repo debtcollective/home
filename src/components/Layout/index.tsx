@@ -22,8 +22,8 @@ declare global {
   }
 }
 
-export const HOST_URL = process.env.HOST_URL;
-export const COMMUNITY_URL = process.env.COMMUNITY_URL;
+export const GATSBY_HOST_URL = process.env.GATSBY_HOST_URL;
+export const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL;
 
 const HEADER_LINKS = [
   {
@@ -70,9 +70,9 @@ const Layout: React.FC<Props> = ({
         id="dc-header"
         logo={logoBlack}
         logosmall={logoSmall}
-        host={HOST_URL}
-        memberhuburl={`${HOST_URL}/hub`}
-        community={COMMUNITY_URL}
+        host={GATSBY_HOST_URL}
+        memberhuburl={`${GATSBY_HOST_URL}/hub`}
+        community={GATSBY_COMMUNITY_URL}
         donateurl="/donate"
         links={links}
       ></dc-header>
