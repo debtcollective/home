@@ -50,6 +50,18 @@ module.exports = {
         '@hooks': path.join(__dirname, 'src/hooks'),
         '@static': path.join(__dirname, 'static')
       }
+    },
+    {
+      resolve: 'gatsby-source-custom-api',
+      options: {
+        url: `${process.env.GATSBY_COMMUNITY_URL}/about.json`,
+        rootKey: 'about',
+        schemas: {
+          about: `
+            user_count: Int
+          `
+        }
+      }
     }
   ]
 };
