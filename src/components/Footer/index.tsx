@@ -10,7 +10,7 @@ interface Props {
   hideNewsletter?: boolean;
 }
 
-const CURRENT_YEAR = new Date().getFullYear();
+const CURRENT_YEAR = process.env.CURRENT_YEAR || new Date().getFullYear();
 
 const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
