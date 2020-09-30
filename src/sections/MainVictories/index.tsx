@@ -1,6 +1,5 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-import Button from '@components/Button';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
@@ -43,9 +42,6 @@ const MainVictories: React.FC = () => {
           </p>
         </div>
       </div>
-      <Button className="mx-auto mt-12 block lg:mt-20">
-        Learn About Our Victories
-      </Button>
     </BackgroundImage>
   );
 };

@@ -10,6 +10,8 @@ interface Props {
   hideNewsletter?: boolean;
 }
 
+const CURRENT_YEAR = process.env.CURRENT_YEAR || new Date().getFullYear();
+
 const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
     <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing">
@@ -114,13 +116,12 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
                 label: 'Donate',
                 href: '/donate'
               }
-              // { label: 'Debt Collective and Open Source Technology', href: '' }
             ]}
           />
         </section>
         <section className="flex flex-col lg:flex-row">
           <p className="text-gray-200 font-bold text-center text-base mb-6 lg:mr-12 lg:text-left">
-            Copyright 2018
+            Copyright {CURRENT_YEAR}
           </p>
           <a
             className="text-white text-center text-base font-normal lg:text-left"
