@@ -87,7 +87,7 @@ const Slides: React.FC<Props> = ({ slides, hideControls }) => {
               key={index}
               className={classnames('bg-gray-500 rounded-full w-6 h-6', {
                 'mr-3': !(index + 1 === slides.length),
-                'bg-purple-100': index === currentSlide
+                'bg-primary': index === currentSlide
               })}
             />
           ))}

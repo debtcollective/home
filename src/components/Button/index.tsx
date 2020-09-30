@@ -29,13 +29,15 @@ const Button: React.FC<Props> = ({
       id={id}
       onClick={onClick}
       className={classnames(
-        'px-12 py-3 rounded-lg font-semibold text-base',
+        'px-12 py-3 rounded-lg font-semibold text-base transition-colors duration-300',
         className,
         {
           [`bg-${Colors.primary}`]: buttonVariant === 'primary',
           [`text-${Colors.white}`]: buttonVariant === 'primary',
           [`bg-${Colors.white}`]: buttonVariant === 'secondary',
-          [`text-${Colors.gray}`]: buttonVariant === 'primary'
+          [`text-${Colors.gray}`]: buttonVariant === 'primary',
+          'hover:bg-primary-darker': buttonVariant === 'primary',
+          'hover:bg-beige-600': buttonVariant === 'secondary'
         }
       )}
       type={type || 'button'}

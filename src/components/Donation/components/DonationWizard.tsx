@@ -62,7 +62,7 @@ export const Button = styled.button<ButtonProps>`
       case 'text':
         return tw`font-normal underline`;
       default:
-        return tw`bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded text-center uppercase w-full`;
+        return tw`bg-primary hover:bg-primary-darker text-white font-bold py-2 px-4 rounded text-center uppercase w-full transition-colors duration-300`;
     }
   }}
 
