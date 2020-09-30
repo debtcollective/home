@@ -48,7 +48,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
 
   userEvent.type(
-    screen.getByRole('textbox', { name: /billing address/i }),
+    screen.getByRole('textbox', { name: /street/i }),
     addressInformation.street
   );
   userEvent.type(
@@ -129,7 +129,7 @@ test('allows to complete flow using an amount donation selection', async () => {
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
 
   userEvent.type(
-    screen.getByRole('textbox', { name: /billing address/i }),
+    screen.getByRole('textbox', { name: /street/i }),
     addressInformation.street
   );
   userEvent.type(

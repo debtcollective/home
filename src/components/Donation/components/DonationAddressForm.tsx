@@ -65,7 +65,6 @@ const DonationAddressForm: React.FC<Props> = ({
           placeholder="Zip code"
           required
           title="Zip code for your billing address"
-          type="number"
         />
         <DonationCountryDropdown
           defaultValue={defaultValues.country || 'US'}
