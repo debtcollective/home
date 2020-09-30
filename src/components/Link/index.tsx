@@ -19,14 +19,15 @@ const Link: React.FC<Props> = ({
   children,
   variant
 }) => {
-  const baseClassName = 'font-semibold';
+  const baseClassName = 'font-semibold transition-colors duration-300';
 
   const buttonVariantClassname = {
     'rounded-lg': variant === 'button',
     'px-12': variant === 'button',
     'py-3': variant === 'button',
     'bg-primary': variant === 'button',
-    'text-white': variant === 'button'
+    'text-white': variant === 'button',
+    'hover:bg-primary-darker': variant === 'button'
   };
 
   return isLocal ? (
