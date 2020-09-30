@@ -47,7 +47,7 @@ const DonationAddressForm: React.FC<Props> = ({
         <DonationWizard.Input
           defaultValue={defaultValues.address}
           name="address"
-          placeholder="Street address"
+          placeholder="Billing address"
           required
           title="Full street billing address"
         />
