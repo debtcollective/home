@@ -38,7 +38,7 @@ const Dues = () => {
       <p className="text-xl leading-7 font-semibold text-center mt-10 lg:mt-20 max-w-5xl mx-auto lg:text-2xl">
         For those involved in local Debt Collective chapters,{' '}
         <span className="text-primary">
-          50% of your dues will be provided directly to the chapter for local
+          40% of your dues will be provided directly to the chapter for local
           organizing and support.
         </span>
       </p>
