@@ -3,7 +3,7 @@ import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const OweTheBank = () => {
-  const { desktop, medium, small } = useStaticQuery(graphql`
+  const { desktop, medium, small, allAbout } = useStaticQuery(graphql`
     query {
       desktop: file(relativePath: { eq: "owe-the-bank.png" }) {
         childImageSharp {
@@ -26,8 +26,24 @@ const OweTheBank = () => {
           }
         }
       }
+      allAbout {
+        nodes {
+          about {
+            stats {
+              user_count
+            }
+          }
+        }
+      }
     }
   `);
+
+  // Fetch user count from Discourse
+  const {
+    about: {
+      stats: { user_count: userCount }
+    }
+  } = allAbout.nodes[0];
 
   // Art-Direction Array
   const backgroundArtDirectionStack = [
@@ -49,13 +65,13 @@ const OweTheBank = () => {
     >
       <div className="order-2 w-full max-w-8xl mx-auto">
         <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
-          With over 33K members,
+          With {userCount} members,
         </p>
         <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
           together, we own the bank!
         </p>
         <h2 className=" text-white font-bold leading-20 text-right text-6xl mt-2 lg:mt-5 lg:text-7xl">
-          33,021
+          {userCount}
         </h2>
       </div>
     </BackgroundImage>
