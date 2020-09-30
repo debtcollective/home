@@ -55,7 +55,7 @@ test('send a donation request with all provided information', async () => {
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
 
   userEvent.type(
-    screen.getByRole('textbox', { name: /billing address/i }),
+    screen.getByRole('textbox', { name: /street/i }),
     billingInformation.address
   );
   userEvent.type(
@@ -175,7 +175,7 @@ test.only('shows payment error when donation request fails', async () => {
 
   // Give the billing address
   userEvent.type(
-    screen.getByRole('textbox', { name: /billing address/i }),
+    screen.getByRole('textbox', { name: /street/i }),
     billingInformation.address
   );
   userEvent.type(

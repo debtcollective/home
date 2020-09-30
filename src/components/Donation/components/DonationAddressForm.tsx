@@ -47,26 +47,27 @@ const DonationAddressForm: React.FC<Props> = ({
         <DonationWizard.Input
           defaultValue={defaultValues.address}
           name="address"
-          placeholder="Full street billing address"
+          placeholder="Billing address"
           required
           title="Full street billing address"
         />
         <DonationWizard.Input
           defaultValue={defaultValues.city}
           name="city"
-          placeholder="Maturin"
+          placeholder="City"
           required
-          title="City address"
+          title="City for your billing address"
         />
         <DonationWizard.Input
+          className="appearance-none"
           defaultValue={defaultValues.zipCode}
           name="zipCode"
-          placeholder="06002"
+          placeholder="Zip code"
           required
-          title="Zip code address"
+          title="Zip code for your billing address"
         />
         <DonationCountryDropdown
-          defaultValue={defaultValues.country}
+          defaultValue={defaultValues.country || 'US'}
           name="country"
           required
           title="Country"

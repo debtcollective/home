@@ -31,6 +31,7 @@ const DonationPhoneInput: React.FC<InputHTMLAttributes<HTMLInputElement>> = ({
   return (
     <FormControl className="form-control">
       <PhoneInput
+        country="us"
         containerClass="phone-input-element"
         disableDropdown={true}
         value={value}

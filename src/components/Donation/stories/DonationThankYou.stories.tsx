@@ -20,11 +20,8 @@ export const ThankYou = ThankYouTemplate.bind({});
 ThankYou.args = {
   children: (
     <>
-      <p className="text-center mt-4 w-9/12 mb-0">
-        Your $215.00 donation has been successfully processed!
-      </p>
-      <p className="mt-0">
-        Go to{' '}
+      <p className="text-center mt-4 mb-0 text-sm px-6">
+        Your $215.00 donation has been successfully processed. Go to{' '}
         <Link className="text-primary underline" to="/hub">
           your member hub
         </Link>{' '}
