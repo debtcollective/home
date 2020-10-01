@@ -128,8 +128,9 @@ const DonationPaymentForm: React.FC<Props> = ({
             name="chapter"
             title="Select your related chapter"
             required
+            defaultValue=""
           >
-            <option disabled selected hidden value="">
+            <option disabled hidden value="">
               Are you part of a local chapter?{' '}
             </option>
             {chapters.map((chapter) => (
