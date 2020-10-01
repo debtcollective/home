@@ -1434,9 +1434,9 @@
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
 "@debtcollective/dc-header-component@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-1.3.0.tgz#3136c31958e2f43114b9c18a441b83ada93de999"
-  integrity sha512-LYmZ4shmR2xgYkwryvUuW4EU8bYDCR2IrszqdHIi4CRLoQAm/8P4TSUBh+nXbaHNfbDSIAC62eDPMscDgHim4w==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-1.3.1.tgz#95427b79b4c230daf769ebf27844a3921aeb709b"
+  integrity sha512-X9YZAYCFUAuVropvSzipjP6U79+MWfDRgDp4eP+d4Do8NNmP6ZGKVSuiGDyljDCjoyekXYK8oVGJ/L3hei1jsw==
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
