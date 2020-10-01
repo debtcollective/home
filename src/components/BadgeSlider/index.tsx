@@ -11,6 +11,7 @@ export interface IBadge {
   src: string;
   text: string;
   title: string;
+  href?: string;
 }
 
 const ITEMS_PER_PAGE = 3;

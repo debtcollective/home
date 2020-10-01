@@ -49,6 +49,7 @@ const Slides: React.FC<Props> = ({ slides, hideControls }) => {
                 title={badge.title}
                 backgroundColor={badge.backgroundColor}
                 text={badge.text}
+                href={badge.href}
                 className="mx-auto"
               />
             ))}

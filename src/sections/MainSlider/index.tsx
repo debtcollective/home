@@ -32,7 +32,8 @@ const MainSlider = () => {
             src: joinStudentDebtIcon,
             text:
               'Can’t Pay? Won’t Pay! Join a community of debtors refusing to pay our student loans!',
-            title: 'Join the student debt strike'
+            title: 'Join the student debt strike',
+            href: 'http://strike.debtcollective.org/'
           },
           {
             alt: '5 things you can do',
@@ -40,7 +41,8 @@ const MainSlider = () => {
             src: thingsToDoIcon,
             text:
               'We need your help! Here are simple ways you can join the movement.',
-            title: '5 things you can do'
+            title: '5 things you can do',
+            href: 'http://bit.ly/cancelstudentdebt-5-things-to-do'
           }
         ]}
       />
