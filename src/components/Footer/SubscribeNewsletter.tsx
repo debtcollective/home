@@ -32,6 +32,7 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
         type={InputType.email}
         className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
         placeholder="Email"
+        title="Your email"
         required
       />
       <input
@@ -40,6 +41,7 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
         type={InputType.text}
         className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
         placeholder="First Name"
+        title="Your first name"
         required
       />
       <input
@@ -48,6 +50,7 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
         type={InputType.text}
         className="bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 w-full lg:w-1/4 mb-3 lg:mr-3 lg:mb-0"
         placeholder="Last Name"
+        title="Your last name"
         required
       />
       <Button className="w-full lg:w-1/5" type="submit">
