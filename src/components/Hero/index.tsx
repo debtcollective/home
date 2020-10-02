@@ -70,7 +70,8 @@ const Hero: React.FC<Props> = ({
         className
       )}
     >
-      <div className="max-w-full w-8xl mx-auto xxl:mx-auto">
+      <div className="absolute inset-0 bg-gray opacity-75"></div>
+      <div className="relative max-w-full w-8xl mx-auto xxl:mx-auto">
         <div className="mt-0 max-w-3xl mr-auto">
           <div className="flex flex-col">
             <h1 className="font-bold text-5xl text-white md:text-6xl leading-none mt-4 md:mt-0">
