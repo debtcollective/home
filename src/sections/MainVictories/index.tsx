@@ -9,7 +9,7 @@ const MainVictories: React.FC = () => {
       coverImage: file(relativePath: { eq: "main-victories-image.png" }) {
         childImageSharp {
           fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
