@@ -45,7 +45,7 @@ const PowerInNumbers = () => {
   return (
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
-      className="px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
+      className="min-h-fish-section px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="max-w-8xl mx-auto">
         <h2 className="text-white text-left text-4xl font-bold mb-4 mt-5 leading-9 lg:leading-20 lg:text-6xl w-full lg:w-1/2">

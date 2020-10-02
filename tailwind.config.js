@@ -70,6 +70,7 @@ module.exports = {
         '9xl': '7.5rem'
       },
       minHeight: {
+        'fish-section': '27.5rem',
         'screen-45': '45vh',
         'screen-70': '70vh',
         'screen-95': '95vh',
