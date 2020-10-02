@@ -127,8 +127,12 @@ const DonationPaymentForm: React.FC<Props> = ({
             id="chapter-dropdown"
             name="chapter"
             title="Select your related chapter"
-            defaultValue="blank"
+            required
+            defaultValue=""
           >
+            <option disabled hidden value="">
+              Are you part of a local chapter?{' '}
+            </option>
             {chapters.map((chapter) => (
               <option key={chapter.value} value={chapter.value}>
                 {chapter.label}

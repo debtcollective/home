@@ -57,7 +57,13 @@ export type PersonalData = {
   lastName: string;
   email: string;
   phoneNumber: string;
-  chapter: 'pennsylvania' | 'massachusetts' | 'washington' | 'chicago';
+  chapter:
+    | 'pennsylvania'
+    | 'massachusetts'
+    | 'washington'
+    | 'chicago'
+    | 'none'
+    | '';
 };
 
 export type PaymentServices = {
@@ -81,9 +87,11 @@ export type UnionMachineEvent = AnyEventObject;
 const actions = {
   updateChapterInformation: assign<UnionMachineContext, PersonalNextEvent>({
     personalInformation: (context, event) => {
+      const { chapter } = event.data;
+
       return {
         ...context.personalInformation,
-        chapter: event.data.chapter
+        chapter: chapter === 'none' ? '' : chapter
       };
     }
   }),

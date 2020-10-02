@@ -61,7 +61,7 @@ const OweTheBank = () => {
   return (
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
-      className="p-desktop-screen-spacing"
+      className="px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="order-2 w-full max-w-8xl mx-auto">
         <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
