@@ -46,7 +46,7 @@ const DonateCover: React.FC = () => {
     <>
       <BackgroundImage
         fluid={backgroundArtDirectionStack}
-        className="min-h-screen-95 xxl:min-h-screen-45 flex lg:items-end bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24"
+        className="min-h-screen-70 flex lg:items-end bg-no-repeat bg-cover bg-center -mt-20 pt-20 p-4 pb-8 md:px-12 lg:px-24 lg:pb-24"
       >
         <div className="absolute inset-0 bg-gray opacity-75"></div>
         <div className="relative max-w-full w-8xl mx-auto mt-8 md:mt-0">
