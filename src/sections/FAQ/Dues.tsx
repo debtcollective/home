@@ -20,9 +20,7 @@ const Dues = () => {
             We use dues to directly support debtors and fight for economic
             justice.
           </p>
-          <p className="text-base leading-5 font-semibold mt-5">
-            Dues fund: <br />
-          </p>
+          <h6 className="text-base leading-5 font-semibold mt-5">Dues fund:</h6>
           <ul className="list-disc pl-8 mt-4 font-normal text-base">
             <li>Actions, protests and campaigns</li>
             <li>Debt disputes, debt clinics and other administrative costs</li>

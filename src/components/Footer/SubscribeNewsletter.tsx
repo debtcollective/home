@@ -15,7 +15,7 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
   return (
     <form
       className={classnames(
-        'flex flex-col items-center justify-center mb-12 lg:mb-24 lg:flex-row',
+        'flex flex-col items-center justify-center mb-12 lg:flex-row',
         className
       )}
       action={NEWSLETTER_API}

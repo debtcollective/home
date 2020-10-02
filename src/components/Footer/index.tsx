@@ -14,15 +14,15 @@ const CURRENT_YEAR = process.env.CURRENT_YEAR || new Date().getFullYear();
 
 const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
-    <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing">
+    <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:px-desktop-screen-spacing lg:py-12">
       <div className="max-w-8xl mx-auto">
         {!hideNewsletter && (
           <>
             <NewsLetter />
-            <hr className="w-full border-gray-100 mb-16 lg:mb-20" />
+            <hr className="w-full border-gray-100 mb-12" />
           </>
         )}
-        <section className="flex flex-col items-center mb-16 lg:flex-row lg:justify-between">
+        <section className="flex flex-col items-center mb-12 lg:flex-row lg:justify-between">
           <img src={dcLogo} alt="debt collective logo" />
           <ul className="flex mt-10 lg:mt-0">
             <li className="mr-10">
@@ -54,7 +54,7 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
             </li>
           </ul>
         </section>
-        <section className="flex flex-col mb-16 lg:flex-row lg:mb-32">
+        <section className="flex flex-col mb-12 lg:flex-row">
           <FooterMenuSection
             title="organize"
             items={[
@@ -120,7 +120,7 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
           />
         </section>
         <section className="flex flex-col lg:flex-row">
-          <p className="text-gray-200 font-bold text-center text-base mb-6 lg:mr-12 lg:text-left">
+          <p className="text-gray-200 font-bold text-center text-base mb-6 lg:mr-12 lg:text-left lg:mb-0">
             Copyright {CURRENT_YEAR}
           </p>
           <a
