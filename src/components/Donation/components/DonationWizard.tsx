@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-hidden w-full`}
+  ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-visible w-full`}
 `;
 
 export const BottomMessage = styled.div`
