@@ -9,7 +9,7 @@ const MainVictories: React.FC = () => {
       coverImage: file(relativePath: { eq: "main-victories-image.png" }) {
         childImageSharp {
           fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -20,7 +20,7 @@ const MainVictories: React.FC = () => {
   return (
     <BackgroundImage
       fluid={coverImage}
-      className="min-h-screen-95 xxl:min-h-screen-45 flex flex-col justify-center bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
+      className="flex flex-col justify-center bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="lg:grid lg:grid-cols-2 lg:gap-16 max-w-8xl mx-auto">
         <YouTube

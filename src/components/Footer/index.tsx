@@ -91,10 +91,6 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
             title="learn more"
             items={[
               {
-                label: 'About Us',
-                href: 'https://www.youtube.com/channel/UC1zKHjs8w8Nf_8krYJrbIDQ'
-              },
-              {
                 label: 'Debt Collective YouTube',
                 href: 'https://www.youtube.com/channel/UC1zKHjs8w8Nf_8krYJrbIDQ'
               },

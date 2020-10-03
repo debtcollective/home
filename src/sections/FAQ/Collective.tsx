@@ -8,7 +8,7 @@ const Collective = () => {
       floridaStrikers: file(relativePath: { eq: "florida-strikers.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
