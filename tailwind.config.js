@@ -81,9 +81,13 @@ module.exports = {
         '3/4': '75%'
       },
       maxWidth: {
+        '5xl': '50rem',
+        '6xl': '60rem',
         '8xl': '90rem'
       },
       width: {
+        '5xl': '50rem',
+        '6xl': '60rem',
         '8xl': '90rem'
       }
     }
