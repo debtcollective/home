@@ -62,6 +62,14 @@ module.exports = {
           `
         }
       }
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GOOGLE_TAG_MANAGER_ID,
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: 'gatsby' }
+      }
     }
   ]
 };
