@@ -18,12 +18,13 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'The Debt Collective',
-    description: '',
+    title: 'You are not a loan | Debt Collective',
+    description:
+      "We are a debtors' union fighting to cancel debts and defend millions of households. Join us to build a world where college is publicly funded, healthcare is universal and housing is guaranteed for all. #YouAreNotALoan",
     author: 'Debt Collective',
     twitterUsername: '@0debtzone',
     facebookPage: 'https://www.facebook.com/DebtCollective',
-    image: `${siteUrl}/img/seo.png`,
+    image: `${siteUrl}/seo.png`,
     url: siteUrl
   },
   plugins: [
