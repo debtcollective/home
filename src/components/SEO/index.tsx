@@ -29,6 +29,8 @@ const SEO: React.FC<Props> = (props) => {
   );
   const metaDescription = description || site.siteMetadata.description;
   const metaTitle = title || site.siteMetadata.title;
+  const metaTitleTemplate = `%s • 🟥 Debt Collective`;
+  const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
 
   return (
     <Helmet
@@ -36,6 +38,7 @@ const SEO: React.FC<Props> = (props) => {
         lang: lang
       }}
       title={metaTitle}
+      titleTemplate={metaTitleTemplate}
       meta={[
         {
           name: 'description',
@@ -43,7 +46,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           property: 'og:title',
-          content: metaTitle
+          content: metaTitleWithTemplate
         },
         {
           property: 'og:description',
@@ -70,8 +73,12 @@ const SEO: React.FC<Props> = (props) => {
           content: site.siteMetadata.twitterUsername
         },
         {
+          name: 'twitter:site',
+          content: site.siteMetadata.twitterUsername
+        },
+        {
           name: 'twitter:title',
-          content: metaTitle
+          content: metaTitleWithTemplate
         },
         {
           name: 'twitter:description',

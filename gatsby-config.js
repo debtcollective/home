@@ -18,7 +18,7 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'You are not a loan | Debt Collective',
+    title: 'You are not a loan',
     description:
       "We are a debtors' union fighting to cancel debts and defend millions of households. Join us to build a world where college is publicly funded, healthcare is universal and housing is guaranteed for all. #YouAreNotALoan",
     author: 'Debt Collective',
