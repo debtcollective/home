@@ -16,6 +16,7 @@ const SEO: React.FC<Props> = (props) => {
         site {
           siteMetadata {
             title
+            titleTemplate
             description
             author
             twitterUsername
@@ -29,7 +30,7 @@ const SEO: React.FC<Props> = (props) => {
   );
   const metaDescription = description || site.siteMetadata.description;
   const metaTitle = title || site.siteMetadata.title;
-  const metaTitleTemplate = `%s • 🟥 Debt Collective`;
+  const metaTitleTemplate = site.siteMetadata.titleTemplate;
   const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
 
   return (

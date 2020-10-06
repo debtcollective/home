@@ -52,8 +52,10 @@ const MemberHub = () => {
     }
   }, [membership, isFetching]);
 
+  const metaTitle = 'Member Hub';
+
   return (
-    <Layout hideNewsletter>
+    <Layout hideNewsletter title={metaTitle}>
       {!membership?.confirmed && (
         <div
           className="px-4 py-3 text-blue-700 border-t border-b border-blue-500 bg-yellow"

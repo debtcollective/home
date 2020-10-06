@@ -7,9 +7,14 @@ import PowerInNumbers from '@sections/PowerInNumbers';
 import OweTheBank from '@sections/OweTheBank';
 import YouAreNotALoan from '@sections/YouAreNotALoan';
 
+const metaTitle =
+  'Alone our debts are a burden. Together they make us powerful';
+const metaDescription =
+  'Join a growing community of debtors organizing to cancel debts and build financial and political power.';
+
 const DebtUnion: React.FC = () => {
   return (
-    <Layout>
+    <Layout title={metaTitle} description={metaDescription}>
       <YouAreNotALoan />
       <WhatIsADebtorsUnion />
       <MembershipBenefits
