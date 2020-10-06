@@ -31,6 +31,7 @@
     "gatsby-background-image": "^1.1.2",
     "gatsby-image": "^2.4.16",
     "gatsby-plugin-google-fonts": "1.0.1",
+
     "gatsby-plugin-google-tagmanager": "^2.3.14",
     "gatsby-plugin-postcss": "^2.3.11",
     "gatsby-plugin-react-helmet": "^3.3.10",
@@ -145,13 +146,11 @@
       "eslint --fix"
     ],
     "*.{md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.scss": [
       "stylefmt",
-      "stylelint --syntax scss",
-      "git add"
+      "stylelint --syntax scss"
     ]
   }
 }
