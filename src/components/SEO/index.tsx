@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SEO: React.FC<Props> = (props) => {
-  const { description, lang } = props;
+  const { title, description, lang } = props;
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -28,14 +28,14 @@ const SEO: React.FC<Props> = (props) => {
     `
   );
   const metaDescription = description || site.siteMetadata.description;
-  const title = props.title || site.siteMetadata.title;
+  const metaTitle = title || site.siteMetadata.title;
 
   return (
     <Helmet
       htmlAttributes={{
         lang
       }}
-      title={title}
+      title={metaTitle}
       meta={[
         {
           name: 'description',
@@ -43,7 +43,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           property: 'og:title',
-          content: title
+          content: metaTitle
         },
         {
           property: 'og:description',
@@ -71,7 +71,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           name: 'twitter:title',
-          content: title
+          content: metaTitle
         },
         {
           name: 'twitter:description',
@@ -83,14 +83,6 @@ const SEO: React.FC<Props> = (props) => {
         }
       ]}
     >
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      ></link>
-      <html lang="en" />
-      <title>{title}</title>
-      <meta name="description" content={description} />
-
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -108,7 +100,6 @@ const SEO: React.FC<Props> = (props) => {
         href={`${withPrefix('/')}favicon/favicon-16x16.png`}
         sizes="16x16"
       />
-
       <link
         rel="mask-icon"
         href={`${withPrefix('/')}img/safari-pinned-tab.svg`}

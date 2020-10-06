@@ -71,6 +71,13 @@ module.exports = {
         includeInDevelopment: true,
         defaultDataLayer: { platform: 'gatsby' }
       }
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['Libre+Franklin:400,600,800', 'Material+Icons'],
+        display: 'swap'
+      }
     }
   ]
 };
