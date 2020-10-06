@@ -1,4 +1,4 @@
-import Layout, { GATSBY_COMMUNITY_URL } from '@components/Layout';
+import Layout from '@components/Layout';
 import useMembership from '@hooks/useMembership';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import React, { useEffect } from 'react';
@@ -18,7 +18,7 @@ const LINKS = [
   },
   {
     linkText: 'Debt Collective Community Forum',
-    href: GATSBY_COMMUNITY_URL,
+    href: process.env.GATSBY_COMMUNITY_URL,
     text:
       'Log into the community forum - introduce yourself, read other debtors stories, find information and resources about various types of debt and get organized with fellow debtors!'
   },
@@ -52,11 +52,13 @@ const MemberHub = () => {
     }
   }, [membership, isFetching]);
 
+  const metaTitle = 'Member Hub';
+
   return (
-    <Layout hideNewsletter>
+    <Layout hideNewsletter title={metaTitle}>
       {!membership?.confirmed && (
         <div
-          className="bg-yellow border-t border-b border-blue-500 text-blue-700 px-4 py-3"
+          className="px-4 py-3 text-blue-700 border-t border-b border-blue-500 bg-yellow"
           role="alert"
         >
           <p className="font-bold">Please verify your account</p>
@@ -68,24 +70,24 @@ const MemberHub = () => {
         </div>
       )}
       <section
-        className="py-y-screen-spacing flex flex-col justify-center lg:px-desktop-screen-spacing"
+        className="flex flex-col justify-center py-y-screen-spacing lg:px-desktop-screen-spacing"
         style={{
           opacity: isFetching ? 0.1 : 1,
           pointerEvents: isFetching ? 'none' : 'all'
         }}
       >
-        <div className="w-full max-w-8xl mx-auto border-1 border-gray-500 rounded-sm px-x-screen-spacing md:px-2 p-2">
+        <div className="w-full p-2 mx-auto border-gray-500 rounded-sm max-w-8xl border-1 px-x-screen-spacing md:px-2">
           <img
             src={coverImage.src}
             srcSet={coverImage.srcSet}
-            className="w-full hidden md:block"
+            className="hidden w-full md:block"
             alt="Welcome to the Debt Collective!"
           />
-          <h1 className="text-4xl lg:text-5xl font-semibold text-center mt-8 mb-3">
+          <h1 className="mt-8 mb-3 text-4xl font-semibold text-center lg:text-5xl">
             Welcome to the Debt Collective!
           </h1>
-          <hr className="border-primary mx-auto border-b-2 mb-12 w-3/4 md:w-1/2" />
-          <p className="font-semibold text-lg md:px-24">
+          <hr className="w-3/4 mx-auto mb-12 border-b-2 border-primary md:w-1/2" />
+          <p className="text-lg font-semibold md:px-24">
             We are excited to welcome you to the debtors union - a new and
             exciting type of organization where debtors come together and fight
             for debt cancellation and so much more. You are not a loan! Our
@@ -94,18 +96,18 @@ const MemberHub = () => {
             where you can access all of your personal information and navigate
             through the Debt Collective platform in a personalized way.
           </p>
-          <p className="font-semibold text-lg md:px-24 mt-4 mb-12">
+          <p className="mt-4 mb-12 text-lg font-semibold md:px-24">
             For now, we welcome you to begin your membership journey by
             exploring the pages and documents below!
           </p>
-          <ul className="md:w-1/2 mx-auto">
+          <ul className="mx-auto md:w-1/2">
             {LINKS.map((link, index) => {
               return (
                 <li key={link.linkText} className={'text-base mb-6'}>
                   <span className="font-semibold">({index + 1})</span>{' '}
                   <a
                     href={link.href}
-                    className="text-blue-100 font-semibold"
+                    className="font-semibold text-blue-100"
                     target="_blank"
                     rel="noreferrer"
                   >
