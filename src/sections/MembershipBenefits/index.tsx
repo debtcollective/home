@@ -23,7 +23,7 @@ const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
       <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-11">
         {title}
       </h2>
-      <h3 className="text-center mb-16 font-semibold text-gray text-xl lg:text-2xl">
+      <h3 className="text-center mb-16 font-semibold text-gray text-xl lg:text-2xl max-w-full w-6xl mx-auto mt-4">
         {description}
       </h3>
       <BadgeSlider
