@@ -8,7 +8,7 @@ const DonateCover: React.FC = () => {
     query {
       desktop: file(relativePath: { eq: "heros/donate-horizontal.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 4160, quality: 100) {
+          fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

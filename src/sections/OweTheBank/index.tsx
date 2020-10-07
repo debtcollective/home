@@ -7,14 +7,14 @@ const OweTheBank = () => {
     query {
       desktop: file(relativePath: { eq: "owe-the-bank.png" }) {
         childImageSharp {
-          fluid(maxWidth: 4160, quality: 100) {
+          fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       medium: file(relativePath: { eq: "owe-the-bank.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200, quality: 100) {
+          fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }

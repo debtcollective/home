@@ -8,7 +8,7 @@ const YouAreNotALoan: React.FC = () => {
     query {
       desktop: file(relativePath: { eq: "heros/join-union.png" }) {
         childImageSharp {
-          fluid(maxWidth: 4160, quality: 100) {
+          fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
