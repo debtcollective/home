@@ -12,10 +12,6 @@ const FormControl = styled.div`
   .flag-dropdown {
     ${tw`border border-beige-500 rounded-md rounded-r-none`}
   }
-
-  .selected-flag.selected-flag {
-    ${tw`pl-3`}
-  }
 `;
 
 const DonationPhoneInput: React.FC<InputHTMLAttributes<HTMLInputElement>> = ({
@@ -33,7 +29,6 @@ const DonationPhoneInput: React.FC<InputHTMLAttributes<HTMLInputElement>> = ({
       <PhoneInput
         country="us"
         containerClass="phone-input-element"
-        disableDropdown={true}
         value={value}
         onChange={handleOnChange}
         inputProps={rest}
