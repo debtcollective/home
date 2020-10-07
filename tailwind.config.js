@@ -3,7 +3,23 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true
   },
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+    content: ['./src/**/*.{js,ts,jsx,tsx}'],
+    options: {
+      // We whitelist the Colors enum classes to keep them after purge
+      // TODO: find a way to import the enum and build the classes array
+      whitelist: [
+        'bg-blue',
+        'bg-gray',
+        'bg-green',
+        'bg-pink',
+        'bg-primary',
+        'bg-purple',
+        'bg-white',
+        'bg-yellow'
+      ]
+    }
+  },
   theme: {
     colors: {
       'black-100': '#1C1C1C',
