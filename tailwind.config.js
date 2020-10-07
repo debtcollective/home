@@ -1,8 +1,9 @@
 module.exports = {
   future: {
+    purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true
   },
-  purge: [],
+  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
       'black-100': '#1C1C1C',
