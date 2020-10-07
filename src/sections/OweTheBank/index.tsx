@@ -7,14 +7,14 @@ const OweTheBank = () => {
     query {
       desktop: file(relativePath: { eq: "owe-the-bank.png" }) {
         childImageSharp {
-          fluid(maxWidth: 4160, quality: 100) {
+          fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       medium: file(relativePath: { eq: "owe-the-bank.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200, quality: 100) {
+          fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -61,7 +61,7 @@ const OweTheBank = () => {
   return (
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
-      className="min-h-fish-section px-x-screen-spacing lg:p-desktop-screen-spacing flex items-center"
+      className="min-h-fish-section bg-black-100 px-x-screen-spacing lg:p-desktop-screen-spacing flex items-center"
     >
       <div className="order-2 w-full max-w-8xl mx-auto">
         <p className=" text-white text-xl font-semibold text-right lg:text-2xl">

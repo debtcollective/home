@@ -27,14 +27,14 @@ const Hero: React.FC<Props> = ({
     query {
       desktop: file(relativePath: { eq: "heros/main-horizontal.png" }) {
         childImageSharp {
-          fluid(maxWidth: 4160, quality: 100) {
+          fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       medium: file(relativePath: { eq: "heros/main-vertical.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1200, quality: 100) {
+          fluid(maxWidth: 800, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -66,7 +66,7 @@ const Hero: React.FC<Props> = ({
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
       className={classnames(
-        'min-h-screen-70 bg-no-repeat bg-cover bg-center flex items-center px-4 md:px-12 lg:px-24',
+        'min-h-screen-70 bg-black-100 bg-no-repeat bg-cover bg-center flex items-center px-4 md:px-12 lg:px-24',
         className
       )}
     >
