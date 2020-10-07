@@ -31,7 +31,7 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
         suffix="USD/mo"
       />
       <DonationWizard.Button type="submit">
-        donate monthly
+        pay monthly dues
       </DonationWizard.Button>
     </DonationWizard.Form>
   );

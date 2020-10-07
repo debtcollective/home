@@ -99,7 +99,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
       {machineState === 'processDonation' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
-          <p className="text-center mb-4 mt-4 w-9/12">
+          <p className="w-9/12 mt-4 mb-4 text-center">
             {machineContext.donation.message}
           </p>
         </DonationThankYou>
@@ -113,7 +113,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
       {machineState.amountForm === 'donateMonthly' && (
         <DonationWizard.Container>
           <DonationWizard.Title>
-            Choose an amount to give per month
+            Choose an amount to pay per month
           </DonationWizard.Title>
           <DonationMonthlyForm
             defaultValues={{ amount: machineContext.donationMonthlyAmount }}
@@ -149,7 +149,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
           onSubmit={onSubmitAddressForm}
         />
       )}
-      <p className="text-white text-xss text-center mt-2 px-4">
+      <p className="px-4 mt-2 text-center text-white text-xss">
         After processing your donation an account will be created for you
         providing access to all Debt Collective Union Member benefits.
       </p>

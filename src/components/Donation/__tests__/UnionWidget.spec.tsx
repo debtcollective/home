@@ -38,7 +38,7 @@ afterEach(() => {
 
 test('allows to skip the payment form and complete flow using zero donation selection', async () => {
   const donationAmount = 0;
-  const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
+  const regexAmount = new RegExp(`Paying ${donationAmount}`, 'i');
   render(<UnionWidget />);
 
   const zeroOptionBtn = screen.getByRole('button', { name: /zero/i });
@@ -116,14 +116,14 @@ test('allows to skip the payment form and complete flow using zero donation sele
 
 test('allows to complete flow using an amount donation selection', async () => {
   const donationAmount = 5;
-  const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
+  const regexAmount = new RegExp(`Paying ${donationAmount}`, 'i');
   render(<UnionWidget />);
 
   // Select an amount
   userEvent.click(
     screen.getByRole('radio', { name: `$${donationAmount} USD/mo` })
   );
-  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+  userEvent.click(screen.getByRole('button', { name: /pay/i }));
 
   // Give address information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();

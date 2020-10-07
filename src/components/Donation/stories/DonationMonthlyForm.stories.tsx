@@ -13,7 +13,7 @@ export default {
 const MonthlyFormTemplate: Story<DonationMonthlyFormProps> = (args) => (
   <DonationWizard.Container>
     <DonationWizard.Title>
-      Choose an amount to give per month
+      Choose an amount to pay per month
     </DonationWizard.Title>
     <DonationMonthlyForm {...args} />
   </DonationWizard.Container>

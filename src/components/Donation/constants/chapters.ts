@@ -1,7 +1,8 @@
 export default [
   { label: 'I am not part of a chapter', value: 'none' },
-  { label: 'Pennsylvania', value: 'pennsylvania' },
+  { label: 'Chicago', value: 'chicago' },
   { label: 'Massachusetts', value: 'massachusetts' },
-  { label: 'Washington D.C', value: 'dc' },
-  { label: 'Chicago', value: 'chicago' }
+  { label: 'Pennsylvania', value: 'pennsylvania' },
+  { label: 'San Diego', value: 'san diego' },
+  { label: 'Washington D.C', value: 'dc' }
 ];
