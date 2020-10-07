@@ -39,7 +39,7 @@ afterEach(() => {
 });
 
 test('send a donation request with all provided information', async () => {
-  const regexAmount = new RegExp(`Giving ${donationAmount}`, 'i');
+  const regexAmount = new RegExp(`Paying ${donationAmount}`, 'i');
 
   render(<DonationWidget />);
 

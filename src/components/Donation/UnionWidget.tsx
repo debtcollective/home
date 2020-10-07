@@ -131,7 +131,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       {machineState.amountForm === 'donateMonthly' && (
         <DonationWizard.Container>
           <DonationWizard.Title>
-            Choose an amount to give per month
+            Choose an amount to pay per month
           </DonationWizard.Title>
           <DonationMonthlyForm
             defaultValues={{ amount: machineContext.donationMonthlyAmount }}

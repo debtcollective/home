@@ -38,7 +38,7 @@ const DonationAddressForm: React.FC<Props> = ({
   return (
     <DonationWizard.Container>
       <DonationWizard.Title>
-        {`Giving ${amount}$`}{' '}
+        {`Paying ${amount}$`}{' '}
         <DonationWizard.Button variant="transparent" onClick={onEditAmount}>
           (edit amount)
         </DonationWizard.Button>
