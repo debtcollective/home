@@ -32,11 +32,13 @@ const HEADER_LINKS = [
   },
   {
     href: 'https://community.debtcollective.org/',
-    text: 'Community'
+    text: 'Community',
+    target: '_blank'
   },
   {
     href: 'https://teespring.com/stores/debt-collective',
-    text: 'Store'
+    text: 'Store',
+    target: '_blank'
   }
 ];
 
@@ -44,8 +46,6 @@ const HUB_LINK = {
   href: '/hub',
   text: 'Member hub'
 };
-
-type MembershipStatus = 'pending' | 'active' | null;
 
 const Layout: React.FC<Props> = ({
   children,
