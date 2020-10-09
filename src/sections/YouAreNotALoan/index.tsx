@@ -48,7 +48,7 @@ const YouAreNotALoan: React.FC = () => {
         fluid={backgroundArtDirectionStack}
         className="min-h-screen-70 bg-black-100 flex lg:items-end bg-no-repeat bg-cover bg-center px-4 md:px-12 lg:px-24"
       >
-        <div className="absolute inset-0 bg-gray opacity-75"></div>
+        <div className="absolute inset-0 bg-gray opacity-50"></div>
         <div className="relative max-w-full w-8xl mx-auto mt-8 md:mt-0">
           <div className="py-10 md:pt-16 lg:pb-24 max-w-2xl">
             <h1 className="font-bold text-5xl text-white md:text-6xl leading-none">
