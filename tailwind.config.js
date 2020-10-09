@@ -40,6 +40,7 @@ module.exports = {
         100: '#03a9f4',
         200: '#DBF8FF'
       },
+      turquoise: '#7DCCBC',
       green: '#D6FFB8',
       pink: '#FFADA4',
       primary: '#FF4630',
