@@ -30,7 +30,7 @@ const WhatIsADebtorsUnion: React.FC = () => {
   return (
     <BackgroundImage
       fluid={coverImage}
-      className="flex flex-col justify-center bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
+      className="flex flex-col justify-center bg-green bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
       <div className="max-w-8xl mx-auto flex flex-col justify-between mb-12 lg:mb-24 lg:flex-row">
         <div className="w-full lg:w-1/2">

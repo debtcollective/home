@@ -61,7 +61,7 @@ const OweTheBank = () => {
   return (
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
-      className="min-h-fish-section bg-black-100 px-x-screen-spacing lg:p-desktop-screen-spacing flex items-center"
+      className="min-h-fish-section from-turquoise bg-gradient-to-l px-x-screen-spacing lg:p-desktop-screen-spacing flex items-center"
     >
       <div className="order-2 w-full max-w-8xl mx-auto">
         <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
