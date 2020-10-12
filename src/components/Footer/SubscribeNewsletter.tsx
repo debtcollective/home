@@ -7,9 +7,9 @@ interface Props {
   className?: string;
 }
 
-const NEWSLETTER_API = process.env.NEWSLETTER_API;
-const NEWSLETTER_USER_ID = process.env.NEWSLETTER_USER_ID;
-const NEWSLETTER_FORM_ID = process.env.NEWSLETTER_FORM_ID;
+const GATSBY_NEWSLETTER_API = process.env.GATSBY_NEWSLETTER_API;
+const GASTBY_NEWSLETTER_USER_ID = process.env.GASTBY_NEWSLETTER_USER_ID;
+const GASTBY_NEWSLETTER_FORM_ID = process.env.GASTBY_NEWSLETTER_FORM_ID;
 
 const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
   return (
@@ -18,11 +18,11 @@ const SubscribeNewsletter: React.FC<Props> = ({ className }) => {
         'flex flex-col items-center justify-center mb-12 lg:flex-row',
         className
       )}
-      action={NEWSLETTER_API}
+      action={GATSBY_NEWSLETTER_API}
       method="POST"
     >
-      <input type="hidden" name="u" value={NEWSLETTER_USER_ID} />
-      <input type="hidden" name="id" value={NEWSLETTER_FORM_ID} />
+      <input type="hidden" name="u" value={GASTBY_NEWSLETTER_USER_ID} />
+      <input type="hidden" name="id" value={GASTBY_NEWSLETTER_FORM_ID} />
       <h3 className="w-full text-center lg:w-1/4 text-white m-0 mb-8 font-semibold text-2xl lg:mb-0">
         Stay in the Loop
       </h3>
