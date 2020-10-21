@@ -36,10 +36,9 @@ module.exports = {
       'beige-100': '#FBFBFB',
       'beige-500': '#EBE7DC',
       'beige-600': '#FFFBEA',
-      blue: {
-        100: '#03a9f4',
-        200: '#DBF8FF'
-      },
+      blue: '#DBF8FF',
+      'blue-100': '#03a9f4',
+      'blue-200': '#DBF8FF',
       turquoise: '#7DCCBC',
       green: '#D6FFB8',
       pink: '#FFADA4',
