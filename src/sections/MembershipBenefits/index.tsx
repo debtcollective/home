@@ -17,13 +17,13 @@ interface Props {
 const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
   return (
     <section
-      className="px-x-screen-spacing py-y-screen-spacing flex flex-col justify-center lg:p-desktop-screen-spacing bg-gradient-to-b from-blue-200 via-white-200 to-blue-200 lg:to-white-300"
+      className="flex flex-col justify-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing bg-gradient-to-b from-blue-200 via-white-200 to-blue-200 lg:to-white-300"
       id="membership-benefits"
     >
-      <h2 className="text-center mb-4 text-4xl leading-9 font-bold text-gray lg:text-5xl lg:leading-11">
+      <h2 className="mb-4 text-4xl font-bold leading-9 text-center text-gray lg:text-5xl lg:leading-11">
         {title}
       </h2>
-      <h3 className="text-center mb-16 font-semibold text-gray text-xl lg:text-2xl max-w-full w-6xl mx-auto mt-4">
+      <h3 className="max-w-full mx-auto mt-4 mb-16 text-xl font-semibold text-center text-gray lg:text-2xl w-6xl">
         {description}
       </h3>
       <BadgeSlider
@@ -39,6 +39,7 @@ const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
           {
             alt: 'Dispute your debts',
             backgroundColor: Colors.yellow,
+            href: 'https://tools.debtcollective.org/',
             src: disputeYourDebtsIcon,
             text:
               'Use our dispute tools to dispute your debts, win relief, and take the power back from creditors',
@@ -55,6 +56,7 @@ const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
           {
             alt: 'Community Platform',
             backgroundColor: Colors.blue,
+            href: 'https://community.debtcollective.org/',
             src: communityPlatformIcon,
             text:
               'Connect with other members from around the country: share your story, discuss strategies, find information and resources',
