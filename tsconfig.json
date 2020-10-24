@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "skipLibCheck": true,
     // @TODO: Replace target for Node12 https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
     "target": "esnext",
     "jsx": "react",
@@ -20,6 +21,6 @@
       "@hooks/*": ["src/hooks/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/*"],
   "exclude": ["node_modules", "public", ".cache"]
 }
