@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "removeComments": true,
     "module": "commonjs",
     "skipLibCheck": true,
     // @TODO: Replace target for Node12 https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
