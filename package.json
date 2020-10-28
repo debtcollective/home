@@ -16,7 +16,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@debtcollective/dc-header-component": "^2.1.0",
+    "@debtcollective/dc-header-component": "^2.1.1",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.9.0",
     "@types/lodash.chunk": "^4.2.6",
