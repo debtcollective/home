@@ -3,38 +3,38 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  ${tw`grid grid-cols-1 gap-0 max-w-full border border-beige-500 bg-beige-100 rounded overflow-visible w-full`}
+  ${tw`grid w-full max-w-full grid-cols-1 gap-0 overflow-visible border rounded border-beige-500 bg-beige-100`}
 `;
 
 export const BottomMessage = styled.div`
-  ${tw`p-4 border-dashed border-0 border-t border-beige-500 text-xs text-center`}
+  ${tw`p-4 text-xs text-center border-0 border-t border-dashed border-beige-500`}
 `;
 
 export const Box = styled.div`
-  ${tw`h-64 p-4 flex flex-col justify-center items-center`}
+  ${tw`flex flex-col items-center justify-center h-64 p-4`}
 `;
 
 export const Input = styled.input`
-  ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue-200 w-full`}
+  ${tw`w-full px-3 py-3 bg-white border rounded-md border-beige-500 focus:outline-none focus:border-blue-200`}
 `;
 
 export const HelpText = styled.p`
-  ${tw`text-xs mt-1 text-gray-100`}
+  ${tw`mt-1 text-xs text-gray-100`}
 `;
 
 export const ToggleSelector = styled.div`
-  ${tw`mb-4 flex justify-between bg-beige-100 border border-beige-500 rounded overflow-hidden`}
+  ${tw`flex justify-between mb-4 overflow-hidden border rounded bg-beige-100 border-beige-500`}
 `;
 
 export const ToggleSelectorOption = styled.div`
-  ${tw`flex flex-grow justify-center`}
+  ${tw`flex justify-center flex-grow`}
 
   input[type='radio'] {
     ${tw`appearance-none`}
   }
 
   input[type='radio']:checked + label {
-    ${tw`bg-primary text-white`}
+    ${tw`text-white bg-primary`}
   }
 
   input[type='radio']:focus + label {
@@ -42,7 +42,7 @@ export const ToggleSelectorOption = styled.div`
   }
 
   label {
-    ${tw`block uppercase text-sm py-2 w-full text-center cursor-pointer font-bold`}
+    ${tw`block w-full py-3 text-sm font-bold text-center uppercase cursor-pointer`}
   }
 `;
 
@@ -62,7 +62,7 @@ export const Button = styled.button<ButtonProps>`
       case 'text':
         return tw`font-normal underline`;
       default:
-        return tw`bg-primary hover:bg-primary-darker text-white font-bold py-2 px-4 rounded text-center uppercase w-full transition-colors duration-300`;
+        return tw`w-full px-4 py-3 font-bold text-center text-white uppercase transition-colors duration-300 rounded bg-primary hover:bg-primary-darker`;
     }
   }}
 
@@ -75,7 +75,7 @@ export const Form = styled.form`
   ${tw`p-2 py-3 sm:p-4`}
 
   #stripe-card-element {
-    ${tw`py-2 px-3 rounded-md bg-white border border-beige-500 focus:outline-none focus:border-blue-200 w-full`}
+    ${tw`w-full px-3 py-3 bg-white border rounded-md border-beige-500 focus:outline-none focus:border-blue-200`}
   }
 
   button[type='submit'] {
@@ -91,7 +91,7 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.div`
-  ${tw`text-lg text-center bg-white-100 py-3 px-4 border-0 border-beige-500 border-b font-bold uppercase text-sm`}
+  ${tw`px-4 py-3 text-sm text-lg font-bold text-center uppercase border-0 border-b bg-white-100 border-beige-500`}
 `;
 
 export const Spinner = styled.div`
