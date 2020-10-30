@@ -61,16 +61,16 @@ const OweTheBank = () => {
   return (
     <BackgroundImage
       fluid={backgroundArtDirectionStack}
-      className="min-h-fish-section from-turquoise bg-gradient-to-l px-x-screen-spacing lg:p-desktop-screen-spacing flex items-center"
+      className="flex items-center min-h-fish-section from-turquoise bg-gradient-to-l px-x-screen-spacing lg:p-desktop-screen-spacing"
     >
-      <div className="order-2 w-full max-w-8xl mx-auto">
-        <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
+      <div className="order-2 w-full mx-auto max-w-8xl">
+        <p className="text-xl font-semibold text-right text-white lg:text-2xl">
           With {userCount} members,
         </p>
-        <p className=" text-white text-xl font-semibold text-right lg:text-2xl">
+        <p className="text-xl font-semibold text-right text-white lg:text-2xl">
           together, we own the bank!
         </p>
-        <h2 className=" text-white font-bold leading-20 text-right text-6xl mt-2 lg:mt-5 lg:text-7xl">
+        <h2 className="mt-2 text-6xl font-bold text-right text-white leading-20 lg:mt-5 lg:text-7xl">
           {userCount}
         </h2>
       </div>
