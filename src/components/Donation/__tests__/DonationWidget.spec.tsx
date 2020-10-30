@@ -70,7 +70,7 @@ test('send a donation request with all provided information', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+  userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give the payment details
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -190,7 +190,7 @@ test.only('shows payment error when donation request fails', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+  userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give the payment details
   userEvent.type(
