@@ -63,7 +63,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
     screen.getByRole('combobox', { name: /country/i }),
     addressInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+  userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give personal information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -144,7 +144,7 @@ test('allows to complete flow using an amount donation selection', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     addressInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /donate/i }));
+  userEvent.click(screen.getByRole('button', { name: /next/i }));
 
   // Give personal information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();

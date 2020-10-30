@@ -111,10 +111,12 @@ test('send a donation request with all provided information', async () => {
       donationType: 'once',
       donationOnceAmount: donationAmount,
       donationMonthlyAmount: MINIMAL_DONATION,
-      error: null,
+      errors: null,
       paymentServices: {
         stripe: expect.any(Object),
-        stripeToken: expect.any(Object)
+        stripeToken: {
+          id: 'test-token'
+        }
       }
     })
   );
@@ -156,7 +158,7 @@ test.skip('allows to switch between donation "once" and "monthly" to update dona
   expect(screen.queryByText(/donate/i)).toBeInTheDocument();
 });
 
-test.only('shows payment error when donation request fails', async () => {
+test('shows payment error when donation request fails', async () => {
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue({
       status: 'failed',
