@@ -72,7 +72,7 @@ const DonationAddressForm: React.FC<Props> = ({
           required
           title="Country"
         />
-        <DonationWizard.Button type="submit">donate</DonationWizard.Button>
+        <DonationWizard.Button type="submit">next step</DonationWizard.Button>
       </DonationWizard.Form>
     </DonationWizard.Container>
   );
