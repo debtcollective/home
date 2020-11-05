@@ -21,7 +21,8 @@
       "@sections/*": ["src/sections/*"],
       "@constants/*": ["src/constants/*"],
       "@services/*": ["src/services/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@formatters/*": ["src/formatters/*"],
     }
   },
   "include": ["src/*"],

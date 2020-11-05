@@ -1,6 +1,7 @@
 import React from 'react';
 import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';
+import { formatNumberWithCommas } from '@formatters/number';
 
 const OweTheBank = () => {
   const { desktop, medium, small, allAbout } = useStaticQuery(graphql`
@@ -65,13 +66,13 @@ const OweTheBank = () => {
     >
       <div className="order-2 w-full mx-auto max-w-8xl">
         <p className="text-xl font-semibold text-right text-white lg:text-2xl">
-          With {userCount} members,
+          With {formatNumberWithCommas(userCount)} members,
         </p>
         <p className="text-xl font-semibold text-right text-white lg:text-2xl">
           together, we own the bank!
         </p>
         <h2 className="mt-2 text-6xl font-bold text-right text-white leading-20 lg:mt-5 lg:text-7xl">
-          {userCount}
+          {formatNumberWithCommas(userCount)}
         </h2>
       </div>
     </BackgroundImage>
