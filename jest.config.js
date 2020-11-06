@@ -11,7 +11,8 @@ module.exports = {
     '^@sections/(.*)$': '<rootDir>/src/sections/$1',
     '^@constants/(.*)$': '<rootDir>/src/constants/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',
-    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1'
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@formatters/(.*)$': '<rootDir>/src/formatters/$1'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: [`node_modules`, `.cache`],

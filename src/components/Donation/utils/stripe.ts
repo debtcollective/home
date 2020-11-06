@@ -1,4 +1,4 @@
-import { DonationMachineContext } from './machine/types';
+import { DonationMachineContext } from '../machines/donationType';
 
 /**
  * Publishable key that is used in order to load Stripe

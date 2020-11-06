@@ -51,6 +51,7 @@ module.exports = {
         '@utils': path.join(__dirname, 'src/utils'),
         '@services': path.join(__dirname, 'src/services'),
         '@hooks': path.join(__dirname, 'src/hooks'),
+        '@formatters': path.join(__dirname, 'src/formatters'),
         '@static': path.join(__dirname, 'static')
       }
     },

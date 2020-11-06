@@ -15,11 +15,11 @@ const CURRENT_YEAR = process.env.CURRENT_YEAR || new Date().getFullYear();
 const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
     <footer className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:px-desktop-screen-spacing lg:py-12">
-      <div className="max-w-8xl mx-auto">
+      <div className="mx-auto max-w-8xl">
         {!hideNewsletter && (
           <>
             <NewsLetter />
-            <hr className="w-full border-gray-100 mb-12" />
+            <hr className="w-full mb-12 border-gray-100" />
           </>
         )}
         <section className="flex flex-col items-center mb-12 lg:flex-row lg:justify-between">
@@ -92,7 +92,7 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
             items={[
               {
                 label: 'Debt Collective YouTube',
-                href: 'https://www.youtube.com/channel/UC1zKHjs8w8Nf_8krYJrbIDQ'
+                href: 'https://www.youtube.com/c/DebtCollective'
               },
               {
                 label: 'Community Voice: The Power Report',
@@ -116,11 +116,11 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
           />
         </section>
         <section className="flex flex-col lg:flex-row">
-          <p className="text-gray-200 font-bold text-center text-base mb-6 lg:mr-12 lg:text-left lg:mb-0">
+          <p className="mb-6 text-base font-bold text-center text-gray-200 lg:mr-12 lg:text-left lg:mb-0">
             Copyright {CURRENT_YEAR}
           </p>
           <a
-            className="text-white text-center text-base font-normal lg:text-left"
+            className="text-base font-normal text-center text-white lg:text-left"
             href="https://community.debtcollective.org/tos"
             target="_blank"
             rel="noreferrer noopener"
