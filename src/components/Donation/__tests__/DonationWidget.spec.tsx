@@ -7,10 +7,6 @@ import * as HTTPService from '../api/donation';
 import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 jest.mock('../components/StripeCardInput');
-(window as any).grecaptcha = {
-  ready: jest.fn().mockImplementation((cb) => Promise.resolve(cb && cb())),
-  execute: jest.fn().mockResolvedValue('recaptcha-token')
-};
 
 const cardInformation = {
   firstName: faker.name.findName(),
@@ -33,6 +29,7 @@ const donationResponse = {
 const sendDonationSpy = jest.spyOn(HTTPService, 'sendDonation');
 
 beforeAll(() => {
+  // @ts-ignore
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue(donationResponse)
   });
@@ -163,6 +160,7 @@ test.skip('allows to switch between donation "once" and "monthly" to update dona
 });
 
 test('shows payment error when donation request fails', async () => {
+  // @ts-ignore
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue({
       status: 'failed',
