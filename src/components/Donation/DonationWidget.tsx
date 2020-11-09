@@ -42,9 +42,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
    */
   useEffect(() => {
     if (machineState === 'failure') {
-      console.error('Machine falls on failure status');
-      console.log('Machine context', machineContext);
-
+      console.error('Machine falls on failure status', machineContext.errors);
       send('RETRY');
     }
   });

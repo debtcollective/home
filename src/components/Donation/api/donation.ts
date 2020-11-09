@@ -10,6 +10,18 @@ interface DonationResponse {
 
 export const sendDonation = async (context: DonationMachineContext) => {
   const { cardInformation, billingInformation, paymentServices } = context;
+  const grecaptcha = (window as any).grecaptcha;
+
+  if (!grecaptcha) {
+    throw new Error('Unable to verify with recaptcha');
+  }
+
+  const recaptchaToken = await grecaptcha.execute(
+    process.env.GATSBY_GOOGLE_RECAPTCHA,
+    {
+      action: 'donate'
+    }
+  );
 
   if (!paymentServices.stripeToken) {
     console.error('Unable to perform donation', context);
@@ -22,6 +34,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
       : context.donationOnceAmount;
 
   const data = {
+    'g-recaptcha-response-data': recaptchaToken,
     charge: {
       address_city: billingInformation.city,
       address_country_code: billingInformation.country,

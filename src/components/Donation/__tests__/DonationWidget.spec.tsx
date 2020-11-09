@@ -7,6 +7,10 @@ import * as HTTPService from '../api/donation';
 import { MINIMAL_DONATION } from '../machines/donationMachine';
 
 jest.mock('../components/StripeCardInput');
+(window as any).grecaptcha = {
+  ready: jest.fn().mockImplementation((cb) => Promise.resolve(cb && cb())),
+  execute: jest.fn().mockResolvedValue('recaptcha-token')
+};
 
 const cardInformation = {
   firstName: faker.name.findName(),
