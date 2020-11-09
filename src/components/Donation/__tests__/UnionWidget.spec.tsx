@@ -8,6 +8,11 @@ import * as HTTPService from '../api/union';
 jest.mock('../components/StripeCardInput');
 jest.mock('../components/DonationCountryDropdown');
 
+(window as any).grecaptcha = {
+  ready: jest.fn().mockImplementation((cb) => Promise.resolve(cb && cb())),
+  execute: jest.fn().mockResolvedValue('recaptcha-token')
+};
+
 const personalInformation = {
   firstName: faker.name.findName(),
   lastName: faker.name.lastName(),
