@@ -17,7 +17,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
   }
 
   const recaptchaToken = await grecaptcha.execute(
-    process.env.GATSBY_GOOGLE_RECAPTCHA,
+    process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY,
     {
       action: 'donate'
     }

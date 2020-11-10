@@ -121,7 +121,7 @@ const SEO: React.FC<Props> = (props) => {
       ]}
     >
       <script
-        src={`https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA}`}
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY}`}
       ></script>
     </Helmet>
   );
