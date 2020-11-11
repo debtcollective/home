@@ -1,0 +1,46 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: circleci/node:14.15.0-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: test
+          command: yarn test
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  lint:
+    docker:
+      - image: circleci/node:14.15.0-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: lint
+          command: yarn lint
+      - run:
+          name: type check
+          command: yarn type-check
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - lint
+      - test

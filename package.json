@@ -13,7 +13,8 @@
     "test": "jest",
     "type-check": "tsc --project tsconfig.json",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint"
   },
   "dependencies": {
     "@debtcollective/dc-header-component": "^2.1.4",
