@@ -27,6 +27,7 @@ const donationResponse = {
 const sendDonationSpy = jest.spyOn(HTTPService, 'sendUnionDonation');
 
 beforeAll(() => {
+  // @ts-ignore
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue(donationResponse)
   });

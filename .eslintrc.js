@@ -34,7 +34,8 @@ module.exports = {
       }
     ],
     'react/prop-types': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off'
   },
   settings: {
     react: {

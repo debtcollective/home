@@ -29,6 +29,7 @@ const donationResponse = {
 const sendDonationSpy = jest.spyOn(HTTPService, 'sendDonation');
 
 beforeAll(() => {
+  // @ts-ignore
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue(donationResponse)
   });
@@ -159,6 +160,7 @@ test.skip('allows to switch between donation "once" and "monthly" to update dona
 });
 
 test('shows payment error when donation request fails', async () => {
+  // @ts-ignore
   global.fetch = jest.fn().mockResolvedValue({
     json: jest.fn().mockResolvedValue({
       status: 'failed',

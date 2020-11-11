@@ -119,7 +119,11 @@ const SEO: React.FC<Props> = (props) => {
           color: '#ff4400'
         }
       ]}
-    />
+    >
+      <script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY}`}
+      ></script>
+    </Helmet>
   );
 };
 

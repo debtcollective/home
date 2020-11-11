@@ -11,9 +11,23 @@ interface DonationResponse {
 export const sendUnionDonation = async (context: UnionMachineContext) => {
   const { personalInformation, addressInformation, paymentServices } = context;
 
+  const grecaptcha = (window as any).grecaptcha;
+
+  if (!grecaptcha) {
+    throw new Error('Unable to verify with recaptcha');
+  }
+
+  const recaptchaToken = await grecaptcha.execute(
+    process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY,
+    {
+      action: 'membership'
+    }
+  );
+
   const amount = context.donationMonthlyAmount;
 
   const data = {
+    'g-recaptcha-response-data': recaptchaToken,
     subscription: {
       address_city: addressInformation.city,
       address_country_code: addressInformation.country,
