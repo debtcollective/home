@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
-import UnionWidget from '../UnionWidget';
-import * as HTTPService from '../api/union';
+import MembershipWidget from '../MembershipWidget';
+import * as HTTPService from '../api/membership';
 
 jest.mock('../components/StripeCardInput');
 jest.mock('../components/DonationCountryDropdown');
@@ -24,7 +24,7 @@ const donationResponse = {
   status: 'succeeded',
   message: 'Your donation has been successfully processed'
 };
-const sendDonationSpy = jest.spyOn(HTTPService, 'sendUnionDonation');
+const sendDonationSpy = jest.spyOn(HTTPService, 'sendMembershipDonation');
 
 beforeAll(() => {
   // @ts-ignore
@@ -40,7 +40,7 @@ afterEach(() => {
 test('allows to skip the payment form and complete flow using zero donation selection', async () => {
   const donationAmount = 0;
   const regexAmount = new RegExp(`Paying ${donationAmount}`, 'i');
-  render(<UnionWidget />);
+  render(<MembershipWidget />);
 
   const zeroOptionBtn = screen.getByRole('button', { name: /zero/i });
   userEvent.click(zeroOptionBtn);
@@ -118,7 +118,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
 test('allows to complete flow using an amount donation selection', async () => {
   const donationAmount = 5;
   const regexAmount = new RegExp(`Paying ${donationAmount}`, 'i');
-  render(<UnionWidget />);
+  render(<MembershipWidget />);
 
   // Select an amount
   userEvent.click(

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMachine } from '@xstate/react';
-import unionMachine from './machines/unionMachine';
+import membershipMachine from './machines/membershipMachine';
 import { DonationMachineStateValueMap } from './machines/donationType';
 import {
   DonationMonthlyForm,
@@ -38,15 +38,15 @@ export interface Props {
   className?: string;
 }
 
-const UnionWidget: React.FC<Props> = ({ id, className }) => {
-  const [state, send] = useMachine(unionMachine);
+const MembershipWidget: React.FC<Props> = ({ id, className }) => {
+  const [state, send] = useMachine(membershipMachine);
   const { context: machineContext } = state;
   const { addressInformation, personalInformation } = machineContext;
   const machineState: DonationMachineStateValueMap = state.value;
 
   useEffect(() => {
     /**
-     * Initialize the UnionWidget to render on
+     * Initialize the MembershipWidget to render on
      * monthly subscription state.
      */
     send('START.MONTHLY');
@@ -116,12 +116,12 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
       className={`m-auto w-full ${className}`}
       style={{ maxWidth: '24rem' }}
     >
-      {machineState === 'processUnion' && <DonationLoading />}
+      {machineState === 'processMembership' && <DonationLoading />}
       {machineState === 'success' && (
         <DonationThankYou>
-          <p className="text-center mt-4 mb-0 text-sm px-6">
+          <p className="px-6 mt-4 mb-0 text-sm text-center">
             {machineContext.api.donation?.message}. Go to{' '}
-            <Link className="text-primary underline" to="/hub">
+            <Link className="underline text-primary" to="/hub">
               your member hub
             </Link>{' '}
             to continue the process
@@ -176,7 +176,7 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
           onSubmit={onSubmitAddressForm}
         />
       )}
-      <p className="text-white text-xss text-center mt-2 px-4">
+      <p className="px-4 mt-2 text-center text-white text-xss">
         After processing your donation an account will be created for you
         providing access to all Debt Collective Union Member benefits.
       </p>
@@ -184,4 +184,4 @@ const UnionWidget: React.FC<Props> = ({ id, className }) => {
   );
 };
 
-export default UnionWidget;
+export default MembershipWidget;

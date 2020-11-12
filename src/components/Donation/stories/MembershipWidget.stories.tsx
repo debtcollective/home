@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { UnionWidget as Widget, UnionWidgetProps } from '../';
+import { MembershipWidget as Widget, MembershipWidgetProps } from '..';
 
 export default {
   title: 'Example/DonationWidget'
@@ -10,12 +10,12 @@ export default {
 /**
  * Showcase the widget composition with all forms
  */
-const UnionWidgetTemplate: Story<UnionWidgetProps> = (args) => (
+const MembershipWidgetTemplate: Story<MembershipWidgetProps> = (args) => (
   <Widget {...args} />
 );
 
-export const UnionWidget = UnionWidgetTemplate.bind({});
+export const MembershipWidget = MembershipWidgetTemplate.bind({});
 
-UnionWidget.args = {
+MembershipWidget.args = {
   id: 'union-widget'
 };

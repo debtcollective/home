@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Stripe, Token } from '@stripe/stripe-js';
 import { Machine, assign, AnyEventObject } from 'xstate';
-import { sendUnionDonation } from '../api/union';
+import { sendMembershipDonation } from '../api/membership';
 
 export const MINIMAL_DONATION = 5;
 
-export const unionMachineContext = {
+export const membershipMachineContext = {
   api: {
     donation: undefined,
     error: undefined
@@ -31,8 +31,8 @@ export const unionMachineContext = {
   }
 };
 
-export type UnionMachineContext = Omit<
-  typeof unionMachineContext,
+export type MembershipMachineContext = Omit<
+  typeof membershipMachineContext,
   'paymentServices' | 'paymentAuthorizations' | 'api'
 > & {
   api: {
@@ -82,31 +82,36 @@ export type NextZeroEvent = { type: 'NEXT.ZERO' };
 export type PrevEvent = { type: 'PREV' };
 export type RetryEvent = { type: 'RETRY' };
 
-export type UnionMachineEvent = AnyEventObject;
+export type MembershipMachineEvent = AnyEventObject;
 
 const actions = {
-  updateChapterInformation: assign<UnionMachineContext, PersonalNextEvent>({
-    personalInformation: (context, event) => {
-      const { chapter } = event.data;
+  updateChapterInformation: assign<MembershipMachineContext, PersonalNextEvent>(
+    {
+      personalInformation: (context, event) => {
+        const { chapter } = event.data;
 
-      return {
-        ...context.personalInformation,
-        chapter: chapter === 'none' ? '' : chapter
-      };
+        return {
+          ...context.personalInformation,
+          chapter: chapter === 'none' ? '' : chapter
+        };
+      }
     }
-  }),
-  updateDonationMonthlyAmount: assign<UnionMachineContext, AmountNextEvent>({
+  ),
+  updateDonationMonthlyAmount: assign<
+    MembershipMachineContext,
+    AmountNextEvent
+  >({
     donationMonthlyAmount: (context, event) => {
       return event.data.value;
     }
   }),
-  updateAddressInformation: assign<UnionMachineContext, AddressNextEvent>({
+  updateAddressInformation: assign<MembershipMachineContext, AddressNextEvent>({
     addressInformation: (context, event) => {
       const { street, city, zipCode, country } = event.data;
       return { street, city, zipCode, country };
     }
   }),
-  updatePayeeInformation: assign<UnionMachineContext, PersonalNextEvent>({
+  updatePayeeInformation: assign<MembershipMachineContext, PersonalNextEvent>({
     personalInformation: (context, event) => {
       const { firstName, lastName, email, phoneNumber } = event.data;
       return {
@@ -118,7 +123,7 @@ const actions = {
       };
     }
   }),
-  updatePaymentServices: assign<UnionMachineContext, PersonalNextEvent>({
+  updatePaymentServices: assign<MembershipMachineContext, PersonalNextEvent>({
     paymentServices: (context, event) => {
       const { stripe, stripeToken } = event.data;
 
@@ -128,12 +133,13 @@ const actions = {
 };
 
 const services = {
-  donationService: (context: UnionMachineContext) => sendUnionDonation(context)
+  donationService: (context: MembershipMachineContext) =>
+    sendMembershipDonation(context)
 };
 
 const guards = {
   isAddressFormCompleted: (
-    context: UnionMachineContext,
+    context: MembershipMachineContext,
     event: AddressNextEvent
   ) => {
     const { street, city, zipCode, country } = event.data;
@@ -149,11 +155,14 @@ const guards = {
 
     return isValid;
   },
-  isAmountSelected: (context: UnionMachineContext, event: AmountNextEvent) => {
+  isAmountSelected: (
+    context: MembershipMachineContext,
+    event: AmountNextEvent
+  ) => {
     return event.data.value !== null;
   },
   isPersonalFormCompleted: (
-    context: UnionMachineContext,
+    context: MembershipMachineContext,
     event: PersonalNextEvent
   ) => {
     const { firstName, lastName, email, phoneNumber } = event.data;
@@ -174,14 +183,17 @@ const guards = {
 
 /**
  * A state machine to describe the transitions within a
- * union donation workflow
+ * membership donation workflow
  *
  * https://xstate.js.org/viz/?gist=184c760f3d2176086487396038edd346
  */
-const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
+const membershipMachine = Machine<
+  MembershipMachineContext,
+  MembershipMachineEvent
+>(
   {
     id: 'donation',
-    context: unionMachineContext,
+    context: membershipMachineContext,
     initial: 'amountForm',
     states: {
       amountForm: {
@@ -226,7 +238,7 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
               'EDIT.AMOUNT': '#donation.amountForm.donateMonthly',
               NEXT: [
                 {
-                  target: '#donation.processUnion',
+                  target: '#donation.processMembership',
                   cond: 'isPersonalFormCompleted',
                   actions: [
                     'updatePaymentServices',
@@ -243,7 +255,7 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
               'EDIT.AMOUNT': '#donation.amountForm.donateMonthly',
               NEXT: [
                 {
-                  target: '#donation.processUnion',
+                  target: '#donation.processMembership',
                   cond: 'isAddressFormCompleted',
                   actions: [
                     'updatePayeeInformation',
@@ -260,13 +272,13 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
           }
         }
       },
-      processUnion: {
+      processMembership: {
         invoke: {
           id: 'submitDonation',
           src: 'donationService',
           onDone: {
             target: 'success',
-            actions: assign<UnionMachineContext, any>({
+            actions: assign<MembershipMachineContext, any>({
               api: (context, event) => ({
                 donation: event.data,
                 error: undefined
@@ -275,7 +287,7 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
           },
           onError: {
             target: 'failure',
-            actions: assign<UnionMachineContext, any>({
+            actions: assign<MembershipMachineContext, any>({
               api: (context, event) => ({
                 donation: event.data.errors
               })
@@ -302,4 +314,4 @@ const unionMachine = Machine<UnionMachineContext, UnionMachineEvent>(
   }
 );
 
-export default unionMachine;
+export default membershipMachine;
