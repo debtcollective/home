@@ -1,4 +1,4 @@
-import { UnionMachineContext } from '../machines/unionMachine';
+import { MembershipMachineContext } from '../machines/membershipMachine';
 
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 
@@ -8,7 +8,9 @@ interface DonationResponse {
   message?: string;
 }
 
-export const sendUnionDonation = async (context: UnionMachineContext) => {
+export const sendMembershipDonation = async (
+  context: MembershipMachineContext
+) => {
   const { personalInformation, addressInformation, paymentServices } = context;
 
   const grecaptcha = (window as any).grecaptcha;

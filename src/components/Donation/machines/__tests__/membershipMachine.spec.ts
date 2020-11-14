@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import faker from 'faker';
-import unionMachine, {
+import membershipMachine, {
   AddressData,
   MINIMAL_DONATION,
   PaymentServices,
   PersonalData
-} from '../unionMachine';
+} from '../membershipMachine';
 
 // Convenient alias for better suite reading
-const machine = unionMachine;
+const machine = membershipMachine;
 
-test('goes into process union state after filling all information', () => {
+test('goes into process membership state after filling all information', () => {
   const personalInformation: PersonalData = {
     firstName: faker.name.findName(),
     lastName: faker.name.lastName(),
@@ -67,5 +67,5 @@ test('goes into process union state after filling all information', () => {
       stripeToken: { id: 'fake-stripe-token' }
     }
   });
-  expect(machineState.value).toEqual('processUnion');
+  expect(machineState.value).toEqual('processMembership');
 });

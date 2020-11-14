@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import { UnionWidget } from '@components/Donation';
+import { MembershipWidget } from '@components/Donation';
 
 const YouAreNotALoan: React.FC = () => {
   const { desktop, medium, small } = useStaticQuery(graphql`
@@ -59,7 +59,7 @@ const YouAreNotALoan: React.FC = () => {
               Join a growing community of debtors organizing to cancel debts and
               build financial and political power
             </p>
-            <UnionWidget className="ml-0 mr-auto md:mr-0" />
+            <MembershipWidget className="ml-0 mr-auto md:mr-0" />
           </div>
         </div>
       </BackgroundImage>
