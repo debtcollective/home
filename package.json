@@ -14,6 +14,7 @@
     "type-check": "tsc --project tsconfig.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "release": "yarn semantic-release",
     "lint": "eslint"
   },
   "dependencies": {
@@ -63,6 +64,9 @@
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/github": "7.2.0",
+    "@semantic-release/release-notes-generator": "9.0.1",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
@@ -104,6 +108,7 @@
     "prettier": "2.0.5",
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.13.1",
+    "semantic-release": "17.2.3",
     "stylefmt": "^6.0.3",
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -153,6 +158,13 @@
     "*.scss": [
       "stylefmt",
       "stylelint --syntax scss"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
     ]
   }
 }
