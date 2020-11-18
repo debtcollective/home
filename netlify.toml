@@ -1,0 +1,20 @@
+[context.deploy-preview]
+  command="make build-development"
+  [context.deploy-preview.environment]
+    GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
+    GATSBY_DONATE_API_URL = "https://membership-test.debtcollective.org/donate"
+    GATSBY_HOST_URL = "https://test.debtcollective.org"
+    GATSBY_MEMBERSHIP_API_URL = "https://membership-test.debtcollective.org/subscriptions"
+    GATSBY_MEMBERSHIP_URL = "https://membership-test.debtcollective.org"
+    GATSBY_STRIPE_PUBLIC_TOKEN=""
+
+
+[context.development]
+  command="make build-development"
+  [context.development.environment]
+    GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
+    GATSBY_DONATE_API_URL = "https://membership-test.debtcollective.org/donate"
+    GATSBY_HOST_URL = "https://test.debtcollective.org"
+    GATSBY_MEMBERSHIP_API_URL = "https://membership-test.debtcollective.org/subscriptions"
+    GATSBY_MEMBERSHIP_URL = "https://membership-test.debtcollective.org"
+    GATSBY_STRIPE_PUBLIC_TOKEN=""
