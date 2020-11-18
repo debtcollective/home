@@ -1,5 +1,5 @@
 [context.deploy-preview]
-  command="make env-development"
+  command="make build-development"
   [context.deploy-preview.environment]
     GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
     GATSBY_DONATE_API_URL = "https://membership-test.debtcollective.org/donate"
@@ -10,7 +10,7 @@
 
 
 [context.development]
-  command="make env-development"
+  command="make build-development"
   [context.development.environment]
     GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
     GATSBY_DONATE_API_URL = "https://membership-test.debtcollective.org/donate"
