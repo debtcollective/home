@@ -6,6 +6,7 @@ import logoSmall from '@static/logo-small.png';
 import useMembership from '@hooks/useMembership';
 import AnnouncementModal from '@components/AnnouncementModal';
 import useAnnouncement from '@hooks/useAnnouncement';
+import { Link } from 'gatsby';
 
 interface Props {
   children: ReactNode;
@@ -55,16 +56,16 @@ const Layout: React.FC<Props> = ({
   description,
   hideNewsletter
 }) => {
-  const [links, setLinks] = useState(JSON.stringify(HEADER_LINKS));
+  const [links, setLinks] = useState(HEADER_LINKS);
   const [membership, isFetching] = useMembership();
   const { isOpen: isAnnouncementOpen, closeAnnouncement } = useAnnouncement();
 
   useEffect(() => {
     if (!isFetching && membership?.id) {
-      setLinks(JSON.stringify([HUB_LINK, ...HEADER_LINKS]));
+      setLinks([HUB_LINK, ...HEADER_LINKS]);
       return;
     }
-    setLinks(JSON.stringify(HEADER_LINKS));
+    setLinks(HEADER_LINKS);
   }, [membership, isFetching]);
 
   return (
@@ -81,9 +82,39 @@ const Layout: React.FC<Props> = ({
         host={GATSBY_HOST_URL}
         memberhuburl={`${GATSBY_HOST_URL}/hub`}
         community={GATSBY_COMMUNITY_URL}
-        donateurl="/donate"
-        links={links}
-      ></dc-header>
+        donateurl=""
+      >
+        <div slot="header">
+          <nav className="nav">
+            {links.map(({ text, href, ...attrs }) => (
+              <div key={href} className="nav-item d-md-flex">
+                <Link className="nav-link" to={href} {...attrs}>
+                  {text}
+                </Link>
+              </div>
+            ))}
+          </nav>
+        </div>
+        <div slot="menu">
+          <div className="nav-item">
+            {links.map(({ text, href, ...attrs }) => (
+              <Link key={href} className="nav-link" to={href} {...attrs}>
+                {text}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div slot="donate-header">
+          <Link to="/donate" className="btn-donate">
+            Donate
+          </Link>
+        </div>
+        <div slot="donate-menu">
+          <Link to="/donate" className="btn-donate">
+            Donate
+          </Link>
+        </div>
+      </dc-header>
       <main className="mt-20">{children}</main>
       <Footer hideNewsletter={hideNewsletter} />
     </>
