@@ -70,23 +70,23 @@ const Hero: React.FC<Props> = ({
         className
       )}
     >
-      <div className="absolute inset-0 bg-gray opacity-50"></div>
-      <div className="relative max-w-full w-8xl mx-auto xxl:mx-auto">
-        <div className="mt-0 max-w-3xl mr-auto py-10">
+      <div className="absolute inset-0 opacity-50 bg-gray"></div>
+      <div className="relative max-w-full mx-auto w-8xl">
+        <div className="max-w-3xl py-10 mt-0 mr-auto">
           <div className="flex flex-col">
-            <h1 className="font-bold text-5xl text-white md:text-6xl leading-none mt-4 md:mt-0">
+            <h1 className="mt-4 text-5xl font-bold leading-none text-white md:text-6xl md:mt-0">
               {title}
             </h1>
-            <p className="font-semibold text-xl text-white md:text-2xl leading-tight mt-4">
+            <p className="mt-4 text-xl font-semibold leading-tight text-white md:text-2xl">
               {text}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row mt-12 md:max-w-xl">
+          <div className="flex flex-col mt-12 md:flex-row md:max-w-xl">
             <Button className="w-full md:w-1/2" onClick={primaryAction}>
               {primaryActionLabel}
             </Button>
             <Button
-              className="w-full md:w-1/2 mt-4 md:mt-0 md:ml-4"
+              className="w-full mt-4 md:w-1/2 md:mt-0 md:ml-4"
               onClick={secondaryAction}
               variant="secondary"
             >

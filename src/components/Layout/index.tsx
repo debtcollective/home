@@ -4,6 +4,8 @@ import SEO from '@components/SEO';
 import logoBlack from '@static/logo-black.png';
 import logoSmall from '@static/logo-small.png';
 import useMembership from '@hooks/useMembership';
+import AnnouncementModal from '@components/AnnouncementModal';
+import useAnnouncement from '@hooks/useAnnouncement';
 
 interface Props {
   children: ReactNode;
@@ -55,6 +57,7 @@ const Layout: React.FC<Props> = ({
 }) => {
   const [links, setLinks] = useState(JSON.stringify(HEADER_LINKS));
   const [membership, isFetching] = useMembership();
+  const { isOpen: isAnnouncementOpen, closeAnnouncement } = useAnnouncement();
 
   useEffect(() => {
     if (!isFetching && membership?.id) {
@@ -66,6 +69,10 @@ const Layout: React.FC<Props> = ({
 
   return (
     <>
+      <AnnouncementModal
+        isOpen={isAnnouncementOpen}
+        onClose={closeAnnouncement}
+      />
       <SEO title={title} description={description} />
       <dc-header
         id="dc-header"
