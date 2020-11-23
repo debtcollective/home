@@ -12,3 +12,11 @@
   font-family: 'Libre Franklin', sans-serif;
   color: #1c1c1c;
 }
+
+@screen sm {
+  p {
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}

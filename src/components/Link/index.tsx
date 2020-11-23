@@ -5,18 +5,20 @@ import classnames from 'classnames';
 type TLink = 'button' | 'regular';
 
 interface Props {
-  className: string;
+  children: ReactNode;
+  className?: string;
   href: string;
   isLocal?: boolean;
-  children: ReactNode;
+  onClick?: () => void;
   variant: TLink;
 }
 
 const Link: React.FC<Props> = ({
+  children,
   className,
   href,
   isLocal,
-  children,
+  onClick,
   variant
 }) => {
   const baseClassName = 'font-semibold transition-colors duration-300';
@@ -45,6 +47,9 @@ const Link: React.FC<Props> = ({
   ) : (
     <a
       href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={onClick}
       className={classnames(
         'text-center',
         baseClassName,

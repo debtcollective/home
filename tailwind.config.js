@@ -70,7 +70,7 @@ module.exports = {
         '40': '10rem'
       },
       screens: {
-        xxl: '2048px'
+        xxl: '1536px'
       },
       spacing: {
         'x-screen-spacing': '2rem',
@@ -106,6 +106,9 @@ module.exports = {
         '5xl': '50rem',
         '6xl': '60rem',
         '8xl': '90rem'
+      },
+      zIndex: {
+        'modal-screen': 9999
       }
     }
   },
