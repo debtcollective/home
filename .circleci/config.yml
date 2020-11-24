@@ -37,6 +37,23 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+  release:
+    docker:
+      - image: circleci/node:14.15.0-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: yarn install
+      - run:
+          name: release
+          command: yarn release
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
 
 workflows:
   version: 2
@@ -44,3 +61,10 @@ workflows:
     jobs:
       - lint
       - test
+      - release:
+          requires:
+            - lint
+            - test
+          filters:
+            branches:
+              only: master
