@@ -2117,10 +2117,10 @@
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-header-component@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.2.0.tgz#f06ef5875892b20a827a5424c91149cbcc815f34"
-  integrity sha512-91Onbyvz6aCooSF32GGrNCUN+MJvZSQ+M0hA2iaYlLxBR/ubt8uDiPuEhHTKrDLSL61ei1umsSqt6qlFtBVRFA==
+"@debtcollective/dc-header-component@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.3.1.tgz#c3fed5b538a965cec3041ab0b7c4c7f93fd530d9"
+  integrity sha512-bE+3/XQwZIZN52E5aylLLtP/YDXcKlPx7llB7frmQSPXsZija+ceKzYN6GChB2zb3YrsKXbA9KbtnCa/0OIIYg==
   dependencies:
     "@debtcollective/dc-dropdown-component" "^1.6.6"
     lodash.omit "^4.5.0"
