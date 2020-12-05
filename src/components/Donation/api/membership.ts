@@ -1,5 +1,5 @@
+import { DEFAULT_ERROR } from '../constants/errors';
 import { MembershipMachineContext } from '../machines/membershipMachine';
-
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
 
 interface DonationResponse {
@@ -12,22 +12,27 @@ export const sendMembershipDonation = async (
   context: MembershipMachineContext
 ) => {
   const { personalInformation, addressInformation, paymentServices } = context;
+  let recaptchaToken;
 
   const grecaptcha = (window as any).grecaptcha;
 
   if (!grecaptcha) {
-    throw new Error('Unable to verify with recaptcha');
+    throw new Error(DEFAULT_ERROR);
   }
 
-  const recaptchaToken = await grecaptcha.execute(
-    process.env.GATSBY_RECAPTCHA_V3_SITE_KEY,
-    {
-      action: 'membership'
-    }
-  );
+  try {
+    recaptchaToken = await grecaptcha.execute(
+      process.env.GATSBY_RECAPTCHA_V3_SITE_KEY,
+      {
+        action: 'membership'
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    throw new Error(DEFAULT_ERROR);
+  }
 
   const amount = context.donationMonthlyAmount;
-
   const data = {
     'g-recaptcha-response-data': recaptchaToken,
     subscription: {
@@ -57,7 +62,7 @@ export const sendMembershipDonation = async (
 
   if (response.status === 'failed') {
     console.error(response.errors);
-    throw new Error('server respond with donation failure');
+    throw new Error(response.message);
   }
 
   return response;

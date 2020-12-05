@@ -18,8 +18,8 @@ export const Input = styled.input`
   ${tw`w-full px-3 py-3 bg-white border rounded-md border-beige-500 focus:outline-none focus:border-blue-200`}
 `;
 
-export const HelpText = styled.p`
-  ${tw`mt-1 text-xs text-gray-100`}
+export const ErrorText = styled.p`
+  ${tw`mt-1 text-xs text-primary-darker`}
 `;
 
 export const ToggleSelector = styled.div`
