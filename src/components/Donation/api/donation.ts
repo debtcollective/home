@@ -1,3 +1,4 @@
+import { DEFAULT_ERROR } from '../constants/errors';
 import { DonationMachineContext } from '../machines/donationType';
 
 const DONATION_API_URL = `${process.env.GATSBY_DONATE_API_URL}`;
@@ -11,21 +12,27 @@ interface DonationResponse {
 export const sendDonation = async (context: DonationMachineContext) => {
   const { cardInformation, billingInformation, paymentServices } = context;
   const grecaptcha = (window as any).grecaptcha;
+  let recaptchaToken;
 
   if (!grecaptcha) {
-    throw new Error('Unable to verify with recaptcha');
+    throw new Error(DEFAULT_ERROR);
   }
 
-  const recaptchaToken = await grecaptcha.execute(
-    process.env.GATSBY_RECAPTCHA_V3_SITE_KEY,
-    {
-      action: 'donate'
-    }
-  );
+  try {
+    recaptchaToken = await grecaptcha.execute(
+      process.env.GATSBY_RECAPTCHA_V3_SITE_KEY,
+      {
+        action: 'donate'
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    throw new Error(DEFAULT_ERROR);
+  }
 
   if (!paymentServices.stripeToken) {
     console.error('Unable to perform donation', context);
-    throw new Error("Service not found check: 'sendDonation'");
+    throw new Error(DEFAULT_ERROR);
   }
 
   const amount =
@@ -60,9 +67,8 @@ export const sendDonation = async (context: DonationMachineContext) => {
   }).then((res) => res.json());
 
   if (response.status === 'failed') {
-    // TODO: update context to use errors object
     console.error(response.errors);
-    throw new Error('server respond with donation failure');
+    throw new Error(response.message);
   }
 
   return response;

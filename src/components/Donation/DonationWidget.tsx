@@ -42,7 +42,10 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
    */
   useEffect(() => {
     if (machineState === 'failure') {
-      console.error('Machine falls on failure status', machineContext.errors);
+      console.error(
+        'Machine falls on failure status',
+        machineContext.donation.errors
+      );
       send('RETRY');
     }
   });
@@ -123,7 +126,7 @@ const DonationWidget: React.FC<Props> = ({ id, className }) => {
       )}
       {machineState.paymentForm === 'cardForm' && (
         <DonationPaymentForm
-          errors={machineContext.errors}
+          errors={machineContext.donation.errors}
           amount={machineContext.donationOnceAmount}
           defaultValues={{
             email: cardInformation.email,

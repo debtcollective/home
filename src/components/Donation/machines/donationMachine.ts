@@ -22,12 +22,12 @@ const donationWidgetMachine = Machine<
     context: {
       donation: {
         message: '',
-        status: ''
+        status: '',
+        errors: null
       },
       donationType: 'once',
       donationOnceAmount: MINIMAL_DONATION,
       donationMonthlyAmount: MINIMAL_DONATION,
-      errors: null,
       billingInformation: {
         address: '',
         city: '',
@@ -125,7 +125,12 @@ const donationWidgetMachine = Machine<
           },
           onError: {
             target: 'failure',
-            actions: assign({ errors: (context, event) => event.data })
+            actions: assign<DonationMachineContext, any>({
+              donation: (context, event) => ({
+                status: 'failed',
+                errors: [event.data.message]
+              })
+            })
           }
         }
       },
