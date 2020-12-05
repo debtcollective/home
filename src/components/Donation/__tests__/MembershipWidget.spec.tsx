@@ -104,7 +104,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
     api: {
       // TODO: check on integration time seems to be something wrong
       donation: undefined,
-      error: undefined
+      errors: undefined
     },
     donationType: 'month',
     donationMonthlyAmount: donationAmount,
@@ -189,7 +189,7 @@ test('allows to complete flow using an amount donation selection', async () => {
     api: {
       // TODO: check on integration time seems to be something wrong
       donation: undefined,
-      error: undefined
+      errors: undefined
     },
     donationType: 'month',
     donationMonthlyAmount: donationAmount,

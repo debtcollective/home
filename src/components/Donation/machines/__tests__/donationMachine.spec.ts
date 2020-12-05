@@ -130,12 +130,12 @@ test('goes into process donation after filling all information', () => {
     cardInformation,
     donation: {
       message: '',
-      status: ''
+      status: '',
+      errors: null
     },
     donationType: 'once',
     donationOnceAmount: donationAmount,
     donationMonthlyAmount: MINIMAL_DONATION,
-    errors: null,
     paymentServices
   });
 });
