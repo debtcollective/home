@@ -7,7 +7,7 @@ export interface Props {
 
 const DonationThankYou: React.FC<Props> = ({ children }) => {
   return (
-    <DonationWizard.Container>
+    <DonationWizard.Container id="process-completed">
       <DonationWizard.Title>We&apos;ve gotten your help!</DonationWizard.Title>
       <DonationWizard.Box>
         <span className="material-icons" style={{ fontSize: '4rem' }}>

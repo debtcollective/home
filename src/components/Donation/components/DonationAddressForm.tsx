@@ -72,7 +72,13 @@ const DonationAddressForm: React.FC<Props> = ({
           required
           title="Country"
         />
-        <DonationWizard.Button type="submit">next step</DonationWizard.Button>
+        <DonationWizard.Button
+          aria-label="confirm payor personal address"
+          id="address-information"
+          type="submit"
+        >
+          next step
+        </DonationWizard.Button>
       </DonationWizard.Form>
     </DonationWizard.Container>
   );
