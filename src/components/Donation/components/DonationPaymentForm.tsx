@@ -155,7 +155,7 @@ const DonationPaymentForm: React.FC<Props> = ({
         ) : null}
         <DonationWizard.Button
           aria-label="confirm payor information"
-          id="payor-information"
+          id="payor-information-btn"
           type="submit"
           disabled={isSubmitDisabled && amount !== 0}
         >

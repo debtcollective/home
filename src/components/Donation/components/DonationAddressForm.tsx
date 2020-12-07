@@ -74,7 +74,7 @@ const DonationAddressForm: React.FC<Props> = ({
         />
         <DonationWizard.Button
           aria-label="confirm payor personal address"
-          id="address-information"
+          id="address-information-btn"
           type="submit"
         >
           next step

@@ -33,7 +33,7 @@ const DonationOnceForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
         />
         <DonationWizard.Button
           aria-label="confirm amount to donate"
-          id="one-off-amount"
+          id="one-off-amount-btn"
           type="submit"
         >
           donate

@@ -32,7 +32,7 @@ const DonationMonthlyForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
       />
       <DonationWizard.Button
         aria-label="confirm monthly due amount"
-        id="dues-amount"
+        id="dues-amount-btn"
         type="submit"
       >
         pay monthly dues
