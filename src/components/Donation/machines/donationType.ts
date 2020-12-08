@@ -76,13 +76,13 @@ export type DonationMachineContext = {
    * A key to hold the response once the donation service respond
    */
   donation: {
-    message: string;
+    message?: string;
     status: string;
+    /**
+     * A key to hold the errors that may be faced while progressing into the widget
+     */
+    errors?: string[] | null;
   };
-  /**
-   * A key to hold the errors that may be faced while progressing into the widget
-   */
-  errors: { [key: string]: [string] } | null;
   /**
    * The type of donation the user is attempting to do
    */

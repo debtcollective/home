@@ -10,10 +10,12 @@ import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../utils/stripe';
 import { DonationDropdown, DonationPhoneInput } from '.';
 import chapters from '../constants/chapters';
+import { EMPTY_SPACE } from '../constants/placeholders';
+import { DEFAULT_ERROR } from '../constants/errors';
 
 export interface Props {
   amount: number;
-  errors: { [key: string]: [string] } | null;
+  errors?: string[] | null;
   defaultValues: {
     firstName: string;
     lastName: string;
@@ -42,6 +44,7 @@ const DonationPaymentForm: React.FC<Props> = ({
   const [paymentProvider, setPaymentProvider] = useState<
     DonationPaymentProvider | undefined
   >();
+  const errorMessage: string | undefined = errors?.join(EMPTY_SPACE);
 
   const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.persist();
@@ -146,9 +149,9 @@ const DonationPaymentForm: React.FC<Props> = ({
           </Elements>
         ) : null}
         {errors !== null ? (
-          <DonationWizard.HelpText role="alert">
-            Error processing your request. Please try again
-          </DonationWizard.HelpText>
+          <DonationWizard.ErrorText role="alert">
+            {errorMessage || DEFAULT_ERROR}
+          </DonationWizard.ErrorText>
         ) : null}
         <DonationWizard.Button
           type="submit"

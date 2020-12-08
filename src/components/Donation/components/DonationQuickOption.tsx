@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { HelpText, Input } from './DonationWizard';
+import { ErrorText, Input } from './DonationWizard';
 
 export interface Props {
   name: string;
@@ -105,7 +105,7 @@ const DonationQuickOption: React.FC<Props> = ({
         </QuickOptionRow>
       ))}
       {error && (
-        <HelpText>
+        <ErrorText>
           We are only able to process up to $50,000 online. Want to donate more?{' '}
           <a
             className="underline text-primary"
@@ -113,7 +113,7 @@ const DonationQuickOption: React.FC<Props> = ({
           >
             contact us
           </a>
-        </HelpText>
+        </ErrorText>
       )}
     </QuickOptionContainer>
   );

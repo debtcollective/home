@@ -107,12 +107,12 @@ test('send a donation request with all provided information', async () => {
       cardInformation,
       donation: {
         message: '',
-        status: ''
+        status: '',
+        errors: null
       },
       donationType: 'once',
       donationOnceAmount: donationAmount,
       donationMonthlyAmount: MINIMAL_DONATION,
-      errors: null,
       paymentServices: {
         stripe: expect.any(Object),
         stripeToken: {

@@ -7,8 +7,7 @@ export const MINIMAL_DONATION = 5;
 
 export const membershipMachineContext = {
   api: {
-    donation: undefined,
-    error: undefined
+    donation: undefined
   },
   donationType: 'month',
   donationMonthlyAmount: MINIMAL_DONATION,
@@ -39,7 +38,7 @@ export type MembershipMachineContext = Omit<
     donation?: {
       status: 'failed' | 'succeeded';
       message?: string;
-      errors?: { [fieldName: string]: [string] };
+      errors?: string[];
     };
   };
   paymentServices: { stripe?: Stripe; stripeToken?: Token };
@@ -280,8 +279,7 @@ const membershipMachine = Machine<
             target: 'success',
             actions: assign<MembershipMachineContext, any>({
               api: (context, event) => ({
-                donation: event.data,
-                error: undefined
+                donation: event.data
               })
             })
           },
@@ -289,7 +287,10 @@ const membershipMachine = Machine<
             target: 'failure',
             actions: assign<MembershipMachineContext, any>({
               api: (context, event) => ({
-                donation: event.data.errors
+                donation: {
+                  status: 'failed',
+                  errors: [event.data.message]
+                }
               })
             })
           }

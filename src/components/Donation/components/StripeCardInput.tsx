@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpText } from './DonationWizard';
+import { ErrorText } from './DonationWizard';
 import {
   Stripe,
   StripeCardElement,
@@ -44,7 +44,7 @@ const StripeCardInput: React.FC<Props> = ({ onChange }) => {
         options={CARD_ELEMENT_OPTIONS}
         onChange={handleOnChange}
       />
-      <HelpText role="alert">{error}</HelpText>
+      <ErrorText role="alert">{error}</ErrorText>
     </>
   );
 };
