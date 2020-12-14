@@ -1,4 +1,4 @@
-import metrics from 'src/metrics';
+import metrics from '../../../metrics';
 import { DEFAULT_ERROR } from '../constants/errors';
 import { MembershipMachineContext } from '../machines/membershipMachine';
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
