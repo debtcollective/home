@@ -1,5 +1,6 @@
 enum GoogleAnalyticEventName {
-  ONE_OFF_DONATION = 'one_off_donation'
+  ONE_OFF_DONATION = 'one_off_donation',
+  DUES_DONATION = 'dues_donation'
 }
 
 type GoogleAnalyticEvent = {

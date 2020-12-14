@@ -1,4 +1,4 @@
-import metrics from '../../../metrics';
+import metrics from 'src/metrics';
 import { DEFAULT_ERROR } from '../constants/errors';
 import { DonationMachineContext } from '../machines/donationType';
 
