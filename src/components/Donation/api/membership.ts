@@ -12,11 +12,14 @@ export const sendMembershipDonation = async (
   context: MembershipMachineContext
 ) => {
   const { personalInformation, addressInformation, paymentServices } = context;
+  const amount = context.donationMonthlyAmount;
+  const grecaptcha = (window as any).grecaptcha;
+  const isZeroDollarDonation = amount === 0;
+  const isMissingStripeToken =
+    !isZeroDollarDonation && !paymentServices.stripeToken?.id;
   let recaptchaToken;
 
-  const grecaptcha = (window as any).grecaptcha;
-
-  if (!grecaptcha) {
+  if (!grecaptcha || isMissingStripeToken) {
     throw new Error(DEFAULT_ERROR);
   }
 
@@ -32,7 +35,6 @@ export const sendMembershipDonation = async (
     throw new Error(DEFAULT_ERROR);
   }
 
-  const amount = context.donationMonthlyAmount;
   const data = {
     'g-recaptcha-response-data': recaptchaToken,
     subscription: {

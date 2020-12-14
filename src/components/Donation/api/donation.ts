@@ -14,7 +14,7 @@ export const sendDonation = async (context: DonationMachineContext) => {
   const grecaptcha = (window as any).grecaptcha;
   let recaptchaToken;
 
-  if (!grecaptcha) {
+  if (!grecaptcha || !paymentServices.stripeToken?.id) {
     throw new Error(DEFAULT_ERROR);
   }
 

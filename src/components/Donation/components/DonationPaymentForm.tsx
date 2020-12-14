@@ -10,7 +10,6 @@ import StripeCardInput, { DonationPaymentProvider } from './StripeCardInput';
 import { STRIPE_API_KEY } from '../utils/stripe';
 import { DonationDropdown, DonationPhoneInput } from '.';
 import chapters from '../constants/chapters';
-import { EMPTY_SPACE } from '../constants/placeholders';
 import { DEFAULT_ERROR } from '../constants/errors';
 
 export interface Props {
@@ -44,7 +43,7 @@ const DonationPaymentForm: React.FC<Props> = ({
   const [paymentProvider, setPaymentProvider] = useState<
     DonationPaymentProvider | undefined
   >();
-  const errorMessage: string | undefined = errors?.join(EMPTY_SPACE);
+  const errorMessage: string | undefined = errors?.join(' ');
 
   const handleOnSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.persist();
