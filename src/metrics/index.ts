@@ -7,7 +7,11 @@ type GoogleAnalyticEvent = {
   event?: GoogleAnalyticEventName;
 };
 
-const dl: Array<GoogleAnalyticEvent> = (window as any).dataLayer || [];
+let dl: Array<GoogleAnalyticEvent> = [];
+
+if (typeof window !== 'undefined') {
+  dl = (window as any).dataLayer || [];
+}
 
 /**
  * Allows to send events to google tag manager for further analysis over
