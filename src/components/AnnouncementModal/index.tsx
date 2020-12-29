@@ -9,16 +9,22 @@ interface Props {
 
 Modal.setAppElement('#___gatsby');
 
-const IMAGE_URL =
-  'https://cdn-ed.haymarketbooks.org/images/000003/314/9781642592627-f_large-5303cd187474d2d4f21b3ffc6959c441.jpg20200919-21-117sob3';
+const IMAGE_URL = '/popup-img.jpeg';
 const IMAGE_DESCRIPTION = '';
-const TITLE = "Can't Pay, Won't Pay";
-const SUBTITLE = 'The Case for Economic Disobedience and Debt Abolition';
-const DESCRIPTION =
-  "Debtors have been mocked, scolded and lied to for decades. We have been told that it is perfectly normal to go into debt to get medical care, to go to school, or even to pay for our own incarceration. We 've been told there is no way to change an economy that pushes the majority of people into debt while a small minority hoard wealth and power.";
-const ACTION_LABEL = 'Get our ebook';
+const TITLE = 'Student Debt Action!';
+const SUBTITLE = 'CANCEL THE DEBT - JOE BIDEN OWES PHILLY';
+const DESCRIPTION = `Joe Biden can cancel ALL federal student loan debt on Day 1 of his presidency. But he won’t do that without grassroots pressure.
+
+Come out to Biden HQ January 4th 6 PM and let’s make him feel that pressure. We’ll have speakers from the Philadelphia community, candles, cow bells, and music!!
+
+CANCEL THE DEBT - JOE BIDEN OWES PHILLY
+Protest and Rally
+January 4th 6 pm
+1500 Market St.
+`;
+const ACTION_LABEL = 'RSVP now!';
 const ACTION_LINK =
-  'https://www.haymarketbooks.org/books/1520-can-t-pay-won-t-pay';
+  'https://docs.google.com/forms/d/e/1FAIpQLSfM_E8Lz2eXv8xg5VjA8Z1jMlDoxGwHu18hPfpOS6WqmYMCeA/viewform';
 
 const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
@@ -48,11 +54,11 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
           {TITLE}
         </h2>
         {SUBTITLE && (
-          <h3 className="max-w-full mx-auto mb-6 text-lg font-semibold text-center lg:mb-8 lg:text-xl text-gray w-5xl">
+          <h3 className="max-w-full mx-auto mb-2 text-lg font-semibold text-center lg:mb-4 lg:text-xl text-gray w-5xl">
             {SUBTITLE}
           </h3>
         )}
-        <p className="mb-12 text-base lg:text-lg lg:mb-20 text-gray">
+        <p className="mb-12 text-base lg:text-lg lg:mb-20 text-gray whitespace-pre-wrap">
           {DESCRIPTION}
         </p>
         <Link
