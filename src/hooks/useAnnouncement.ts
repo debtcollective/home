@@ -4,11 +4,12 @@ import Cookies from 'js-cookie';
 
 const useAnnouncement = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const cookieName = process.env.GATSBY_POPUP_COOKIE_NAME || 'announcementRead';
 
   const closeAnnouncement = () => {
     unblockScroll();
     setIsOpen(false);
-    Cookies.set('announcementRead', 'true', { expires: 3 });
+    Cookies.set(cookieName, 'true', { expires: 3 });
   };
 
   const openAnnouncement = () => {
@@ -17,7 +18,7 @@ const useAnnouncement = () => {
   };
 
   useEffect(() => {
-    if (!Cookies.get('announcementRead')) openAnnouncement();
+    if (!Cookies.get(cookieName)) openAnnouncement();
   }, []);
 
   return {
