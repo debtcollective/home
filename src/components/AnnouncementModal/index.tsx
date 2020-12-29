@@ -1,10 +1,6 @@
-// eslint-disable-next-line
-/// <reference path='./index.d.ts'/>
-
 import Link from '@components/Link';
 import React from 'react';
 import Modal from 'react-modal';
-import * as popupImg from '../../../public/popup-img.jpeg';
 
 interface Props {
   isOpen: boolean;
@@ -13,7 +9,7 @@ interface Props {
 
 Modal.setAppElement('#___gatsby');
 
-const IMAGE_URL = popupImg;
+const IMAGE_URL = '/popup-img.jpeg';
 const IMAGE_DESCRIPTION = '';
 const TITLE = 'Student Debt Action!';
 const SUBTITLE = 'CANCEL THE DEBT - JOE BIDEN OWES PHILLY';
