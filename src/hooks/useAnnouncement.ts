@@ -8,7 +8,7 @@ const useAnnouncement = () => {
   const closeAnnouncement = () => {
     unblockScroll();
     setIsOpen(false);
-    Cookies.set('announcementRead', 'true', { expires: 7 });
+    Cookies.set('announcementRead', 'true', { expires: 3 });
   };
 
   const openAnnouncement = () => {
