@@ -26,22 +26,22 @@ const ACTION_LABEL = 'RSVP now!';
 const ACTION_LINK =
   'https://docs.google.com/forms/d/e/1FAIpQLSfM_E8Lz2eXv8xg5VjA8Z1jMlDoxGwHu18hPfpOS6WqmYMCeA/viewform';
 
-const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      className="relative flex justify-center p-8 pt-16 bg-white rounded-lg md:pt-8 xxl:w-8/12"
-      overlayClassName="fixed top-0 bottom-0 left-0 right-0 flex flex-col min-h-screen px-4 py-12 overflow-y-scroll bg-opacity-75 md:p-12 lg:flex-row lg:items-center md:justify-center top-o z-modal-screen bg-black-100 lg:px-24"
-      contentLabel="Example Modal"
+const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
+  <Modal
+    isOpen={isOpen}
+    onRequestClose={onClose}
+    className="relative h-screen p-4 pt-16 mb-2 overflow-y-auto bg-white rounded-lg md:mb-0 md:h-auto md:p-8 xxl:w-8/12 bg-red"
+    overlayClassName="fixed top-0 bottom-0 left-0 right-0 flex flex-col min-h-screen p-2 pb-0 bg-opacity-75 md:p-12 lg:flex-row lg:items-center md:justify-center top-o z-modal-screen bg-black-100 lg:px-24"
+    contentLabel="Example Modal"
+  >
+    <button
+      className="absolute top-0 right-0 mt-4 mr-4 text-gray-300 md:mt-6 md:mr-6 material-icons"
+      style={{ fontSize: '2rem' }}
+      onClick={onClose}
     >
-      <button
-        className="absolute top-0 right-0 mt-4 mr-4 text-gray-300 md:mt-6 md:mr-6 material-icons"
-        style={{ fontSize: '2rem' }}
-        onClick={onClose}
-      >
-        close
-      </button>
+      close
+    </button>
+    <div className="flex justify-center">
       <figure className="items-center hidden w-1/3 mx-auto lg:flex">
         <img
           src={IMAGE_URL}
@@ -49,7 +49,7 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
           alt={IMAGE_DESCRIPTION || ''}
         />
       </figure>
-      <div className="flex flex-col justify-center overflow-hidden lg:w-2/3 lg:mt-8 lg:ml-12">
+      <div className="flex flex-col justify-center w-full lg:w-2/3 lg:mt-8 lg:ml-12">
         <h2 className="mb-4 text-3xl font-bold leading-none text-center lg:mt-4 lg:text-5xl text-gray md:text-4xl md:mt-0">
           {TITLE}
         </h2>
@@ -58,7 +58,7 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
             {SUBTITLE}
           </h3>
         )}
-        <p className="mb-12 text-base lg:text-lg lg:mb-20 text-gray whitespace-pre-wrap">
+        <p className="mb-12 text-base whitespace-pre-wrap lg:text-lg lg:mb-20 text-gray">
           {DESCRIPTION}
         </p>
         <Link
@@ -70,8 +70,8 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => {
           {ACTION_LABEL}
         </Link>
       </div>
-    </Modal>
-  );
-};
+    </div>
+  </Modal>
+);
 
 export default AnnouncementModal;
