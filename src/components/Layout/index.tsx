@@ -96,7 +96,7 @@ const Layout: React.FC<Props> = ({
           </nav>
         </div>
         <div slot="menu">
-          <div className="nav-item">
+          <div className="flex flex-col space-y-4 nav-item">
             {links.map(({ text, href, ...attrs }) => (
               <Link key={href} className="nav-link" to={href} {...attrs}>
                 {text}

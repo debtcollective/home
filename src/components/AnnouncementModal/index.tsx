@@ -30,7 +30,7 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={onClose}
-    className="relative h-screen p-4 pt-16 mb-2 overflow-y-auto bg-white rounded-lg md:mb-0 md:h-auto md:p-8 xxl:w-8/12 bg-red"
+    className="relative h-screen p-4 pt-16 mb-2 overflow-y-auto bg-white rounded-lg md:overflow-hidden md:mb-0 md:h-auto md:p-8 xxl:w-8/12 bg-red"
     overlayClassName="fixed top-0 bottom-0 left-0 right-0 flex flex-col min-h-screen p-2 pb-0 bg-opacity-75 md:p-12 lg:flex-row lg:items-center md:justify-center top-o z-modal-screen bg-black-100 lg:px-24"
     contentLabel="Example Modal"
   >
