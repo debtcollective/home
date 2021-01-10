@@ -9,7 +9,7 @@ const useAnnouncement = () => {
   const closeAnnouncement = () => {
     unblockScroll();
     setIsOpen(false);
-    Cookies.set(cookieName, 'true', { expires: 3 });
+    Cookies.set(cookieName, 'true', { expires: 7 });
   };
 
   const openAnnouncement = () => {
