@@ -19,7 +19,7 @@ const useAnnouncement = () => {
 
   useEffect(() => {
     if (!Cookies.get(cookieName)) openAnnouncement();
-  }, []);
+  }, [cookieName]);
 
   return {
     isOpen,
