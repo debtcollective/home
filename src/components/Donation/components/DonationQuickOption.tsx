@@ -95,7 +95,7 @@ const DonationQuickOption: React.FC<Props> = ({
                 )}
                 <label
                   className={`text-sm label-${option}`}
-                  htmlFor={`option-${option}`}
+                  htmlFor={`amount-option-${option}`}
                 >
                   {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
                   <span className="block text-gray-300 normal-case text-xss sm:inline-block">
