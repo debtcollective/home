@@ -65,7 +65,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
     screen.getByRole('combobox', { name: /country/i }),
     addressInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm/i }));
 
   // Give personal information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -90,7 +90,7 @@ test('allows to skip the payment form and complete flow using zero donation sele
     'massachusetts'
   );
 
-  const submitBtn = screen.getByRole('button', { name: /next/i });
+  const submitBtn = screen.getByRole('button', { name: /confirm/i });
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
 
@@ -124,7 +124,7 @@ test('allows to complete flow using an amount donation selection', async () => {
   userEvent.click(
     screen.getByRole('radio', { name: `$${donationAmount} USD/mo` })
   );
-  userEvent.click(screen.getByRole('button', { name: /pay/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm/i }));
 
   // Give address information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -145,7 +145,7 @@ test('allows to complete flow using an amount donation selection', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     addressInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm/i }));
 
   // Give personal information
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -174,7 +174,7 @@ test('allows to complete flow using an amount donation selection', async () => {
     faker.finance.creditCardNumber()
   );
 
-  const submitBtn = screen.getByRole('button', { name: /next/i });
+  const submitBtn = screen.getByRole('button', { name: /confirm/i });
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
 

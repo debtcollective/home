@@ -1,3 +1,4 @@
+import metrics from '../../../metrics';
 import { DEFAULT_ERROR } from '../constants/errors';
 import { DonationMachineContext } from '../machines/donationType';
 
@@ -70,6 +71,10 @@ export const sendDonation = async (context: DonationMachineContext) => {
     console.error(response.errors);
     throw new Error(response.message);
   }
+
+  metrics.sendEvent(metrics.ONE_OFF_DONATION, {
+    conversionValue: amount
+  });
 
   return response;
 };

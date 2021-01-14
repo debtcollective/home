@@ -1,3 +1,4 @@
+import metrics from '../../../metrics';
 import { DEFAULT_ERROR } from '../constants/errors';
 import { MembershipMachineContext } from '../machines/membershipMachine';
 const DONATION_API_URL = `${process.env.GATSBY_MEMBERSHIP_API_URL}`;
@@ -66,6 +67,10 @@ export const sendMembershipDonation = async (
     console.error(response.errors);
     throw new Error(response.message);
   }
+
+  metrics.sendEvent(metrics.DUES_DONATION, {
+    conversionValue: amount
+  });
 
   return response;
 };

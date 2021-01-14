@@ -8,6 +8,8 @@ import { MINIMAL_DONATION } from '../machines/donationMachine';
 import * as Stripe from '@stripe/react-stripe-js';
 
 jest.mock('../components/StripeCardInput');
+// Help to have less countries and those a less noisy dropdown
+jest.mock('../components/DonationCountryDropdown');
 
 const cardInformation = {
   firstName: faker.name.findName(),
@@ -20,7 +22,7 @@ const billingInformation = {
   address: faker.address.streetAddress(),
   city: faker.address.city(),
   zipCode: faker.address.zipCode(),
-  country: faker.address.countryCode()
+  country: 'VE'
 };
 const donationAmount = 5;
 const donationResponse = {
@@ -72,7 +74,7 @@ test('send a donation request with all provided information', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm/i }));
 
   // Give the payment details
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -97,7 +99,7 @@ test('send a donation request with all provided information', async () => {
     faker.finance.creditCardNumber()
   );
 
-  const submitBtn = screen.getByRole('button', { name: /next/i });
+  const submitBtn = screen.getByRole('button', { name: /confirm/i });
 
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);
@@ -266,7 +268,7 @@ test('shows payment error when donation request fails', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm/i }));
 
   // Give the payment details
   userEvent.type(
@@ -290,7 +292,7 @@ test('shows payment error when donation request fails', async () => {
     faker.finance.creditCardNumber()
   );
 
-  const submitBtn = screen.getByRole('button', { name: /next/i });
+  const submitBtn = screen.getByRole('button', { name: /confirm/i });
 
   userEvent.click(submitBtn);
 

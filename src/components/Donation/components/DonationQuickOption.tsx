@@ -64,14 +64,17 @@ const DonationQuickOption: React.FC<Props> = ({
                 <input
                   className="absolute w-full h-full"
                   defaultChecked={option === defaultChecked}
-                  id={`option-${option}`}
+                  id={`amount-option-${option}`}
                   name={name}
                   type="radio"
                   value={option}
                   onChange={handleOnChange}
                 />
                 {option === 'other' && (
-                  <div id="option-other-input" className="relative w-full">
+                  <div
+                    id="amount-option-other-input"
+                    className="relative w-full"
+                  >
                     <Input
                       className="h-full text-sm"
                       min="5"
@@ -92,7 +95,7 @@ const DonationQuickOption: React.FC<Props> = ({
                 )}
                 <label
                   className={`text-sm label-${option}`}
-                  htmlFor={`option-${option}`}
+                  htmlFor={`amount-option-${option}`}
                 >
                   {option === 'other' ? `Other amount` : currencyFormat(option)}{' '}
                   <span className="block text-gray-300 normal-case text-xss sm:inline-block">
@@ -144,7 +147,7 @@ const QuickOption = styled.div`
     }
   }
 
-  #option-other {
+  #amount-option-other {
     &-input {
       ${tw`hidden mt-0`}
     }
@@ -153,7 +156,7 @@ const QuickOption = styled.div`
       ${tw`hidden`}
     }
 
-    &:checked ~ #option-other-input {
+    &:checked ~ #amount-option-other-input {
       ${tw`block`}
     }
   }
