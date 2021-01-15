@@ -164,7 +164,7 @@ test('avoid calling membersip api if the stripe token is missing', async () => {
     screen.getByRole('combobox', { name: /country/i }),
     billingInformation.country
   );
-  userEvent.click(screen.getByRole('button', { name: /next/i }));
+  userEvent.click(screen.getByRole('button', { name: /confirm payor/i }));
 
   // Give the payment details
   expect(screen.getByText(regexAmount)).toBeInTheDocument();
@@ -189,7 +189,7 @@ test('avoid calling membersip api if the stripe token is missing', async () => {
     faker.finance.creditCardNumber()
   );
 
-  const submitBtn = screen.getByRole('button', { name: /next/i });
+  const submitBtn = screen.getByRole('button', { name: /confirm payor/i });
 
   expect(submitBtn).not.toBeDisabled();
   userEvent.click(submitBtn);

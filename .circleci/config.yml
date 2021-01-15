@@ -12,7 +12,7 @@ jobs:
           command: yarn install
       - run:
           name: test
-          command: yarn test
+          command: yarn test:ci
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
