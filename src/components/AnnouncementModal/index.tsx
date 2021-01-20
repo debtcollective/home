@@ -9,16 +9,17 @@ interface Props {
 
 Modal.setAppElement('#___gatsby');
 
-const IMAGE_URL =
-  'https://cdn-ed.haymarketbooks.org/images/000003/314/9781642592627-f_large-5303cd187474d2d4f21b3ffc6959c441.jpg20200919-21-117sob3';
-const IMAGE_DESCRIPTION = '';
-const TITLE = "Can't Pay, Won't Pay";
-const SUBTITLE = 'The Case for Economic Disobedience and Debt Abolition';
-const DESCRIPTION =
-  "Debtors have been mocked, scolded and lied to for decades. We have been told that it is perfectly normal to go into debt to get medical care, to go to school, or even to pay for our own incarceration. We 've been told there is no way to change an economy that pushes the majority of people into debt while a small minority hoard wealth and power.";
-const ACTION_LABEL = 'Get our ebook';
-const ACTION_LINK =
-  'https://www.haymarketbooks.org/books/1520-can-t-pay-won-t-pay';
+const IMAGE_URL = '/popup-img.jpg';
+const IMAGE_DESCRIPTION = 'Philly Action 27';
+const TITLE = 'We’re on strike!';
+const SUBTITLE = '';
+const DESCRIPTION = `
+Introducing the <a class="text-blue-100" href="https://biden100.debtcollective.org">Biden Jubilee 100</a>: 100 student debt strikers, one for each of the first 100 days of Biden’s presidency.
+
+Sign our petition demanding Joe Biden cancel ALL student debt within his first 100 days! Cancelling student debt will boost the economy, close the racial wealth gap and deliver COVID relief for 45 million Americans.
+`;
+const ACTION_LABEL = 'Sign the petition';
+const ACTION_LINK = 'https://actionnetwork.org/petitions/bidenjubilee100';
 
 const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
   <Modal
@@ -52,9 +53,10 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
             {SUBTITLE}
           </h3>
         )}
-        <p className="mb-12 text-base whitespace-pre-wrap lg:text-lg lg:mb-20 text-gray">
-          {DESCRIPTION}
-        </p>
+        <p
+          className="mb-12 text-base whitespace-pre-wrap lg:tAext-lg lg:mb-20 text-gray"
+          dangerouslySetInnerHTML={{ __html: DESCRIPTION }}
+        ></p>
         <Link
           variant="button"
           href={ACTION_LINK}
