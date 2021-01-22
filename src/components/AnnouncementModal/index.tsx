@@ -1,6 +1,7 @@
 import Link from '@components/Link';
 import React from 'react';
 import Modal from 'react-modal';
+import SimpleBlockContent from '@components/SimpleBlockContent';
 
 interface Props {
   title: string;
@@ -14,10 +15,6 @@ interface Props {
 
 Modal.setAppElement('#___gatsby');
 
-const IMAGE_URL = '/popup-img.jpg';
-const IMAGE_DESCRIPTION = 'Philly Action 27';
-const TITLE = 'We’re on strike!';
-const SUBTITLE = '';
 const DESCRIPTION = `
 Introducing the <a class="text-blue-100" href="https://biden100.debtcollective.org">Biden Jubilee 100</a>: 100 student debt strikers, one for each of the first 100 days of Biden’s presidency.
 
@@ -66,10 +63,10 @@ const AnnouncementModal: React.FC<Props> = ({
             {subtitle}
           </h3>
         )}
-        <p
+        <SimpleBlockContent
           className="mb-12 text-base whitespace-pre-wrap lg:tAext-lg lg:mb-20 text-gray"
-          dangerouslySetInnerHTML={{ __html: DESCRIPTION }}
-        ></p>
+          blocks={text}
+        />
         <Link
           variant="button"
           href={ACTION_LINK}

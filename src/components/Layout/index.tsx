@@ -84,7 +84,7 @@ const Layout: React.FC<Props> = ({
   const popupQueryResult = useStaticQuery(POPUP_QUERY);
   const popup = popupQueryResult.allSanityPopup.edges[0].node;
   const popupText = popup._rawText;
-  const popupImage = popup.popupImage?.asset?.fluid?.base64;
+  const popupImage = popup.popupImage?.asset?.fluid?.srcWebp;
 
   useEffect(() => {
     if (!isFetching && membership?.id) {
