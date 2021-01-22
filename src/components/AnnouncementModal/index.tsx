@@ -3,6 +3,11 @@ import React from 'react';
 import Modal from 'react-modal';
 
 interface Props {
+  title: string;
+  subtitle?: string;
+  text: any;
+  imageSrc?: string;
+  imageAlt?: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -21,7 +26,15 @@ Sign our petition demanding Joe Biden cancel ALL student debt within his first 1
 const ACTION_LABEL = 'Sign the petition';
 const ACTION_LINK = 'https://actionnetwork.org/petitions/bidenjubilee100';
 
-const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
+const AnnouncementModal: React.FC<Props> = ({
+  title,
+  subtitle,
+  text,
+  imageSrc,
+  imageAlt,
+  isOpen,
+  onClose
+}) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={onClose}
@@ -39,18 +52,18 @@ const AnnouncementModal: React.FC<Props> = ({ isOpen, onClose }) => (
     <div className="flex justify-center">
       <figure className="items-center hidden w-1/3 mx-auto lg:flex">
         <img
-          src={IMAGE_URL}
-          aria-hidden={IMAGE_DESCRIPTION ? 'false' : 'true'}
-          alt={IMAGE_DESCRIPTION || ''}
+          src={imageSrc}
+          aria-hidden={imageAlt ? 'false' : 'true'}
+          alt={imageAlt || ''}
         />
       </figure>
       <div className="flex flex-col justify-center w-full lg:w-2/3 lg:mt-8 lg:ml-12">
         <h2 className="mb-4 text-3xl font-bold leading-none text-center lg:mt-4 lg:text-5xl text-gray md:text-4xl md:mt-0">
-          {TITLE}
+          {title}
         </h2>
-        {SUBTITLE && (
+        {subtitle && (
           <h3 className="max-w-full mx-auto mb-6 text-lg font-semibold text-center lg:mb-8 lg:text-xl text-gray w-5xl">
-            {SUBTITLE}
+            {subtitle}
           </h3>
         )}
         <p
