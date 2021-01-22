@@ -81,6 +81,18 @@ module.exports = {
         fonts: ['Libre+Franklin:400,600,800', 'Material+Icons'],
         display: 'swap'
       }
+    },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        // To enable preview of drafts, copy .env.sample into .env.development,
+        // and add a token with read permissions
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
+      }
     }
   ]
 };
