@@ -23,7 +23,7 @@
       "@services/*": ["src/services/*"],
       "@hooks/*": ["src/hooks/*"],
       "@formatters/*": ["src/formatters/*"],
-    }
+    },
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public", ".cache"]
