@@ -4,22 +4,19 @@ import Modal from 'react-modal';
 import SimpleBlockContent from '@components/SimpleBlockContent';
 
 interface Props {
-  title: string;
-  subtitle?: string;
-  text: any;
-  imageSrc?: string;
+  cta: string;
+  ctaLink: string;
   imageAlt?: string;
+  imageSrc?: string;
   isOpen: boolean;
   onClose: () => void;
+  subtitle?: string;
+  text: any;
+  title: string;
 }
 
 Modal.setAppElement('#___gatsby');
 
-const DESCRIPTION = `
-Introducing the <a class="text-blue-100" href="https://biden100.debtcollective.org">Biden Jubilee 100</a>: 100 student debt strikers, one for each of the first 100 days of Biden’s presidency.
-
-Sign our petition demanding Joe Biden cancel ALL student debt within his first 100 days! Cancelling student debt will boost the economy, close the racial wealth gap and deliver COVID relief for 45 million Americans.
-`;
 const ACTION_LABEL = 'Sign the petition';
 const ACTION_LINK = 'https://actionnetwork.org/petitions/bidenjubilee100';
 
@@ -64,7 +61,7 @@ const AnnouncementModal: React.FC<Props> = ({
           </h3>
         )}
         <SimpleBlockContent
-          className="mb-12 text-base whitespace-pre-wrap lg:tAext-lg lg:mb-20 text-gray"
+          className="mb-6 text-base whitespace-pre-wrap lg:text-lg lg:mb-12 text-gray"
           blocks={text}
         />
         <Link

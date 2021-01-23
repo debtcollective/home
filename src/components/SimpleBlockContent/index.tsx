@@ -1,5 +1,6 @@
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
+import classnames from 'clsx';
 
 interface Props {
   className?: string;
@@ -12,8 +13,10 @@ function SimpleBlockContent({ className, blocks }: Props) {
     return null;
   }
 
+  const classNames = classnames(className, 'simple-block-content');
+
   return (
-    <div className="simple-block-content">
+    <div className={classNames}>
       <BlockContent blocks={blocks} className={className} />
     </div>
   );

@@ -20,3 +20,9 @@
     hyphens: auto;
   }
 }
+
+.simple-block-content {
+  a {
+    @apply text-primary;
+  }
+}

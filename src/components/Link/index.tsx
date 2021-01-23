@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import classnames from 'classnames';
+import classnames from 'clsx';
 
 type TLink = 'button' | 'regular';
 
