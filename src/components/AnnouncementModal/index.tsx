@@ -50,7 +50,7 @@ const AnnouncementModal: React.FC<Props> = ({
           alt={imageAlt || ''}
         />
       </figure>
-      <div className="flex flex-col justify-center w-full lg:w-2/3 lg:mt-8 lg:ml-12">
+      <div className="flex flex-col justify-center w-full lg:w-2/3 lg:ml-12">
         <h2 className="mb-4 text-3xl font-bold leading-none text-center lg:mt-4 lg:text-5xl text-gray md:text-4xl md:mt-0">
           {title}
         </h2>

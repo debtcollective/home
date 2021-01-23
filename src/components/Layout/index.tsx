@@ -60,8 +60,8 @@ const POPUP_QUERY = graphql`
           subtitle
           popupImage {
             asset {
-              fluid(maxWidth: 700) {
-                ...GatsbySanityImageFluid
+              fluid(maxWidth: 500, maxHeight: 750) {
+                ...GatsbySanityImageFluid_noBase64
               }
             }
           }

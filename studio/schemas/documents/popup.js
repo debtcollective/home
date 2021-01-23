@@ -47,7 +47,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'image'
+      media: 'popupImage'
     }
   }
 };
