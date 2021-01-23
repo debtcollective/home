@@ -2,6 +2,12 @@ export default {
   name: 'popup',
   type: 'document',
   title: 'Popup',
+  fieldsets: [
+    {
+      title: 'CTA',
+      name: 'cta'
+    }
+  ],
   fields: [
     {
       name: 'title',
@@ -23,6 +29,18 @@ export default {
       name: 'popupImage',
       type: 'popupImage',
       title: 'Popup Image'
+    },
+    {
+      fieldset: 'cta',
+      name: 'ctaText',
+      title: 'CTA Text',
+      type: 'string'
+    },
+    {
+      fieldset: 'cta',
+      name: 'ctaLink',
+      title: 'CTA Link',
+      type: 'url'
     }
   ],
 

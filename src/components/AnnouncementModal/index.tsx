@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import SimpleBlockContent from '@components/SimpleBlockContent';
 
 interface Props {
-  cta: string;
+  ctaText: string;
   ctaLink: string;
   imageAlt?: string;
   imageSrc?: string;
@@ -17,15 +17,14 @@ interface Props {
 
 Modal.setAppElement('#___gatsby');
 
-const ACTION_LABEL = 'Sign the petition';
-const ACTION_LINK = 'https://actionnetwork.org/petitions/bidenjubilee100';
-
 const AnnouncementModal: React.FC<Props> = ({
   title,
   subtitle,
   text,
   imageSrc,
   imageAlt,
+  ctaText,
+  ctaLink,
   isOpen,
   onClose
 }) => (
@@ -34,7 +33,7 @@ const AnnouncementModal: React.FC<Props> = ({
     onRequestClose={onClose}
     className="relative h-screen p-4 pt-16 mb-2 overflow-y-auto bg-white rounded-lg md:overflow-hidden md:mb-0 md:h-auto md:p-8 xxl:w-8/12 bg-red"
     overlayClassName="fixed top-0 bottom-0 left-0 right-0 flex flex-col min-h-screen p-2 pb-0 bg-opacity-75 md:p-12 lg:flex-row lg:items-center md:justify-center top-o z-modal-screen bg-black-100 lg:px-24"
-    contentLabel="Example Modal"
+    contentLabel="Popup Modal"
   >
     <button
       className="absolute top-0 right-0 mt-4 mr-4 text-gray-300 md:mt-6 md:mr-6 material-icons"
@@ -66,11 +65,11 @@ const AnnouncementModal: React.FC<Props> = ({
         />
         <Link
           variant="button"
-          href={ACTION_LINK}
+          href={ctaLink}
           className="block w-full mx-auto lg:w-1/2"
           onClick={onClose}
         >
-          {ACTION_LABEL}
+          {ctaText}
         </Link>
       </div>
     </div>

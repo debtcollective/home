@@ -66,6 +66,8 @@ const POPUP_QUERY = graphql`
             }
           }
           _rawText
+          ctaText
+          ctaLink
         }
       }
     }
@@ -101,6 +103,8 @@ const Layout: React.FC<Props> = ({
         subtitle={popup.subtitle}
         text={popupText}
         imageSrc={popupImage}
+        ctaText={popup.ctaText}
+        ctaLink={popup.ctaLink}
         isOpen={isAnnouncementOpen}
         onClose={closeAnnouncement}
       />
