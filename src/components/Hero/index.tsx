@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import Button from '@components/Button';
 import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';

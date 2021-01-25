@@ -8,7 +8,7 @@ import {
   Dot,
   CarouselContext
 } from 'pure-react-carousel';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { IBadge } from '.';
 

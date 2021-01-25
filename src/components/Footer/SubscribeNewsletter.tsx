@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { InputType } from '@components/Input';
 import Button from '@components/Button';
 

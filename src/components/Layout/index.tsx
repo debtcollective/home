@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
+import { useStaticQuery, graphql, withPrefix, Link } from 'gatsby';
 import Footer from '@components/Footer';
 import SEO from '@components/SEO';
 import logoBlack from '@static/logo-black.png';
@@ -6,7 +7,6 @@ import logoSmall from '@static/logo-small.png';
 import useMembership from '@hooks/useMembership';
 import AnnouncementModal from '@components/AnnouncementModal';
 import useAnnouncement from '@hooks/useAnnouncement';
-import { Link } from 'gatsby';
 
 interface Props {
   children: ReactNode;
@@ -50,6 +50,30 @@ const HUB_LINK = {
   text: 'Member hub'
 };
 
+const POPUP_QUERY = graphql`
+  query PopupQuery {
+    allSanityPopup(sort: { fields: _createdAt, order: DESC }, limit: 1) {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          popupImage {
+            asset {
+              fluid(maxWidth: 500, maxHeight: 750) {
+                ...GatsbySanityImageFluid_noBase64
+              }
+            }
+          }
+          _rawText
+          ctaText
+          ctaLink
+        }
+      }
+    }
+  }
+`;
+
 const Layout: React.FC<Props> = ({
   children,
   title,
@@ -59,6 +83,10 @@ const Layout: React.FC<Props> = ({
   const [links, setLinks] = useState(HEADER_LINKS);
   const [membership, isFetching] = useMembership();
   const { isOpen: isAnnouncementOpen, closeAnnouncement } = useAnnouncement();
+  const popupQueryResult = useStaticQuery(POPUP_QUERY);
+  const popup = popupQueryResult.allSanityPopup.edges[0].node;
+  const popupText = popup._rawText;
+  const popupImage = popup.popupImage?.asset?.fluid?.srcWebp;
 
   useEffect(() => {
     if (!isFetching && membership?.id) {
@@ -71,6 +99,12 @@ const Layout: React.FC<Props> = ({
   return (
     <>
       <AnnouncementModal
+        title={popup.title}
+        subtitle={popup.subtitle}
+        text={popupText}
+        imageSrc={popupImage}
+        ctaText={popup.ctaText}
+        ctaLink={popup.ctaLink}
         isOpen={isAnnouncementOpen}
         onClose={closeAnnouncement}
       />

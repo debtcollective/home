@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import classnames from 'classnames';
+import classnames from 'clsx';
 
 export enum InputType {
   text = 'text',

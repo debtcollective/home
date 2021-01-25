@@ -1,5 +1,5 @@
 import React, { ReactChild } from 'react';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { Colors } from '@constants/colors';
 
 type TButton = 'submit' | 'reset' | 'button';
