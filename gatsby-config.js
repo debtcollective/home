@@ -99,7 +99,7 @@ module.exports = {
       options: {
         baseUrl: process.env.CHATWOOT_BASE_URL,
         websiteToken: process.env.CHATWOOT_WEBSITE_TOKEN,
-        includeInDevelopment: process.env.CHATWOOT_INCLUDE_IN_DEVELOPMENT,
+        includeInDevelopment: !!process.env.CHATWOOT_INCLUDE_IN_DEVELOPMENT,
         chatwootSettings: {}
       }
     }
