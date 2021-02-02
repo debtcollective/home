@@ -73,16 +73,20 @@ const Footer: React.FC<Props> = ({ hideNewsletter }) => {
             title="take action"
             items={[
               {
+                label: 'Biden Jubilee 100',
+                href: 'https://biden100.debtcollective.org/'
+              },
+              {
+                label: 'Student Debt Strike',
+                href: 'https://strike.debtcollective.org/'
+              },
+              {
                 label: 'Events',
                 href: 'https://community.debtcollective.org/calendar'
               },
               {
                 label: 'Dispute Your Debt',
                 href: 'https://tools.debtcollective.org/'
-              },
-              {
-                label: 'Student Debt Strike',
-                href: 'https://strike.debtcollective.org/'
               }
             ]}
             className="mb-10"

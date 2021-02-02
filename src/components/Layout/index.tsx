@@ -30,6 +30,11 @@ const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL;
 
 const HEADER_LINKS = [
   {
+    href: 'https://biden100.debtcollective.org/',
+    text: 'Biden Jubilee 100',
+    target: '_blank'
+  },
+  {
     href: '/debt-union',
     text: 'Join the Union'
   },

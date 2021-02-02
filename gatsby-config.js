@@ -23,7 +23,7 @@ module.exports = {
     description:
       "We are a debtors' union fighting to cancel debts and defend millions of households. Join us to build a world where college is publicly funded, healthcare is universal and housing is guaranteed for all. #YouAreNotALoan",
     author: 'Debt Collective',
-    twitterUsername: '@0debtzone',
+    twitterUsername: '@StrikeDebt',
     facebookPage: 'https://www.facebook.com/DebtCollective',
     image: `${siteUrl}/seo.png`,
     url: siteUrl
@@ -92,6 +92,19 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
         watchMode: true,
         overlayDrafts: true
+      }
+    },
+    {
+      resolve: `gatsby-plugin-chatwoot`,
+      options: {
+        baseUrl: process.env.CHATWOOT_BASE_URL,
+        websiteToken: process.env.CHATWOOT_WEBSITE_TOKEN,
+        includeInDevelopment: !!process.env.CHATWOOT_INCLUDE_IN_DEVELOPMENT,
+
+        // https://www.chatwoot.com/docs/website-sdk
+        chatwootSettings: {
+          type: 'expanded_bubble'
+        }
       }
     }
   ]
