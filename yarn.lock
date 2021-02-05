@@ -2117,6 +2117,13 @@
   dependencies:
     lodash.omit "^4.5.0"
 
+"@debtcollective/dc-footer-component@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.2.tgz#c1bc4a82ff1a1a58a976f91fdc5c826228885d33"
+  integrity sha512-68jjqjYDKq5ZvaWpklgnWCJgBP4PuZm3POosBtLpIKaFti3D6JEa/ODnsWcgyg37q8XAvcYMeqEHM6b72C3JPA==
+  dependencies:
+    "@stencil/core" "^2.0.1"
+
 "@debtcollective/dc-header-component@^2.3.1":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.3.1.tgz#c3fed5b538a965cec3041ab0b7c4c7f93fd530d9"
@@ -3417,6 +3424,11 @@
   integrity sha512-MZPUxrmFubI36XS1DI3qmI0YdN1gks62JtFZvxR67ljjSNCeK6U08Zx4msEWOXuofgqUt6zPHSi1H9fbjR/NRA==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
+
+"@stencil/core@^2.0.1":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.4.0.tgz#17b45629c8986e35dcbce3f7dab7d64beede83f2"
+  integrity sha512-gU6+Yyd6O0KrCSS/O6j8KKqmRo+/Dcs2fI0+APCpbAWK+nqhwDISpdnSEfGDCLMoAC08XOZCycBRk2K1VGnEcg==
 
 "@storybook/addon-actions@6.0.21", "@storybook/addon-actions@^6.0.21":
   version "6.0.21"

@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { useStaticQuery, graphql, withPrefix, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Footer from '@components/Footer';
 import SEO from '@components/SEO';
 import logoBlack from '@static/logo-black.png';
@@ -21,6 +21,8 @@ declare global {
     interface IntrinsicElements {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       'dc-header': any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      'dc-footer': any;
     }
   }
 }
