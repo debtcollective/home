@@ -2117,10 +2117,10 @@
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-footer-component@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.2.tgz#c1bc4a82ff1a1a58a976f91fdc5c826228885d33"
-  integrity sha512-68jjqjYDKq5ZvaWpklgnWCJgBP4PuZm3POosBtLpIKaFti3D6JEa/ODnsWcgyg37q8XAvcYMeqEHM6b72C3JPA==
+"@debtcollective/dc-footer-component@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.3.tgz#33f5051cf88b2da91da5c71ad73af14b20e325c8"
+  integrity sha512-vy9R3ofU/ylzoVY4Noo1IbEGmcxxTWL+ujNtF2vYcWt8fPsVwui8NPFsVx1Q2t7Jrz29ON6rWO2kYT9k2rzWZQ==
   dependencies:
     "@stencil/core" "^2.0.1"
 
