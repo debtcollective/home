@@ -120,11 +120,7 @@ const MembershipWidget: React.FC<Props> = ({ id, className }) => {
       {machineState === 'success' && (
         <DonationThankYou>
           <p className="px-6 mt-4 mb-0 text-sm text-center">
-            {machineContext.api.donation?.message}. Go to{' '}
-            <Link className="underline text-primary" to="/hub">
-              your member hub
-            </Link>{' '}
-            to continue the process
+            {machineContext.api.donation?.message}
           </p>
         </DonationThankYou>
       )}
