@@ -15,7 +15,7 @@ const FAQ = () => {
     <details ref={summaryRef} className="mb-6 last:mb-0">
       <summary
         className={clsx(
-          'relative flex justify-between px-12 py-10 bg-green-200 rounded hover:bg-green-300',
+          'relative flex justify-between px-8 py-5 md:px-12 md:py-10 bg-green-200 rounded hover:bg-green-300',
           {
             'rounded-b-none': isOpen,
             'bg-green-300': isOpen
@@ -36,7 +36,7 @@ const FAQ = () => {
       </summary>
       <div
         className={clsx(
-          'px-20 pb-16 text-white bg-green-200 rounded rounded-t-none',
+          'px-12 md:px-20 pb-16 text-white bg-green-200 rounded rounded-t-none',
           {
             'bg-green-300': isOpen
           }

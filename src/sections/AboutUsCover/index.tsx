@@ -48,10 +48,9 @@ const AboutUsCover: React.FC = () => {
         className="flex items-center px-4 bg-center bg-no-repeat bg-cover min-h-screen-45 md:px-12 lg:px-24"
       >
         <div className="absolute inset-0 opacity-50 bg-gray"></div>
-        <div className="relative max-w-full mx-auto w-8xl">
+        <div className="relative w-full max-w-full mx-auto lg:w-8xl">
           <h1 className="text-5xl font-bold leading-none text-white md:text-6xl">
-            About <br className="md:hidden" />{' '}
-            <span className="text-yellow">Us!</span>
+            About <span className="text-yellow">Us</span>
           </h1>
         </div>
       </BackgroundImage>

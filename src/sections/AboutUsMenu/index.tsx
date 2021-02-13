@@ -24,7 +24,7 @@ const MENU_SECTIONS: MenuSection[] = [
 
 const AboutUsMenu = () => {
   return (
-    <div className="ml-20">
+    <div className="flex flex-col w-full mt-20 md:flex-row justify-evenly lg:block md:mt-0 lg:ml-20">
       <ul>
         {MENU_SECTIONS.map((section) => (
           <li key={section.path} className="mb-16">
@@ -45,7 +45,7 @@ const AboutUsMenu = () => {
         <img
           src={joinStudentDebtStrikeIcon}
           alt="Join the student debt strike"
-          className="relative block mt-20 -left-1"
+          className="relative block lg:mt-20 lg:-left-1"
         />
       </a>
     </div>
