@@ -30,3 +30,7 @@
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+summary::-webkit-details-marker {
+  display: none;
+}
