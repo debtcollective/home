@@ -4,7 +4,7 @@ export default {
   title: 'About Us Content',
   fields: [
     {
-      name: 'item',
+      name: 'items',
       type: 'array',
       title: 'Items',
       of: [{ type: 'aboutUsItem' }]

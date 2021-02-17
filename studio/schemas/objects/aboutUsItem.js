@@ -10,6 +10,12 @@ export default {
       validation: (rule) => rule.required()
     },
     {
+      name: 'id',
+      type: 'string',
+      title: 'ID',
+      validation: (rule) => rule.required()
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'array',
