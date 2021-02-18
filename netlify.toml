@@ -1,5 +1,5 @@
 [context.deploy-preview]
-  command="make build-development"
+  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|" netlify.toml && yarn build'
 
 [context.deploy-preview.environment]
   GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
@@ -10,7 +10,7 @@
   GATSBY_STRIPE_PUBLIC_TOKEN="REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN"
 
 [context.development]
-  command="make build-development"
+  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|" netlify.toml && yarn build'
 
 [context.development.environment]
   GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
