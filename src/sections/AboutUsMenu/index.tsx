@@ -11,14 +11,6 @@ const MENU_SECTIONS: MenuSection[] = [
   {
     label: 'OUR TEAM',
     path: '/our-team'
-  },
-  {
-    label: 'OUR BOARD',
-    path: '/our-board'
-  },
-  {
-    label: 'OUR MEMBERS',
-    path: '/our-members'
   }
 ];
 
