@@ -1,5 +1,8 @@
+# This is used by Netlify via netlify.toml to set environment variables for specific environments
+# https://docs.netlify.com/configure-builds/file-based-configuration/#inject-environment-variable-values
+
 [context.deploy-preview]
-  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|" netlify.toml && yarn build'
+  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|g" netlify.toml && yarn build'
 
 [context.deploy-preview.environment]
   GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
@@ -10,7 +13,7 @@
   GATSBY_STRIPE_PUBLIC_TOKEN="REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN"
 
 [context.development]
-  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|" netlify.toml && yarn build'
+  command='sed -i "s|REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN|${GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}|g" netlify.toml && cat netlify.toml && yarn build'
 
 [context.development.environment]
   GATSBY_COMMUNITY_URL="https://community-test.debtcollective.org"
