@@ -7,7 +7,7 @@
   GATSBY_HOST_URL = "https://development.debtcollective.org"
   GATSBY_MEMBERSHIP_API_URL = "https://membership-test.debtcollective.org/subscriptions"
   GATSBY_MEMBERSHIP_URL = "https://membership-test.debtcollective.org"
-  GATSBY_STRIPE_PUBLIC_TOKEN=""
+  GATSBY_STRIPE_PUBLIC_TOKEN="REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN"
 
 [context.development]
   command="make build-development"
@@ -18,4 +18,4 @@
   GATSBY_HOST_URL = "https://development.debtcollective.org"
   GATSBY_MEMBERSHIP_API_URL = "https://membership-test.debtcollective.org/subscriptions"
   GATSBY_MEMBERSHIP_URL = "https://membership-test.debtcollective.org"
-  GATSBY_STRIPE_PUBLIC_TOKEN=""
+  GATSBY_STRIPE_PUBLIC_TOKEN="REPLACE_GATSBY_STRIPE_PUBLIC_TOKEN"
