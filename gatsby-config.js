@@ -106,6 +106,12 @@ module.exports = {
           type: 'expanded_bubble'
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: [`BRANCH`]
+      }
     }
   ]
 };

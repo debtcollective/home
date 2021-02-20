@@ -1,9 +1,12 @@
 import { DonationMachineContext } from '../machines/donationType';
 
+const isProduction = process.env.BRANCH === 'master';
 /**
  * Publishable key that is used in order to load Stripe
  */
-export const STRIPE_API_KEY = `${process.env.GATSBY_STRIPE_PUBLIC_TOKEN}`;
+export const STRIPE_API_KEY = isProduction
+  ? `${process.env.GATSBY_STRIPE_PUBLIC_TOKEN}`
+  : `${process.env.GATSBY_DEVELOPMENT_STRIPE_PUBLIC_TOKEN}`;
 
 /**
  * Add extra data to the create token process to take advantage
