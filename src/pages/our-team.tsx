@@ -3,46 +3,53 @@ import Layout from '@components/Layout';
 import OurTeamCover from '@sections/OurTeamCover';
 import { graphql } from 'gatsby';
 import OurTeamContent from '@sections/OurTeamContent';
+import { FluidObject } from 'gatsby-image';
 
-export interface ISanityAboutUsItem {
-  id: string;
-  title: string;
-  _rawContent: unknown[];
+export interface ISanityTeamMember {
+  name: string;
+  role: string;
+  avatar: {
+    asset: {
+      fluid: FluidObject;
+    };
+  };
 }
 
-export interface ISanityAboutUs {
+export interface ISanityOurTeam {
   title: string;
-  content: {
-    items: ISanityAboutUsItem[];
-  };
+  teamMembers: ISanityTeamMember[];
 }
 
 interface Props {
   data: {
-    sanityAboutUs: ISanityAboutUs;
+    sanityOurTeam: ISanityOurTeam;
   };
 }
 
-const AboutUsPage: React.FC<Props> = ({ data }) => (
+const OurTeam: React.FC<Props> = ({ data }) => (
   <Layout>
     <OurTeamCover />
-    <OurTeamContent items={data?.sanityAboutUs?.content?.items} />
+    <OurTeamContent items={data?.sanityOurTeam?.teamMembers} />
   </Layout>
 );
 
 export const query = graphql`
   {
-    sanityAboutUs {
+    sanityOurTeam {
       title
-      content {
-        items {
-          id
-          title
-          _rawContent
+      teamMembers {
+        name
+        role
+        avatar {
+          asset {
+            fluid(maxWidth: 160) {
+              ...GatsbySanityImageFluid_noBase64
+            }
+          }
         }
       }
     }
   }
 `;
 
-export default AboutUsPage;
+export default OurTeam;

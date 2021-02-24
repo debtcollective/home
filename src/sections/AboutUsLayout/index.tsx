@@ -14,7 +14,7 @@ const AboutUsLayout: React.FC<Props> = ({ children, headingText }) => (
           {headingText}
         </h2>
       )}
-      <div className="flex flex-col flex-wrap w-full lg:flex-row">
+      <div className="flex flex-col w-full lg:flex-row">
         <div className="lg:w-3/4">{children}</div>
         <div className="flex-grow flex-shrink-0 lg:w-1/4">
           <AboutUsMenu />
