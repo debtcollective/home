@@ -2110,26 +2110,26 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@debtcollective/dc-dropdown-component@^1.6.6":
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.6.6.tgz#9fe87d77f44c34ff144638144337bea0439e8ff2"
-  integrity sha512-8Ze4YGVlqhPpMhfc3nU+SnsEdOT32Ypj3BtutSQdS7G3mE7vKUlEna8bhCGGG0mRij+g6JF3WvbxY4FuV5I9Ig==
+"@debtcollective/dc-dropdown-component@^1.6.10":
+  version "1.6.10"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.6.10.tgz#9a5eb3fc4a6b03c9016c964c785b3c60abb4f4b5"
+  integrity sha512-o2kNHWFryJwmR9Uhdl/nifHvx7en8ElzKivAE9NnVZDbf8FkHhQ3xhp7M16+HGqBc2ljtifk6oq/Sdf8TEImYw==
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-footer-component@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.3.tgz#33f5051cf88b2da91da5c71ad73af14b20e325c8"
-  integrity sha512-vy9R3ofU/ylzoVY4Noo1IbEGmcxxTWL+ujNtF2vYcWt8fPsVwui8NPFsVx1Q2t7Jrz29ON6rWO2kYT9k2rzWZQ==
+"@debtcollective/dc-footer-component@0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.5.tgz#d5d7fc245b4dee196f2e57c02d6978b02e9194eb"
+  integrity sha512-YdKaQ7LD0/nxSc1UFKnxQS6DLeQmRHTzm+uBCA52vGBlw30zjBsHpJFIqhfwphpp5LrTJZ2CqQlX7kZAiaQOKg==
   dependencies:
     "@stencil/core" "^2.0.1"
 
-"@debtcollective/dc-header-component@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.3.1.tgz#c3fed5b538a965cec3041ab0b7c4c7f93fd530d9"
-  integrity sha512-bE+3/XQwZIZN52E5aylLLtP/YDXcKlPx7llB7frmQSPXsZija+ceKzYN6GChB2zb3YrsKXbA9KbtnCa/0OIIYg==
+"@debtcollective/dc-header-component@2.3.5":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.3.5.tgz#6122bf541318234848ba5c8f6863213fb3e4ee87"
+  integrity sha512-IovwCvH3IjiY5duADkiBi4yg8WE+whF7JEmLUu+CRcfQpXyIwn0dQwxo+X734lZMlxoyVW099VQzH18u5s5r/A==
   dependencies:
-    "@debtcollective/dc-dropdown-component" "^1.6.6"
+    "@debtcollective/dc-dropdown-component" "^1.6.10"
     lodash.omit "^4.5.0"
 
 "@emotion/cache@^10.0.27":
