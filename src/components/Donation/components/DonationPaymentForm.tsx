@@ -133,7 +133,7 @@ const DonationPaymentForm: React.FC<Props> = ({
             defaultValue=""
           >
             <option disabled hidden value="">
-              Are you part of a local chapter?{' '}
+              Are you part of a local organizing?{' '}
             </option>
             {chapters.map((chapter) => (
               <option key={chapter.value} value={chapter.value}>
