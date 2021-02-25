@@ -33,13 +33,6 @@ const Dues = () => {
           </ul>
         </div>
       </div>
-      <p className="max-w-5xl mx-auto mt-10 text-xl font-semibold leading-7 text-center lg:mt-20 lg:text-2xl">
-        For those involved in local Debt Collective chapters,{' '}
-        <span className="text-primary">
-          40% of your dues will be provided directly to the chapter for local
-          organizing and support.
-        </span>
-      </p>
     </div>
   );
 };
