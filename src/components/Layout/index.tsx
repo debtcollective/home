@@ -95,6 +95,15 @@ const Layout: React.FC<Props> = ({
   const popupText = popup._rawText;
   const popupImage = popup.popupImage?.asset?.fluid?.srcWebp;
 
+  // TODO: Optimize this. We need to think how to add support
+  // to pass variables to the MembershipWidget and the DonationWidget components
+  (window as any).DC_DONATE_API_URL = process.env.GATSBY_DONATE_API_URL;
+  (window as any).DC_MEMBERSHIP_API_URL = process.env.GATSBY_MEMBERSHIP_API_URL;
+  (window as any).DC_RECAPTCHA_V3_SITE_KEY =
+    process.env.GATSBY_RECAPTCHA_V3_SITE_KEY;
+  (window as any).DC_STRIPE_PUBLIC_TOKEN =
+    process.env.GATSBY_STRIPE_PUBLIC_TOKEN;
+
   useEffect(() => {
     if (!isFetching && membership?.id) {
       setLinks([HUB_LINK, ...HEADER_LINKS]);
