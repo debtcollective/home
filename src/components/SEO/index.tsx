@@ -123,6 +123,13 @@ const SEO: React.FC<Props> = (props) => {
       <script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_RECAPTCHA_V3_SITE_KEY}`}
       ></script>
+      <script>
+        window.DC_DONATE_API_URL = process.env.GATSBY_DONATE_API_URL;
+        window.DC_MEMBERSHIP_API_URL = process.env.GATSBY_MEMBERSHIP_API_URL;
+        window.DC_RECAPTCHA_V3_SITE_KEY =
+        process.env.GATSBY_RECAPTCHA_V3_SITE_KEY; window.DC_STRIPE_PUBLIC_TOKEN
+        = process.env.GATSBY_STRIPE_PUBLIC_TOKEN;
+      </script>
       <style type="text/css">{`
         dc-header {display:none;}
         dc-header.hydrated {display:block;}
