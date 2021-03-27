@@ -17,6 +17,11 @@
   a {
     @apply text-primary;
   }
+
+  p,
+  ol > li {
+    @apply mb-4;
+  }
 }
 
 .grecaptcha-badge {
@@ -43,6 +48,9 @@ p {
     @apply mt-0;
   }
 
+  strong,
+  ol,
+  li,
   p {
     color: inherit;
     font-size: inherit;

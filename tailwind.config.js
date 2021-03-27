@@ -84,7 +84,7 @@ module.exports = {
         xxl: '1536px'
       },
       spacing: {
-        'x-screen-spacing': '2rem',
+        'x-screen-spacing': '1rem',
         'y-screen-spacing': '4rem',
         'desktop-screen-spacing': '6rem'
       },

@@ -4,22 +4,22 @@ import AboutUsCover from '@sections/AboutUsCover';
 import AboutUsContent from '@sections/AboutUsContent';
 import { graphql } from 'gatsby';
 
-export interface ISanityAboutUsItem {
+export interface SanityAboutUsItem {
   id: string;
   title: string;
   _rawContent: unknown[];
 }
 
-export interface ISanityAboutUs {
+export interface SanityAboutUs {
   title: string;
   content: {
-    items: ISanityAboutUsItem[];
+    items: SanityAboutUsItem[];
   };
 }
 
 interface Props {
   data: {
-    sanityAboutUs: ISanityAboutUs;
+    sanityAboutUs: SanityAboutUs;
   };
 }
 

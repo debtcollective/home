@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { ISanityAboutUsItem } from 'src/pages/about-us';
+import { SanityAboutUsItem } from 'src/pages/about-us';
 import SimpleBlockContent from '@components/SimpleBlockContent';
 
 interface Props {
-  data: ISanityAboutUsItem;
+  data: SanityAboutUsItem;
 }
 
 const FAQ: React.FC<Props> = ({ data }) => {

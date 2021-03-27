@@ -1,10 +1,10 @@
 import React from 'react';
 import AboutUsMenu from '@sections/AboutUsMenu';
 import AboutUsItem from './AboutUsItem';
-import { ISanityAboutUsItem } from 'src/pages/about-us';
+import { SanityAboutUsItem } from 'src/pages/about-us';
 
 interface Props {
-  items?: ISanityAboutUsItem[];
+  items?: SanityAboutUsItem[];
 }
 
 const AboutUsContent: React.FC<Props> = ({ items }) => (
