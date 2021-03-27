@@ -46,12 +46,12 @@ const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
             title: 'Dispute your debts'
           },
           {
-            alt: 'Local chapters',
+            alt: 'Local organizing',
             backgroundColor: Colors.green,
             src: localChaptersIcon,
             text:
-              'Members are encouraged to form and join local chapters to build power, lead protests and design campaigns around the country!',
-            title: 'Local chapters'
+              'Members are encouraged to lead and take part in local actions and activities around the country!',
+            title: 'Local organizing'
           },
           {
             alt: 'Community Platform',

@@ -16,7 +16,10 @@ module.exports = {
         'bg-primary',
         'bg-purple',
         'bg-white',
-        'bg-yellow'
+        'bg-yellow',
+        'text-xss',
+        'normal-case',
+        'sm:inline-block'
       ]
     }
   },
