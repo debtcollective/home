@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@debtcollective/dc-footer-component": "0.2.5",
-    "@debtcollective/dc-header-component": "2.3.5",
+    "@debtcollective/dc-header-component": "^2.4.0",
     "@debtcollective/union-component": "^1.4.2",
     "@sanity/block-content-to-react": "2.0.7",
     "@stripe/react-stripe-js": "^1.1.2",
