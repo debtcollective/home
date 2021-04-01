@@ -46,7 +46,7 @@ const AboutUsMenu = () => {
         ))}
       </ul>
       <a
-        href="https://strike.debtcollective.org/"
+        href="https://debtcollective.org/debt-union"
         target="_blank"
         rel="noreferrer"
       >

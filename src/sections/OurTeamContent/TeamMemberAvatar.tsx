@@ -8,10 +8,10 @@ interface Props {
 
 const TeamMemberAvatar: React.FC<Props> = ({ member }) => (
   <div>
-    <div className="p-2 mx-auto overflow-hidden transition duration-150 rounded-full shadow-md w-28 h-28 md:p-4 md:w-64 md:h-64 bg-white-100 hover:bg-yellow">
+    <div className="w-32 h-32 p-2 mx-auto overflow-hidden transition duration-150 rounded-full shadow-md md:p-4 md:w-64 md:h-64 bg-white-100 hover:bg-yellow">
       <Img
-        fluid={member.avatar.asset.fluid}
-        alt={`${member.name} Avatar`}
+        fluid={member.avatar?.asset.fluid}
+        alt={member.avatar?.caption}
         className="w-full h-full rounded-full"
       />
     </div>

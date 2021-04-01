@@ -12,6 +12,7 @@ export interface ISanityTeamMember {
     asset: {
       fluid: FluidObject;
     };
+    caption?: string;
   };
 }
 
@@ -46,6 +47,7 @@ export const query = graphql`
               ...GatsbySanityImageFluid_noBase64
             }
           }
+          caption
         }
       }
     }
