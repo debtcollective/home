@@ -15,6 +15,7 @@ import link from './objects/link';
 import aboutUsItem from './objects/aboutUsItem';
 import aboutUsContent from './objects/aboutUsContent';
 import teamMember from './objects/teamMember';
+import userAvatarImage from './objects/userAvatarImage';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -30,6 +31,7 @@ export default createSchema({
     aboutUsItem,
     aboutUsContent,
     ourTeam,
-    teamMember
+    teamMember,
+    userAvatarImage
   ])
 });

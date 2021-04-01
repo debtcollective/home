@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: 'avatar',
-      type: 'image',
+      type: 'userAvatarImage',
       title: 'Avatar'
     },
     {
