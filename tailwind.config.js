@@ -43,7 +43,11 @@ module.exports = {
       'blue-100': '#03a9f4',
       'blue-200': '#DBF8FF',
       turquoise: '#7DCCBC',
-      green: '#D6FFB8',
+      green: {
+        100: '#D6FFB8',
+        200: '#21A78D',
+        300: '#106051'
+      },
       pink: '#FFADA4',
       primary: '#FF4630',
       'primary-darker': '#EE2812',
@@ -58,6 +62,10 @@ module.exports = {
       bold: 800
     },
     extend: {
+      inset: {
+        '-1': '-1rem',
+        '-10': '-10rem'
+      },
       borderWidth: {
         1: '1px'
       },
@@ -76,7 +84,7 @@ module.exports = {
         xxl: '1536px'
       },
       spacing: {
-        'x-screen-spacing': '2rem',
+        'x-screen-spacing': '1rem',
         'y-screen-spacing': '4rem',
         'desktop-screen-spacing': '6rem'
       },
