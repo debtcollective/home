@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 
@@ -7,8 +7,6 @@ interface Props {
   lang?: string;
   title?: string;
 }
-
-declare const window: any;
 
 const SEO: React.FC<Props> = (props) => {
   const { title, description, lang } = props;
@@ -34,16 +32,6 @@ const SEO: React.FC<Props> = (props) => {
   const metaTitle = title || site.siteMetadata.title;
   const metaTitleTemplate = site.siteMetadata.titleTemplate;
   const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
-
-  useLayoutEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.DC_DONATE_API_URL = process.env.GATSBY_DONATE_API_URL;
-      window.DC_MEMBERSHIP_API_URL = process.env.GATSBY_MEMBERSHIP_API_URL;
-      window.DC_RECAPTCHA_V3_SITE_KEY =
-        process.env.GATSBY_RECAPTCHA_V3_SITE_KEY;
-      window.DC_STRIPE_PUBLIC_TOKEN = process.env.GATSBY_STRIPE_PUBLIC_TOKEN;
-    }
-  }, []);
 
   return (
     <Helmet
