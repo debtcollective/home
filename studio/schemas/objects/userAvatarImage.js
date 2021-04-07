@@ -3,7 +3,7 @@ export default {
   type: 'image',
   title: 'Avatar Image',
   options: {
-    hotspot: true // <-- Defaults to false
+    hotspot: true
   },
   fields: [
     {
@@ -11,7 +11,7 @@ export default {
       type: 'string',
       title: 'Caption',
       options: {
-        isHighlighted: true // <-- make this field easily accessible
+        isHighlighted: true
       }
     }
   ]

@@ -5,21 +5,21 @@ import BackgroundImage from 'gatsby-background-image';
 const OurTeamCover: React.FC = () => {
   const { desktop, medium, small } = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "heros/about-us.jpeg" }) {
+      desktop: file(relativePath: { eq: "covers/our-team-cover.png" }) {
         childImageSharp {
           fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      medium: file(relativePath: { eq: "heros/about-us.jpeg" }) {
+      medium: file(relativePath: { eq: "covers/our-team-cover.png" }) {
         childImageSharp {
           fluid(maxWidth: 1400, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
-      small: file(relativePath: { eq: "heros/about-us.jpeg" }) {
+      small: file(relativePath: { eq: "covers/our-team-cover.png" }) {
         childImageSharp {
           fluid(maxWidth: 490, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
