@@ -72,11 +72,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      setLinks([...HEADER_LINKS, ...USER_LINKS]);
-      return;
-    }
-    setLinks([...HEADER_LINKS, ...GUEST_LINKS]);
+    const extraLinks = user ? USER_LINKS : GUEST_LINKS;
+    setLinks([...HEADER_LINKS, ...extraLinks]);
   }, [user]);
 
   return (
