@@ -30,15 +30,27 @@ declare global {
 const GATSBY_HOST_URL = process.env.GATSBY_HOST_URL;
 const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL;
 
+const GUEST_LINKS = [
+  {
+    href: '/debt-union',
+    text: 'Join the Union',
+    target: '_self'
+  }
+];
+
+const USER_LINKS = [
+  {
+    href: '/hub',
+    text: 'Member hub',
+    target: '_self'
+  }
+];
+
 const HEADER_LINKS = [
   {
     href: 'https://biden100.debtcollective.org/',
     text: 'Biden Jubilee 100',
     target: '_blank'
-  },
-  {
-    href: '/debt-union',
-    text: 'Join the Union'
   },
   {
     href: 'https://community.debtcollective.org/',
@@ -51,11 +63,6 @@ const HEADER_LINKS = [
     target: '_blank'
   }
 ];
-
-const HUB_LINK = {
-  href: '/hub',
-  text: 'Member hub'
-};
 
 const POPUP_QUERY = graphql`
   query PopupQuery {
@@ -88,7 +95,7 @@ const Layout: React.FC<Props> = ({
   hideNewsletter
 }) => {
   const [links, setLinks] = useState(HEADER_LINKS);
-  const [membership, isFetching] = useMembership();
+  const [user, setUser] = useState(null);
   const { isOpen: isAnnouncementOpen, closeAnnouncement } = useAnnouncement();
   const popupQueryResult = useStaticQuery(POPUP_QUERY);
   const popup = popupQueryResult.allSanityPopup.edges[0].node;
@@ -97,13 +104,29 @@ const Layout: React.FC<Props> = ({
   const popupImageSrc = popup.popupImage?.asset?.fluid?.src;
   const popupImageSrcset = popup.popupImage?.asset?.fluid?.srcSet;
 
+  const handleUserSynced = (e: unknown) => {
+    // @ts-ignore
+    const syncedUser = e?.detail;
+    setUser(syncedUser);
+  };
+
+  // TODO: https://stenciljs.com/docs/events JSX event binding not working
+  React.useEffect(() => {
+    const header = document.querySelector('#dc-header');
+    header?.addEventListener('userSynced', handleUserSynced);
+
+    return () => {
+      window.removeEventListener('userSynced', handleUserSynced);
+    };
+  }, []);
+
   useEffect(() => {
-    if (!isFetching && membership?.id) {
-      setLinks([HUB_LINK, ...HEADER_LINKS]);
+    if (user) {
+      setLinks([...HEADER_LINKS, ...USER_LINKS]);
       return;
     }
-    setLinks(HEADER_LINKS);
-  }, [membership, isFetching]);
+    setLinks([...HEADER_LINKS, ...GUEST_LINKS]);
+  }, [user]);
 
   return (
     <>
