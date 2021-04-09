@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
-import joinStudentDebtStrikeIcon from '@static/icons/join-student-debt-strike.svg';
+import becomeAMemberIcon from '@static/icons/become-a-member.svg';
 import clsx from 'clsx';
 
 type MenuSection = {
@@ -46,13 +46,14 @@ const AboutUsMenu = () => {
         ))}
       </ul>
       <a
+        aria-label="Become a member!"
         href="https://debtcollective.org/debt-union"
-        target="_blank"
         rel="noreferrer"
+        target="_blank"
       >
         <img
-          src={joinStudentDebtStrikeIcon}
-          alt="Join the student debt strike"
+          src={becomeAMemberIcon}
+          alt="Become a member!"
           className="relative block lg:mt-20 lg:-left-1"
         />
       </a>
