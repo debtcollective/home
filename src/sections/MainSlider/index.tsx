@@ -37,7 +37,7 @@ const MainSlider = () => {
           },
           {
             alt: 'Take Action',
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.green100,
             href: 'https://bit.ly/help-cancel-student-debt',
             src: thingsToDoIcon,
             text:
