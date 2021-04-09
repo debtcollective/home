@@ -10,19 +10,26 @@ Define env variables. Client and server-side env variables. [Check Gatsby docs t
 cp env.sample .env.development
 ```
 
-To install dependencies
+Note there are some sensitive data required in .env.development, request a file in #dev-team on slack.
+
+
+### To install dependencies
 
 ```bash
 yarn
 ```
 
-To run the project
+### To run the project
 
 ```bash
 yarn start
 ```
 
-We also use storybooks to showcase some of the UI
+### Component design system 
+
+```bash
+yarn storybook-build
+```
 
 ```bash
 yarn storybook
