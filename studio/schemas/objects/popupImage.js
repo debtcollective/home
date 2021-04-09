@@ -3,7 +3,7 @@ export default {
   type: 'image',
   title: 'Popup Image',
   options: {
-    hotspot: true // <-- Defaults to false
+    hotspot: true
   },
   fields: [
     {
@@ -11,11 +11,10 @@ export default {
       type: 'string',
       title: 'Caption',
       options: {
-        isHighlighted: true // <-- make this field easily accessible
+        isHighlighted: true
       }
     },
     {
-      // Editing this field will be hidden behind an "Edit"-button
       name: 'attribution',
       type: 'string',
       title: 'Attribution'

@@ -7,12 +7,15 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // Document types
 import popup from './documents/popup';
 import aboutUs from './documents/aboutUs';
+import ourTeam from './documents/ourTeam';
 
 // Object types
 import popupImage from './objects/popupImage';
 import link from './objects/link';
 import aboutUsItem from './objects/aboutUsItem';
 import aboutUsContent from './objects/aboutUsContent';
+import teamMember from './objects/teamMember';
+import userAvatarImage from './objects/userAvatarImage';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +29,9 @@ export default createSchema({
     link,
     aboutUs,
     aboutUsItem,
-    aboutUsContent
+    aboutUsContent,
+    ourTeam,
+    teamMember,
+    userAvatarImage
   ])
 });
