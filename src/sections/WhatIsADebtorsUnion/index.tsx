@@ -30,18 +30,18 @@ const WhatIsADebtorsUnion: React.FC = () => {
   return (
     <BackgroundImage
       fluid={coverImage}
-      className="flex flex-col justify-center bg-green bg-no-repeat bg-cover bg-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
+      className="flex flex-col justify-center bg-green-100 bg-center bg-no-repeat bg-cover px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing"
     >
-      <div className="max-w-8xl mx-auto flex flex-col justify-between mb-12 lg:mb-24 lg:flex-row">
+      <div className="flex flex-col justify-between mx-auto mb-12 max-w-8xl lg:mb-24 lg:flex-row">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-5xl leading-none mb-8 text-black-100 font-bold lg:mb-0">
+          <h2 className="mb-8 text-5xl font-bold leading-none text-black-100 lg:mb-0">
             What is a Debtor’s Union?
           </h2>
           <Image
             fluid={data?.debtorsUnionImage?.childImageSharp?.fluid}
             className="w-full mb-8 lg:hidden"
           />
-          <p className="text-gray font-semibold text-xl mt-4">
+          <p className="mt-4 text-xl font-semibold text-gray">
             In a workplace, workers come together to defend and fight for their
             interests against greedy bosses and owners. Similarly, debtors are
             coming together to form a union to defend our interests. We use our
@@ -54,11 +54,11 @@ const WhatIsADebtorsUnion: React.FC = () => {
         </div>
         <Image
           fluid={data?.debtorsUnionImage?.childImageSharp?.fluid}
-          className="w-1/2 hidden lg:block"
+          className="hidden w-1/2 lg:block"
         />
       </div>
       <Link
-        className="w-full self-center lg:w-auto"
+        className="self-center w-full lg:w-auto"
         href="#faq"
         variant="button"
       >

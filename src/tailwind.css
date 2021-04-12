@@ -13,20 +13,53 @@
   color: #1c1c1c;
 }
 
-@screen sm {
-  p {
-    -ms-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-}
-
 .simple-block-content {
   a {
     @apply text-primary;
+  }
+
+  p,
+  ol > li {
+    @apply mb-4;
   }
 }
 
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+p {
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@layer base {
+  h3 {
+    color: inherit;
+    @apply mt-12 mb-2 text-2xl leading-normal;
+  }
+
+  h3:first-child {
+    @apply mt-0;
+  }
+
+  strong,
+  ol,
+  li,
+  p {
+    color: inherit;
+    font-size: inherit;
+    @apply leading-normal;
+  }
+
+  @screen md {
+    h3 {
+      @apply text-4xl;
+    }
+  }
 }
