@@ -32,11 +32,11 @@ const Badge: React.FC<Props> = ({
           )}
           alt={imageAlt}
         />
-        <h6 className="text-3xl leading-8 font-semibold text-center text-black uppercase font-more-gothic mt-4 mb-2">
+        <h6 className="mt-4 mb-2 text-3xl font-semibold leading-8 text-center text-black uppercase font-more-gothic">
           {title}
         </h6>
         {text && (
-          <p className="text-lg leading-5 font-semibold text-center text-gray">
+          <p className="text-lg font-semibold leading-5 text-center text-gray">
             {text}
           </p>
         )}
