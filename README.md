@@ -60,6 +60,47 @@ yarn storybook-build
 yarn storybook
 ```
 
+## Chatwoot
+
+We use [chatwoot](https://www.chatwoot.com/) to communicate with the debt collective members and provide support. To run a chatwoot instance locally please follow the following instructions:
+
+You will need to have pre-installed the following dependencies:
+
+- Docker
+- Docker compose
+- Redis
+- Postgres
+
+1.- Run docker compose
+
+```bash
+docker-compose up
+```
+
+2.- List the docker containers and copy the container id from the image `chatwoot/chatwoot:latest`
+
+```bash
+docker ps
+```
+
+3.- Prepare the environment
+
+```
+docker exec -it <container_id> ./bin/rails db:chatwoot_prepare
+```
+
+4.- Open your local browser in the port `3000`
+
+### Troubleshooting
+
+Once you open the chatwoot app, you will be requested to create an account. While doing this step, you may face the following error:
+
+```
+undefined method `feature_inbound_emails=' for #<Account> Did you mean? feature_enabled?
+```
+
+if so, please stop the `docker-compose` process and start it again.
+
 ## Release
 
 We are using [semantic-release](https://github.com/semantic-release/semantic-release) to manage our releases. To create a release you have to run `yarn release`.
