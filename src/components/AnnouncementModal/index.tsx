@@ -8,6 +8,7 @@ interface Props {
   ctaLink: string;
   imageAlt?: string;
   imageSrc?: string;
+  imageSrcSet?: string;
   isOpen: boolean;
   onClose: () => void;
   subtitle?: string;
@@ -22,6 +23,7 @@ const AnnouncementModal: React.FC<Props> = ({
   subtitle,
   text,
   imageSrc,
+  imageSrcSet,
   imageAlt,
   ctaText,
   ctaLink,
@@ -45,6 +47,7 @@ const AnnouncementModal: React.FC<Props> = ({
     <div className="flex justify-center">
       <figure className="items-center hidden w-1/3 mx-auto lg:flex">
         <img
+          srcSet={imageSrcSet}
           src={imageSrc}
           aria-hidden={imageAlt ? 'false' : 'true'}
           alt={imageAlt || ''}
