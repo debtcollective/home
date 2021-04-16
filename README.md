@@ -10,8 +10,15 @@ Define env variables. Client and server-side env variables. [Check Gatsby docs t
 cp env.sample .env.development
 ```
 
-Note there are some sensitive data required in .env.development, request a file in #dev-team on slack.
+### Doppler
 
+If you have access to our [Doppler](doppler.com) org, you can use it to run every command with our shared environment variables.
+
+First, you need setup and configure the [Doppler CLI](https://github.com/DopplerHQ/cli)
+
+Then you need to setup the project by running `doppler login` and `doppler setup`.
+
+Lastly, you need to run every command that needs env vars with `doppler run`, for example to run the Gastby server you use `doppler run yarn start`.
 
 ### To install dependencies
 
@@ -25,16 +32,25 @@ yarn
 yarn start
 ```
 
+or
+
+```bash
+doppler run yarn start
+```
+
 ### To simply build the project
+
 ```bash
 yarn build
 ```
+
 or
+
 ```bash
 yarn build:production
 ```
 
-### Component design system 
+### Component design system
 
 ```bash
 yarn storybook-build
