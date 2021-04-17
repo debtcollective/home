@@ -10,7 +10,7 @@ const {
 
 const CHATWOOT_ACCESS_TOKEN = process.env.CHATWOOT_ACCESS_TOKEN;
 const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID;
-const CHATWOOT_API_URL = process.env.CHATWOOT_API_URL;
+const CHATWOOT_BASE_URL = process.env.CHATWOOT_BASE_URL;
 const CHATWOOT_INBOX_ID = process.env.CHATWOOT_INBOX_ID;
 
 const BASE_FETCH_OPTIONS = {
@@ -58,7 +58,7 @@ class ChatwootMessenger {
   async createContact() {
     try {
       const data = await fetch(
-        `${CHATWOOT_API_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts`,
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts`,
         {
           ...BASE_FETCH_OPTIONS,
           method: 'post',
@@ -90,7 +90,7 @@ class ChatwootMessenger {
     if (this.isEmailTaken) {
       try {
         const data = await fetch(
-          `${CHATWOOT_API_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/search?q=${this.email}`,
+          `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/search?q=${this.email}`,
           {
             ...BASE_FETCH_OPTIONS,
             method: 'get'
@@ -111,7 +111,7 @@ class ChatwootMessenger {
   async createConverstaion() {
     try {
       const data = await fetch(
-        `${CHATWOOT_API_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations`,
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations`,
         {
           ...BASE_FETCH_OPTIONS,
           method: 'post',
@@ -134,7 +134,7 @@ class ChatwootMessenger {
     try {
       const subject = this._findSubject(this.subject);
       const data = await fetch(
-        `${CHATWOOT_API_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/labels`,
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/labels`,
         {
           ...BASE_FETCH_OPTIONS,
           method: 'post',
@@ -154,7 +154,7 @@ class ChatwootMessenger {
   async createMessage() {
     try {
       const data = await fetch(
-        `${CHATWOOT_API_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/messages`,
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/messages`,
         {
           ...BASE_FETCH_OPTIONS,
           method: 'post',
