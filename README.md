@@ -71,13 +71,16 @@ You will need to have pre-installed the following dependencies:
 - Redis
 - Postgres
 
-1.- Run docker compose
+  1.- Run docker compose
 
 ```bash
 docker-compose up
 ```
 
-2.- List the docker containers and copy the container id from the image `chatwoot/chatwoot:latest`
+2.- List the docker containers and:
+
+- Copy the container id from the image `chatwoot/chatwoot:latest`
+- Verify rails is runnning
 
 ```bash
 docker ps
