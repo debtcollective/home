@@ -6,7 +6,8 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "start": "netlify dev",
+    "start": "gatsby develop",
+    "dev": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
