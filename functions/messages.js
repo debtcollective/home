@@ -1,11 +1,39 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const fetch = require('node-fetch');
 const {
   CreateContactError,
   CreateConverstaionError,
   CreateLabelError,
-  CreateMessageError
+  CreateMessageError,
+  RecaptchaError
 } = require('./errors');
 const ChatwootMessenger = require('./messenger');
+
+const RECAPTCHA_SECRET = process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY;
+const RECAPTCHA_MINIMUM_SCORE = 0.5;
+
+const verifyRecaptcha = async (token) => {
+  try {
+    const data = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'post',
+        body: JSON.stringify({
+          secret: RECAPTCHA_SECRET,
+          response: token
+        })
+      }
+    );
+    const response = await data.json();
+
+    return (
+      response.success && Number(response.score) >= RECAPTCHA_MINIMUM_SCORE
+    );
+  } catch (error) {
+    throw new RecaptchaError();
+  }
+};
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -29,7 +57,13 @@ exports.handler = async (event) => {
     };
   }
 
-  const { email, name, message, subject } = JSON.parse(event.body || {});
+  const {
+    email,
+    name,
+    message,
+    subject,
+    'g-recaptcha-response-data': recaptchaToken
+  } = JSON.parse(event.body || {});
   const messenger = new ChatwootMessenger(email, name, message, subject);
 
   let statusCode = 500;
@@ -49,6 +83,10 @@ exports.handler = async (event) => {
   }
 
   try {
+    const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
+
+    if (!isValidRecaptcha) throw new RecaptchaError();
+
     await messenger.createContact();
     await messenger.createConverstaion();
     await messenger.createLabel();
@@ -62,6 +100,15 @@ exports.handler = async (event) => {
       status: 200
     });
   } catch (error) {
+    if (error instanceof RecaptchaError) {
+      statusCode = 409;
+      body = JSON.stringify({
+        type: 'Recaptcha',
+        message: 'We could not verify you are a human, please try again',
+        status: statusCode
+      });
+    }
+
     if (error instanceof CreateContactError) {
       body = JSON.stringify({
         type: 'Contact',

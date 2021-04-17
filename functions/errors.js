@@ -6,9 +6,12 @@ class CreateLabelError extends Error {}
 
 class CreateMessageError extends Error {}
 
+class RecaptchaError extends Error {}
+
 module.exports = {
   CreateContactError,
   CreateConverstaionError,
   CreateLabelError,
-  CreateMessageError
+  CreateMessageError,
+  RecaptchaError
 };
