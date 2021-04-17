@@ -8,6 +8,7 @@ type TButtonVariant = 'primary' | 'secondary';
 interface Props {
   children: ReactChild;
   className?: string;
+  disabled?: boolean;
   id?: string;
   onClick?: () => void;
   type?: TButton;
@@ -17,6 +18,7 @@ interface Props {
 const Button: React.FC<Props> = ({
   children,
   className,
+  disabled,
   id,
   onClick,
   type,
@@ -32,15 +34,17 @@ const Button: React.FC<Props> = ({
         'px-12 py-3 rounded-lg font-semibold text-base transition-colors duration-300',
         className,
         {
-          [`bg-${Colors.primary}`]: buttonVariant === 'primary',
-          [`text-${Colors.white}`]: buttonVariant === 'primary',
-          [`bg-${Colors.white}`]: buttonVariant === 'secondary',
+          [`bg-${Colors.primary}`]: buttonVariant === 'primary' && !disabled,
+          [`text-${Colors.white}`]: buttonVariant === 'primary' && !disabled,
+          [`bg-${Colors.white}`]: buttonVariant === 'secondary' && !disabled,
           [`text-${Colors.gray}`]: buttonVariant === 'primary',
-          'hover:bg-primary-darker': buttonVariant === 'primary',
-          'hover:bg-beige-600': buttonVariant === 'secondary'
+          'hover:bg-primary-darker': buttonVariant === 'primary' && !disabled,
+          'hover:bg-beige-600': buttonVariant === 'secondary' && !disabled,
+          'bg-gray-100 text-white-100': disabled
         }
       )}
       type={type || 'button'}
+      disabled={disabled}
     >
       {children}
     </button>
