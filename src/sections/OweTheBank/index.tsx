@@ -27,15 +27,15 @@ const OweTheBank = () => {
           }
         }
       }
-      # allAbout {
-      #   nodes {
-      #     about {
-      #       stats {
-      #         user_count
-      #       }
-      #     }
-      #   }
-      # }
+      allAbout {
+        nodes {
+          about {
+            stats {
+              user_count
+            }
+          }
+        }
+      }
     }
   `);
 

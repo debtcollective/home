@@ -10,7 +10,7 @@ const SUBJECT_OPTIONS = [
     value: ''
   },
   {
-    label: 'Press Inquity',
+    label: 'Press Inquiry',
     value: 'press-inquiry'
   },
   {
