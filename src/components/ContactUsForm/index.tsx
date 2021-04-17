@@ -23,16 +23,66 @@ const SUBJECT_OPTIONS = [
   }
 ];
 
+const INITIAL_STATE = {
+  name: '',
+  email: '',
+  subject: '',
+  message: ''
+};
+
 const ContactUsForm = () => {
-  const [data, setData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [data, setData] = useState(INITIAL_STATE);
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (key: string, value: string) => {
     setData((d) => ({ ...d, [key]: value }));
+  };
+
+  const hasRequiredFields = () => {
+    return data.name && data.email && data.subject && data.message;
+  };
+
+  const handleSuccessfulRequest = () => {
+    setData(INITIAL_STATE);
+    window.alert('Message sent successfully');
+  };
+
+  const handleSubmit = async (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
+    if (isLoading) return;
+
+    if (!hasRequiredFields())
+      setErrorMessage('Please fill all the required fields');
+
+    if (typeof fetch === 'undefined' || typeof window === 'undefined') return;
+
+    setIsLoading(true);
+
+    try {
+      const request = await fetch('/api/messages', {
+        method: 'POST',
+        mode: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: data.email,
+          message: data.message,
+          name: data.name,
+          subject: data.subject
+        })
+      });
+      const response = await request.json();
+
+      if (response.status !== 200) setErrorMessage(response.message);
+      if (response.status === 200) handleSuccessfulRequest();
+    } catch (error) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,7 +95,10 @@ const ContactUsForm = () => {
           This is an organizing space where people in debt gather to Organize,
           Resist & Reimagine.
         </h2>
-        <form className="flex flex-col w-full mx-auto md:w-3/4">
+        <form
+          className="flex flex-col w-full mx-auto md:w-3/4"
+          onSubmit={handleSubmit}
+        >
           <Input
             label="Your name:"
             type={InputType.text}
@@ -81,7 +134,15 @@ const ContactUsForm = () => {
             className="w-full mt-6"
             required
           />
-          <Button className="self-end mt-12" type="submit">
+          {Boolean(errorMessage) && (
+            <p
+              role="alert"
+              className="mt-8 font-sans text-lg font-bold text-center text-primary"
+            >
+              {errorMessage}
+            </p>
+          )}
+          <Button className="self-end mt-12" type="submit" disabled={isLoading}>
             Contact us
           </Button>
         </form>
