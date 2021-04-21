@@ -7,7 +7,9 @@ import Button from '@components/Button';
 const SUBJECT_OPTIONS = [
   {
     label: '-- Select a subject --',
-    value: ''
+    value: '',
+    disabled: true,
+    selected: true
   },
   {
     label: 'Press Inquiry',
@@ -71,7 +73,6 @@ const ContactUsForm = () => {
         }
       );
     } catch (error) {
-      console.error(error);
       setErrorMessage('Something went wrong, please try again');
     }
 
@@ -138,7 +139,9 @@ const ContactUsForm = () => {
             required
             id="subject"
             label="Subject:"
-            onChange={(value) => handleChange('subject', value)}
+            onChange={(event) =>
+              handleChange('subject', event?.currentTarget?.value)
+            }
             options={SUBJECT_OPTIONS}
             value={data.subject}
           />
