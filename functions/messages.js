@@ -8,6 +8,7 @@ const {
   RecaptchaError
 } = require('./errors');
 const ChatwootMessenger = require('./messenger');
+const { reportError } = require('./error-logger');
 
 const RECAPTCHA_SECRET = process.env.GATSBY_RECAPTCHA_V3_SECRET_KEY;
 const RECAPTCHA_MINIMUM_SCORE = 0.5;
@@ -95,6 +96,8 @@ exports.handler = async (event) => {
       status: 200
     });
   } catch (error) {
+    await reportError(error);
+
     if (error instanceof RecaptchaError) {
       statusCode = 409;
       body = JSON.stringify({
