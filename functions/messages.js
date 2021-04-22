@@ -14,22 +14,17 @@ const RECAPTCHA_MINIMUM_SCORE = 0.5;
 
 const verifyRecaptcha = async (token) => {
   try {
-    const data = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify`,
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(
+        RECAPTCHA_SECRET
+      )}&response=${encodeURIComponent(token)}`,
       {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'post',
-        body: JSON.stringify({
-          secret: RECAPTCHA_SECRET,
-          response: token
-        })
+        method: 'POST'
       }
     );
-    const response = await data.json();
+    const data = await response.json();
 
-    return (
-      response.success && Number(response.score) >= RECAPTCHA_MINIMUM_SCORE
-    );
+    return data.success && Number(data.score) >= RECAPTCHA_MINIMUM_SCORE;
   } catch (error) {
     throw new RecaptchaError();
   }
@@ -62,7 +57,7 @@ exports.handler = async (event) => {
     name,
     message,
     subject,
-    'g-recaptcha-response-data': recaptchaToken
+    'g-recaptcha-response': recaptchaToken
   } = JSON.parse(event.body || {});
   const messenger = new ChatwootMessenger(email, name, message, subject);
 

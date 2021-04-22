@@ -4,6 +4,8 @@ import TextArea from '@components/TextArea';
 import InputSelect from '@components/InputSelect';
 import Button from '@components/Button';
 
+const SITE_KEY = process.env.GATSBY_RECAPTCHA_V3_SITE_KEY;
+
 const SUBJECT_OPTIONS = [
   {
     label: '-- Select a subject --',
@@ -66,12 +68,9 @@ const ContactUsForm = () => {
     let recaptchaToken;
 
     try {
-      recaptchaToken = await grecaptcha.execute(
-        process.env.GATSBY_RECAPTCHA_V3_SITE_KEY,
-        {
-          action: 'contact-us'
-        }
-      );
+      recaptchaToken = await grecaptcha.execute(SITE_KEY, {
+        action: 'contact_us'
+      });
     } catch (error) {
       setErrorMessage('Something went wrong, please try again');
     }
@@ -79,12 +78,11 @@ const ContactUsForm = () => {
     try {
       const request = await fetch('/api/messages', {
         method: 'POST',
-        mode: 'same-origin',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          'g-recaptcha-response-data': recaptchaToken,
+          'g-recaptcha-response': recaptchaToken,
           email: data.email,
           message: data.message,
           name: data.name,
