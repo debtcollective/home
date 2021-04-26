@@ -12,7 +12,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   subtitle?: string;
-  text: any;
+  text: unknown;
   title: string;
 }
 
