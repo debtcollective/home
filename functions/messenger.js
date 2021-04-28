@@ -34,6 +34,7 @@ class ChatwootMessenger {
     this.isEmailTaken = false;
     this.inboxSourceId = null;
     this.conversationId = null;
+    this.userId = null;
   }
 
   _findUser(users, email) {
@@ -45,6 +46,8 @@ class ChatwootMessenger {
     const apiInbox = contactInboxes.find(
       (contactInbox) => contactInbox.inbox.id === Number(CHATWOOT_INBOX_ID)
     );
+
+    if (!apiInbox) return null;
 
     return apiInbox.source_id;
   }
@@ -100,8 +103,30 @@ class ChatwootMessenger {
         const user = this._findUser(response.payload, this.email);
 
         if (user.id) {
+          this.userId = user.id;
           this.inboxSourceId = this._findSourceId(user.contact_inboxes);
         }
+      } catch (error) {
+        throw new CreateContactError(error);
+      }
+    }
+
+    // If user is not in the API inbox, we add it
+    if (!this.inboxSourceId) {
+      try {
+        const data = await fetch(
+          `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/${this.userId}/contact_inboxes`,
+          {
+            ...BASE_FETCH_OPTIONS,
+            method: 'post',
+            body: JSON.stringify({
+              inbox_id: CHATWOOT_INBOX_ID
+            })
+          }
+        );
+        const response = await data.json();
+
+        this.inboxSourceId = response.source_id;
       } catch (error) {
         throw new CreateContactError(error);
       }
