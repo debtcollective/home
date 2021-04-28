@@ -62,10 +62,8 @@ exports.handler = async (event) => {
   } = JSON.parse(event.body || {});
   const messenger = new ChatwootMessenger(email, name, message, subject);
 
-  let statusCode = 500;
-  let body = JSON.stringify({
-    message: 'Internal Error'
-  });
+  let statusCode;
+  let body;
 
   if (!email || !name || !message || !subject) {
     return {
@@ -98,45 +96,54 @@ exports.handler = async (event) => {
   } catch (error) {
     await reportError(error);
 
-    if (error instanceof RecaptchaError) {
-      statusCode = 409;
-      body = JSON.stringify({
-        type: 'Recaptcha',
-        message: 'We could not verify you are a human, please try again',
-        status: statusCode
-      });
-    }
-
-    if (error instanceof CreateContactError) {
-      body = JSON.stringify({
-        type: 'Contact',
-        message: 'Something went wrong, please try again',
-        status: statusCode
-      });
-    }
-
-    if (error instanceof CreateConverstaionError) {
-      body = JSON.stringify({
-        type: 'Conversation',
-        message: 'Something went wrong, please try again',
-        status: statusCode
-      });
-    }
-
-    if (error instanceof CreateLabelError) {
-      body = JSON.stringify({
-        type: 'Label',
-        message: 'Something went wrong, please try again',
-        status: statusCode
-      });
-    }
-
-    if (error instanceof CreateMessageError) {
-      body = JSON.stringify({
-        type: 'Message',
-        message: 'Something went wrong, please try again',
-        status: statusCode
-      });
+    switch (true) {
+      case error instanceof RecaptchaError: {
+        statusCode = 409;
+        body = JSON.stringify({
+          type: 'Recaptcha',
+          message: 'We could not verify you are a human, please try again',
+          status: statusCode
+        });
+        break;
+      }
+      case error instanceof CreateContactError: {
+        body = JSON.stringify({
+          type: 'Contact',
+          message: 'Something went wrong, please try again',
+          status: statusCode
+        });
+        break;
+      }
+      case error instanceof CreateConverstaionError: {
+        body = JSON.stringify({
+          type: 'Conversation',
+          message: 'Something went wrong, please try again',
+          status: statusCode
+        });
+        break;
+      }
+      case error instanceof CreateLabelError: {
+        body = JSON.stringify({
+          type: 'Label',
+          message: 'Something went wrong, please try again',
+          status: statusCode
+        });
+        break;
+      }
+      case error instanceof CreateMessageError: {
+        body = JSON.stringify({
+          type: 'Message',
+          message: 'Something went wrong, please try again',
+          status: statusCode
+        });
+        break;
+      }
+      default: {
+        statusCode = 500;
+        body = JSON.stringify({
+          message: 'Internal Error'
+        });
+      }
     }
   }
 
