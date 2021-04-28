@@ -1547,14 +1547,14 @@
   dependencies:
     lodash.omit "^4.5.0"
 
-"@debtcollective/dc-footer-component@0.3.0":
+"@debtcollective/dc-footer-component@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.3.0.tgz#7666abb2f3e26d203ff3ec18bda11fde2ee622bb"
   integrity sha512-KnV2aMvbsLdRQlTvQub9Z9dnsuC7LugG4iSFlT7fJUppLv72Oa6MmxaRSxjdUbpGFUDOMs27NJangXlZObkEig==
   dependencies:
     "@stencil/core" "^2.0.1"
 
-"@debtcollective/dc-header-component@2.5.0":
+"@debtcollective/dc-header-component@^2.5.0":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.5.0.tgz#afe92b7a19bdb4e721f23b2ac2913fe1673ffd57"
   integrity sha512-Vvnuybyi8xNi1WtzlD0VOx7u7uuCrRnHsa+vdQRO15fFhlH1ytVDaPgw6SE2c190WcWQ2uCWQgS55abix6Fj1g==
