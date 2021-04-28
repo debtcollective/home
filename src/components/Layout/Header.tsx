@@ -43,11 +43,6 @@ const HEADER_LINKS = [
     href: 'https://community.debtcollective.org/',
     text: 'Community',
     target: '_blank'
-  },
-  {
-    href: 'https://teespring.com/stores/debt-collective',
-    text: 'Store',
-    target: '_blank'
   }
 ];
 
