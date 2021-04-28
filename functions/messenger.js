@@ -83,7 +83,7 @@ class ChatwootMessenger {
         this.inboxSourceId = this._findSourceId(contact_inboxes);
       }
     } catch (error) {
-      throw new CreateContactError();
+      throw new CreateContactError(error);
     }
 
     // If email is taken, retrieve contact data
@@ -103,7 +103,7 @@ class ChatwootMessenger {
           this.inboxSourceId = this._findSourceId(user.contact_inboxes);
         }
       } catch (error) {
-        throw new CreateContactError();
+        throw new CreateContactError(error);
       }
     }
   }
@@ -126,7 +126,7 @@ class ChatwootMessenger {
 
       if (response && response.id) this.conversationId = response.id;
     } catch (error) {
-      throw new CreateConverstaionError();
+      throw new CreateConverstaionError(error);
     }
   }
 
@@ -147,7 +147,7 @@ class ChatwootMessenger {
 
       if (!response.payload) throw new CreateLabelError();
     } catch (error) {
-      throw new CreateLabelError();
+      throw new CreateLabelError(error);
     }
   }
 
@@ -170,7 +170,7 @@ class ChatwootMessenger {
 
       return data;
     } catch (error) {
-      throw new CreateMessageError();
+      throw new CreateMessageError(error);
     }
   }
 }
