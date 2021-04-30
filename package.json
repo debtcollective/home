@@ -23,7 +23,7 @@
   "dependencies": {
     "@debtcollective/dc-footer-component": "0.3.0",
     "@debtcollective/dc-header-component": "2.5.0",
-    "@debtcollective/union-component": "1.4.5",
+    "@debtcollective/union-component": "1.4.6",
     "@sanity/block-content-to-react": "2.0.7",
     "@sentry/node": "^6.3.0",
     "@stripe/react-stripe-js": "^1.1.2",
