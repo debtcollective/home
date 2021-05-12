@@ -1562,10 +1562,10 @@
     "@debtcollective/dc-dropdown-component" "^1.7.0"
     lodash.omit "^4.5.0"
 
-"@debtcollective/union-component@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@debtcollective/union-component/-/union-component-1.4.6.tgz#a9ddfa79e06c7fca80ae7bfc51a8f54b70df3236"
-  integrity sha512-nCVK2GFdnctdKgXEISCHtC47qTaqFlpeXvki+G+XnudaTNnishbrk7mcanxrZh82qa5uDVASQJ7dYrfbCopYUA==
+"@debtcollective/union-component@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/union-component/-/union-component-1.5.0.tgz#fc4c4ac9b6cb75ced84063c3ad58d8df0a012e81"
+  integrity sha512-10WMqW36kYWjQYxHOy9un0/cmH+sRgNxTeRJ0pjCKKC4xooFrpqa/SFvDGa987jF1QqU4CfSWOGHAlL9+dRYVA==
   dependencies:
     "@stripe/react-stripe-js" "^1.1.2"
     "@stripe/stripe-js" "^1.9.0"
