@@ -56,18 +56,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-custom-api',
-      options: {
-        url: `${process.env.GATSBY_COMMUNITY_URL}/about.json`,
-        rootKey: 'about',
-        schemas: {
-          about: `
-            user_count: Int
-          `
-        }
-      }
-    },
-    {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: process.env.GOOGLE_TAG_MANAGER_ID,
