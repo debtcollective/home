@@ -12,12 +12,14 @@ export default {
           type: 'block',
           styles: [{ title: 'H1', value: 'h1' }]
         }
-      ]
+      ],
+      validation: (rule) => rule.required()
     },
     {
-      name: 'content',
+      name: 'body',
       type: 'string',
-      title: 'Content'
+      title: 'Body',
+      validation: (rule) => rule.required()
     }
   ]
 };

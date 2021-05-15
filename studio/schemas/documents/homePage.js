@@ -1,12 +1,17 @@
 export default {
-  name: 'home-page-hero',
+  name: 'home',
   type: 'document',
-  title: 'Home page hero',
+  title: 'Home page',
   fields: [
     {
       name: 'hero',
       type: 'hero',
       title: 'Hero'
+    },
+    {
+      name: 'secondSection',
+      type: 'homePageSecondSection',
+      title: 'Second Section'
     }
   ],
   preview: {
