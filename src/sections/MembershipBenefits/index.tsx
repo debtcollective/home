@@ -47,7 +47,7 @@ const MembershipBenefits: React.FC<Props> = ({ title, description }) => {
           },
           {
             alt: 'Local organizing',
-            backgroundColor: Colors.green100,
+            backgroundColor: Colors.green,
             src: localChaptersIcon,
             text:
               'Members are encouraged to lead and take part in local actions and activities around the country!',
