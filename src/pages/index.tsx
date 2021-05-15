@@ -4,7 +4,11 @@ import Layout from '@components/Layout';
 import Hero from '@components/Hero';
 import MainVictories from '@sections/MainVictories';
 import MainSlider from '@sections/MainSlider';
-import { ISanityHero, ISanitySecondSection } from 'src/types/home';
+import {
+  ISanityDebtRelief,
+  ISanityHero,
+  ISanitySecondSection
+} from 'src/types/home';
 import { convertISanityBadgeToIBadge } from '@utils/badges';
 
 interface Props {
@@ -12,6 +16,7 @@ interface Props {
     sanityHome: {
       hero: ISanityHero;
       secondSection: ISanitySecondSection;
+      debtRelief: ISanityDebtRelief;
     };
   };
 }
@@ -33,7 +38,11 @@ const Home: React.FC<Props> = ({ data }) => (
         convertISanityBadgeToIBadge
       )}
     />
-    <MainVictories />
+    <MainVictories
+      title={data?.sanityHome?.debtRelief?._rawTitle}
+      body={data?.sanityHome?.debtRelief?.body}
+      videoId={data?.sanityHome?.debtRelief?.videoId}
+    />
   </Layout>
 );
 
@@ -61,6 +70,11 @@ export const query = graphql`
           href
           caption
         }
+      }
+      debtRelief {
+        _rawTitle
+        body
+        videoId
       }
     }
   }

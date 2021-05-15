@@ -13,7 +13,6 @@ const Highlight: React.FC = (props) => (
 );
 
 const MainSlider: React.FC<Props> = ({ title, body, badges }) => {
-  console.log({ badges });
   return (
     <section className="flex flex-col justify-center px-x-screen-spacing py-y-screen-spacing lg:p-desktop-screen-spacing bg-gradient-to-b from-blue-200 via-white-200 to-blue-200 lg:to-white-300">
       <h2 className="max-w-full mx-auto mb-10 text-4xl font-semibold leading-9 text-center text-gray lg:text-5xl lg:leading-14 w-6xl">

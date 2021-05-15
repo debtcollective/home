@@ -14,6 +14,7 @@ import popup from './documents/popup';
 import aboutUsContent from './objects/aboutUsContent';
 import aboutUsItem from './objects/aboutUsItem';
 import badge from './objects/badge';
+import debtRelief from './objects/debtRelief';
 import hero from './objects/hero';
 import homeSecondSection from './objects/homeSecondSection';
 import link from './objects/link';
@@ -32,6 +33,7 @@ export default createSchema({
     aboutUsContent,
     aboutUsItem,
     badge,
+    debtRelief,
     hero,
     homePage,
     homeSecondSection,

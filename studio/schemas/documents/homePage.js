@@ -12,6 +12,11 @@ export default {
       name: 'secondSection',
       type: 'homePageSecondSection',
       title: 'Second Section'
+    },
+    {
+      name: 'debtRelief',
+      type: 'debtRelief',
+      title: 'Debt Relief'
     }
   ],
   preview: {
