@@ -3,6 +3,7 @@ import classnames from 'clsx';
 import Button from '@components/Button';
 import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';
+import BlockContent from '@sanity/block-content-to-react';
 
 interface Props {
   className?: string;
@@ -11,8 +12,12 @@ interface Props {
   secondaryAction: () => void;
   secondaryActionLabel: string;
   text: string | ReactNode;
-  title: string | ReactNode;
+  title: unknown[];
 }
+
+const Highlight: React.FC = (props) => (
+  <span className="not-italic text-yellow">{props.children}</span>
+);
 
 const Hero: React.FC<Props> = ({
   className,
@@ -74,9 +79,16 @@ const Hero: React.FC<Props> = ({
       <div className="relative max-w-full mx-auto w-8xl">
         <div className="max-w-3xl py-10 mt-0 mr-auto">
           <div className="flex flex-col">
-            <h1 className="mt-4 text-5xl font-bold leading-none text-white md:text-6xl md:mt-0">
-              {title}
-            </h1>
+            <BlockContent
+              blocks={title}
+              renderContainerOnSingleChild
+              className="mt-4 text-5xl font-bold leading-none text-white md:text-6xl md:mt-0"
+              serializers={{
+                marks: {
+                  em: Highlight
+                }
+              }}
+            />
             <p className="mt-4 text-xl font-semibold leading-tight text-white md:text-2xl">
               {text}
             </p>
