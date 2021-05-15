@@ -1,7 +1,7 @@
 export default {
-  name: 'hero',
   type: 'object',
-  title: 'Hero',
+  name: 'debtRelief',
+  title: 'Debt Relief',
   fields: [
     {
       name: 'title',
@@ -10,15 +10,22 @@ export default {
       of: [
         {
           type: 'block',
-          styles: [{ title: 'H1', value: 'h1' }]
+          styles: [{ title: 'H2', value: 'h2' }]
         }
       ],
       validation: (rule) => rule.required()
     },
     {
       name: 'body',
+      title: 'Body',
       type: 'string',
-      title: 'Body'
+      validation: (rule) => rule.required()
+    },
+    {
+      name: 'videoId',
+      title: 'Youtube Video ID',
+      type: 'string',
+      validation: (rule) => rule.required()
     }
   ]
 };

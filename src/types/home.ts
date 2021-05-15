@@ -29,3 +29,9 @@ export interface ISanitySecondSection {
   _rawBody: unknown[];
   badges: ISanityBadge[];
 }
+
+export interface ISanityDebtRelief {
+  _rawTitle: unknown[];
+  body: string;
+  videoId: string;
+}
