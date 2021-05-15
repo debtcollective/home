@@ -1,20 +1,19 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import clsx from 'clsx';
 
 interface Props {
   className?: string;
-  blocks: unknown;
+  blocks: unknown | unknown[];
 }
 
-const ListComponent = (props: { children: ReactNode; className?: string }) => (
+const ListComponent: React.FC<{ className?: string }> = (props) => (
   <ol className="my-4 ml-8 list-decimal md:ml-12">{props.children}</ol>
 );
 
-const ListItemComponent = (props: {
-  children: ReactNode;
-  className?: string;
-}) => <li>{props.children}</li>;
+const ListItemComponent: React.FC<{ className?: string }> = (props) => (
+  <li>{props.children}</li>
+);
 
 function SimpleBlockContent({ className, blocks }: Props) {
   if (!blocks) {
