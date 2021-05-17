@@ -21,7 +21,7 @@ const Link: React.FC<Props> = ({
   onClick,
   variant
 }) => {
-  const baseClassName = 'font-semibold transition-colors duration-300';
+  const baseClassName = 'font-bold transition-colors duration-300';
 
   const buttonVariantClassname = {
     'rounded-lg': variant === 'button',
