@@ -1,7 +1,8 @@
 module.exports = {
   future: {
     purgeLayersByDefault: true,
-    removeDeprecatedGapUtilities: true
+    removeDeprecatedGapUtilities: true,
+    standardFontWeights: true
   },
   purge: {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -59,7 +60,8 @@ module.exports = {
     fontWeight: {
       normal: 400,
       semibold: 600,
-      bold: 800
+      bold: 800,
+      black: 900
     },
     extend: {
       inset: {
@@ -124,5 +126,5 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [require('tailwindcss-hyphens')]
 };
