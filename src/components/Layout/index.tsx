@@ -75,7 +75,7 @@ const Layout: React.FC<Props> = ({
       />
       <SEO title={title} description={description} />
       <Header />
-      <main className="mt-5 md:mt-20">{children}</main>
+      <main className="mt-20 md:mt-24">{children}</main>
       <Footer hideNewsletter={hideNewsletter} />
     </>
   );
