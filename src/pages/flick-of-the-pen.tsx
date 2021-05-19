@@ -30,7 +30,7 @@ const  FlickOfThePenPage: React.FC = () => {
           <Link
             className="my-6 mx-auto block max-w-xs uppercase font-black"
             variant="button"
-            href="biden/debtcollective-bidencancelstudentdebtmemo.pdf"
+            href="/biden/debtcollective-bidencancelstudentdebtmemo.pdf"
           >Download the PDF!</Link>
           <p className="font-semibold hyphens-none">
             It really is that simple. Let’s all mail it to him. Include a pen.
