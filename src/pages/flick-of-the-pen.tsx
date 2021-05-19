@@ -2,25 +2,25 @@ import React from 'react';
 import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logoSmall from '@static/logo-small.png';
-import NewsLetter from '@components/Footer/SubscribeNewsletter';
+import Subscribe from '@components/BidenSubscribe';
 
 const  FlickOfThePenPage: React.FC = () => {
   return (
     <Layout>
-      <div className="py-12 md:py-3 px-12 lg:px-48">
+      <div className="py-12 sm:py-3 px-12 mx-auto max-w-2xl lg:px-0">
         <img
           src={logoSmall}
           alt="Sign it Already"
           className="mx-auto mb-12 block h-12 md:h-24"
         />
-        <p className="w-full mb-6 hyphens-none font-bold text-center text-2xl md:text-3xl">
+        <p className=" mb-6 hyphens-none font-bold text-center text-2xl lg:text-3xl">
           What if you had a magic wand that could liberate 45 million people, create millions of new jobs and narrow the racial wealth gap?
           <br/>
           If you could wave that magic wand, would you?
           <br/>
           What kind of person wouldn’t?
         </p>
-        <div className="md:mx-32">
+        <div>
           <p>
             Joe Biden has that power. He can cancel all federal student loans with just a “flick of the pen.” It is an abuse of power for him not to.
           </p>
@@ -38,7 +38,7 @@ const  FlickOfThePenPage: React.FC = () => {
           </p>
         </div>
         <div className="signupform">
-          <NewsLetter stackedVariant={true} buttonLabel="Hear more from the DebtCollective" cta="Sign up" />
+          <Subscribe />
         </div>
       </div>
     </Layout>
