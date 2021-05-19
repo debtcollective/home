@@ -9,6 +9,7 @@ export enum InputType {
 interface Props {
   className?: string;
   id: string;
+  name?: string;
   label: string;
   onChange: (value: string) => void;
   placeholder?: string;

@@ -5,10 +5,8 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 import classnames from 'clsx';
 
 interface Props {
-  email?:string,
-  name?:string,
-  key?:string,
-  value?:string
+  msg?: string;
+  result?: string;
 }
 
 const BidenSubscribe: React.FC<Props> = () => {
@@ -34,7 +32,6 @@ const BidenSubscribe: React.FC<Props> = () => {
   const transitionClasses = [
     'transition transform duration-500 timing-function-out-expo',
     isComplete ? '-translate-y-full' : 'translate-y-0'
-
   ];
 
   const formContainerClasses = 'w-full p-6 sm:p-1o h-64 sm:h-54';
@@ -68,7 +65,6 @@ const BidenSubscribe: React.FC<Props> = () => {
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-
     if (isLoading) return;
 
     if (!hasRequiredFields())
@@ -80,7 +76,7 @@ const BidenSubscribe: React.FC<Props> = () => {
     setIsComplete(false);
 
     addToMailchimp(data.email)
-      .then(({ msg, result }: { msg: string, result: string}) => {
+      .then(({ msg, result }) => {
         if (result !== 'success') {
             throw msg
         }
@@ -123,7 +119,7 @@ const BidenSubscribe: React.FC<Props> = () => {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-            Sign Up
+              <span>Sign Up</span>
           </Button>
         </div>
         <div className={classnames(messageClasses)}>
