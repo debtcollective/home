@@ -3,6 +3,7 @@ import Button from '@components/Button';
 import Input, { InputType } from '@components/Input';
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 import classnames from 'clsx';
+import closeIcon from '@static/icons/close.svg';
 
 interface Props {
   msg?: string;
@@ -31,20 +32,13 @@ const BidenSubscribe: React.FC<Props> = () => {
 
   const transitionClasses = [
     'transition transform duration-500 timing-function-out-expo',
-    isComplete ? '-translate-y-full' : 'translate-y-0'
   ];
 
-  const formContainerClasses = 'w-full p-6 sm:p-1o h-64 sm:h-54';
-
-  const formClasses = [
-    'form-row',
-    formContainerClasses
+  const buttonClasses = [
+    ''
   ]
 
-  const messageClasses = [
-    'relative z-10',
-    formContainerClasses
-  ];
+  const formContainerClasses = 'w-full p-6 sm:p-1o h-64 sm:h-54';
 
   const handleSuccessfulRequest = () => {
     setData(INITIAL_STATE);
@@ -55,11 +49,14 @@ const BidenSubscribe: React.FC<Props> = () => {
   };
 
   const primeMessage = () => {
+    console.log('primeMessage', isComplete)
     setIsLoading(false);
     setIsComplete(true);
     const hideMesageTimeout = setTimeout(()=> {
       setIsComplete(false);
-      return () => clearTimeout(hideMesageTimeout)
+      return () => {
+        clearTimeout(hideMesageTimeout)
+      }
     }, 3000)
   }
 
@@ -99,7 +96,7 @@ const BidenSubscribe: React.FC<Props> = () => {
         className="subscribe-form"
         onSubmit={handleSubmit}
       >
-        <div className={classnames(formClasses)}>
+        <div className={classnames(transitionClasses, 'form-row', isComplete? '-translate-y-full' : 'translate-y-0', formContainerClasses)}>
           <h4 className="font-black text-1.5xl mb-2">Sign up to receive updates form the Debt Collective.</h4>
           <Input
             label="Email address"
@@ -115,14 +112,33 @@ const BidenSubscribe: React.FC<Props> = () => {
           <Button
             type="submit"
             disabled={isLoading}>
-              <svg className={`inline-block m-r-6 ${!isLoading && 'hidden'} ${isLoading && 'animate-spin'} -ml-1 mr-3 h-5 w-5 text-white`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className={classnames( isLoading ? 'animate-spin' : 'hidden', 'inline-block m-r-6 -ml-1 mr-3 h-5 w-5 text-white')} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              <span>Sign Up</span>
+              <span className="text-white">Sign Up</span>
           </Button>
         </div>
-        <div className={classnames(messageClasses)}>
+        <div
+          onClick={() => {
+            setIsComplete(false)
+          }}
+          className={classnames(transitionClasses , isComplete ? '-translate-y-full' : 'translate-y-0', 'cursor-pointer relative z-10', formContainerClasses)}>
+          <a
+            href="#"
+            className="absolute inset-0 bottom-auto left-auto right-3 top-3"
+          >
+            <img
+              src={closeIcon}
+              onClick={(e)=> {
+                e.preventDefault()
+                setIsComplete(false)
+              }}
+              aria-hidden="true"
+              alt="close" />
+          </a>
+
+
           {Boolean(message__primary) && (
             <p
               role="alert"
