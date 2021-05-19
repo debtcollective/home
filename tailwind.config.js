@@ -47,7 +47,8 @@ module.exports = {
       green: {
         100: '#D6FFB8',
         200: '#21A78D',
-        300: '#106051'
+        300: '#106051',
+        500: '#24BA9D'
       },
       pink: '#FFADA4',
       primary: '#FF4630',
@@ -64,6 +65,10 @@ module.exports = {
       black: 900
     },
     extend: {
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)'
+      },
       inset: {
         '-1': '-1rem',
         '-10': '-10rem'
@@ -125,6 +130,9 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    transform: ['hover', 'focus'],
+    animation: ['responsive', 'motion-safe', 'motion-reduce']
+  },
   plugins: [require('tailwindcss-hyphens')]
 };
