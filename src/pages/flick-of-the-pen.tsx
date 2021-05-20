@@ -3,21 +3,22 @@ import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logoSmall from '@static/logo-small.png';
 import Subscribe from '@components/BidenSubscribe';
+import pdfDonwload from '@downloads/debtcollective_flickofthepen.pdf'
 
 const  FlickOfThePenPage: React.FC = () => {
   return (
     <Layout>
-      <div className="py-12 sm:py-3 px-12 mx-auto max-w-2xl lg:px-0">
+      <div className="py-12 sm:py-3 px-8 sm:px-12 mx-auto max-w-2xl lg:px-0">
         <img
           src={logoSmall}
           alt="Sign it Already"
-          className="mx-auto mb-12 block h-12 md:h-24"
+          className="mx-auto mb-12 block h-12 md:h-24 hidden md:block"
         />
-        <p className=" mb-6 hyphens-none font-bold text-center text-2xl lg:text-3xl">
+        <p className=" mb-6 hyphens-none font-bold lg:text-center text-lg lg:text-3xl">
           What if you had a magic wand that could liberate 45 million people, create millions of new jobs and narrow the racial wealth gap?
-          <br/>
           If you could wave that magic wand, would you?
-          <br/>
+          <br className="hidden md:block"/>
+          <span className="inline md:hidden">&nbsp;</span>
           What kind of person wouldn’t?
         </p>
         <div>
@@ -30,7 +31,7 @@ const  FlickOfThePenPage: React.FC = () => {
           <Link
             className="my-6 mx-auto block max-w-xs uppercase font-black"
             variant="button"
-            href="/biden/debtcollective-bidencancelstudentdebtmemo.pdf"
+            href="{pdfDonwload}"
           >Download the PDF!</Link>
           <p className="font-semibold hyphens-none">
             It really is that simple. Let’s all mail it to him. Include a pen.

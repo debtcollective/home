@@ -110,6 +110,7 @@ const BidenSubscribe: React.FC<Props> = () => {
             required
           />
           <Button
+            className="mt-1 sm:mt-0"
             type="submit"
             disabled={isLoading}>
               <svg className={classnames( isLoading ? 'animate-spin' : 'hidden', 'inline-block m-r-6 -ml-1 mr-3 h-5 w-5 text-white')} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
