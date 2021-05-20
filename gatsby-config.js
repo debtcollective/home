@@ -60,7 +60,8 @@ module.exports = {
       /* biden camp0aign sub form */
       resolve: 'gatsby-plugin-mailchimp',
       options: {
-         endpoint: 'https://debtcollective.us20.list-manage.com/subscribe/post?u=f9411e6e69ac46a2b197ad951&amp;id=9254007e57&amp;WHICH_FORM=flickofthepen'
+        endpoint:
+          'https://debtcollective.us20.list-manage.com/subscribe/post?u=f9411e6e69ac46a2b197ad951&amp;id=9254007e57&amp;WHICH_FORM=flickofthepen'
       }
     },
     {
