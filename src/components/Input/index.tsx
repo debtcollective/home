@@ -9,6 +9,7 @@ export enum InputType {
 interface Props {
   className?: string;
   id: string;
+  name?: string;
   label: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -32,15 +33,19 @@ const Input: React.FC<Props> = ({
   };
 
   return (
-    <div className={clsx('w-full', className)}>
-      <label htmlFor={id} className="block mb-2 font-bold text-gray">
+    <div className={clsx(className)}>
+      <label
+        htmlFor={id}
+        className="block mb-2 font-semibold text-base text-gray"
+      >
         {label}
       </label>
       <input
         id={id}
+        name={id}
         type={type}
         className={
-          'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-gray-300'
+          'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-green-500'
         }
         onChange={handleChange}
         value={value}

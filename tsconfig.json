@@ -16,14 +16,15 @@
     "noUnusedLocals": false,
     "baseUrl": "./",
     "paths": {
+      "@downloads/*": ["src/downloads/*"],
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@sections/*": ["src/sections/*"],
       "@constants/*": ["src/constants/*"],
       "@services/*": ["src/services/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@formatters/*": ["src/formatters/*"],
-    },
+      "@formatters/*": ["src/formatters/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public", ".cache"]

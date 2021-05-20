@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import React, { ReactNode } from 'react';
 import classnames from 'clsx';
 import { Colors } from '@constants/colors';
 
@@ -6,7 +6,7 @@ type TButton = 'submit' | 'reset' | 'button';
 type TButtonVariant = 'primary' | 'secondary';
 
 interface Props {
-  children: ReactChild;
+  children: ReactNode;
   className?: string;
   disabled?: boolean;
   id?: string;
@@ -31,7 +31,7 @@ const Button: React.FC<Props> = ({
       id={id}
       onClick={onClick}
       className={classnames(
-        'px-12 py-3 rounded-lg font-semibold text-base transition-colors duration-300',
+        'px-12 py-3 rounded-lg font-bold text-base transition-colors duration-300',
         className,
         {
           [`bg-${Colors.primary}`]: buttonVariant === 'primary' && !disabled,

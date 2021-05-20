@@ -45,6 +45,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
+        '@downloads': path.join(__dirname, 'src/downloads'),
         '@components': path.join(__dirname, 'src/components'),
         '@sections': path.join(__dirname, 'src/sections'),
         '@constants': path.join(__dirname, 'src/constants'),
@@ -56,15 +57,11 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-custom-api',
+      /* biden camp0aign sub form */
+      resolve: 'gatsby-plugin-mailchimp',
       options: {
-        url: `${process.env.GATSBY_COMMUNITY_URL}/about.json`,
-        rootKey: 'about',
-        schemas: {
-          about: `
-            user_count: Int
-          `
-        }
+        endpoint:
+          'https://debtcollective.us20.list-manage.com/subscribe/post?u=f9411e6e69ac46a2b197ad951&amp;id=9254007e57&amp;WHICH_FORM=flickofthepen'
       }
     },
     {
@@ -78,7 +75,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Libre+Franklin:400,600,800', 'Material+Icons'],
+        fonts: ['Libre+Franklin:300,400,600,800,900', 'Material+Icons'],
         display: 'swap'
       }
     },

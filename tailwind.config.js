@@ -1,7 +1,8 @@
 module.exports = {
   future: {
     purgeLayersByDefault: true,
-    removeDeprecatedGapUtilities: true
+    removeDeprecatedGapUtilities: true,
+    standardFontWeights: true
   },
   purge: {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -46,7 +47,8 @@ module.exports = {
       green: {
         100: '#D6FFB8',
         200: '#21A78D',
-        300: '#106051'
+        300: '#106051',
+        500: '#24BA9D'
       },
       pink: '#FFADA4',
       primary: '#FF4630',
@@ -59,9 +61,14 @@ module.exports = {
     fontWeight: {
       normal: 400,
       semibold: 600,
-      bold: 800
+      bold: 800,
+      black: 900
     },
     extend: {
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)'
+      },
       inset: {
         '-1': '-1rem',
         '-10': '-10rem'
@@ -123,6 +130,9 @@ module.exports = {
       }
     }
   },
-  variants: {},
-  plugins: []
+  variants: {
+    transform: ['hover', 'focus'],
+    animation: ['responsive', 'motion-safe', 'motion-reduce']
+  },
+  plugins: [require('tailwindcss-hyphens')]
 };
