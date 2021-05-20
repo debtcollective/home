@@ -20,6 +20,9 @@ Then you need to setup the project by running `doppler login` and `doppler setup
 
 Lastly, you need to run every command that needs env vars with `doppler run`, for example to run the Gastby server you use `doppler run yarn start`.
 
+If you are using on a new M1 mac, there are some issues with Gatsby dependencies.
+Consider uninstalling brew/node/nvm/gatsby/et, and follow the steps detailed in this guide: https://www.component-driven.dev/articles/native-node-on-m1
+
 ### To install dependencies
 
 ```bash
