@@ -3,9 +3,13 @@ import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logoSmall from '@static/logo-small.png';
 import Subscribe from '@components/BidenSubscribe';
-import pdfDonwload from '@downloads/debtcollective_flickofthepen.pdf'
+import pdfDonwload from '@downloads/debtcollective_flickofthepen.pdf';
 
-const  FlickOfThePenPage: React.FC = () => {
+interface Props {
+  pdfDonwload: '@downloads/debtcollective_flickofthepen.pdf'
+}
+
+const  FlickOfThePenPage: React.FC<Props> = () => {
   return (
     <Layout>
       <div className="py-12 sm:py-3 px-8 sm:px-12 mx-auto max-w-2xl lg:px-0">
@@ -31,7 +35,7 @@ const  FlickOfThePenPage: React.FC = () => {
           <Link
             className="my-6 mx-auto block max-w-xs uppercase font-black"
             variant="button"
-            href="{pdfDonwload}"
+            href="{pdfDonwload} download"
           >Download the PDF!</Link>
           <p className="font-semibold hyphens-none">
             It really is that simple. Let’s all mail it to him. Include a pen.
