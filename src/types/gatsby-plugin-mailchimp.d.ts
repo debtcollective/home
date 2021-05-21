@@ -3,5 +3,5 @@ declare module 'gatsby-plugin-mailchimp' {
     email: string,
     fields?: object,
     endpointOverride?: string
-  ): Promise<{ msg: string, result: string}>;
+  ): Promise<{ msg: string; result: string }>;
 }

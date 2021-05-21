@@ -34,7 +34,10 @@ const Input: React.FC<Props> = ({
 
   return (
     <div className={clsx(className)}>
-      <label htmlFor={id} className="block mb-2 font-semibold text-base text-gray">
+      <label
+        htmlFor={id}
+        className="block mb-2 font-semibold text-base text-gray"
+      >
         {label}
       </label>
       <input
