@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import Button from '@components/Button';
-import Input, { InputType } from '@components/Input';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
 import classnames from 'clsx';
+import parse from 'html-react-parser';
 import closeIcon from '@static/icons/close.svg';
+import Button from '@components/Button';
+import Input, { InputType } from '@components/Input';
 
 interface Props {
   msg?: string;
@@ -16,11 +17,11 @@ const BidenSubscribe: React.FC<Props> = () => {
   };
 
   // This is a bit hacky, but i didnt want to setHtmlDangerously and html was being escaped
-  const SUCCESS_MESSAGE_PRIMARY =
+  const SUCCESS_MESSAGE_PRIMARY: string =
     'Thank you for signing up to receive messages from the Debt Collective.';
-  const SUCCESS_MESSAGE_SECONDARY =
+  const SUCCESS_MESSAGE_SECONDARY: string =
     "We've sent you a confirmation message via email.";
-  const [message__primary, setPrimaryMessage] = useState<string>();
+  const [message__primary, setPrimaryMessage] = useState<string|undefined>();
   const [message__secondary, setSecondaryMessage] = useState<string>();
 
   const [data, setData] = useState(INITIAL_STATE);
@@ -35,20 +36,13 @@ const BidenSubscribe: React.FC<Props> = () => {
     'transition transform duration-500 timing-function-out-expo'
   ];
 
-  const buttonClasses = [''];
-
   const formContainerClasses = 'w-full p-6 sm:p-1o h-64 sm:h-54';
-
-  const handleSuccessfulRequest = () => {
-    setData(INITIAL_STATE);
-  };
 
   const handleChange = (key: string, value: string) => {
     setData((d) => ({ ...d, [key]: value }));
   };
 
   const primeMessage = () => {
-    console.log('primeMessage', isComplete);
     setIsLoading(false);
     setIsComplete(true);
     const hideMesageTimeout = setTimeout(() => {
@@ -56,7 +50,7 @@ const BidenSubscribe: React.FC<Props> = () => {
       return () => {
         clearTimeout(hideMesageTimeout);
       };
-    }, 3000);
+    }, 4300);
   };
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
@@ -80,7 +74,9 @@ const BidenSubscribe: React.FC<Props> = () => {
         primeMessage();
       })
       .catch((err: string) => {
+        console.log('Err', err, typeof err, typeof parse(err), parse(err))
         setPrimaryMessage(err);
+        setSecondaryMessage('');
         primeMessage();
       });
   };
@@ -148,9 +144,6 @@ const BidenSubscribe: React.FC<Props> = () => {
           </Button>
         </div>
         <div
-          onClick={() => {
-            setIsComplete(false);
-          }}
           className={classnames(
             transitionClasses,
             isComplete ? '-translate-y-full' : 'translate-y-0',
@@ -175,7 +168,7 @@ const BidenSubscribe: React.FC<Props> = () => {
 
           {Boolean(message__primary) && (
             <p role="alert" className="text-lg font-bold text-center">
-              {message__primary}
+              {parse(String(message__primary))!}
             </p>
           )}
           {Boolean(message__secondary) && (
