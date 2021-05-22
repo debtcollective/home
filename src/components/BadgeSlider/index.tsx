@@ -21,9 +21,9 @@ interface Props {
 }
 
 const BadgeSlider: React.FC<Props> = ({ items }) => {
-  const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(items?.length / ITEMS_PER_PAGE);
   const slides = chunk(items, ITEMS_PER_PAGE);
-  const hideControls = items.length === 0 || items.length === ITEMS_PER_PAGE;
+  const hideControls = items?.length === 0 || items?.length === ITEMS_PER_PAGE;
 
   return (
     <CarouselProvider
@@ -31,7 +31,7 @@ const BadgeSlider: React.FC<Props> = ({ items }) => {
       naturalSlideHeight={200}
       isIntrinsicHeight
       totalSlides={totalPages}
-      className="relative max-w-8xl mx-auto"
+      className="relative mx-auto max-w-8xl"
     >
       <Slides slides={slides} hideControls={hideControls} />
     </CarouselProvider>

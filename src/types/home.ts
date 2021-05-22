@@ -24,7 +24,7 @@ export interface ISanityBadge {
   title: string;
 }
 
-export interface ISanitySecondSection {
+export interface ISanityHomePageFeatures {
   title: string;
   _rawBody: unknown[];
   badges: ISanityBadge[];

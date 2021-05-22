@@ -6,7 +6,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import aboutUs from './documents/aboutUs';
-import homePage from './documents/homePage';
+import debtRelief from './documents/debtRelief';
+import homeHero from './documents/homeHero';
+import homePageFeatures from './documents/homePageFeatures';
 import ourTeam from './documents/ourTeam';
 import popup from './documents/popup';
 
@@ -14,9 +16,7 @@ import popup from './documents/popup';
 import aboutUsContent from './objects/aboutUsContent';
 import aboutUsItem from './objects/aboutUsItem';
 import badge from './objects/badge';
-import debtRelief from './objects/debtRelief';
 import hero from './objects/hero';
-import homeSecondSection from './objects/homeSecondSection';
 import link from './objects/link';
 import popupImage from './objects/popupImage';
 import teamMember from './objects/teamMember';
@@ -35,8 +35,8 @@ export default createSchema({
     badge,
     debtRelief,
     hero,
-    homePage,
-    homeSecondSection,
+    homeHero,
+    homePageFeatures,
     link,
     ourTeam,
     popup,

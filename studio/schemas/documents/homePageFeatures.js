@@ -1,7 +1,7 @@
 export default {
-  name: 'homePageSecondSection',
-  type: 'object',
-  title: 'Second section',
+  name: 'homePageFeatures',
+  type: 'document',
+  title: 'Features section',
   fields: [
     {
       name: 'title',

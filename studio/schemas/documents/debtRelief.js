@@ -1,5 +1,5 @@
 export default {
-  type: 'object',
+  type: 'document',
   name: 'debtRelief',
   title: 'Debt Relief',
   fields: [
