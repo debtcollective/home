@@ -7,41 +7,41 @@ import MainSlider from '@sections/MainSlider';
 import {
   ISanityDebtRelief,
   ISanityHero,
-  ISanitySecondSection
+  ISanityHomePageFeatures
 } from 'src/types/home';
 import { convertISanityBadgeToIBadge } from '@utils/badges';
 
 interface Props {
   data: {
-    sanityHome: {
+    sanityHomeHero: {
       hero: ISanityHero;
-      secondSection: ISanitySecondSection;
-      debtRelief: ISanityDebtRelief;
     };
+    sanityHomePageFeatures: ISanityHomePageFeatures;
+    sanityDebtRelief: ISanityDebtRelief;
   };
 }
 
 const Home: React.FC<Props> = ({ data }) => (
   <Layout>
     <Hero
-      title={data?.sanityHome?.hero?._rawTitle}
-      text={data?.sanityHome?.hero?.body}
+      title={data?.sanityHomeHero?.hero?._rawTitle}
+      text={data?.sanityHomeHero?.hero?.body}
       primaryAction={() => navigate('/debt-union')}
       primaryActionLabel="Join the Union"
       secondaryAction={() => navigate('/debt-union#membership-benefits')}
       secondaryActionLabel="Member Benefits"
     />
     <MainSlider
-      title={data?.sanityHome?.secondSection?.title}
-      body={data?.sanityHome?.secondSection?._rawBody}
-      badges={data?.sanityHome?.secondSection?.badges.map(
+      title={data?.sanityHomePageFeatures?.title}
+      body={data?.sanityHomePageFeatures?._rawBody}
+      badges={data?.sanityHomePageFeatures?.badges.map(
         convertISanityBadgeToIBadge
       )}
     />
     <MainVictories
-      title={data?.sanityHome?.debtRelief?._rawTitle}
-      body={data?.sanityHome?.debtRelief?.body}
-      videoId={data?.sanityHome?.debtRelief?.videoId}
+      title={data?.sanityDebtRelief?._rawTitle}
+      body={data?.sanityDebtRelief?.body}
+      videoId={data?.sanityDebtRelief?.videoId}
     />
   </Layout>
 );
@@ -50,32 +50,32 @@ export default Home;
 
 export const query = graphql`
   {
-    sanityHome {
+    sanityHomeHero {
       hero {
         _rawTitle
         body
       }
-      secondSection {
-        title
-        _rawBody
-        badges {
-          icon {
-            asset {
-              url
-            }
+    }
+    sanityHomePageFeatures {
+      title
+      _rawBody
+      badges {
+        icon {
+          asset {
+            url
           }
-          title
-          body
-          color
-          href
-          caption
         }
-      }
-      debtRelief {
-        _rawTitle
+        title
         body
-        videoId
+        color
+        href
+        caption
       }
+    }
+    sanityDebtRelief {
+      _rawTitle
+      body
+      videoId
     }
   }
 `;
