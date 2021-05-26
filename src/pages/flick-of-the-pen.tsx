@@ -59,11 +59,7 @@ const FlickOfThePenPage: React.FC = () => {
               <li className="pt-3 pb-3 border-solid border-t-1 border-gray-500">
                 <Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">
                   Mail the executive order to President Biden with a pen so he can sign it.
-                </Link><br/>
-                Don’t forget two stamps!
-                <Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">
-                  Find your nearest postal box here.
-                </Link>
+                </Link><br/>Don’t forget two stamps!&nbsp;<Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">Find your nearest postal box here.</Link>
               </li>
             </ul>
             <div className="signupform">
