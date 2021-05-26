@@ -10,7 +10,7 @@ interface Props {
   href: string;
   isLocal?: boolean;
   onClick?: () => void;
-  variant: TLink;
+  variant?: TLink;
 }
 
 const Link: React.FC<Props> = ({
@@ -21,9 +21,11 @@ const Link: React.FC<Props> = ({
   onClick,
   variant
 }) => {
-  const baseClassName = 'font-bold transition-colors duration-300';
+
+  const baseClassName = 'transition-colors duration-300';
 
   const buttonVariantClassname = {
+    'text-center': variant === 'button', 
     'rounded-lg': variant === 'button',
     'px-12': variant === 'button',
     'py-3': variant === 'button',
@@ -51,10 +53,9 @@ const Link: React.FC<Props> = ({
       rel="noreferrer"
       onClick={onClick}
       className={classnames(
-        'text-center',
         baseClassName,
         buttonVariantClassname,
-        className
+        className,
       )}
     >
       {children}

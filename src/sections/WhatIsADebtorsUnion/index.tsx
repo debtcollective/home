@@ -58,7 +58,7 @@ const WhatIsADebtorsUnion: React.FC = () => {
         />
       </div>
       <Link
-        className="self-center w-full lg:w-auto"
+        className="font-bold self-center w-full lg:w-auto"
         href="#faq"
         variant="button"
       >

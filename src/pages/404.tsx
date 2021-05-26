@@ -17,7 +17,7 @@ const NotFoundPage: React.FC = () => {
         </h1>
         <p className="w-full my-0 text-3xl font-normal text-center md:text-5xl text-gray">
           This page does not exists. Please go to our{' '}
-          <Link to="/" className="text-primary">
+          <Link to="/" className="font-bold text-primary">
             home page
           </Link>
         </p>

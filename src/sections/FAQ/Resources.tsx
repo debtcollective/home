@@ -27,7 +27,7 @@ const Resources = () => {
           <p className="mt-8 text-xl font-semibold leading-7">
             Please see our{' '}
             <Link
-              className="mt-8 text-xl font-semibold leading-7 text-primary"
+              className="font-bold mt-8 text-xl font-semibold leading-7 text-primary"
               href="#membership-benefits"
               variant="regular"
             >
