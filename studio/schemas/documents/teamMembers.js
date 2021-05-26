@@ -1,13 +1,8 @@
 export default {
-  name: 'ourTeam',
+  name: 'teamMembers',
   type: 'document',
   title: 'Our team',
   fields: [
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Title'
-    },
     {
       name: 'teamMembers',
       type: 'array',
