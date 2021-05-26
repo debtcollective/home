@@ -7,6 +7,7 @@ const {
   CreateLabelError,
   CreateMessageError
 } = require('./errors');
+const { reportError } = require('./error-logger');
 
 const CHATWOOT_ACCESS_TOKEN = process.env.CHATWOOT_ACCESS_TOKEN;
 const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID;
@@ -107,6 +108,7 @@ class ChatwootMessenger {
           this.inboxSourceId = this._findSourceId(user.contact_inboxes);
         }
       } catch (error) {
+        await reportError(error);
         throw new CreateContactError(error);
       }
     }
@@ -128,6 +130,7 @@ class ChatwootMessenger {
 
         this.inboxSourceId = response.source_id;
       } catch (error) {
+        await reportError(error);
         throw new CreateContactError(error);
       }
     }
@@ -151,6 +154,7 @@ class ChatwootMessenger {
 
       if (response && response.id) this.conversationId = response.id;
     } catch (error) {
+      await reportError(error);
       throw new CreateConverstaionError(error);
     }
   }
@@ -172,6 +176,7 @@ class ChatwootMessenger {
 
       if (!response.payload) throw new CreateLabelError();
     } catch (error) {
+      await reportError(error);
       throw new CreateLabelError(error);
     }
   }
@@ -195,6 +200,7 @@ class ChatwootMessenger {
 
       return data;
     } catch (error) {
+      await reportError(error);
       throw new CreateMessageError(error);
     }
   }
