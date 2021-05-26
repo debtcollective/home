@@ -13,9 +13,7 @@ function initErrorLogger() {
 }
 
 async function reportError(error) {
-  initErrorLogger();
-
-  if (!sentryInitialized) return;
+  if (!sentryInitialized) initErrorLogger();
 
   if (typeof error === 'string') {
     Sentry.captureMessage(error);
@@ -23,7 +21,7 @@ async function reportError(error) {
     Sentry.captureException(error);
   }
 
-  Sentry.flush();
+  return Sentry.flush();
 }
 
 module.exports = {

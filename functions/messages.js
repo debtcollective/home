@@ -27,6 +27,7 @@ const verifyRecaptcha = async (token) => {
 
     return data.success && Number(data.score) >= RECAPTCHA_MINIMUM_SCORE;
   } catch (error) {
+    await reportError(error);
     throw new RecaptchaError();
   }
 };
@@ -94,8 +95,6 @@ exports.handler = async (event) => {
       status: 200
     });
   } catch (error) {
-    await reportError(error);
-
     switch (true) {
       case error instanceof RecaptchaError: {
         statusCode = 409;
