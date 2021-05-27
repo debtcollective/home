@@ -20,7 +20,7 @@ interface Props {
   items: IBadge[];
 }
 
-const BadgeSlider: React.FC<Props> = ({ items }) => {
+const BadgeSlider: React.FC<Props> = ({ items = [] }) => {
   const totalPages = Math.ceil(items?.length / ITEMS_PER_PAGE);
   const slides = chunk(items, ITEMS_PER_PAGE);
   const hideControls = items?.length === 0 || items?.length === ITEMS_PER_PAGE;

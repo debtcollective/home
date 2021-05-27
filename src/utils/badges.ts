@@ -1,6 +1,6 @@
 import { Colors } from '@constants/colors';
 import { IBadge } from '@components/BadgeSlider';
-import { ISanityBadge } from 'src/types/home';
+import { ISanityBadge } from 'src/types/sanity';
 
 export const convertISanityBadgeToIBadge = (badge: ISanityBadge): IBadge => {
   return {
