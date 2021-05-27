@@ -2,8 +2,16 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { MembershipWidget } from '@debtcollective/union-component';
+import HeroHighlight from '@components/HeroHighlight';
 
-const YouAreNotALoan: React.FC = () => {
+import BlockContent from '@sanity/block-content-to-react';
+
+interface Props {
+  title?: unknown[];
+  body?: string;
+}
+
+const DebtUnionCover: React.FC<Props> = ({ title, body }) => {
   const { desktop, medium, small } = useStaticQuery(graphql`
     query {
       desktop: file(relativePath: { eq: "heros/join-union.jpg" }) {
@@ -51,13 +59,18 @@ const YouAreNotALoan: React.FC = () => {
         <div className="absolute inset-0 opacity-50 bg-gray"></div>
         <div className="relative max-w-full mx-auto mt-8 w-8xl md:mt-0">
           <div className="max-w-2xl py-10 md:pt-16 lg:pb-24">
-            <h1 className="text-5xl font-bold leading-none text-white md:text-6xl">
-              Join the <br className="md:hidden" />{' '}
-              <span className="text-yellow">Union!</span>
-            </h1>
+            <BlockContent
+              blocks={title}
+              renderContainerOnSingleChild
+              className="text-5xl font-bold leading-none text-white md:text-6xl"
+              serializers={{
+                marks: {
+                  em: HeroHighlight
+                }
+              }}
+            />
             <p className="mt-4 mb-8 text-xl font-semibold leading-tight text-white md:text-2xl">
-              Join a growing community of debtors organizing to cancel debts and
-              build financial and political power
+              {body}
             </p>
             <MembershipWidget className="ml-0 mr-auto md:mr-0" />
           </div>
@@ -67,4 +80,4 @@ const YouAreNotALoan: React.FC = () => {
   );
 };
 
-export default YouAreNotALoan;
+export default DebtUnionCover;
