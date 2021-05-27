@@ -14,9 +14,9 @@ const FlickOfThePenPage: React.FC = () => {
           alt="Sign it Already"
           className="mx-auto mb-4 md:mb-12 block h-12 md:h-16"
         />
-        <p className="hyphens-none font-bold lg:text-center text-lg lg:text-3xl uppercase font-black">
+        <h1 className="hyphens-none font-bold lg:text-center text-lg lg:text-3xl uppercase font-black">
           Big news! President Biden can cancel all federal student loan debt with a simple executive order. So, we wrote the entire executive order for him. All he has to do is sign this piece of paper.
-        </p>
+        </h1>
         <div>
           <Link
             className="my-6 mx-auto block uppercase font-black text-3xl"
@@ -76,9 +76,6 @@ const FlickOfThePenPage: React.FC = () => {
                 Find out more about this legal authority
               </Link>.
             </p>
-            <div className="signupform text-left mx-auto max-w-xl">
-              <Subscribe />
-            </div>
           </p>
         </div>
       </div>
