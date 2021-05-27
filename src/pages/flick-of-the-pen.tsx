@@ -8,19 +8,16 @@ import pdfDownload from '@downloads/debtcollective_flickofthepen.pdf';
 const FlickOfThePenPage: React.FC = () => {
   return (
     <Layout>
-      <div className="py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-2xl">
+      <div className="text-center py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-4xl">
         <img
           src={logo}
           alt="Sign it Already"
           className="mx-auto mb-4 md:mb-12 block h-12 md:h-16"
         />
         <p className="hyphens-none font-bold lg:text-center text-lg lg:text-3xl uppercase font-black">
-          Big news! President Biden can cancel all federal student loan debt with a simple executive order.
+          Big news! President Biden can cancel all federal student loan debt with a simple executive order. So, we wrote the entire executive order for him. All he has to do is sign this piece of paper.
         </p>
         <div>
-          <p>
-            So, we wrote the entire executive order for him. All he has to do is sign this piece of paper.
-          </p>
           <Link
             className="my-6 mx-auto block uppercase font-black text-3xl"
             variant="button"
@@ -59,21 +56,29 @@ const FlickOfThePenPage: React.FC = () => {
               <li className="pt-3 pb-3 border-solid border-t-1 border-gray-500">
                 <Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">
                   Mail the executive order to President Biden with a pen so he can sign it.
-                </Link><br/>Don’t forget two stamps!&nbsp;<Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">Find your nearest postal box here.</Link>
+                </Link>
+                <br/>Don’t forget two stamps!&nbsp;
+                <Link className="underline text-green-400" href="https://tools.usps.com/find-location.htm">
+                  Find your nearest postal box here.
+                </Link>
+              </li>
+              <li className="pt-3 pb-3 border-solid border-t-1 border-gray-500">
+                How else can we get this document to the President? <b>Use your imagination!</b> Send it to your local council member and ask them to pass a resolution calling on Biden to cancel all student debt using this Executive Order. Ask your university to present this Executive Order to President Biden. Make a painting or a song or a video! Bring this document to every public event Biden does and ask for his autograph. Print it out and mail it to him and include a pen (don’t forget two forever stamps to account for the pen): The White House, 1600 Pennsylvania Avenue, N.W. Washington, DC 20500.
               </li>
             </ul>
-            <div className="signupform">
-              <Subscribe />
-            </div>
             <p className="hyphens-none mb-6">
-              We know that we can’t leave it up to Joe Biden to do the right thing on his own. That’s why we did Biden’s work for him and wrote an Executive Order to cancel student debt. Now we need to MAKE him sign it. Full student debt cancellation can’t wait.
+              We know that we can’t leave it up to Joe Biden to do the right thing on his own. That’s why we did Biden’s work for him and wrote an Executive Order to cancel student debt. Now we need to <b>MAKE</b> him sign it. Full student debt cancellation can’t wait.
             </p>
 
             <p className="hyphens-none mb-6">
-              <span className="font-black color-primary text-xs">*</span> <Link className="text-green-400" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3442234">
+              <span className="font-black color-primary text-xs">*</span>
+              <Link className="text-green-400" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3442234">
                 Find out more about this legal authority
               </Link>.
             </p>
+            <div className="signupform text-left mx-auto max-w-xl">
+              <Subscribe />
+            </div>
           </p>
         </div>
       </div>
