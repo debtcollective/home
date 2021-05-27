@@ -1,8 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
+import BlockContent from '@sanity/block-content-to-react';
+import HeroHighlight from '@components/HeroHighlight';
 
-const OurTeamCover: React.FC = () => {
+interface Props {
+  title: unknown[];
+}
+
+const OurTeamCover: React.FC<Props> = ({ title }) => {
   const { desktop, medium, small } = useStaticQuery(graphql`
     query {
       desktop: file(relativePath: { eq: "covers/our-team-cover.png" }) {
@@ -49,9 +55,16 @@ const OurTeamCover: React.FC = () => {
       >
         <div className="absolute inset-0 opacity-50 bg-gray"></div>
         <div className="relative w-full max-w-full mx-auto lg:w-8xl">
-          <h1 className="text-5xl font-bold leading-none text-white md:text-6xl">
-            Our <span className="text-yellow">Team</span>
-          </h1>
+          <BlockContent
+            blocks={title}
+            renderContainerOnSingleChild
+            className="text-5xl font-bold leading-none text-white md:text-6xl"
+            serializers={{
+              marks: {
+                em: HeroHighlight
+              }
+            }}
+          />
         </div>
       </BackgroundImage>
     </>
