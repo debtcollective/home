@@ -3,41 +3,38 @@ import Layout from '@components/Layout';
 import OurTeamCover from '@sections/OurTeamCover';
 import { graphql } from 'gatsby';
 import OurTeamContent from '@sections/OurTeamContent';
-import { FluidObject } from 'gatsby-image';
-
-export interface ISanityTeamMember {
-  name: string;
-  role: string;
-  avatar: {
-    asset: {
-      fluid: FluidObject;
-    };
-    caption?: string;
-  };
-}
-
-export interface ISanityOurTeam {
-  title: string;
-  teamMembers: ISanityTeamMember[];
-}
+import { ISanityOurTeamHero, ISanityTeamMember } from 'src/types/our-team';
 
 interface Props {
   data: {
-    sanityOurTeam: ISanityOurTeam;
+    sanityOurTeamHero: {
+      hero: ISanityOurTeamHero;
+    };
+    sanityTeamMembers: {
+      teamMembers: ISanityTeamMember[];
+    };
   };
 }
 
 const OurTeam: React.FC<Props> = ({ data }) => (
   <Layout>
-    <OurTeamCover />
-    <OurTeamContent items={data?.sanityOurTeam?.teamMembers} />
+    <OurTeamCover title={data?.sanityOurTeamHero?.hero?._rawTitle} />
+    <OurTeamContent
+      items={data?.sanityTeamMembers?.teamMembers}
+      body={data?.sanityOurTeamHero?.hero?.body}
+    />
   </Layout>
 );
 
 export const query = graphql`
   {
-    sanityOurTeam {
-      title
+    sanityOurTeamHero {
+      hero {
+        _rawTitle
+        body
+      }
+    }
+    sanityTeamMembers {
       teamMembers {
         name
         role

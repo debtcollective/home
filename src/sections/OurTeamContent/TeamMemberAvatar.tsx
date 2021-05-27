@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from 'gatsby-image';
-import { ISanityTeamMember } from 'src/pages/our-team';
+import { ISanityTeamMember } from 'src/types/our-team';
 
 interface Props {
   member: ISanityTeamMember;
