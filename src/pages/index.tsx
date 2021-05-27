@@ -6,7 +6,7 @@ import MainVictories from '@sections/MainVictories';
 import MainSlider from '@sections/MainSlider';
 import {
   ISanityDebtRelief,
-  ISanityHero,
+  ISanityHomeHero,
   ISanityHomePageFeatures
 } from 'src/types/home';
 import { convertISanityBadgeToIBadge } from '@utils/badges';
@@ -14,7 +14,7 @@ import { convertISanityBadgeToIBadge } from '@utils/badges';
 interface Props {
   data: {
     sanityHomeHero: {
-      hero: ISanityHero;
+      hero: ISanityHomeHero;
     };
     sanityHomePageFeatures: ISanityHomePageFeatures;
     sanityDebtRelief: ISanityDebtRelief;
