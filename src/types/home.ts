@@ -1,7 +1,6 @@
-export interface ISanityHero {
-  body: string;
-  _rawTitle: unknown[];
-}
+import { ISanityHero } from './sanity';
+
+export type ISanityHomeHero = ISanityHero;
 
 export interface ISanityBadge {
   body: string;

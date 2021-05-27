@@ -4,6 +4,7 @@ import Button from '@components/Button';
 import BackgroundImage from 'gatsby-background-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import BlockContent from '@sanity/block-content-to-react';
+import HeroHighlight from '@components/HeroHighlight';
 
 interface Props {
   className?: string;
@@ -14,10 +15,6 @@ interface Props {
   text: string | ReactNode;
   title: unknown[];
 }
-
-const Highlight: React.FC = (props) => (
-  <span className="not-italic text-yellow">{props.children}</span>
-);
 
 const Hero: React.FC<Props> = ({
   className,
@@ -85,7 +82,7 @@ const Hero: React.FC<Props> = ({
               className="mt-4 text-5xl font-bold leading-none text-white md:text-6xl md:mt-0"
               serializers={{
                 marks: {
-                  em: Highlight
+                  em: HeroHighlight
                 }
               }}
             />
