@@ -5,6 +5,7 @@ interface Props {
   className?: string;
   id: string;
   label: string;
+  minLength?: number;
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
@@ -15,6 +16,7 @@ const TextArea: React.FC<Props> = ({
   className,
   id,
   label,
+  minLength,
   onChange,
   placeholder,
   required,
@@ -39,6 +41,7 @@ const TextArea: React.FC<Props> = ({
         value={value}
         placeholder={placeholder}
         required={required}
+        minLength={minLength}
       />
     </div>
   );
