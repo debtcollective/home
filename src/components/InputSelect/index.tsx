@@ -31,27 +31,35 @@ const InputSelect: React.FC<Props> = ({
     <label htmlFor={id} className="block mb-2 font-bold text-gray">
       {label}
     </label>
-    <select
-      id={id}
-      className={
-        'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-gray-300'
-      }
-      onChange={onChange}
-      value={value}
-      placeholder={placeholder}
-      required={required}
-    >
-      {options.map((option) => (
-        <option
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-          selected={option.selected}
-        >
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <div className="relative">
+      <select
+        id={id}
+        className={
+          'w-full px-3 py-3 bg-white border rounded-md border-beige-500 appearance-none'
+        }
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+        required={required}
+      >
+        {options.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+            selected={option.selected}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
+      <span
+        className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none material-icons"
+        style={{ display: 'flex' }}
+      >
+        expand_more
+      </span>
+    </div>
   </div>
 );
 
