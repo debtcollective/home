@@ -36,7 +36,7 @@ const Input: React.FC<Props> = ({
     <div className={clsx(className)}>
       <label
         htmlFor={id}
-        className="block mb-2 font-semibold text-base text-gray"
+        className="block mb-2 text-base font-semibold text-gray"
       >
         {label}
       </label>
@@ -45,7 +45,7 @@ const Input: React.FC<Props> = ({
         name={id}
         type={type}
         className={
-          'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-green-500'
+          'w-full px-3 py-3 bg-white border rounded-md border-beige-500'
         }
         onChange={handleChange}
         value={value}

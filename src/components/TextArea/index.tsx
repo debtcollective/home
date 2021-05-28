@@ -34,7 +34,7 @@ const TextArea: React.FC<Props> = ({
       <textarea
         id={id}
         className={
-          'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-gray-300'
+          'w-full px-3 py-3 bg-white border rounded-md border-beige-500'
         }
         rows={5}
         onChange={handleChange}
