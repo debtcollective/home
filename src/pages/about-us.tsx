@@ -3,43 +3,36 @@ import Layout from '@components/Layout';
 import AboutUsCover from '@sections/AboutUsCover';
 import AboutUsContent from '@sections/AboutUsContent';
 import { graphql } from 'gatsby';
-
-export interface SanityAboutUsItem {
-  id: string;
-  title: string;
-  _rawContent: unknown[];
-}
-
-export interface SanityAboutUs {
-  title: string;
-  content: {
-    items: SanityAboutUsItem[];
-  };
-}
+import { ISanityAboutUsContent, ISanityAboutUsHero } from 'src/types/about-us';
 
 interface Props {
   data: {
-    sanityAboutUs: SanityAboutUs;
+    sanityAboutUsHero: {
+      hero: ISanityAboutUsHero;
+    };
+    sanityAboutUsContent: ISanityAboutUsContent;
   };
 }
 
 const AboutUsPage: React.FC<Props> = ({ data }) => (
   <Layout>
-    <AboutUsCover />
-    <AboutUsContent items={data?.sanityAboutUs?.content?.items} />
+    <AboutUsCover title={data?.sanityAboutUsHero?.hero?._rawTitle} />
+    <AboutUsContent items={data?.sanityAboutUsContent?.items} />
   </Layout>
 );
 
 export const query = graphql`
   {
-    sanityAboutUs {
-      title
-      content {
-        items {
-          id
-          title
-          _rawContent
-        }
+    sanityAboutUsHero {
+      hero {
+        _rawTitle
+      }
+    }
+    sanityAboutUsContent {
+      items {
+        id
+        title
+        _rawContent
       }
     }
   }

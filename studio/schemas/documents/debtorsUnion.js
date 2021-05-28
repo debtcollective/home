@@ -1,7 +1,7 @@
 export default {
-  name: 'about-us',
+  name: 'debtorsUnion',
   type: 'document',
-  title: 'About us',
+  title: 'What is a Debtor’s Union?',
   fields: [
     {
       name: 'title',
@@ -9,9 +9,9 @@ export default {
       title: 'Title'
     },
     {
-      name: 'content',
-      type: 'aboutUsContent',
-      title: 'Content'
+      name: 'body',
+      type: 'string',
+      title: 'Body'
     }
   ]
 };

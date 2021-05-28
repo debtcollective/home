@@ -150,6 +150,7 @@ const ContactUsForm = () => {
             value={data.message}
             className="w-full mt-6"
             required
+            minLength={20}
           />
           {Boolean(errorMessage) && (
             <p

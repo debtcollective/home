@@ -1,7 +1,7 @@
 export default {
-  type: 'object',
+  type: 'document',
   name: 'aboutUsContent',
-  title: 'About Us Content',
+  title: 'Content',
   fields: [
     {
       name: 'items',

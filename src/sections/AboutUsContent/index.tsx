@@ -1,10 +1,10 @@
 import React from 'react';
 import AboutUsItem from './AboutUsItem';
-import { SanityAboutUsItem } from 'src/pages/about-us';
 import AboutUsLayout from '@sections/AboutUsLayout';
+import { ISanityAboutUsItem } from 'src/types/about-us';
 
 interface Props {
-  items?: SanityAboutUsItem[];
+  items?: ISanityAboutUsItem[];
 }
 
 const AboutUsContent: React.FC<Props> = ({ items }) => (
