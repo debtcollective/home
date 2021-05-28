@@ -5,6 +5,7 @@ import InputSelect from '@components/InputSelect';
 import Button from '@components/Button';
 
 const SITE_KEY = process.env.GATSBY_RECAPTCHA_V3_SITE_KEY;
+const MESSAGE_MINIMUM_LENGTH = 20;
 
 const SUBJECT_OPTIONS = [
   {
@@ -54,6 +55,12 @@ const ContactUsForm = () => {
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+    setErrorMessage('');
+
+    if (data?.message?.length < MESSAGE_MINIMUM_LENGTH) {
+      setErrorMessage('Your message should contain at least 20 characters');
+      return;
+    }
 
     if (isLoading) return;
 
