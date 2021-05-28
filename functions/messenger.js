@@ -1,12 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fetch = require('node-fetch');
-const {
-  CreateContactError,
-  CreateConverstaionError,
-  CreateLabelError,
-  CreateMessageError
-} = require('./errors');
 
 const CHATWOOT_ACCESS_TOKEN = process.env.CHATWOOT_ACCESS_TOKEN;
 const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID;
@@ -59,144 +53,114 @@ class ChatwootMessenger {
   }
 
   async createContact() {
-    try {
+    const data = await fetch(
+      `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts`,
+      {
+        ...BASE_FETCH_OPTIONS,
+        method: 'post',
+        body: JSON.stringify({
+          name: this.name,
+          email: this.email,
+          inbox_id: CHATWOOT_INBOX_ID
+        })
+      }
+    );
+    const response = await data.json();
+
+    if (
+      response &&
+      response.message &&
+      response.message === 'Email has already been taken'
+    ) {
+      this.isEmailTaken = true;
+    } else if (response.payload && response.payload.contact.id) {
+      const { contact_inboxes } = response.payload.contact;
+      this.inboxSourceId = this._findSourceId(contact_inboxes);
+    }
+
+    // If email is taken, retrieve contact data
+    if (this.isEmailTaken) {
       const data = await fetch(
-        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts`,
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/search?q=${this.email}`,
+        {
+          ...BASE_FETCH_OPTIONS,
+          method: 'get'
+        }
+      );
+      const response = await data.json();
+      const user = this._findUser(response.payload, this.email);
+
+      if (user.id) {
+        this.userId = user.id;
+        this.inboxSourceId = this._findSourceId(user.contact_inboxes);
+      }
+    }
+
+    // If user is not in the API inbox, we add it
+    if (!this.inboxSourceId) {
+      const data = await fetch(
+        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/${this.userId}/contact_inboxes`,
         {
           ...BASE_FETCH_OPTIONS,
           method: 'post',
           body: JSON.stringify({
-            name: this.name,
-            email: this.email,
             inbox_id: CHATWOOT_INBOX_ID
           })
         }
       );
       const response = await data.json();
 
-      if (!response) throw new CreateContactError();
-
-      if (
-        response.message &&
-        response.message === 'Email has already been taken'
-      ) {
-        this.isEmailTaken = true;
-      } else if (response.payload && response.payload.contact.id) {
-        const { contact_inboxes } = response.payload.contact;
-        this.inboxSourceId = this._findSourceId(contact_inboxes);
-      }
-    } catch (error) {
-      throw new CreateContactError(error);
-    }
-
-    // If email is taken, retrieve contact data
-    if (this.isEmailTaken) {
-      try {
-        const data = await fetch(
-          `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/search?q=${this.email}`,
-          {
-            ...BASE_FETCH_OPTIONS,
-            method: 'get'
-          }
-        );
-        const response = await data.json();
-        const user = this._findUser(response.payload, this.email);
-
-        if (user.id) {
-          this.userId = user.id;
-          this.inboxSourceId = this._findSourceId(user.contact_inboxes);
-        }
-      } catch (error) {
-        throw new CreateContactError(error);
-      }
-    }
-
-    // If user is not in the API inbox, we add it
-    if (!this.inboxSourceId) {
-      try {
-        const data = await fetch(
-          `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/contacts/${this.userId}/contact_inboxes`,
-          {
-            ...BASE_FETCH_OPTIONS,
-            method: 'post',
-            body: JSON.stringify({
-              inbox_id: CHATWOOT_INBOX_ID
-            })
-          }
-        );
-        const response = await data.json();
-
-        this.inboxSourceId = response.source_id;
-      } catch (error) {
-        throw new CreateContactError(error);
-      }
+      this.inboxSourceId = response.source_id;
     }
   }
 
   async createConverstaion() {
-    try {
-      const data = await fetch(
-        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations`,
-        {
-          ...BASE_FETCH_OPTIONS,
-          method: 'post',
-          body: JSON.stringify({
-            source_id: this.inboxSourceId
-          })
-        }
-      );
-      const response = await data.json();
+    const data = await fetch(
+      `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations`,
+      {
+        ...BASE_FETCH_OPTIONS,
+        method: 'post',
+        body: JSON.stringify({
+          source_id: this.inboxSourceId
+        })
+      }
+    );
+    const response = await data.json();
 
-      if (!response) throw new CreateConverstaionError();
-
-      if (response && response.id) this.conversationId = response.id;
-    } catch (error) {
-      throw new CreateConverstaionError(error);
-    }
+    if (response && response.id) this.conversationId = response.id;
   }
 
   async createLabel() {
-    try {
-      const subject = this._findSubject(this.subject);
-      const data = await fetch(
-        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/labels`,
-        {
-          ...BASE_FETCH_OPTIONS,
-          method: 'post',
-          body: JSON.stringify({
-            labels: [subject]
-          })
-        }
-      );
-      const response = await data.json();
+    const subject = this._findSubject(this.subject);
+    const data = await fetch(
+      `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/labels`,
+      {
+        ...BASE_FETCH_OPTIONS,
+        method: 'post',
+        body: JSON.stringify({
+          labels: [subject]
+        })
+      }
+    );
 
-      if (!response.payload) throw new CreateLabelError();
-    } catch (error) {
-      throw new CreateLabelError(error);
-    }
+    return data.json();
   }
 
   async createMessage() {
-    try {
-      const data = await fetch(
-        `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/messages`,
-        {
-          ...BASE_FETCH_OPTIONS,
-          method: 'post',
-          body: JSON.stringify({
-            content: this.message,
-            message_type: 'incoming'
-          })
-        }
-      );
-      const response = await data.json();
+    const data = await fetch(
+      `${CHATWOOT_BASE_URL}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}/conversations/${this.conversationId}/messages`,
+      {
+        ...BASE_FETCH_OPTIONS,
+        method: 'post',
+        body: JSON.stringify({
+          content: this.message,
+          message_type: 'incoming'
+        })
+      }
+    );
+    const response = await data.json();
 
-      if (!response.id) throw new CreateMessageError();
-
-      return data;
-    } catch (error) {
-      throw new CreateMessageError(error);
-    }
+    return response;
   }
 }
 
