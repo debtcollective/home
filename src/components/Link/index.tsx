@@ -19,7 +19,6 @@ const Link: React.FC<Props> = ({
   onClick,
   variant
 }) => {
-
   const baseClassName = 'transition-colors duration-300';
 
   const buttonVariantClassname = {
@@ -50,11 +49,7 @@ const Link: React.FC<Props> = ({
       target="_blank"
       rel="noreferrer"
       onClick={onClick}
-      className={classnames(
-        baseClassName,
-        buttonVariantClassname,
-        className,
-      )}
+      className={classnames(baseClassName, buttonVariantClassname, className)}
     >
       {children}
     </a>
