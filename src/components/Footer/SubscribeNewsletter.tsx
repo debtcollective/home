@@ -12,7 +12,7 @@ interface Props {
   cta?: string;
 }
 
-const BidenSubscribe: React.FC<Props> = ({cta}) => {
+const BidenSubscribe: React.FC<Props> = ({ cta }) => {
   const INITIAL_STATE = {
     LNAME: '',
     FNAME: '',
@@ -24,7 +24,7 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
     'Thank you for signing up to receive messages from the Debt Collective.';
   const SUCCESS_MESSAGE_SECONDARY: string =
     "We've sent you a confirmation message via email.";
-  const [message__primary, setPrimaryMessage] = useState<string|undefined>();
+  const [message__primary, setPrimaryMessage] = useState<string | undefined>();
   const [message__secondary, setSecondaryMessage] = useState<string>();
 
   const [data, setData] = useState(INITIAL_STATE);
@@ -34,12 +34,6 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
   const hasRequiredFields = () => {
     return data.email;
   };
-
-  const transitionClasses = [
-    'transition transform duration-500 timing-function-out-expo'
-  ];
-
-  const formContainerClasses = 'w-full p-6 sm:p-1o h-64 sm:h-54';
 
   const handleChange = (key: string, value: string) => {
     setData((d) => ({ ...d, [key]: value }));
@@ -67,7 +61,11 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
     setIsLoading(true);
     setIsComplete(false);
 
-    addToMailchimp(data.email, data, 'https://debtcollective.us20.list-manage.com/subscribe/post?u=f9411e6e69ac46a2b197ad951&amp;id=9254007e57&amp;WHICH_FORM=footer_form')
+    addToMailchimp(
+      data.email,
+      data,
+      'https://debtcollective.us20.list-manage.com/subscribe/post?u=f9411e6e69ac46a2b197ad951&amp;id=9254007e57&amp;WHICH_FORM=footer_form'
+    )
       .then(({ msg, result }) => {
         if (result !== 'success') {
           throw msg;
@@ -77,40 +75,41 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
         primeMessage();
       })
       .catch((err: string) => {
-        console.log('Err', err, typeof err, typeof parse(err), parse(err))
+        console.log('Err', err, typeof err, typeof parse(err), parse(err));
         setPrimaryMessage(err);
         setSecondaryMessage('');
         primeMessage();
       });
   };
 
+  const transitionClasses = [
+    'transition transform duration-500 timing-function-out-expo'
+  ];
+
+  const formContainerClasses = '';
+
   return (
-    <div
-      className={classnames(
-        `${formContainerClasses} overflow-hidden my-12`
-      )}
-    >
-      <form
-        name="subscribeForm"
-        method="POST"
-        id="subscribe-form"
-        className="subscribe-form"
-        onSubmit={handleSubmit}
+    <div className="w-full h-80 md:h-36 overflow-hidden my-12">
+      <div
+        className={classnames(
+          transitionClasses,
+          'form-row mb-4',
+          isComplete ? '-translate-y-full' : 'translate-y-0'
+        )}
       >
-        <div
-          className={classnames(
-            transitionClasses,
-            'form-row',
-            isComplete ? '-translate-y-full' : 'translate-y-0',
-            formContainerClasses
-          )}
+        <form
+          name="subscribeForm"
+          method="POST"
+          id="subscribe-form"
+          className="subscribe-form"
+          onSubmit={handleSubmit}
         >
-          <h2 className="font-black text-white mb-2 text-2xl">
-            { cta? cta : "Stay in the Loop"}
+          <h2 className="font-black text-white mb-6 text-2xl">
+            {cta ? cta : 'Stay in the Loop'}
           </h2>
           <Input
             label="Email address"
-            className="subscribe-email inline-block w-full mr-1 sm:w-1/2 md:w-3/12"
+            className="subscribe-email mb-4 sm:pr-2 inline-block w-full md:w-3/12"
             type={InputType.email}
             id="email"
             name="email"
@@ -122,7 +121,7 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
           />
           <Input
             label="First Name"
-            className="subscribe-fname inline-block w-full mr-1 sm:w-1/2 md:w-3/12"
+            className="subscribe-fname mb-4 pr-2 inline-block w-2/4 md:w-3/12"
             type={InputType.text}
             id="FNAME"
             name="FNAME"
@@ -130,11 +129,10 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
             onChange={(value: string) => handleChange('FNAME', value)}
             value={data.FNAME}
             variant="dark"
-            required
           />
           <Input
             label="LastName"
-            className="subscribe-lname inline-block w-full mr-1 sm:w-1/2 md:w-3/12"
+            className="subscribe-lname mb-4 sm:pr-2 inline-block w-2/4 md:w-3/12"
             type={InputType.text}
             id="LNAME"
             name="LNAME"
@@ -142,13 +140,16 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
             onChange={(value: string) => handleChange('LNAME', value)}
             value={data.LNAME}
             variant="dark"
-            required
           />
-          <Button className="mt-1 sm:mt-0" type="submit" disabled={isLoading}>
+          <Button
+            className="mt-1 sm:mt-0 md:w-3/12"
+            type="submit"
+            disabled={isLoading}
+          >
             <svg
               className={classnames(
                 isLoading ? 'animate-spin' : 'hidden',
-                'inline-block m-r-6 -ml-1 mr-3 h-5 w-5 text-white'
+                'inline-block text-white w-4 h-4 mr-2'
               )}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -170,35 +171,50 @@ const BidenSubscribe: React.FC<Props> = ({cta}) => {
             </svg>
             <span className="text-white">Sign Up</span>
           </Button>
-        </div>
-        <div
-          className={classnames(
-            transitionClasses,
-            isComplete ? '-translate-y-full' : 'translate-y-0',
-            'cursor-pointer relative z-10',
-            formContainerClasses
-          )}
+        </form>
+      </div>
+      <div
+        className={classnames(
+          transitionClasses,
+          isComplete ? '-translate-y-full' : 'translate-y-0',
+          'relative z-10 h-full'
+        )}
+      >
+        <a
+          href="#"
+          className="absolute top-1 right-1 bottom-auto left-auto text-white"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsComplete(false);
+          }}
         >
-          <a
-            href="#"
-            className="absolute inset-0 bottom-auto left-auto right-3 text-white top-3"
+          <span className="sr-only">Close</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            className="text-white fill-current"
           >
-            <span className="invisible">Close</span>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" className="text-white fill-current"><path d="M0 0h24v24H0V0z" fill="none"/><path fill="#ffffff" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
-          </a>
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              fill="#ffffff"
+              d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"
+            />
+          </svg>
+        </a>
 
-          {Boolean(message__primary) && (
-            <p role="alert" className="text-white text-lg font-bold text-center">
-              {parse(String(message__primary))!}
-            </p>
-          )}
-          {Boolean(message__secondary) && (
-            <p role="alert" className="text-white text-center">
-              {message__secondary}
-            </p>
-          )}
-        </div>
-      </form>
+        {Boolean(message__primary) && (
+          <p role="alert" className="text-white text-lg font-bold text-center">
+            {parse(String(message__primary))!}
+          </p>
+        )}
+        {Boolean(message__secondary) && (
+          <p role="alert" className="text-white text-center">
+            {message__secondary}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

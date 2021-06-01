@@ -20,7 +20,6 @@ interface Props {
   variant?: string;
 }
 
-
 const Input: React.FC<Props> = ({
   className,
   id,
@@ -32,8 +31,8 @@ const Input: React.FC<Props> = ({
   value,
   variant
 }) => {
-
-  const cn: string = (variant === 'dark')? 'text-white bg-gray': 'text-gray bg-white';
+  const cn: string =
+    variant === 'dark' ? 'text-white bg-gray' : 'text-gray bg-white';
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event?.currentTarget?.value || '');
   };
@@ -42,10 +41,7 @@ const Input: React.FC<Props> = ({
     <div className={clsx(className)}>
       <label
         htmlFor={id}
-        className={classnames(
-            cn,
-            "block mb-2 font-semibold text-base"
-        )}
+        className={classnames(cn, 'block mb-2 font-semibold text-base')}
       >
         {label}
       </label>
