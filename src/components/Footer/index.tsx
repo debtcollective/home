@@ -8,7 +8,7 @@ interface Props {
 const Footer: React.FC<Props> = ({ hideNewsletter }) => {
   return (
     <section className="bg-gray px-x-screen-spacing py-y-screen-spacing lg:px-desktop-screen-spacing lg:py-12">
-      <div className="mx-auto max-w-8xl">
+      <div className="mx-auto">
         {!hideNewsletter && (
           <>
             <NewsLetter />
