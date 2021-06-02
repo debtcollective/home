@@ -62,3 +62,17 @@ p {
     }
   }
 }
+
+.white-text > h1 {
+  color: white
+}
+
+
+/* move these declarations to footer component */
+dc-footer > .footer {
+  padding: 0 !important;
+}
+
+.footer__section {
+  align-items: left;
+}
