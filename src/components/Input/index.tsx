@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { ChangeEvent } from 'react';
+import classnames from 'clsx';
 
 export enum InputType {
   text = 'text',
@@ -16,6 +17,7 @@ interface Props {
   required?: boolean;
   type: InputType;
   value: string;
+  variant?: string;
 }
 
 const Input: React.FC<Props> = ({
@@ -26,8 +28,11 @@ const Input: React.FC<Props> = ({
   placeholder,
   required,
   type,
-  value
+  value,
+  variant
 }) => {
+  const cn: string =
+    variant === 'dark' ? 'text-white bg-gray' : 'text-gray bg-white';
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event?.currentTarget?.value || '');
   };
@@ -36,7 +41,7 @@ const Input: React.FC<Props> = ({
     <div className={clsx(className)}>
       <label
         htmlFor={id}
-        className="block mb-2 font-semibold text-base text-gray"
+        className={classnames(cn, 'block mb-2 font-semibold text-base')}
       >
         {label}
       </label>
@@ -44,9 +49,10 @@ const Input: React.FC<Props> = ({
         id={id}
         name={id}
         type={type}
-        className={
-          'w-full bg-white-100 rounded-md px-4 py-3 placeholder-gray-400 text-black-100 border-2 border-green-500'
-        }
+        className={classnames(
+          cn,
+          'w-full rounded-md px-4 py-3 border-2 border-green-500'
+        )}
         onChange={handleChange}
         value={value}
         placeholder={placeholder}
