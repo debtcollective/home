@@ -2,15 +2,13 @@ import React, { ReactNode } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import classnames from 'clsx';
 
-type TLink = 'button' | 'regular';
-
 interface Props {
   children: ReactNode;
   className?: string;
   href: string;
   isLocal?: boolean;
   onClick?: () => void;
-  variant: TLink;
+  variant?: string;
 }
 
 const Link: React.FC<Props> = ({
@@ -21,9 +19,10 @@ const Link: React.FC<Props> = ({
   onClick,
   variant
 }) => {
-  const baseClassName = 'font-bold transition-colors duration-300';
+  const baseClassName = 'transition-colors duration-300';
 
   const buttonVariantClassname = {
+    'text-center': variant === 'button',
     'rounded-lg': variant === 'button',
     'px-12': variant === 'button',
     'py-3': variant === 'button',
@@ -50,12 +49,7 @@ const Link: React.FC<Props> = ({
       target="_blank"
       rel="noreferrer"
       onClick={onClick}
-      className={classnames(
-        'text-center',
-        baseClassName,
-        buttonVariantClassname,
-        className
-      )}
+      className={classnames(baseClassName, buttonVariantClassname, className)}
     >
       {children}
     </a>
