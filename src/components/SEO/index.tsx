@@ -6,10 +6,10 @@ interface Props {
   description?: string;
   lang?: string;
   title?: string;
+  ogImage?: string;
 }
 
-const SEO: React.FC<Props> = (props) => {
-  const { title, description, lang } = props;
+const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -32,6 +32,7 @@ const SEO: React.FC<Props> = (props) => {
   const metaTitle = title || site.siteMetadata.title;
   const metaTitleTemplate = site.siteMetadata.titleTemplate;
   const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
+  const metaImage = ogImage || site.siteMetadata.image;
 
   return (
     <Helmet
@@ -59,7 +60,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           property: 'og:image',
-          content: site.siteMetadata.image
+          content: metaImage
         },
         {
           property: 'og:url',
@@ -67,7 +68,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           name: 'twitter:card',
-          content: 'summary_large_image'
+          content: metaImage
         },
         {
           name: 'twitter:creator',
@@ -87,7 +88,7 @@ const SEO: React.FC<Props> = (props) => {
         },
         {
           name: 'twitter:image',
-          content: site.siteMetadata.image
+          content: metaImage
         },
         {
           name: 'theme-color',

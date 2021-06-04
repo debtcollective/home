@@ -60,7 +60,7 @@ const Slides: React.FC<Props> = ({ slides, hideControls }) => {
         <>
           <ButtonBack className="hidden lg:block absolute left-0 top-0 h-full">
             <span
-              className="material-icons text-gray"
+              className="material-icons-round text-gray"
               style={{
                 fontSize: '5rem'
               }}
@@ -70,7 +70,7 @@ const Slides: React.FC<Props> = ({ slides, hideControls }) => {
           </ButtonBack>
           <ButtonNext className="hidden lg:block absolute right-0 top-0 h-full">
             <span
-              className="material-icons text-gray"
+              className="material-icons-round text-gray"
               style={{
                 fontSize: '5rem'
               }}

@@ -68,7 +68,7 @@ p {
 }
 
 
-/* move these declarations to footer component */
+/* move these declarations to footer component in package repo */
 dc-footer > .footer {
   padding: 2rem 1.25rem;
 }

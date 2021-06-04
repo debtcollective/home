@@ -75,7 +75,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Libre+Franklin:300,400,600,800,900', 'Material+Icons'],
+        fonts: [
+          'Libre+Franklin:300,400,600,800,900',
+          /* remove material icons (not round) once new nav is in place */
+          'material icons',
+          'material icons round'
+        ],
         display: 'swap'
       }
     },

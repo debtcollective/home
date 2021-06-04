@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
 import classnames from 'clsx';
 import parse from 'html-react-parser';
-import closeIcon from '@static/icons/close.svg';
 import Button from '@components/Button';
 import Input, { InputType } from '@components/Input';
 
