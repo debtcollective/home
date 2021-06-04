@@ -77,6 +77,8 @@ module.exports = {
       options: {
         fonts: [
           'Libre+Franklin:300,400,600,800,900',
+          /* remove material icons (not round) once new nav is in place */
+          'material icons',
           'material icons round'
         ],
         display: 'swap'
