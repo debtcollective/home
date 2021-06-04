@@ -54,7 +54,7 @@ const InputSelect: React.FC<Props> = ({
         ))}
       </select>
       <span
-        className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none material-icons"
+        className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none material-icons-round"
         style={{ display: 'flex' }}
       >
         expand_more

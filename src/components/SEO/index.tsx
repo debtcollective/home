@@ -33,7 +33,7 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
   const metaTitleTemplate = site.siteMetadata.titleTemplate;
   const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
   const metaImage = ogImage || site.siteMetadata.image;
-  console.log("metaImage", metaImage)
+
   return (
     <Helmet
       htmlAttributes={{

@@ -38,7 +38,7 @@ const AnnouncementModal: React.FC<Props> = ({
     contentLabel="Popup Modal"
   >
     <button
-      className="absolute top-0 right-0 mt-4 mr-4 text-gray-300 md:mt-6 md:mr-6 material-icons"
+      className="absolute top-0 right-0 mt-4 mr-4 text-gray-300 md:mt-6 md:mr-6 material-icons-round"
       style={{ fontSize: '2rem' }}
       onClick={onClose}
     >
