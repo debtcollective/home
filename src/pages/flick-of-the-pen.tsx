@@ -3,10 +3,28 @@ import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
 import pdfDownload from '@downloads/debtcollective_flickofthepen.pdf';
+import SEO from '@components/SEO';
+import ogImage from '@static/seo/og-flick.jpg';
+import ShareButtons from '@components/ShareButtons';
 
-const FlickOfThePenPage: React.FC = () => {
+interface Props {
+    ogImage?: string;
+    pageTitle?: string;
+}
+
+const FlickOfThePenPage: React.FC<Props> = () => {
+
+  const pageURL = typeof window !== 'undefined' ? window.location.href : '';
+  const pageTitle = "Flick of the Pen";
+  const pageDescription = "A description";
+
   return (
     <Layout>
+      <SEO
+        title={pageTitle}
+        description="TRY"
+        ogImage={ogImage}
+      />
       <div className="text-center py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-4xl">
         <img
           src={logo}
@@ -74,6 +92,7 @@ const FlickOfThePenPage: React.FC = () => {
             </Link>.
           </p>
         </div>
+        <ShareButtons title={pageTitle} url={pageURL} description={pageDescription} />
       </div>
     </Layout>
   );

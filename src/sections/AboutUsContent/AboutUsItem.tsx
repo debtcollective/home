@@ -31,7 +31,7 @@ const FAQ: React.FC<Props> = ({ data }) => {
         <span className="block text-4xl font-bold text-white md:text-6xl">
           {data.title}
         </span>
-        <span className="text-4xl text-white material-icons md:text-6xl">
+        <span className="text-4xl text-white material-icons-round md:text-6xl">
           {isOpen ? 'expand_more' : 'chevron_right'}
         </span>
       </summary>
