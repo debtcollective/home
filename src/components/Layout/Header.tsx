@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'gatsby';
 import logoBlack from '@static/logo-black.png';
 import logoSmall from '@static/logo-small.png';
 
@@ -47,71 +46,16 @@ const HEADER_LINKS = [
 ];
 
 const Header = () => {
-  const [links, setLinks] = useState(HEADER_LINKS);
-  const [user, setUser] = useState(null);
-
-  const handleUserSynced = (e: unknown) => {
-    // @ts-ignore
-    const syncedUser = e?.detail;
-    setUser(syncedUser);
-  };
-
-  // TODO: https://stenciljs.com/docs/events JSX event binding not working
-  useEffect(() => {
-    const header = document.querySelector('#dc-header');
-    header?.addEventListener('userSynced', handleUserSynced);
-
-    return () => {
-      window.removeEventListener('userSynced', handleUserSynced);
-    };
-  }, []);
-
-  useEffect(() => {
-    const extraLinks = user ? USER_LINKS : GUEST_LINKS;
-    setLinks([...HEADER_LINKS, ...extraLinks]);
-  }, [user]);
-
   return (
     <dc-header
-      id="dc-header"
-      logo={logoBlack}
-      logosmall={logoSmall}
-      host={GATSBY_HOST_URL}
-      memberhuburl={`${GATSBY_HOST_URL}/hub`}
       community={GATSBY_COMMUNITY_URL}
       donateurl=""
-    >
-      <div slot="header">
-        <nav className="nav">
-          {links.map(({ text, href, ...attrs }) => (
-            <div key={href} className="nav-item d-md-flex">
-              <Link className="nav-link" to={href} {...attrs}>
-                {text}
-              </Link>
-            </div>
-          ))}
-        </nav>
-      </div>
-      <div slot="menu">
-        <div className="flex flex-col space-y-4 nav-item">
-          {links.map(({ text, href, ...attrs }) => (
-            <Link key={href} className="nav-link" to={href} {...attrs}>
-              {text}
-            </Link>
-          ))}
-        </div>
-      </div>
-      <div slot="donate-header">
-        <Link to="/donate" className="btn-donate">
-          Donate
-        </Link>
-      </div>
-      <div slot="donate-menu">
-        <Link to="/donate" className="btn-donate">
-          Donate
-        </Link>
-      </div>
-    </dc-header>
+      homepage="/"
+      host={GATSBY_HOST_URL}
+      id="dc-header"
+      memberhuburl={`${GATSBY_HOST_URL}/hub`}
+      union="/debt-union"
+    ></dc-header>
   );
 };
 
