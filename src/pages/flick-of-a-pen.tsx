@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
-import pdfDownload from '@downloads/debtcollective-flickofthepen.pdf';
+import pdfDownload from '@downloads/debtcollective-flickofapen.pdf';
 import SEO from '@components/SEO';
-import ogImage from '@static/ogimg/og-flickofthepen.jpg';
+import ogImage from '@static/ogimg/og-flickofapen.jpg';
 import ShareButtons from '@components/ShareButtons';
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 const FlickOfThePenPage: React.FC<Props> = () => {
 
   const pageURL = typeof window !== 'undefined' ? window.location.href : '';
-  const pageTitle = "Flick of the Pen";
+  const pageTitle = "Cancel Student Debt, Joe Biden!";
   const pageDescription = "A description";
 
   return (
