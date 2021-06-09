@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
-import pdfDownload from '@downloads/debtcollective_flickofthepen.pdf';
+import pdfDownload from '@downloads/debtcollective-flickofthepen.pdf';
 import SEO from '@components/SEO';
-import ogImage from '@static/seo/og-flick.jpg';
+import ogImage from '@static/ogimg/og-flickofthepen.jpg';
 import ShareButtons from '@components/ShareButtons';
 
 interface Props {
