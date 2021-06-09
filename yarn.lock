@@ -1583,10 +1583,10 @@
   dependencies:
     "@stencil/core" "^2.0.1"
 
-"@debtcollective/dc-header-component@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-3.1.0.tgz#5cf1f1aeca16cad2150ff43286118e0c7fbbc7be"
-  integrity sha512-ML+SFPZSds9AvY5jMb30rFJH2J8VSBqMHOFW7YtiFoSgVE0W4q61PkzyBd0wlJ3hGjH9KkIM6Oi4s7c+zsZPJA==
+"@debtcollective/dc-header-component@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-3.1.4.tgz#b592014e0dcdb05d062e9667fb3fa4f5c82be3a0"
+  integrity sha512-M4vBcwZlWQd/8vK98LoD+G4+vS0Qk37DvpkAtQ/h1T0JZUe7Jo4ZWCXdJ400th3LM+jjEDuOWpeT3kWx2Oj5Cg==
 
 "@debtcollective/union-component@1.5.0":
   version "1.5.0"
