@@ -4,7 +4,7 @@ import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
 import pdfDownload from '@downloads/debtcollective-flickofapen.pdf';
 import SEO from '@components/SEO';
-import ogImage from '@static/ogimg/og-flickofapen.jpg';
+import ogImage from '@seo/og_flickofapen.jpg';
 import ShareButtons from '@components/ShareButtons';
 
 interface Props {
