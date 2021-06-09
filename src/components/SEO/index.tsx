@@ -68,7 +68,7 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
         },
         {
           name: 'twitter:card',
-          content: metaImage
+          content: "summary_large_image"
         },
         {
           name: 'twitter:creator',
