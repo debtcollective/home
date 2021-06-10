@@ -25,7 +25,7 @@ module.exports = {
     author: 'Debt Collective',
     twitterUsername: '@StrikeDebt',
     facebookPage: 'https://www.facebook.com/DebtCollective',
-    image: `${siteUrl}/seo.png`,
+    image: "seo.png",
     url: siteUrl
   },
   plugins: [
