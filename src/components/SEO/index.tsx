@@ -32,8 +32,10 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
   const metaTitle = title || site.siteMetadata.title;
   const metaTitleTemplate = site.siteMetadata.titleTemplate;
   const metaTitleWithTemplate = metaTitleTemplate.replace('%s', metaTitle);
-  const metaImage = ogImage || site.siteMetadata.image;
-
+  const host = process.env.GATSBY_HOST_URL || process.env.GATSBY_API_URL;
+  let metaImage = ogImage || site.siteMetadata.image;
+  metaImage = `${process.env.GATSBY_HOST_URL}${metaImage}`
+  console.log(':::::', host)
   return (
     <Helmet
       htmlAttributes={{
@@ -60,7 +62,7 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
         },
         {
           property: 'og:image',
-          content: metaImage
+          content:  metaImage
         },
         {
           property: 'og:url',
@@ -88,7 +90,7 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
         },
         {
           name: 'twitter:image',
-          content: `${process.env.GATSBY_API_URL}${metaImage}`
+          content: metaImage
         },
         {
           name: 'theme-color',
