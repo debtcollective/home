@@ -88,7 +88,7 @@ const SEO: React.FC<Props> = ({ title, description, lang, ogImage }) => {
         },
         {
           name: 'twitter:image',
-          content: `http://debtcollective.org${metaImage}`
+          content: `${process.env.GATSBY_API_URL}${metaImage}`
         },
         {
           name: 'theme-color',
