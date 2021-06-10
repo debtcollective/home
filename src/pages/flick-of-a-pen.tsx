@@ -22,7 +22,7 @@ const FlickOfThePenPage: React.FC<Props> = () => {
     <Layout>
       <SEO
         title={pageTitle}
-        description="TRY"
+        description="All it takes is a signature."
         ogImage={ogImage}
       />
       <div className="text-center py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-4xl">
