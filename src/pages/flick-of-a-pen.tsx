@@ -22,7 +22,7 @@ const FlickOfThePenPage: React.FC<Props> = () => {
     <Layout>
       <SEO
         title={pageTitle}
-        description="All Joe Biden has to do is sign this two-page document, and 100% of your federal student loans will be gone. It won’t cost taxpayers a penny, and it will transform the lives of 45 million people struggling with student loan debt. Really, it’s that simple!"
+        description="All it takes is a signature."
         ogImage={ogImage}
       />
       <div className="text-center py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-4xl">
