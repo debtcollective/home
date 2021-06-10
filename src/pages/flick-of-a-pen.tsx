@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
-import pdfDownload from '@downloads/debtcollective_flickofthepen.pdf';
+import pdfDownload from '@downloads/debtcollective-flickofapen.pdf';
 import SEO from '@components/SEO';
-import ogImage from '@static/seo/og-flick.jpg';
+import ogImage from '@seo/og_flickofapen.jpg';
 import ShareButtons from '@components/ShareButtons';
 
 interface Props {
@@ -15,14 +15,14 @@ interface Props {
 const FlickOfThePenPage: React.FC<Props> = () => {
 
   const pageURL = typeof window !== 'undefined' ? window.location.href : '';
-  const pageTitle = "Flick of the Pen";
+  const pageTitle = "Cancel Student Debt, Joe Biden!";
   const pageDescription = "A description";
 
   return (
     <Layout>
       <SEO
         title={pageTitle}
-        description="TRY"
+        description="All it takes is a signature."
         ogImage={ogImage}
       />
       <div className="text-center py-12 sm:py-8 px-8 sm:px-12 md:px-0 mx-auto max-w-4xl">

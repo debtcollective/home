@@ -23,6 +23,12 @@ const LINKS = [
       'Log into the community forum - introduce yourself, read other debtors stories, find information and resources about various types of debt and get organized with fellow debtors!'
   },
   {
+    linkText: 'Tell Joe Biden to Cancel Student Debt!',
+    href: 'https://debtcollective.org/flick-of-a-pen',
+    text:
+      'President Biden has a magic wand that can create millions of new jobs, narrow the racial wealth gap, and liberate 45 million people crushed by student debt.'
+  },
+  {
     linkText: 'Dispute your debt',
     href: 'https://tools.debtcollective.org/',
     text:

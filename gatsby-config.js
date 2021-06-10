@@ -25,7 +25,7 @@ module.exports = {
     author: 'Debt Collective',
     twitterUsername: '@StrikeDebt',
     facebookPage: 'https://www.facebook.com/DebtCollective',
-    image: `${siteUrl}/seo.png`,
+    image: "/seo.png",
     url: siteUrl
   },
   plugins: [
@@ -45,6 +45,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
+        '@seo': path.join(__dirname, 'src/seo'),
         '@downloads': path.join(__dirname, 'src/downloads'),
         '@components': path.join(__dirname, 'src/components'),
         '@sections': path.join(__dirname, 'src/sections'),
