@@ -50,7 +50,7 @@ const Header = () => {
     <dc-header
       community={GATSBY_COMMUNITY_URL}
       donateurl=""
-      homepage="/"
+      homepage={GATSBY_HOST_URL}
       host={GATSBY_HOST_URL}
       id="dc-header"
       memberhuburl={`${GATSBY_HOST_URL}/hub`}
