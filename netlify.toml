@@ -27,3 +27,7 @@
   from = "/flick-of-the-pen"
   to="/flick-of-a-pen"
   status=301
+[[redirects]]
+  from = "/hub"
+  to="https://membership.debtcollective.org/membership"
+  status=301
