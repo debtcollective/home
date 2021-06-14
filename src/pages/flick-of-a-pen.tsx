@@ -53,7 +53,7 @@ const FlickOfThePenPage: React.FC<Props> = () => {
           </p>
           <ul className="border-b-1 border-gray-500 mt-6 mb-3">
             <li className="pt-3 pb-3 border-solid border-t-1 border-gray-500">
-              <Link className="underline text-green-400" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fbit.ly%2FstudentdebtEO&text=.@POTUS%20must%20cancel%20all%20student%20debt.%20Here%20@JoeBiden%2C%20@strikedebt%20wrote%20the%20Executive%20Order%20for%20you.%20Just%20sign%20it%21&hashtags=CancelStudentDebt">
+              <Link className="underline text-green-400" href="https://twitter.com/intent/tweet?text=.@POTUS%20must%20cancel%20all%20student%20de[…]t%21%20http%3A//bit.ly/flickofpen%20&hashtags=CancelStudentDebt">
                 Tweet at @JoeBiden!
               </Link>
             </li>
