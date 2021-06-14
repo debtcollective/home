@@ -23,3 +23,7 @@
   from = "/api/*"
   to="/.netlify/functions/:splat"
   status=200
+[[redirects]]
+  from = "/flick-of-the-pen"
+  to="/flick-of-a-pen"
+  status=200
