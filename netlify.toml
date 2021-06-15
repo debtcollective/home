@@ -36,6 +36,6 @@
   to="https://membership.debtcollective.org/membership"
   status=301
 [[redirects]]
-  from = "/static/debtcollective-flickofapen-*.pdf"
+  from = "/static/debtcollective-flickofapen*"
   to="/debtcollective-flickofapen.pdf"
   status=301
