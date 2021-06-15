@@ -35,3 +35,7 @@
   from = "/hub"
   to="https://membership.debtcollective.org/membership"
   status=301
+[[redirects]]
+  from = "/static/debtcollective-flickofapen-*.pdf"
+  to="/debtcollective-flickofapen.pdf"
+  status=301
