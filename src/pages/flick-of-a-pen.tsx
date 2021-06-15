@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '@components/Layout';
 import Link from '@components/Link';
 import logo from '@static/dc-logo--horizontal.svg';
-import pdfDownload from '@downloads/debtcollective-flickofapen.pdf';
 import SEO from '@components/SEO';
 import ogImage from '@seo/og_flickofapen.jpg';
 import ShareButtons from '@components/ShareButtons';
@@ -38,12 +37,12 @@ const FlickOfThePenPage: React.FC<Props> = () => {
           <Link
             className="my-6 mx-auto block uppercase font-black text-3xl"
             variant="button"
-            href={pdfDownload}
+            href='/debtcollective-flickofapen.pdf'
           >
             Read the Executive Order
           </Link>
           <p className="fhyphens-none mb-6">
-            All Joe Biden has to do is sign <Link className="text-green-400 underline" href={pdfDownload}>this two-page document</Link>, and 100% of your federal student loans will be gone. It won’t cost taxpayers a penny, and it will transform the lives of 45 million people struggling with student loan debt. Really, it’s that simple!
+            All Joe Biden has to do is sign <Link className="text-green-400 underline" href='/debtcollective-flickofapen.pdf'>this two-page document</Link>, and 100% of your federal student loans will be gone. It won’t cost taxpayers a penny, and it will transform the lives of 45 million people struggling with student loan debt. Really, it’s that simple!
           </p>
           <p className="hyphens-none mb-6">
             President Biden has a magic wand that can create millions of new jobs, narrow the racial wealth gap, and liberate 45 million people crushed by student debt. This wand is <b>authority legally granted</b><span className="font-black color-primary">*</span> by Congress. The President can cancel all federal student loans through executive order. It's not a magic trick; with the flick of his pen he can legally make all federal student loan debt disappear!
