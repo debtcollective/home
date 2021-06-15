@@ -18,8 +18,8 @@ const Header = () => {
   return (
     <dc-header
       community={GATSBY_COMMUNITY_URL}
-      homepage={GATSBY_HOST_URL}
-      host={GATSBY_HOST_URL}
+      homepage="/"
+      returnurl={GATSBY_HOST_URL}
       id="dc-header"
     ></dc-header>
   );

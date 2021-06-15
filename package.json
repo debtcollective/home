@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@debtcollective/dc-footer-component": "0.3.0",
-    "@debtcollective/dc-header-component": "^3.1.4",
+    "@debtcollective/dc-header-component": "^3.3.4",
     "@debtcollective/union-component": "1.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
