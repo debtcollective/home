@@ -19,6 +19,8 @@ const GATSBY_COMMUNITY_URL = process.env.GATSBY_COMMUNITY_URL;
 const Header = () => {
   return (
     <dc-header
+      logo={logoBlack}
+      logosmall={logoSmall}
       community={GATSBY_COMMUNITY_URL}
       homepage="/"
       returnurl={GATSBY_HOST_URL}
