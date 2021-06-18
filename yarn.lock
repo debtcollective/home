@@ -1576,13 +1576,6 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@debtcollective/dc-dropdown-component@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-dropdown-component/-/dc-dropdown-component-1.7.0.tgz#140951daf3a194c1e25521638e09fada8e95fc2d"
-  integrity sha512-8F5rRIuOuiWi+co2OGLdvOZU4x2oXOYbmnZQCjP0X8eqDqr5XricTA0zd04YJQCp3S7GD8IevFACk555Xrk9+Q==
-  dependencies:
-    lodash.omit "^4.5.0"
-
 "@debtcollective/dc-footer-component@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.3.0.tgz#7666abb2f3e26d203ff3ec18bda11fde2ee622bb"
@@ -1590,13 +1583,10 @@
   dependencies:
     "@stencil/core" "^2.0.1"
 
-"@debtcollective/dc-header-component@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-2.5.0.tgz#afe92b7a19bdb4e721f23b2ac2913fe1673ffd57"
-  integrity sha512-Vvnuybyi8xNi1WtzlD0VOx7u7uuCrRnHsa+vdQRO15fFhlH1ytVDaPgw6SE2c190WcWQ2uCWQgS55abix6Fj1g==
-  dependencies:
-    "@debtcollective/dc-dropdown-component" "^1.7.0"
-    lodash.omit "^4.5.0"
+"@debtcollective/dc-header-component@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-3.4.0.tgz#6a367bac3ea02e205b08b2d6009932be7409114e"
+  integrity sha512-DF+GtLqFUnV0WjqUSSV7Xk4T3i44sYQlS6cmv2xYTyA8Vaazwg3q5RKCpLWpWimbm417DN5ucxjN4lNSDTyRAw==
 
 "@debtcollective/union-component@1.5.0":
   version "1.5.0"
@@ -16173,11 +16163,6 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
-
-lodash.omit@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
-  integrity sha1-brGa5aHuHdnfC5aeZs4Lf6MLXmA=
 
 lodash.reduce@^4.6.0:
   version "4.6.0"
