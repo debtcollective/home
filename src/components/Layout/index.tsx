@@ -75,7 +75,7 @@ const Layout: React.FC<Props> = ({
       />
       <SEO title={title} description={description} />
       <Header />
-      <main className="mt-16">{children}</main>
+      <main id="main-container">{children}</main>
       <Footer hideNewsletter={hideNewsletter} />
     </>
   );

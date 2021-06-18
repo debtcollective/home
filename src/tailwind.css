@@ -38,8 +38,8 @@ p {
 }
 
 @layer base {
-  body {
-    @apply bg-blue-200;
+  #main-container {
+    margin-top: 4.5rem
   }
 
   h3 {
