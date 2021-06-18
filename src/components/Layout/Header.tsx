@@ -73,45 +73,11 @@ const Header = () => {
 
   return (
     <dc-header
-      id="dc-header"
-      logo={logoBlack}
-      logosmall={logoSmall}
-      host={GATSBY_HOST_URL}
-      memberhuburl={`${GATSBY_HOST_URL}/hub`}
       community={GATSBY_COMMUNITY_URL}
-      donateurl=""
-    >
-      <div slot="header">
-        <nav className="nav">
-          {links.map(({ text, href, ...attrs }) => (
-            <div key={href} className="nav-item d-md-flex">
-              <Link className="nav-link" to={href} {...attrs}>
-                {text}
-              </Link>
-            </div>
-          ))}
-        </nav>
-      </div>
-      <div slot="menu">
-        <div className="flex flex-col space-y-4 nav-item">
-          {links.map(({ text, href, ...attrs }) => (
-            <Link key={href} className="nav-link" to={href} {...attrs}>
-              {text}
-            </Link>
-          ))}
-        </div>
-      </div>
-      <div slot="donate-header">
-        <Link to="/donate" className="btn-donate">
-          Donate
-        </Link>
-      </div>
-      <div slot="donate-menu">
-        <Link to="/donate" className="btn-donate">
-          Donate
-        </Link>
-      </div>
-    </dc-header>
+      homepage="/"
+      returnurl={GATSBY_HOST_URL}
+      id="dc-header"
+    ></dc-header>
   );
 };
 
