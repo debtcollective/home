@@ -23,8 +23,7 @@ if (typeof window !== 'undefined') {
         Boolean(detail.to.match(location.origin))
       ) {
         navigate(detail.to);
+        detail.event.preventDefault();
       }
-
-      detail.event.preventDefault();
     });
 }
