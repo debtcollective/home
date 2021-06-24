@@ -38,6 +38,10 @@ p {
 }
 
 @layer base {
+  #main-container {
+    margin-top: 4.5rem
+  }
+
   h3 {
     color: inherit;
     @apply mt-12 mb-2 text-2xl leading-normal;
