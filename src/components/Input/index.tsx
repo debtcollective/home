@@ -32,7 +32,7 @@ const Input: React.FC<Props> = ({
   variant
 }) => {
   const cn: string =
-    variant === 'dark' ? 'text-white bg-gray' : 'text-gray bg-white';
+    variant === 'dark' ? 'text-white bg-transparent' : 'text-gray bg-transparent';
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event?.currentTarget?.value || '');
   };
