@@ -14,6 +14,7 @@ const BASE_FETCH_OPTIONS = {
   }
 };
 const SUBJECT_OPTIONS = {
+  membership: 'member-support',
   press: 'press-inquiry',
   accountIssues: 'account-issues',
   other: 'other'

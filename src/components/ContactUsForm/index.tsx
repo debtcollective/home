@@ -15,6 +15,10 @@ const SUBJECT_OPTIONS = [
     selected: true
   },
   {
+    label: 'Membership Issue',
+    value: 'member-support'
+  },
+  {
     label: 'Press Inquiry',
     value: 'press-inquiry'
   },
