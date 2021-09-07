@@ -31,10 +31,10 @@ const Input: React.FC<Props> = ({
   value,
   variant
 }) => {
-  const labelCn: string =
+  const labelClass: string =
     variant === 'dark' ? 'text-white bg-transparent' : 'text-gray bg-transparent';
-  const cn: string =
-    variant === 'dark' ? 'text-gray bg-transparent' : 'text-white bg-transparent';
+  const inputClass: string =
+    variant === 'dark' ? 'text-white bg-gray' : 'text-gray bg-transparent';
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event?.currentTarget?.value || '');
   };
@@ -43,7 +43,8 @@ const Input: React.FC<Props> = ({
     <div className={clsx(className)}>
       <label
         htmlFor={id}
-        className={classnames(labelCn,
+        className={classnames(
+          labelClass,
           'block mb-2 font-semibold text-base'
         )}
       >
@@ -54,7 +55,7 @@ const Input: React.FC<Props> = ({
         name={id}
         type={type}
         className={classnames(
-          cn,
+          inputClass,
           'w-full rounded-md px-4 py-3 border-2 border-green-500'
         )}
         onChange={handleChange}
