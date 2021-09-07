@@ -118,7 +118,7 @@ const ContactUsForm = () => {
           Resist & Reimagine.
         </h2>
         <form
-          className="flex flex-col w-full mx-auto"
+          className="flex flex-col w-full mx-auto md:w-3/4"
           onSubmit={handleSubmit}
         >
           <Input
