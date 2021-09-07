@@ -31,8 +31,10 @@ const Input: React.FC<Props> = ({
   value,
   variant
 }) => {
-  const cn: string =
+  const labelCn: string =
     variant === 'dark' ? 'text-white bg-transparent' : 'text-gray bg-transparent';
+  const cn: string =
+    variant === 'dark' ? 'text-gray bg-transparent' : 'text-white bg-transparent';
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event?.currentTarget?.value || '');
   };
@@ -41,7 +43,9 @@ const Input: React.FC<Props> = ({
     <div className={clsx(className)}>
       <label
         htmlFor={id}
-        className={classnames(cn, 'block mb-2 font-semibold text-base')}
+        className={classnames(labelCn,
+          'block mb-2 font-semibold text-base'
+        )}
       >
         {label}
       </label>
