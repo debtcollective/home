@@ -41,22 +41,22 @@
   status=301
 [[redirects]]
   from = "https://fulldebtcancellation.com"
-  to = "https://debtcollective.com"
+  to = "https://debtcollective.org"
   status = 301
   force = true
 [[redirects]]
   from = "https://www.fulldebtcancellation.com"
-  to = "https://debtcollective.com"
+  to = "https://debtcollective.org"
   status = 301
   force = true
 [[redirects]]
   from = "https://strikestudentdebt.org"
-  to = "https://debtcollective.com"
+  to = "https://debtcollective.org"
   status = 301
   force = true
 [[redirects]]
   from = "https://www.strikestudentdebt.org"
-  to = "https://debtcollective.com"
+  to = "https://debtcollective.org"
   status = 301
   force = true
 
