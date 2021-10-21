@@ -3,7 +3,7 @@ import './style.css';
 
 const DebtAbolitionContent = () => {
   return (
-    <div className="page-debt-abolition" style={{ marginTop: '6rem' }}>
+    <div className="page-debt-abolition">
       <p className="lede">
         We are building a movement to abolish debts and win a world where no one
         has to take on debt to survive.
