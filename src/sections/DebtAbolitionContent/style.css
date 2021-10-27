@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .page-debt-abolition {
   margin: 6rem 1rem 2rem;
 }
@@ -221,49 +220,6 @@
   }
 }
 .page-debt-abolition .wp-block-site-functionality-faq .question h3 a  {
-=======
-.page-debt-abolition {max-width: 61rem;margin-left: 1.5rem;margin-top:6rem}
-.page-debt-abolition .wp-block-site-functionality-purchase-agreements{display:flex;flex-wrap:wrap}
-.page-debt-abolition .impactful-callout{background-color:#FF4630;padding:.5rem .5rem 1rem;margin:0 .25rem}
-@media(min-width:480x)and (max-width:720px){
-  .page-debt-abolition .impactful-callout{padding:.75rem 1.25rem;margin:0 .75rem}
-}
-@media(min-width:720px){
-  .page-debt-abolition .impactful-callout{padding:1.25rem 2.25rem;margin:0 1.5rem;max-width:54rem}
-}
-.page-debt-abolition .impactful-callout h2,.page-debt-abolition .impactful-callout h3,.page-debt-abolition .impactful-callout h3 p{font-style:italic;line-height:1.15;margin:0}
-.page-debt-abolition .impactful-callout h3{color:#fff;font-weight:300;text-transform:uppercase;font-size:1rem}
-@media(min-width:480px){
-  .page-debt-abolition .impactful-callout h3{font-size:1.618rem}
-}
-.page-debt-abolition .impactful-callout h2{color:#FFED9C;font-weight:900;font-size:1.618rem}
-@media(min-width:480px){
-  .page-debt-abolition .impactful-callout h2{font-size:2.618rem}
-}
-.page-debt-abolition ul.is-style-inline-bullet-list{margin:0;padding:1rem;list-style:none;display:flex;flex-wrap:wrap}
-.page-debt-abolition ul.is-style-inline-bullet-list li{margin-bottom:1.5rem;display:flex;grid-column-gap:.5rem;-moz-column-gap:.5rem;column-gap:.5rem}
-@media(min-width:720px){
-  .page-debt-abolition ul.is-style-inline-bullet-list li{width:28%;margin-right:1.75rem}
-  .page-debt-abolition ul.is-style-inline-bullet-list li{width:28%;margin-right:1.75rem}
-}
-.page-debt-abolition ul.is-style-inline-bullet-list li:before{content:"";background:50%/contain no-repeat url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMjYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzIwQTc4QyIgZD0iTTEyLjYzNiAwdjI2SDBWMHoiLz48L3N2Zz4=);width:2.4rem;height:1.65rem}
-.page-debt-abolition ul.is-style-inline-bullet-list li em{color:#20A78C;font-style:inherit}
-.page-debt-abolition article.purchase-agreement{height:-webkit-min-content;height:-moz-min-content;height:min-content;color:#000;background-color:#FFF4C3;padding:1.125rem;margin:1rem;width:100%}
-@media(min-width:720px){
-  .page-debt-abolition article.purchase-agreement{width:28%}
-}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__date{font-size:1.618rem;line-height:1;font-weight:300;margin-bottom:.5rem}
-.page-debt-abolition article.purchase-agreement h3.purchase-agreement__title{font-size:1rem;margin:1rem 0 .5rem}
-.page-debt-abolition article.purchase-agreement .purchase-agreement__summary{padding:0}
-.page-debt-abolition article.purchase-agreement .purchase-agreement__summary p{margin:0}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl{width:250px;margin-top:.5rem}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl .purchase-agreement__amount{font-weight:900;line-height:1.2;color:#FF4630;width:100%}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl .purchase-agreement__amount.entry-value{font-size:1.618rem}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl .purchase-agreement__amount.entry-label{margin-bottom:.5rem}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl dt{display:inline-block;clear:left}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl dd{display:inline-block;margin-left:0;font-weight:700}
-.page-debt-abolition article.purchase-agreement div.purchase-agreement__details dl a{color:#146656}
->>>>>>> c6575d6262c3086d31fab4dd507f3eaf615a2ca3
 
 }
 .page-debt-abolition .wp-block-site-functionality-faq .question h3 a {

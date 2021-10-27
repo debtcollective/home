@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
 import Masonry from 'masonry-layout';
 
 const DebtAbolitionContent = () => {
-  const purchaseAgreements = document.querySelector(
-    '.purchase-agreements'
-  ) as HTMLElement;
-  const msnry = new Masonry(purchaseAgreements, {
-    itemSelector: '.purchase-agreement',
-    gutter: 22
-  });
+  useEffect(() => {
+    const purchaseAgreements = document.querySelector(
+      '.purchase-agreements'
+    ) as HTMLElement;
+
+    const msnry = new Masonry(purchaseAgreements, {
+      itemSelector: '.purchase-agreement',
+      gutter: 22
+    });
+  }, []);
 
   return (
     <div className="page-debt-abolition">
