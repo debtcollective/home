@@ -6,9 +6,6 @@ const DebtAbolitionContent = () => {
   const purchaseAgreements = document.querySelector(
     '.purchase-agreements'
   ) as HTMLElement;
-
-  console.log('purchase-agreements', purchaseAgreements);
-
   const msnry = new Masonry(purchaseAgreements, {
     itemSelector: '.purchase-agreement',
     gutter: 22
@@ -290,7 +287,7 @@ const DebtAbolitionContent = () => {
               </dd>
               <dt className="purchase-agreement__type entry-label">Type: </dt>
               <dd className="purchase-agreement__type entry-value">
-                Judgement debts/AT&amp;T Wireless Debts{' '}
+                AT&amp;T Wireless Debts{' '}
               </dd>
               <dt className="purchase-agreement__number entry-label">
                 Number of Debtors:{' '}
