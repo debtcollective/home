@@ -1,9 +1,22 @@
 import React from 'react';
 import './style.css';
+import Masonry from 'masonry-layout';
 
 const DebtAbolitionContent = () => {
+  const purchaseAgreements = document.querySelector(
+    '.purchase-agreements'
+  ) as HTMLElement;
+
+  console.log('purchase-agreements', purchaseAgreements);
+
+  const msnry = new Masonry(purchaseAgreements, {
+    itemSelector: '.purchase-agreement',
+    gutter: 22
+  });
+
   return (
     <div className="page-debt-abolition">
+      <h1 className="entry-title">Debt Abolition</h1>
       <p className="lede">
         We are building a movement to abolish debts and win a world where no one
         has to take on debt to survive.
@@ -231,7 +244,7 @@ const DebtAbolitionContent = () => {
 
       <h2>What has the Rolling Jubilee done to date?</h2>
 
-      <div className="purchase-agreeements__list wp-block-site-functionality-purchase-agreements">
+      <div className="purchase-agreements wp-block-site-functionality-purchase-agreements">
         <article className="purchase-agreement-container purchase-agreement post-1073 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-ambulance-debt">
           <div className="purchase-agreement__date entry-meta">
             August 16, 2021{' '}
