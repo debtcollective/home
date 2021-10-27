@@ -31,6 +31,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    'gatsby-plugin-image',
+    {
+      resolve: "gatsby-plugin-sanity-image",
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: "production",
+        defaultImageConfig: {
+          quality: 75,
+          fit: "max",
+          auto: "format",
+        },
+        customImageTypes: ["SanityUserAvatarImage"],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`,
