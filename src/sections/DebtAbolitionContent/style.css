@@ -154,15 +154,16 @@
 }
 .page-debt-abolition .purchase-agreement dl {
   margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 .page-debt-abolition .purchase-agreement dt {
   display: inline-block;
   clear: left;
   margin-right: 0.125rem;
 }
-.page-debt-abolition .purchase-agreement dd {
+.page-debt-abolition .purchase-agreement dd.entry-value {
   display: inline-block;
-  margin-left: 0;
+  margin-left: 0.2rem;
   font-weight: 700;
 }
 .page-debt-abolition .purchase-agreement dd:after {

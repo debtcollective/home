@@ -27,7 +27,7 @@ const DebtAbolitionContent = () => {
           <span>
             Pressuring the state to cancel debts and change policy through{' '}
             <a
-              href="https://wordpress-test.debtcollective.org/what-we-do/campaigns/"
+              href="https://actionnetwork.org/petitions/bidenjubilee100"
               data-type="page"
               data-id="242"
             >
@@ -40,7 +40,7 @@ const DebtAbolitionContent = () => {
           <span>
             Providing our members with a{' '}
             <a
-              href="http://abolition-tools.debtcollective.org"
+              href="http://tools.debtcollective.org"
               data-type="URL"
               data-id="abolition-tools.debtcollective.org"
             >
@@ -93,7 +93,13 @@ const DebtAbolitionContent = () => {
           <div className="faq__answer answer">
             <div className="answer-wrapper">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                The Rolling Jubilee Fund is a 501c4 entity that launched in
+                2012. The Fund is distinct from the Debt Collective and
+                dedicated to debt cancellation and public education. The Rolling
+                Jubilee Fund is collaborating with the Debt Collective and other
+                partners on strategic initiatives to build debtor power and
+                drive system change. You can read about the Rolling Jubilee in
+                the Our History and Victories section.
               </p>
             </div>
           </div>
@@ -124,8 +130,12 @@ const DebtAbolitionContent = () => {
           <div className="faq__answer answer">
             <div className="answer-wrapper">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                augue velit, dapibus id tellus sed, ornare lobortis quam.
+                Our debts are someone else’s assets. Investors buy and sell debt
+                to each other for pennies on the dollar on secondary debt
+                markets, and then hire debt collectors to try to collect the
+                full amount from people struggling with their bills. The Rolling
+                Jubilee Fund acts as a debt purchaser, but instead of collecting
+                on the debts it purchases, it erases them.
               </p>{' '}
             </div>
           </div>
@@ -160,8 +170,13 @@ const DebtAbolitionContent = () => {
           <div className="faq__answer answer">
             <div className="answer-wrapper">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                fermentum facilisis. Cras luctus eget lectus non semper.
+                No, the Rolling Jubilee Fund is a public education initiative
+                that is separate from the Debt Collective. Collaborating with
+                the Rolling Jubilee Fund is one way the Debt Collective can
+                provide relief while continuing to campaign and organize to
+                build debtor power. The Rolling Jubilee reminds people that
+                debts can disappear, and hopefully inspires people to join the
+                Debt Collective to demand deeper change.
               </p>{' '}
             </div>
           </div>
@@ -196,11 +211,12 @@ const DebtAbolitionContent = () => {
           <div className="faq__answer answer">
             <div className="answer-wrapper">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                posuere ex enim, ac dictum lacus finibus vel. Nam et elit
-                sagittis elit lobortis molestie vitae in leo. Nulla eu risus
-                dolor. Mauris gravida aliquam odio et cursus. Vivamus luctus
-                mauris eget vulputate finibus. Quisque ut est dapibus,
+                No. When buying debt on the secondary debt market there is no
+                way to seek out a specific place or person in order to buy that
+                place or person’s defaulted debt. Anonymous accounts are bundled
+                together and sold as part of a larger, anonymized portfolio.
+                These peculiarities are part of the scandal that we are trying
+                to highlight.
               </p>{' '}
             </div>
           </div>
@@ -232,9 +248,14 @@ const DebtAbolitionContent = () => {
           <div className="faq__answer answer">
             <div className="answer-wrapper">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse maximus condimentum nisi non ornare. Ut non
-                convallis sapien. Suspendisse eu nibh sem.
+                The Rolling Jubilee was created in consultation with a team of
+                attorneys. They have thoroughly researched the tax implications
+                and do not believe that beneficiaries are obligated to pay taxes
+                on debts the Rolling Jubilee abolishes in this manner. It is the
+                Rolling Jubilee’s position that it is making a tax-free gift to
+                the people whose debt it is abolishing. See
+                strikedebt.org/taxanalyst for an interview about Rolling Jubilee
+                with the {"USA's"} top-ranked tax lawyer.
               </p>
               <p>There could be more text</p>{' '}
             </div>
@@ -245,87 +266,6 @@ const DebtAbolitionContent = () => {
       <h2>What has the Rolling Jubilee done to date?</h2>
 
       <div className="purchase-agreements wp-block-site-functionality-purchase-agreements">
-        <article className="purchase-agreement-container purchase-agreement post-1073 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-ambulance-debt">
-          <div className="purchase-agreement__date entry-meta">
-            August 16, 2021{' '}
-          </div>
-
-          <div className="purchase-agreement__summary entry-content"></div>
-
-          <div className="purchase-agreement__details">
-            <dl>
-              <dt className="purchase-agreement__amount entry-value">
-                <span className="currency-symbol">$</span>
-                <span className="value">854,963</span>{' '}
-              </dt>
-              <dd className="purchase-agreement__amount entry-label">
-                abolished{' '}
-              </dd>
-              <dt className="purchase-agreement__type entry-label">Type: </dt>
-              <dd className="purchase-agreement__type entry-value">
-                Ambulance Debt{' '}
-              </dd>
-              <dt className="purchase-agreement__number entry-label">
-                Number of Debtors:{' '}
-              </dt>
-              <dd className="purchase-agreement__number entry-value">
-                <span className="value">919</span>{' '}
-              </dd>
-              <dt className="purchase-agreement__average entry-label">
-                Average Debt/Debtor:{' '}
-              </dt>
-              <dd className="purchase-agreement__average entry-value">
-                <span className="currency-symbol">$</span>
-                <span className="value">930</span>{' '}
-              </dd>
-            </dl>
-          </div>
-        </article>
-
-        <article className="purchase-agreement-container purchase-agreement post-1075 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-private-probation-debt">
-          <div className="purchase-agreement__date entry-meta">
-            June 10, 2021{' '}
-          </div>
-
-          <div className="purchase-agreement__summary entry-content"></div>
-
-          <div className="purchase-agreement__details">
-            <dl>
-              <dt className="purchase-agreement__amount entry-value">
-                <span className="currency-symbol">$</span>
-                <span className="value">3,264,085</span>{' '}
-              </dt>
-              <dd className="purchase-agreement__amount entry-label">
-                abolished{' '}
-              </dd>
-              <dt className="purchase-agreement__type entry-label">Type: </dt>
-              <dd className="purchase-agreement__type entry-value">
-                Private Probation Debt{' '}
-              </dd>
-              <dt className="purchase-agreement__number entry-label">
-                Number of Debtors:{' '}
-              </dt>
-              <dd className="purchase-agreement__number entry-value">
-                <span className="value">83</span>{' '}
-              </dd>
-              <dt className="purchase-agreement__average entry-label">
-                Average Debt/Debtor:{' '}
-              </dt>
-              <dd className="purchase-agreement__average entry-value">
-                <span className="currency-symbol">$</span>
-                <span className="value">39</span>{' '}
-              </dd>
-              <dt className="purchase-agreement__purchase-price entry-label">
-                Purchase Price:{' '}
-              </dt>
-              <dd className="purchase-agreement__purchase-price entry-value">
-                <span className="currency-symbol">$</span>
-                <span className="value">97,922.00</span>{' '}
-              </dd>
-            </dl>
-          </div>
-        </article>
-
         <article className="purchase-agreement-container purchase-agreement post-1076 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-att-wireless-debts purchase_agreement_type-judgement-debts">
           <div className="purchase-agreement__date entry-meta">
             July 16, 2018{' '}
@@ -350,13 +290,13 @@ const DebtAbolitionContent = () => {
               </dd>
               <dt className="purchase-agreement__type entry-label">Type: </dt>
               <dd className="purchase-agreement__type entry-value">
-                AT&amp;T Wireless Debts{' '}
+                Judgement debts/AT&amp;T Wireless Debts{' '}
               </dd>
               <dt className="purchase-agreement__number entry-label">
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">59</span>{' '}
+                <span className="value">59,300</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -403,7 +343,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">168</span>{' '}
+                <span className="value">168,693</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -440,7 +380,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">8</span>{' '}
+                <span className="value">8,629</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -457,6 +397,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">31,560.13</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Payday_Loans_2-5-2015.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -484,7 +432,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">9</span>{' '}
+                <span className="value">9,438</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -501,6 +449,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">1.00</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Student_11-26-2014.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -528,7 +484,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">4</span>{' '}
+                <span className="value">4,349</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -545,6 +501,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">14,600.00</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Private_Probation_8-27-2014.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -572,16 +536,31 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">2</span>{' '}
+                <span className="value">2,761</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
               </dt>
               <dd className="purchase-agreement__average entry-value">
                 <span className="currency-symbol">$</span>
+                <span className="value">1,399</span>{' '}
+              </dd>
+              <dt className="purchase-agreement__purchase-price entry-label">
+                Purchase Price:{' '}
+              </dt>
+              <dd className="purchase-agreement__purchase-price entry-value">
+                <span className="currency-symbol">$</span>
                 <span className="value">206,709</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Student_5-20-2014.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -609,7 +588,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">1</span>{' '}
+                <span className="value">1,919</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -626,6 +605,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">236,001.71</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Medical_5-13-2013.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -670,6 +657,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">27,500.00</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Medical_3-24-2013.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -697,7 +692,7 @@ const DebtAbolitionContent = () => {
                 Number of Debtors:{' '}
               </dt>
               <dd className="purchase-agreement__number entry-value">
-                <span className="value">1</span>{' '}
+                <span className="value">1,064</span>{' '}
               </dd>
               <dt className="purchase-agreement__average entry-label">
                 Average Debt/Debtor:{' '}
@@ -714,6 +709,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">9,500.00</span>{' '}
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Medical_1-23-2013.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
 
@@ -758,6 +761,14 @@ const DebtAbolitionContent = () => {
                 <span className="value">5,000.00</span>
               </dd>
             </dl>
+            <a
+              href="../../../static/purchase-agreements/Medical_11-9-2012.pdf"
+              aria-label="Download Purchase Agreement as PDF"
+              target="_blank"
+              download
+            >
+              Download Purchase Agreement
+            </a>
           </div>
         </article>
       </div>
