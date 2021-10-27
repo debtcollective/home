@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '@components/Layout';
 import OurTeamCover from '@sections/OurTeamCover';
-import { graphql } from 'gatsby';
 import OurTeamContent from '@sections/OurTeamContent';
 import { ISanityOurTeamHero, ISanityTeamMember } from 'src/types/our-team';
+import { graphql } from 'gatsby';
 
 interface Props {
   data: {
@@ -39,11 +39,7 @@ export const query = graphql`
         name
         role
         avatar {
-          asset {
-            fluid(maxWidth: 160) {
-              ...GatsbySanityImageFluid_noBase64
-            }
-          }
+          ...ImageWithPreview
           caption
         }
       }

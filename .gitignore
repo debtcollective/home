@@ -75,4 +75,4 @@ studio/dist/
 
 # Local Netlify folder
 .netlify
-yarn.lock
+package.lock
