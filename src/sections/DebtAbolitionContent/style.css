@@ -151,10 +151,16 @@
 }
 .page-debt-abolition .purchase-agreement a {
   color: #146656;
+  text-decoration: underline;
+}
+.page-debt-abolition .purchase-agreement a:hover {
+  color: #20A78C;
+  text-decoration: none;
 }
 .page-debt-abolition .purchase-agreement dl {
   margin-top: 0.5rem;
   margin-bottom: 0.3rem;
+  max-width: 290px;
 }
 .page-debt-abolition .purchase-agreement dt {
   display: inline-block;
@@ -212,6 +218,9 @@
   .page-debt-abolition .wp-block-site-functionality-faq .question h3 {
     font-size: 1.618rem;
   }
+}
+.page-debt-abolition .wp-block-site-functionality-faq .question h3 a  {
+
 }
 .page-debt-abolition .wp-block-site-functionality-faq .question h3 a {
   text-decoration: none;
