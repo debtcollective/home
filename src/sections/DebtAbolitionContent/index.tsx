@@ -51,8 +51,8 @@ const DebtAbolitionContent = () => {
         </li>
       </ul>
       <div className="impactful-callout wp-block-site-functionality-impactful-callout">
-        <h3 className="impactful-callout__subtitle">
-          Through Our Debt Abolition Debt Buying Process we’ve Abolished <span className="canary">$31,982,455.76</span> of debt!
+        <h3>
+          Through Our Debt Abolition Debt Buying Process we’ve Abolished <em>$31,982,455.76</em> of debt!
         </h3>
       </div>
       <h2>FAQs</h2>

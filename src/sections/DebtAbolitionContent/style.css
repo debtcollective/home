@@ -7,10 +7,6 @@
   max-width: 1400px;
 }
 
-.canary {
-  color: #ffed9c;
-}
-
 @media (min-width: 720px) {
   .page-debt-abolition {
     padding-left: 3rem;
@@ -46,6 +42,7 @@
   background-color: #ff4630;
   padding: 0.5rem 0.5rem 1rem;
   margin-bottom: 3rem;
+  font-size: 3rem;
 }
 
 @media (min-width: 480px) and (max-width: 720px) {
@@ -60,22 +57,24 @@
   }
 }
 
-.page-debt-abolition .impactful-callout h2,
-.page-debt-abolition .impactful-callout h3,
-.page-debt-abolition .impactful-callout h3 p {
-  font-style: italic;
+.page-debt-abolition .impactful-callout h3 {
   line-height: 1.15;
   margin: 0;
-}
-.page-debt-abolition .impactful-callout h3 {
+  font-style: italic;
   color: #fff;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 1rem;
 }
+
+.page-debt-abolition .impactful-callout em {
+  font-weight: 900;
+  color: #fff4c3;
+}
+
 @media (min-width: 480px) {
   .page-debt-abolition .impactful-callout h3 {
-    font-size: 1.618rem;
+    font-size: 3rem;
   }
 }
 .page-debt-abolition .impactful-callout .has-inline-color,
@@ -182,37 +181,31 @@
 }
 
 .page-debt-abolition .purchase-agreement dl {
+  display: flex;
+  flex-flow: row wrap;
   margin-top: 0.5rem;
   margin-bottom: 0.3rem;
-  /* display: grid;
-  grid-template-columns: 1fr auto; */
 }
+
 .page-debt-abolition .purchase-agreement dd,
 .page-debt-abolition .purchase-agreement dt {
-    display: inline-block;
     margin-top: 0.5rem;
+    padding: 0.125rem;
 }
 
 .page-debt-abolition .purchase-agreement dt {
-  display: inline-block;
-  clear: left;
-  padding-right: 0.25rem;
+  flex-basis: content-fit;
 }
-
 .page-debt-abolition .purchase-agreement dt:not(:first-child)::after {
-    content: ': ';
+  content: ": ";
+  margin-right: 0.25rem;
+  display: inline-block;
 }
 
-.page-debt-abolition .purchase-agreement dd:last-of-type::after {
-  content: '';
-}
-
-.page-debt-abolition .purchase-agreement dd::after {
-    content: '\A';
-    white-space: pre-line;
-}
-
-.page-debt-abolition .purchase-agreement dd.entry-value {
+.page-debt-abolition .purchase-agreement dd {
+  flex: * 1;
+  flex-grow: 1;
+  min-width: 50%;
   font-weight: 700;
 }
 
@@ -224,6 +217,7 @@
 .page-debt-abolition .faq-list {
   margin-bottom: 3rem;
 }
+
 .page-debt-abolition .wp-block-site-functionality-faq {
   border-radius: 0.325rem;
   white-space: normal;
