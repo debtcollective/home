@@ -7,6 +7,10 @@
   max-width: 1400px;
 }
 
+.canary {
+  color: #ffed9c;
+}
+
 @media (min-width: 720px) {
   .page-debt-abolition {
     padding-left: 3rem;
