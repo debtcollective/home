@@ -1,18 +1,12 @@
 import React, { useEffect } from 'react';
 import './style.css';
-import Masonry from 'masonry-layout';
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+    transitionDuration: 0.25
+};
 
 const DebtAbolitionContent = () => {
-  useEffect(() => {
-    const purchaseAgreements = document.querySelector(
-      '.purchase-agreements'
-    ) as HTMLElement;
-
-    const msnry = new Masonry(purchaseAgreements, {
-      itemSelector: '.purchase-agreement',
-      gutter: 22
-    });
-  }, []);
 
   return (
     <div className="page-debt-abolition">
@@ -265,7 +259,10 @@ const DebtAbolitionContent = () => {
 
       <h2>What has the Rolling Jubilee done to date?</h2>
 
-      <div className="purchase-agreements wp-block-site-functionality-purchase-agreements">
+      <Masonry
+        className={'purchase-agreements'} // default ''
+        options={masonryOptions} // default {}
+      >
         <article className="purchase-agreement-container purchase-agreement post-1076 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-att-wireless-debts purchase_agreement_type-judgement-debts">
           <div className="purchase-agreement__date entry-meta">
             July 16, 2018{' '}
@@ -771,7 +768,7 @@ const DebtAbolitionContent = () => {
             </a>
           </div>
         </article>
-      </div>
+      </Masonry>
     </div>
   );
 };
