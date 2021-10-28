@@ -1,10 +1,16 @@
 .page-debt-abolition {
-  margin: 6rem 1rem 2rem;
+  margin: 0 auto;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1400px;
 }
 
 @media (min-width: 720px) {
   .page-debt-abolition {
-    margin: 6rem 3rem 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 	}
 }
 
