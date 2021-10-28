@@ -201,7 +201,6 @@
 
 .page-debt-abolition .purchase-agreement dd:last-of-type::after {
   content: '';
-  background-color: red;
 }
 
 .page-debt-abolition .purchase-agreement dd::after {
