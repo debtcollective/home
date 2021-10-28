@@ -27,3 +27,11 @@ if (typeof window !== 'undefined') {
       }
     });
 }
+
+export const onClientEntry = () => {
+  window.onload = () => {
+    window.dc.faqs.initialize('.faq-list');
+    // masonry needs a bit of a jiggle after the page is rendered.
+    window.dispatchEvent(new Event('resize'));
+  };
+};
