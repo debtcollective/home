@@ -286,18 +286,18 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   AT&amp;T Wireless Debts{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">59,300</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
@@ -335,18 +335,18 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Judgement Debts{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">168,693</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
@@ -374,25 +374,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Payday Loans{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">8,629</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">457</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -428,25 +428,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Student Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">9,438</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">1,418</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -482,25 +482,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Private Probation Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">4,349</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">114</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -536,25 +536,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Student Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">2,761</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">1,399</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -590,25 +590,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Medical Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">1,919</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">6,405</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -644,25 +644,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Medical Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">774</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">1,540</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -699,25 +699,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Medical Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">1,064</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:{' '}
+                  Average Debt/Debtor{' '}
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">903</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:{' '}
+                  Purchase Price{' '}
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
@@ -753,25 +753,25 @@ const DebtAbolitionContent = () => {
                 <dd className="purchase-agreement__amount entry-label">
                   abolished{' '}
                 </dd>
-                <dt className="purchase-agreement__type entry-label">Type: </dt>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
                 <dd className="purchase-agreement__type entry-value">
                   Medical Debt{' '}
                 </dd>
                 <dt className="purchase-agreement__number entry-label">
-                  Number of Debtors:{' '}
+                  Number of Debtors{' '}
                 </dt>
                 <dd className="purchase-agreement__number entry-value">
                   <span className="value">44</span>{' '}
                 </dd>
                 <dt className="purchase-agreement__average entry-label">
-                  Average Debt/Debtor:
+                  Average Debt/Debtor
                 </dt>
                 <dd className="purchase-agreement__average entry-value">
                   <span className="currency-symbol">$</span>
                   <span className="value">2,276</span>
                 </dd>
                 <dt className="purchase-agreement__purchase-price entry-label">
-                  Purchase Price:
+                  Purchase Price
                 </dt>
                 <dd className="purchase-agreement__purchase-price entry-value">
                   <span className="currency-symbol">$</span>
