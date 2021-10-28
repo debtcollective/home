@@ -125,13 +125,18 @@
   height: -moz-min-content;
   height: min-content;
   color: #000;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.page-debt-abolition .purchase-agreement .wrapper {
   background-color: #fff4c3;
   padding: 1.125rem;
-  margin: 0.75rem 0;
 }
+
 @media (min-width: 720px) {
   .page-debt-abolition .purchase-agreement {
-    width: 28%;
+    width: 33.33333%;
   }
 }
 .page-debt-abolition .purchase-agreement__date {
