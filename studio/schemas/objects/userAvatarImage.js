@@ -1,5 +1,5 @@
 export default {
-  name: 'image',
+  name: 'userAvatarImage',
   type: 'image',
   title: 'Avatar Image',
   options: {

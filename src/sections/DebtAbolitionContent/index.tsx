@@ -69,7 +69,7 @@ const DebtAbolitionContent = () => {
       <div className="faq-list wp-block-site-functionality-faqs">
         <article
           id="faq-61706b120afe8"
-          className="faq wp-block-site-functionality-faq active"
+          className="faq wp-block-site-functionality-faq"
         >
           <div className="faq__question question">
             <h3>What is the Rolling Jubilee Fund?</h3>
@@ -106,7 +106,7 @@ const DebtAbolitionContent = () => {
         </article>
         <article
           id="faq-61706b120b048"
-          className="wp-block-site-functionality-faq"
+          className="faq wp-block-site-functionality-faq"
         >
           <div className="faq__question question">
             <h3>How does it work?</h3>
@@ -143,7 +143,7 @@ const DebtAbolitionContent = () => {
 
         <article
           id="faq-61706b120b123"
-          className="wp-block-site-functionality-faq"
+          className="faq wp-block-site-functionality-faq"
         >
           <div className="faq__question question">
             <h3>
@@ -184,7 +184,7 @@ const DebtAbolitionContent = () => {
 
         <article
           id="faq-61706b120b194"
-          className="wp-block-site-functionality-faq"
+          className="faq wp-block-site-functionality-faq"
         >
           <div className="faq__question question">
             <h3>
@@ -224,7 +224,7 @@ const DebtAbolitionContent = () => {
 
         <article
           id="faq-61706b120b283"
-          className="wp-block-site-functionality-faq"
+          className="faq wp-block-site-functionality-faq"
         >
           <div className="faq__question question">
             <h3>Does this create a tax burden for debtors? </h3>

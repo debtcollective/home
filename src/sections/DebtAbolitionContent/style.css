@@ -8,6 +8,10 @@
 	}
 }
 
+.faq__question h3 {
+  font-weight: 900;
+}
+
 .page-debt-abolition .entry-title, .page-debt-abolition h2 {
   line-height: 1.15;
   font-weight: 900;
@@ -27,21 +31,25 @@
 	line-height: 1.25;
   margin-bottom: 3rem;
 }
+
 .page-debt-abolition .impactful-callout {
   background-color: #ff4630;
   padding: 0.5rem 0.5rem 1rem;
   margin-bottom: 3rem;
 }
+
 @media (min-width: 480px) and (max-width: 720px) {
   .page-debt-abolition .impactful-callout {
     padding: 0.75rem 1.25rem;
   }
 }
+
 @media (min-width: 720px) {
   .page-debt-abolition .impactful-callout {
     padding: 1.25rem 2.25rem;
   }
 }
+
 .page-debt-abolition .impactful-callout h2,
 .page-debt-abolition .impactful-callout h3,
 .page-debt-abolition .impactful-callout h3 p {
@@ -117,7 +125,7 @@
 }
 @media (min-width: 720px) {
   .page-debt-abolition .purchase-agreement {
-    width: 290px;
+    width: 28%;
   }
 }
 .page-debt-abolition .purchase-agreement__date {
@@ -160,7 +168,6 @@
 .page-debt-abolition .purchase-agreement dl {
   margin-top: 0.5rem;
   margin-bottom: 0.3rem;
-  max-width: 290px;
 }
 .page-debt-abolition .purchase-agreement dt {
   display: inline-block;
