@@ -59,5 +59,35 @@
   to = "https://debtcollective.org"
   status = 301
   force = true
+[[redirects]]
+  from = "https://rollingjubilee.org"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.rollingjubilee.org"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://rollingjubilee.net"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.rollingjubilee.net"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://rollingjubilee.com"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.rollingjubilee.com"
+  to = "https://debtcollective.org/debt-abolition"
+  status = 301
+  force = true
 
  

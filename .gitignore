@@ -32,6 +32,11 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+
+# We use yarn so…
+package.lock
+
+
 # Dependency directories
 node_modules/
 jspm_packages/
@@ -75,4 +80,3 @@ studio/dist/
 
 # Local Netlify folder
 .netlify
-yarn.lock
