@@ -299,7 +299,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Private_Probation_6-10-2021.pdf"
+                href="/purchase-agreements/Private_Probation_6-10-2021.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -447,7 +447,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Payday_Loans_2-5-2015.pdf"
+                href="/purchase-agreements/Payday_Loans_2-5-2015.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -501,7 +501,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Student_11-26-2014.pdf"
+                href="/purchase-agreements/Student_11-26-2014.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -555,7 +555,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Private_Probation_8-27-2014.pdf"
+                href="/purchase-agreements/Private_Probation_8-27-2014.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -609,7 +609,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Student_5-20-2014.pdf"
+                href="/purchase-agreements/Student_5-20-2014.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -663,7 +663,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Medical_5-13-2013.pdf"
+                href="/purchase-agreements/Medical_5-13-2013.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -717,7 +717,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Medical_3-24-2013.pdf"
+                href="/purchase-agreements/Medical_3-24-2013.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -772,7 +772,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Medical_1-23-2013.pdf"
+                href="/purchase-agreements/Medical_1-23-2013.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
@@ -826,7 +826,7 @@ const DebtAbolitionContent = () => {
                 </dd>
               </dl>
               <a
-                href="../../../static/purchase-agreements/Medical_11-9-2012.pdf"
+                href="/purchase-agreements/Medical_11-9-2012.pdf"
                 aria-label="Download Purchase Agreement as PDF"
                 target="_blank"
                 download
