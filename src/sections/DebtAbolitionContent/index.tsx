@@ -321,7 +321,11 @@ const DebtAbolitionContent = () => {
             </h3>
 
             <div className="purchase-agreement__summary entry-content">
-              <p>As a part of a className action settlement a debt buyer</p>
+              <p>
+                As a part of a class action settlement a debt buyer agreed to
+                transfer these accounts to the Rolling Jubilee for the purpose
+                of canceling the debts.
+              </p>
             </div>
 
             <div className="purchase-agreement__details">
@@ -367,9 +371,9 @@ const DebtAbolitionContent = () => {
 
             <div className="purchase-agreement__summary entry-content">
               <p>
-                As a part of a className action settlement a debt buyer agreed
-                transfer these accounts to the Rolling Jubilee for the purpose of
-                purpose of canceling the debts.
+                As a part of a class action settlement a debt buyer agreed to
+                transfer these accounts to the Rolling Jubilee for the purpose
+                of canceling the debts.
               </p>
             </div>
 
