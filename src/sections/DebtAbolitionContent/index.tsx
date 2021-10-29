@@ -3,11 +3,10 @@ import './style.css';
 import Masonry from 'react-masonry-component';
 
 const masonryOptions = {
-    transitionDuration: 0.25
+  transitionDuration: 0.25
 };
 
 const DebtAbolitionContent = () => {
-
   return (
     <div className="page-debt-abolition">
       <h1 className="entry-title">Debt Abolition</h1>
@@ -259,6 +258,58 @@ const DebtAbolitionContent = () => {
         className={'purchase-agreements'} // default ''
         options={masonryOptions} // default {}
       >
+        <article className="purchase-agreement-container purchase-agreement post-1076 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-private-probation-debt">
+          <div className="wrapper">
+            <div className="purchase-agreement__date entry-meta">
+              June 10, 2021{' '}
+            </div>
+
+            <div className="purchase-agreement__details">
+              <dl>
+                <dt className="purchase-agreement__amount entry-value">
+                  <span className="currency-symbol">$</span>
+                  <span className="value">3,264,085</span>{' '}
+                </dt>
+                <dd className="purchase-agreement__amount entry-label">
+                  abolished{' '}
+                </dd>
+                <dt className="purchase-agreement__type entry-label">Type</dt>
+                <dd className="purchase-agreement__type entry-value">
+                  Private Probation Debt{' '}
+                </dd>
+                <dt className="purchase-agreement__number entry-label">
+                  Number of Debtors{' '}
+                </dt>
+                <dd className="purchase-agreement__number entry-value">
+                  <span className="value">20,522</span>{' '}
+                </dd>
+                <dt className="purchase-agreement__average entry-label">
+                  Average Debt/Debtor{' '}
+                </dt>
+                <dd className="purchase-agreement__average entry-value">
+                  <span className="currency-symbol">$</span>
+                  <span className="value">159</span>{' '}
+                </dd>
+                <dt className="purchase-agreement__purchase-price entry-label">
+                  Purchase Price{' '}
+                </dt>
+                <dd className="purchase-agreement__purchase-price entry-value">
+                  <span className="currency-symbol">$</span>
+                  <span className="value">97,922</span>{' '}
+                </dd>
+              </dl>
+              <a
+                href="../../../static/purchase-agreements/Private_Probation_6-10-2021.pdf"
+                aria-label="Download Purchase Agreement as PDF"
+                target="_blank"
+                download
+              >
+                Download Purchase Agreement
+              </a>
+            </div>
+          </div>
+        </article>
+
         <article className="purchase-agreement-container purchase-agreement post-1076 purchase_agreement type-purchase_agreement status-publish hentry purchase_agreement_type-att-wireless-debts purchase_agreement_type-judgement-debts">
           <div className="wrapper">
             <div className="purchase-agreement__date entry-meta">
