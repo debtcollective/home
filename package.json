@@ -21,6 +21,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@babel/helper-environment-visitor": "^7.16.7",
     "@debtcollective/dc-footer-component": "0.3.0",
     "@debtcollective/dc-header-component": "^3.6.0",
     "@debtcollective/union-component": "^1.6.0",
@@ -56,6 +57,7 @@
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.6.29",
+    "gatsby-plugin-sitemap": "^5.4.0",
     "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-plugin-typescript": "^2.4.18",
     "gatsby-source-custom-api": "2.1.4",
