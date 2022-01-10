@@ -26,7 +26,8 @@ module.exports = {
     twitterUsername: '@StrikeDebt',
     facebookPage: 'https://www.facebook.com/DebtCollective',
     image: "/seo.png",
-    url: siteUrl
+    url: siteUrl,
+    siteUrl: siteUrl
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -35,6 +36,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
