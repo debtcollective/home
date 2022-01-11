@@ -27,7 +27,7 @@ module.exports = {
     facebookPage: 'https://www.facebook.com/DebtCollective',
     image: "/seo.png",
     url: siteUrl,
-    siteUrl: siteUrl
+    siteUrl: "https://www.debtcollective.org"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
